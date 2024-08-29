@@ -1,0 +1,2143 @@
+<!DOCTYPE html>
+<!-- saved from url=(0085)https://realpython.com/reverse-string-python/#sorting-python-strings-in-reverse-order -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <link href="https://files.realpython.com/" rel="preconnect">
+
+    <title>Reverse Strings in Python: reversed(), Slicing, and More – Real Python</title>
+    <meta name="author" content="Real Python">
+    <meta name="description" content="In this step-by-step tutorial, you&#39;ll learn how to reverse strings in Python by using available tools such as reversed() and slicing operations. You&#39;ll also learn about a few useful ways to build reversed strings by hand.">
+    <meta name="keywords" content="">
+
+    
+  
+
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+
+    
+      <link rel="stylesheet" href="./reversing-strings-in-python_files/realpython.min.d94753535dde.css">
+      <link rel="stylesheet" href="./reversing-strings-in-python_files/font.5ac42994de49.css">
+      <link rel="stylesheet" href="./reversing-strings-in-python_files/glightbox.min.9b438b29cef1.css" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;"><noscript><link rel="stylesheet" href="/static/glightbox.min.9b438b29cef1.css"></noscript>
+      
+        <link rel="stylesheet" href="./reversing-strings-in-python_files/animate.min.c0be8e53226a.css">
+      
+    
+
+    
+  
+  <link rel="preload" as="image" href="./reversing-strings-in-python_files/Reverse-a-String-in-Python_Watermarked.580a70dab81f.jpg" imagesrcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Reverse-a-String-in-Python_Watermarked.580a70dab81f.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Reverse-a-String-in-Python_Watermarked.580a70dab81f.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Reverse-a-String-in-Python_Watermarked.580a70dab81f.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Reverse-a-String-in-Python_Watermarked.580a70dab81f.jpg 1920w" imagesizes="(min-width: 1200px) 690px, (min-width: 780px) calc(-5vw + 669px), (min-width: 580px) 510px, calc(100vw - 30px)">
+
+
+    
+    
+      <link rel="canonical" href="https://realpython.com/reverse-string-python/">
+
+      
+      
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="https://files.realpython.com/media/Reverse-a-String-in-Python_Watermarked.580a70dab81f.jpg">
+        <meta property="og:image" content="https://files.realpython.com/media/Reverse-a-String-in-Python_Watermarked.580a70dab81f.jpg">
+      
+      <meta name="twitter:creator" content="@realpython">
+      <meta name="twitter:site" content="@realpython">
+      <meta property="og:title" content="Reverse Strings in Python: reversed(), Slicing, and More – Real Python">
+      <meta property="og:type" content="article">
+      <meta property="og:url" content="https://realpython.com/reverse-string-python/">
+      <meta property="og:description" content="In this step-by-step tutorial, you&#39;ll learn how to reverse strings in Python by using available tools such as reversed() and slicing operations. You&#39;ll also learn about a few useful ways to build reversed strings by hand.">
+    
+
+    <link href="https://realpython.com/static/favicon.68cbf4197b0c.png" rel="icon">
+    <link href="https://realpython.com/atom.xml" rel="alternate" title="Real Python" type="application/atom+xml">
+    <link rel="manifest" href="https://realpython.com/manifest.json">
+
+    
+
+    
+    
+
+    
+    <script type="text/javascript" src="./reversing-strings-in-python_files/vendor.5fe8f3bc.js.download"></script><script type="text/javascript" src="./reversing-strings-in-python_files/main.fa8b6644.js.download"></script><script async="" src="./reversing-strings-in-python_files/gist.min.js.download"></script><script async="" src="./reversing-strings-in-python_files/in-app.js.download"></script><script type="text/javascript" async="" src="./reversing-strings-in-python_files/saved_resource"></script><script src="./reversing-strings-in-python_files/2220911568135371" async=""></script><script async="" src="./reversing-strings-in-python_files/fbevents.js.download"></script><script async="" id="cio-tracker" data-site-id="7c2f77c7758d22126955" data-use-array-params="true" data-in-app-org-id="0ed756ae-4cd1-4bb7-912c-1b37e39b6595" data-use-in-app="true" src="./reversing-strings-in-python_files/track.js.download"></script><script type="text/javascript" async="" src="./reversing-strings-in-python_files/js"></script><script async="" src="./reversing-strings-in-python_files/analytics.js.download"></script><script id="icons-data" type="application/json">{"iconsUrl": "/static/icons.1440a154cfa8.svg"}</script>
+    <script id="optins-data" type="application/json">{"turnstileSiteKey": "0x4AAAAAAAQQUCLRXBi8NnUh"}</script>
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  
+
+  ga('create', 'UA-35184939-1', 'auto', {'allowLinker': true});
+
+  
+
+  
+
+  
+  
+  ga('set', {
+    dimension1: true,
+    dimension2: false
+  });
+  
+
+  ga('send', 'pageview');
+  
+</script>
+
+
+<script async="" src="./reversing-strings-in-python_files/js(1)"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L7L6L5F6Y6');
+
+  
+</script>
+
+  <script src="./reversing-strings-in-python_files/OneSignalSDK.page.es6.js.download" defer=""></script><script src="./reversing-strings-in-python_files/count-data.js.download"></script><link rel="stylesheet" href="./reversing-strings-in-python_files/OneSignalSDK.page.styles.css"><style hs-beacon="active" data-styled-version="5.1.1"></style><script src="./reversing-strings-in-python_files/embed.js.download" data-timestamp="1724557144303"></script><script async="" id="dsq_recs_scr" src="./reversing-strings-in-python_files/recommendations.js.download"></script></head>
+  <body>
+    
+      
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark flex-column  user-select-none">
+  <div class="container flex-row">
+
+    <a class="navbar-brand" href="https://realpython.com/">
+      <img src="./reversing-strings-in-python_files/real-python-logo.893c30edea53.svg" width="165" height="40" class="d-inline-block align-top" alt="Real Python">
+    </a>
+
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse navbar-nav-scroll" id="navbarSupportedContent" role="navigation" aria-label="Main Navigation">
+
+      <ul class="navbar-nav mr-2">
+
+        <li class="nav-item">
+          <a class="nav-link rounded" href="https://realpython.com/start-here/">Start&nbsp;Here</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link rounded dropdown-toggle" href="https://realpython.com/reverse-string-python/#" id="navbarDropdownLibrary" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--python"></use></svg></span> Learn Python
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownLibrary">
+            
+<a class="dropdown-item " href="https://realpython.com/search?kind=article&amp;kind=course&amp;order=newest" style="color: #ff7e73; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--graduation-cap"></use></svg></span>Python Tutorials&nbsp;→<br><small class="text-secondary">In-depth articles and video courses</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/learning-paths/" style="color: #ffc873; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@learning-path"></use></svg></span>Learning Paths&nbsp;→<br><small class="text-secondary">Guided study plans for accelerated learning</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/quizzes/" style="color: #abe0e5; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span>Quizzes&nbsp;→<br><small class="text-secondary">Check your learning progress</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/tutorials/all/" style="color: #ccc; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@category"></use></svg></span>Browse Topics&nbsp;→<br><small class="text-secondary">Focus on a specific area or skill level</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/community/" style="color: #e5c6ab; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--message-smile"></use></svg></span>Community Chat&nbsp;→<br><small class="text-secondary">Learn with other Pythonistas</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/office-hours/" style="color: #e5c6ab; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--users"></use></svg></span>Office Hours&nbsp;→<br><small class="text-secondary">Live Q&amp;A calls with Python experts</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/podcasts/rpp/" style="color: #b8abe5; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@podcast"></use></svg></span>Podcast&nbsp;→<br><small class="text-secondary">Hear what’s new in the world of Python</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/products/books/" style="color: #abe5b1; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--book-heart"></use></svg></span>Books&nbsp;→<br><small class="text-secondary">Round out your knowledge and learn offline</small></a>
+
+
+            
+
+            
+              
+              
+<a class="dropdown-item border-top" href="https://realpython.com/account/join/" style="color: #ffc107; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--star"></use></svg></span>Unlock All Content&nbsp;→</a>
+
+              
+            
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link rounded dropdown-toggle" href="https://realpython.com/reverse-string-python/#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            More
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+            <a class="dropdown-item" href="https://realpython.com/learner-stories/">Learner Stories</a>
+            <a class="dropdown-item" href="https://realpython.com/newsletter/">Python Newsletter</a>
+            <a class="dropdown-item" href="https://www.pythonjobshq.com/" target="_blank">Python Job Board</a>
+            <a class="dropdown-item" href="https://realpython.com/team/">Meet the Team</a>
+            <a class="dropdown-item" href="https://realpython.com/write-for-us/">Become a Tutorial Writer</a>
+            <a class="dropdown-item" href="https://realpython.com/become-an-instructor/">Become a Video Instructor</a>
+          </div>
+        </li>
+
+      </ul> 
+
+      
+      <div class="d-block d-lg-none"> 
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link rounded" href="https://realpython.com/search" title="Search"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--search"></use></svg></span> Search</a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="d-none d-lg-flex align-items-center mr-2 flex-fill">
+        <form class="form-inline w-100 position-relative" action="https://realpython.com/search" method="GET">
+          <a class="js-search-form-submit position-absolute" href="https://realpython.com/search" title="Search" aria-hidden="true" tabindex="-1"><span class="icon baseline text-muted pl-2" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--search"></use></svg></span></a>
+          <input class="search-autocomplete search-field form-control form-control-md mr-sm-1 mr-lg-2 w-100" style="padding-left: 2rem;" maxlength="50" type="search" placeholder="Search" aria-label="Search" aria-keyshortcuts="/ Control+J Meta+J" name="q" autocomplete="off">
+          <span class="search-hotkey-indicator position-absolute px-2 border border-input text-input rounded small user-select-none" style="right: 1em;" title="Press / (forward slash) or Ctrl+J to open search" aria-hidden="true">/</span>
+          <input type="hidden" name="_from" value="nav">
+        </form>
+      </div>
+      
+
+      <ul class="navbar-nav ml-auto">
+        
+          <li class="nav-item form-inline mr-2 my-2 ml-3 ml-lg-0">
+            <a class="btn btn-sm btn-primary px-5 px-lg-3" href="https://realpython.com/account/join/">Join</a>
+          </li>
+        
+
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link rounded dropdown-toggle  p-2 m-0" href="https://realpython.com/reverse-string-python/#" id="navbarDropdownMyAccount" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="rounded-circle ml-2 ml-lg-0" style="width: 45px; height: 45px;" width="500" height="500" src="./reversing-strings-in-python_files/8c4bba554c92b873ce60db74986b5b34.png" loading="lazy" alt="User avatar">
+              <span class="notifications-indicator-container">
+                <span class="notifications-indicator notifications-indicator-visible"></span>
+              </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMyAccount">
+              
+
+
+
+  
+    <a class="dropdown-item" href="https://realpython.com/account/notifications/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--bell"></use></svg></span>Notifications <span class="badge badge-pill badge-danger">9+</span></a>
+  
+
+
+<a class="dropdown-item" href="https://realpython.com/account/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--sliders"></use></svg></span>Manage Account</a>
+
+
+  <a class="dropdown-item" href="https://realpython.com/account/join/"><span class="icon baseline text-warning mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--star"></use></svg></span>Get Full Access</a>
+
+
+<a class="dropdown-item" href="https://realpython.com/search?status=in-progress&amp;order=recent"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@continue-learning"></use></svg></span>Continue Learning</a>
+
+<a class="dropdown-item" href="https://realpython.com/account/bookmarks/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--bookmark"></use></svg></span>Bookmarks</a>
+
+<a class="dropdown-item" href="https://realpython.com/certificates/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@certificate"></use></svg></span>Certificates</a>
+
+<a class="dropdown-item" href="https://realpython.com/account/purchases/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--cart-shopping"></use></svg></span>Purchases</a>
+
+
+
+
+
+<a class="dropdown-item" href="https://realpython.com/account/logout/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--right-from-bracket"></use></svg></span>Sign Out</a>
+
+            </div>
+          </li>
+        
+      </ul>
+
+    
+    </div>
+
+  </div>
+
+  
+
+</nav>
+
+    
+
+    <div class="container main-content">
+      
+
+      
+  <div class="row justify-content-center">
+
+    
+    <aside class="col-md-7 col-lg-4 order-2 d-none d-lg-block">
+      
+  
+
+
+
+
+<div class="card mb-3 bg-secondary">
+  <form class="card-body" action="https://realpython.com/optins/process/" method="post">
+    <div class="form-group">
+      <p class="h5 text-muted text-center">— FREE Email Series —</p>
+      <p class="h3 text-center">🐍 Python Tricks 💌</p>
+      <p><img loading="lazy" class="img-fluid rounded" src="./reversing-strings-in-python_files/pytrick-dict-merge.webp" width="738" height="490" alt="Python Tricks Dictionary Merge"></p>
+    </div>
+    <div class="form-group">
+      <input type="hidden" name="csrfmiddlewaretoken" value="ouCojqDjXnGR4Yq6rEbVO95F6VB1r9gcGDHWtp0K6EraK5s2lWl07gr3fzB5KQys">
+      <input type="hidden" name="slug" value="static-python-tricks-sidebar">
+      <input type="email" class="form-control form-control-md" name="email" placeholder="Email…" required="">
+    </div>
+    <button type="submit" name="submit" class="btn btn-primary btn-md btn-block">Get Python Tricks »</button>
+    <p class="mb-0 mt-2 text-muted text-center">🔒 No spam. Unsubscribe any time.</p>
+  </form>
+</div>
+
+
+  
+
+
+<div class="sidebar-module sidebar-module-inset border">
+  <a href="https://realpython.com/tutorials/all/" class="badge badge-light text-muted"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@category"></use></svg></span>Browse Topics</a>
+
+  <a href="https://realpython.com/learning-paths/" class="badge badge-light text-muted"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--map-location-dot"></use></svg></span>Guided Learning Paths</a>
+
+  <br>
+
+  <a href="https://realpython.com/search?level=basics" class="badge badge-light text-muted"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span> Basics</a>
+
+  <a href="https://realpython.com/search?level=intermediate" class="badge badge-light text-muted"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span><span class="icon baseline tight-left" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span> Intermediate</a>
+
+  <a href="https://realpython.com/search?level=advanced" class="badge badge-light text-muted"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span><span class="icon baseline tight-left" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span><span class="icon baseline tight-left" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span> Advanced</a>
+
+  <hr class="my-2">
+
+  
+    
+  
+    
+  
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/api/" class="badge badge-light text-muted">api</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/best-practices/" class="badge badge-light text-muted">best-practices</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/career/" class="badge badge-light text-muted">career</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/community/" class="badge badge-light text-muted">community</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/databases/" class="badge badge-light text-muted">databases</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/data-science/" class="badge badge-light text-muted">data-science</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/data-structures/" class="badge badge-light text-muted">data-structures</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/data-viz/" class="badge badge-light text-muted">data-viz</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/devops/" class="badge badge-light text-muted">devops</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/django/" class="badge badge-light text-muted">django</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/docker/" class="badge badge-light text-muted">docker</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/editors/" class="badge badge-light text-muted">editors</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/flask/" class="badge badge-light text-muted">flask</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/front-end/" class="badge badge-light text-muted">front-end</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/gamedev/" class="badge badge-light text-muted">gamedev</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/gui/" class="badge badge-light text-muted">gui</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/machine-learning/" class="badge badge-light text-muted">machine-learning</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/numpy/" class="badge badge-light text-muted">numpy</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/projects/" class="badge badge-light text-muted">projects</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/python/" class="badge badge-light text-muted">python</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/testing/" class="badge badge-light text-muted">testing</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/tools/" class="badge badge-light text-muted">tools</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/web-dev/" class="badge badge-light text-muted">web-dev</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/web-scraping/" class="badge badge-light text-muted">web-scraping</a>
+
+    
+  
+</div>
+
+
+
+  
+<div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+  
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:100%;"></div>
+  <div class="rpad" data-unit="1x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/48994424078/?c=41067926597&amp;p=58946116052&amp;r=37282" rel="nofollow" target="_blank"><img src="./reversing-strings-in-python_files/a5ff22ab118c293a4dc784ccb831c29e" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+
+
+</div>
+
+
+
+  <div class="sidebar-sticky ">
+    
+      
+
+
+<table-of-contents>
+  <div class="bg-light sidebar-module sidebar-module-inset">
+    <p class="h4 text-muted"><a class="link-unstyled" href="https://realpython.com/reverse-string-python/#toc">Table of Contents</a></p>
+    <div class="toc">
+<ul>
+<li class="active"><a href="https://realpython.com/reverse-string-python/#reversing-strings-with-core-python-tools">Reversing Strings With Core Python Tools</a><ul>
+<li><a href="https://realpython.com/reverse-string-python/#reversing-strings-through-slicing">Reversing Strings Through Slicing</a></li>
+<li><a href="https://realpython.com/reverse-string-python/#reversing-strings-with-join-and-reversed">Reversing Strings With .join() and reversed()</a></li>
+</ul>
+</li>
+<li class=""><a href="https://realpython.com/reverse-string-python/#generating-reversed-strings-by-hand">Generating Reversed Strings by Hand</a><ul>
+<li><a href="https://realpython.com/reverse-string-python/#reversing-strings-in-a-loop">Reversing Strings in a Loop</a></li>
+<li><a href="https://realpython.com/reverse-string-python/#reversing-strings-with-recursion">Reversing Strings With Recursion</a></li>
+<li><a href="https://realpython.com/reverse-string-python/#using-reduce-to-reverse-strings">Using reduce() to Reverse Strings</a></li>
+</ul>
+</li>
+<li class=""><a href="https://realpython.com/reverse-string-python/#iterating-through-strings-in-reverse">Iterating Through Strings in Reverse</a><ul>
+<li><a href="https://realpython.com/reverse-string-python/#the-reversed-built-in-function">The reversed() Built-in Function</a></li>
+<li><a href="https://realpython.com/reverse-string-python/#the-slicing-operator-1">The Slicing Operator, [::-1]</a></li>
+</ul>
+</li>
+<li class=""><a href="https://realpython.com/reverse-string-python/#creating-a-custom-reversible-string">Creating a Custom Reversible String</a></li>
+<li class=""><a href="https://realpython.com/reverse-string-python/#sorting-python-strings-in-reverse-order">Sorting Python Strings in Reverse Order</a></li>
+<li class=""><a href="https://realpython.com/reverse-string-python/#conclusion">Conclusion</a></li>
+</ul>
+</div>
+
+  </div>
+</table-of-contents>
+
+    
+
+    <div class="sidebar-module sidebar-module-inset d-flex justify-content-center flex-wrap row-gap-1 col-gap-2 my-3 py-0">
+      
+
+
+<completion-status class="btn-group mb-0" article-slug="reverse-string-python" data-api-article-bookmark-url="/api/v1/articles/reverse-string-python/bookmark/" data-api-article-completion-status-url="/api/v1/articles/reverse-string-python/completion_status/">
+  <button data-target-complete-button="" title="Click to mark as completed" class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">Mark as Completed</button>
+  <button data-target-bookmark-button="" title="Add bookmark" class="btn btn-secondary border-left"><span class="icon baseline" aria-hidden="true">
+    <svg aria-hidden="true">
+      <use href="/static/icons.1440a154cfa8.svg#light--bookmark"></use>
+    </svg>
+    
+  </span></button>
+</completion-status>
+
+      <div class="w-100"></div> 
+      
+<div class="btn-group mb-0">
+  <a class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" title="Liked it" role="button" aria-label="Thumbs up (liked it)" href="https://realpython.com/feedback/survey/article/reverse-string-python/liked/?from=article-sidebar" target="_blank"><span class="icon" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-up"></use></svg></span></a> 
+  <a class="btn btn-secondary border-left" role="button" aria-label="Thumbs down (disliked it)" title="Disliked it" href="https://realpython.com/feedback/survey/article/reverse-string-python/disliked/?from=article-sidebar" target="_blank"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-down"></use></svg></span></a>
+</div>
+
+      
+        
+
+
+
+
+
+
+
+
+
+<share-button url="https://realpython.com/reverse-string-python/" url-title="Reverse Strings in Python: reversed(), Slicing, and More" twitter-text="Interesting #Python article by @realpython:" email-subject="Python article for you" email-body="Check out this Python article:%0A%0AReverse Strings in Python: reversed(), Slicing, and More">
+  <button class="btn btn-secondary" type="button" title="Share" aria-label="Share"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@share-light"></use></svg></span>Share</button>
+</share-button>
+
+
+      
+    </div>
+
+    
+      <div class="sidebar-module sidebar-module-inset border card">
+        <p><span class="badge badge-pill badge-success"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--play-circle"></use></svg></span> Recommended Video Course</span><br><a class="stretched-link text-success" href="https://realpython.com/courses/python-reverse-string/">Reversing Strings in Python</a></p>
+      </div>
+    
+
+    
+      <div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+        
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:25%;"></div>
+  <div class="rpad" data-unit="4x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/64754707389/?c=31941813441&amp;p=58946116052&amp;r=65937" rel="nofollow" target="_blank"><img src="./reversing-strings-in-python_files/257f65e32c1713399c59dacea36eb818" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+
+
+      </div>
+    
+
+    
+  </div>
+
+
+    </aside>
+
+    <div class="col-md-11 col-lg-8 article with-headerlinks">
+      
+
+  
+    <figure class="embed-responsive embed-responsive-16by9 rounded">
+      
+        <img class="card-img-top m-0 p-0 embed-responsive-item" style="object-fit: contain; background: #abe5b2;" alt="Reverse Strings in Python: reversed(), Slicing, and More" width="1920" height="1080" src="./reversing-strings-in-python_files/Reverse-a-String-in-Python_Watermarked.580a70dab81f.jpg" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Reverse-a-String-in-Python_Watermarked.580a70dab81f.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Reverse-a-String-in-Python_Watermarked.580a70dab81f.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Reverse-a-String-in-Python_Watermarked.580a70dab81f.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Reverse-a-String-in-Python_Watermarked.580a70dab81f.jpg 1920w" sizes="(min-width: 1200px) 690px, (min-width: 780px) calc(-5vw + 669px), (min-width: 580px) 510px, calc(100vw - 30px)" fetchpriority="high">
+      
+    </figure>
+  
+
+  <h1>Reverse Strings in Python: reversed(), Slicing, and More</h1>
+  <div class="mb-0">
+    
+      <span class="text-muted">by <a class="text-muted" href="https://realpython.com/reverse-string-python/#author">Leodanis Pozo Ramos</a>
+    
+    
+      <span class="icon baseline ml-2" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--clock-o"></use></svg></span> Sep 27, 2021
+    
+    
+      <span class="icon baseline ml-2 mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--comments"></use></svg></span><a class="text-muted" href="https://realpython.com/reverse-string-python/#reader-comments"><span class="disqus-comment-count" data-disqus-identifier="https://realpython.com/reverse-string-python/">4 Comments</span></a>
+    
+    
+
+    <span class="d-inline d-md-block"> 
+      <span class="icon baseline ml-2 ml-md-0" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@category"></use></svg></span>
+      
+        
+<a href="https://realpython.com/tutorials/basics/" class="badge badge-light text-muted">basics</a>
+
+      
+        
+<a href="https://realpython.com/tutorials/best-practices/" class="badge badge-light text-muted">best-practices</a>
+
+      
+        
+<a href="https://realpython.com/tutorials/python/" class="badge badge-light text-muted">python</a>
+
+      
+    </span>
+
+    <div class="d-flex justify-content-between gap-2 my-3">
+      
+
+
+<completion-status class="btn-group mb-0" article-slug="reverse-string-python" data-api-article-bookmark-url="/api/v1/articles/reverse-string-python/bookmark/" data-api-article-completion-status-url="/api/v1/articles/reverse-string-python/completion_status/">
+  <button data-target-complete-button="" title="Click to mark as completed" class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">Mark as Completed</button>
+  <button data-target-bookmark-button="" title="Add bookmark" class="btn btn-secondary border-left"><span class="icon baseline" aria-hidden="true">
+    <svg aria-hidden="true">
+      <use href="/static/icons.1440a154cfa8.svg#light--bookmark"></use>
+    </svg>
+    
+  </span></button>
+</completion-status>
+
+      
+        
+
+
+
+
+
+
+
+
+
+<share-button url="https://realpython.com/reverse-string-python/" url-title="Reverse Strings in Python: reversed(), Slicing, and More" twitter-text="Interesting #Python article by @realpython:" email-subject="Python article for you" email-body="Check out this Python article:%0A%0AReverse Strings in Python: reversed(), Slicing, and More">
+  <button class="btn btn-secondary" type="button" title="Share" aria-label="Share"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@share-light"></use></svg></span>Share</button>
+</share-button>
+
+
+      
+    </div>
+  </span></div>
+
+  
+
+  <div class="article-body">
+    
+      <div class="bg-light sidebar-module sidebar-module-inset" id="toc">
+        <p class="h3 mb-2 text-muted">Table of Contents</p>
+        <div class="toc">
+<ul>
+<li><a href="https://realpython.com/reverse-string-python/#reversing-strings-with-core-python-tools">Reversing Strings With Core Python Tools</a><ul>
+<li><a href="https://realpython.com/reverse-string-python/#reversing-strings-through-slicing">Reversing Strings Through Slicing</a></li>
+<li><a href="https://realpython.com/reverse-string-python/#reversing-strings-with-join-and-reversed">Reversing Strings With .join() and reversed()</a></li>
+</ul>
+</li>
+<li><a href="https://realpython.com/reverse-string-python/#generating-reversed-strings-by-hand">Generating Reversed Strings by Hand</a><ul>
+<li><a href="https://realpython.com/reverse-string-python/#reversing-strings-in-a-loop">Reversing Strings in a Loop</a></li>
+<li><a href="https://realpython.com/reverse-string-python/#reversing-strings-with-recursion">Reversing Strings With Recursion</a></li>
+<li><a href="https://realpython.com/reverse-string-python/#using-reduce-to-reverse-strings">Using reduce() to Reverse Strings</a></li>
+</ul>
+</li>
+<li><a href="https://realpython.com/reverse-string-python/#iterating-through-strings-in-reverse">Iterating Through Strings in Reverse</a><ul>
+<li><a href="https://realpython.com/reverse-string-python/#the-reversed-built-in-function">The reversed() Built-in Function</a></li>
+<li><a href="https://realpython.com/reverse-string-python/#the-slicing-operator-1">The Slicing Operator, [::-1]</a></li>
+</ul>
+</li>
+<li><a href="https://realpython.com/reverse-string-python/#creating-a-custom-reversible-string">Creating a Custom Reversible String</a></li>
+<li><a href="https://realpython.com/reverse-string-python/#sorting-python-strings-in-reverse-order">Sorting Python Strings in Reverse Order</a></li>
+<li><a href="https://realpython.com/reverse-string-python/#conclusion">Conclusion</a></li>
+</ul>
+</div>
+
+      </div>
+    
+
+    
+    <div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+      
+
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:12.5%;"></div>
+  <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/57356986228/?c=41067926597&amp;p=58946116052&amp;r=63903" rel="nofollow" target="_blank"><img src="./reversing-strings-in-python_files/6fe6464c8bf6ec2cbcf3f1f0e778156b" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+<a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a>
+
+
+    </div>
+    
+
+    
+      
+<div class="border rounded p-3 card mb-2 text-wrap-pretty">
+  <p class="mb-0"><span class="badge badge-pill badge-success"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--play-circle"></use></svg></span> Watch Now</span> This tutorial has a related video course created by the Real Python team. Watch it together with the written tutorial to deepen your understanding: <a class="stretched-link text-success" href="https://realpython.com/courses/python-reverse-string/"><strong>Reversing Strings in Python</strong></a></p>
+</div>
+
+    
+
+    <p>When you’re using Python strings often in your code, you may face the need to work with them in <strong>reverse order</strong>. Python includes a few handy tools and techniques that can help you out in these situations. With them, you’ll be able to build reversed copies of existing strings quickly and efficiently.</p>
+<p>Knowing about these tools and techniques for reversing strings in Python will help you improve your proficiency as a Python developer.</p>
+<p><strong>In this tutorial, you’ll learn how to:</strong></p>
+<ul>
+<li>Quickly build reversed strings through <strong>slicing</strong></li>
+<li>Create <strong>reversed copies</strong> of existing strings using <code>reversed()</code> and <code>.join()</code></li>
+<li>Use <strong>iteration</strong> and <strong>recursion</strong> to reverse existing strings manually</li>
+<li>Perform <strong>reverse iteration</strong> over your strings</li>
+<li><strong>Sort</strong> your strings in reverse order using <code>sorted()</code></li>
+</ul>
+<p>To make the most out of this tutorial, you should know the basics of <a href="https://realpython.com/python-strings/">strings</a>, <a href="https://realpython.com/python-for-loop/"><code>for</code></a> and <a href="https://realpython.com/python-while-loop/"><code>while</code></a> loops, and <a href="https://realpython.com/python-thinking-recursively/">recursion</a>.</p>
+<div class="alert alert-warning" role="alert">
+<p><strong markdown="1">Free Download:</strong> <a href="https://realpython.com/bonus/python-basics-sample-download/" class="alert-link" data-toggle="modal" data-target="#modal-python-basics-sample-download" data-focus="false" markdown="1">Get a sample chapter from Python Basics: A Practical Introduction to Python 3</a> to see how you can go from beginner to intermediate in Python with a complete curriculum, up-to-date for Python 3.8.</p>
+</div>
+<section class="section2"><h2 id="reversing-strings-with-core-python-tools">Reversing Strings With Core Python Tools<a class="headerlink" href="https://realpython.com/reverse-string-python/#reversing-strings-with-core-python-tools" title="Permanent link"></a></h2>
+<p>Working with Python <a href="https://realpython.com/python-strings/">strings</a> in <strong>reverse order</strong> can be a requirement in some particular situations. For example, say you have a string <code>"ABCDEF"</code> and you want a fast way to reverse it to get <code>"FEDCBA"</code>. What Python tools can you use to help?</p>
+<p>Strings are <a href="https://docs.python.org/3/glossary.html#term-immutable">immutable</a> in Python, so reversing a given string <a href="https://en.wikipedia.org/wiki/In-place_algorithm">in place</a> isn’t possible. You’ll need to create reversed <strong>copies</strong> of your target strings to meet the requirement.</p>
+<p>Python provides two straightforward ways to reverse strings. Since strings are sequences, they’re <strong>indexable</strong>, <strong>sliceable</strong>, and <strong>iterable</strong>. These features allow you to use <a href="https://docs.python.org/dev/whatsnew/2.3.html#extended-slices">slicing</a> to directly generate a copy of a given string in reverse order. The second option is to use the built-in function <a href="https://docs.python.org/dev/library/functions.html#reversed"><code>reversed()</code></a> to create an iterator that yields the characters of an input string in reverse order.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/47546671741/?c=58525073567&amp;p=58946116052&amp;r=86065" rel="nofollow" target="_blank"><img src="./reversing-strings-in-python_files/026fb4432c518a9d24e5ba3f93da2599" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div><section class="section3"><h3 id="reversing-strings-through-slicing">Reversing Strings Through Slicing<a class="headerlink" href="https://realpython.com/reverse-string-python/#reversing-strings-through-slicing" title="Permanent link"></a></h3>
+<p>Slicing is a useful technique that allows you to extract items from a given sequence using different combinations of <strong>integer indices</strong> known as <a href="https://en.wikipedia.org/wiki/Offset_(computer_science)">offsets</a>. When it comes to slicing strings, these offsets define the index of the first character in the slicing, the index of the character that stops the slicing, and a value that defines how many characters you want to jump through in each iteration.</p>
+<p>To slice a string, you can use the following syntax:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="n">a_string</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">:</span><span class="n">step</span><span class="p">]</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Your offsets are <code>start</code>, <code>stop</code>, and <code>step</code>. This expression extracts all the characters from <code>start</code> to <code>stop − 1</code> by <code>step</code>. You’re going to look more deeply at what all this means in just a moment.</p>
+<p>All the offsets are optional, and they have the following default values:</p>
+<div class="table-responsive">
+<table class="table table-hover">
+<thead>
+<tr>
+<th>Offset</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>stop</code></td>
+<td><code>len(a_string)</code></td>
+</tr>
+<tr>
+<td><code>step</code></td>
+<td><code>1</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Here, <code>start</code> represents the index of the first character in the slice, while <code>stop</code> holds the index that stops the slicing operation. The third offset, <code>step</code>, allows you to decide how many characters the slicing will jump through on each iteration.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> A slicing operation finishes when it reaches the index equal to or greater than <code>stop</code>. This means that it never includes the item at that index, if any, in the final slice.</p>
+</div>
+<p>The <code>step</code> offset allows you to fine-tune how you extract desired characters from a string while skipping others:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span> <span class="o">=</span> <span class="s2">"AaBbCcDd"</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get all characters relying on default offsets</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span><span class="p">[::]</span>
+<span class="go">'AaBbCcDd'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span><span class="p">[:]</span>
+<span class="go">'AaBbCcDd'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get every other character from 0 to the end</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">'ABCD'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get every other character from 1 to the end</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">'abcd'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Here, you first slice <code>letters</code> without providing explicit offset values to get a full copy of the original string. To this end, you can also use a slicing that omits the second colon (<code>:</code>). With <code>step</code> equal to <code>2</code>, the slicing gets every other character from the target string. You can play around with different offsets to get a better sense of how slicing works.</p>
+<p>Why are slicing and this third offset relevant to reversing strings in Python? The answer lies in how <code>step</code> works with negative values. If you provide a negative value to <code>step</code>, then the slicing runs backward, meaning from right to left.</p>
+<p>For example, if you set <code>step</code> equal to <code>-1</code>, then you can build a slice that retrieves all the characters in reverse order:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span> <span class="o">=</span> <span class="s2">"ABCDEF"</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">'FEDCBA'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span>
+<span class="go">'ABCDEF'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>This slicing returns all the characters from the right end of the string, where the index is equal to <code>len(letters) - 1</code>, back to the left end of the string, where the index is <code>0</code>. When you use this trick, you get a copy of the original string in reverse order without affecting the original content of <code>letters</code>.</p>
+<p>Another technique to create a reversed copy of an existing string is to use <a href="https://docs.python.org/dev/library/functions.html#slice"><code>slice()</code></a>. The signature of this built-in function is the following:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="nb">slice</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>This function takes three arguments, with the same meaning of the offsets in the slicing operator, and returns a <a href="https://docs.python.org/3/glossary.html#term-slice">slice</a> object representing the set of indices that result from calling <code>range(start, stop, step)</code>.</p>
+<p>You can use <code>slice()</code> to emulate the slicing <code>[::-1]</code> and reverse your strings quickly. Go ahead and run the following call to <code>slice()</code> inside square brackets:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span> <span class="o">=</span> <span class="s2">"ABCDEF"</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span><span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+<span class="go">'FEDCBA'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Passing <a href="https://realpython.com/null-in-python/"><code>None</code></a> to the first two arguments of <code>slice()</code> tells the function that you want to rely on its internal default behavior, which is the same as a standard slicing with no values for <code>start</code> and <code>stop</code>. In other words, passing <code>None</code> to <code>start</code> and <code>stop</code> means that you want a slice from the left end to the right end of the underlying sequence.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/27750251087/?c=11232171364&amp;p=58946116052&amp;r=99923" rel="nofollow" target="_blank"><img src="./reversing-strings-in-python_files/bba83554c49ffce9838fddbf61a42999" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section><section class="section3"><h3 id="reversing-strings-with-join-and-reversed">Reversing Strings With <code>.join()</code> and <code>reversed()</code><a class="headerlink" href="https://realpython.com/reverse-string-python/#reversing-strings-with-join-and-reversed" title="Permanent link"></a></h3>
+<p>The second and arguably the most Pythonic approach to reversing strings is to use <code>reversed()</code> along with <a href="https://docs.python.org/3/library/stdtypes.html#str.join"><code>str.join()</code></a>. If you pass a string to <code>reversed()</code>, you get an iterator that yields characters in reverse order:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">greeting</span> <span class="o">=</span> <span class="nb">reversed</span><span class="p">(</span><span class="s2">"Hello, World!"</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span>
+<span class="go">'!'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span>
+<span class="go">'d'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span>
+<span class="go">'l'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>When you call <code>next()</code> with <code>greeting</code> as an argument, you get each character from the right end of the original string.</p>
+<p>An important point to note about <code>reversed()</code> is that the resulting iterator yields characters directly from the original string. In other words, it doesn’t create a new reversed string but reads characters backward from the existing one. This behavior is fairly efficient in terms of memory consumption and can be a fundamental win in some contexts and situations, such as iteration.</p>
+<p>You can use the iterator that you get from calling <code>reversed()</code> directly as an argument to <code>.join()</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="s2">"Hello, World!"</span><span class="p">))</span>
+<span class="go">'!dlroW ,olleH'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this single-line expression, you pass the result of calling <code>reversed()</code> directly as an argument to <code>.join()</code>. As a result, you get a reversed copy of the original input string. This combination of <code>reversed()</code> and <code>.join()</code> is an excellent option for reversing strings.</p>
+</section></section><section class="section2"><h2 id="generating-reversed-strings-by-hand">Generating Reversed Strings by Hand<a class="headerlink" href="https://realpython.com/reverse-string-python/#generating-reversed-strings-by-hand" title="Permanent link"></a></h2>
+<p>So far, you’ve learned about core Python tools and techniques to reverse strings quickly. Most of the time, they’ll be your way to go. However, you might need to reverse a string by hand at some point in your coding adventure.</p>
+<p>In this section, you’ll learn how to reverse strings using explicit loops and <a href="https://realpython.com/python-recursion/">recursion</a>. The final technique uses a functional programming approach with the help of Python’s <a href="https://realpython.com/python-reduce-function/"><code>reduce()</code></a> function.</p>
+<section class="section3"><h3 id="reversing-strings-in-a-loop">Reversing Strings in a Loop<a class="headerlink" href="https://realpython.com/reverse-string-python/#reversing-strings-in-a-loop" title="Permanent link"></a></h3>
+<p>The first technique you’ll use to reverse a string involves a <code>for</code> loop and the concatenation operator (<code>+</code>). With two strings as operands, this operator returns a new string that results from joining the original ones. The whole operation is known as <a href="https://realpython.com/python-string-concatenation/">concatenation</a>.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> Using <code>.join()</code> is the recommended approach to concatenate strings in Python. It’s clean, efficient, and <a href="https://realpython.com/learning-paths/writing-pythonic-code/">Pythonic</a>.</p>
+</div>
+<p>Here’s a function that takes a string and reverses it in a loop using concatenation:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">reversed_string</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">result</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">result</span> <span class="o">=</span> <span class="n">char</span> <span class="o">+</span> <span class="n">result</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">result</span>
+<span class="gp">...</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reversed_string</span><span class="p">(</span><span class="s2">"Hello, World!"</span><span class="p">)</span>
+<span class="go">'!dlroW ,olleH'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In every iteration, the loop takes a subsequent character, <code>char</code>, from <code>text</code> and concatenates it with the current content of <code>result</code>. Note that <code>result</code> initially holds an empty string (<code>""</code>). The new intermediate string is then reassigned to <code>result</code>. At the end of the loop, <code>result</code> holds a new string as a reversed copy of the original one.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> Since Python strings are immutable data types, you should keep in mind that the examples in this section use a wasteful technique. They rely on creating successive intermediate strings only to throw them away in the next iteration.</p>
+</div>
+<p>If you prefer using a <a href="https://realpython.com/python-while-loop/"><code>while</code> loop</a>, then here’s what you can do to build a reversed copy of a given string:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">reversed_string</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">result</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="gp">... </span>    <span class="n">index</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="gp">... </span>    <span class="k">while</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">result</span> <span class="o">+=</span> <span class="n">text</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+<span class="gp">... </span>        <span class="n">index</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">result</span>
+<span class="gp">...</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reversed_string</span><span class="p">(</span><span class="s2">"Hello, World!"</span><span class="p">)</span>
+<span class="go">'!dlroW ,olleH'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Here, you first compute the <code>index</code> of the last character in the input string by using <a href="https://realpython.com/len-python-function/"><code>len()</code></a>. The loop iterates from <code>index</code> down to and including <code>0</code>. In every iteration, you use the <a href="https://docs.python.org/3/reference/simple_stmts.html#assignment-statements">augmented assignment</a> operator (<code>+=</code>) to create an intermediate string that concatenates the content of <code>result</code> with the corresponding character from <code>text</code>. Again, the final result is a new string that results from reversing the input string.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/5748061207/?c=11232171364&amp;p=58946116052&amp;r=59218" rel="nofollow" target="_blank"><img src="./reversing-strings-in-python_files/bba83554c49ffce9838fddbf61a42999" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section><section class="section3"><h3 id="reversing-strings-with-recursion">Reversing Strings With Recursion<a class="headerlink" href="https://realpython.com/reverse-string-python/#reversing-strings-with-recursion" title="Permanent link"></a></h3>
+<p>You can also use <a href="https://realpython.com/python-thinking-recursively/">recursion</a> to reverse strings. Recursion is when a function calls itself in its own body. To prevent infinite recursion, you should provide a <strong>base case</strong> that produces a result without calling the function again. The second component is the <strong>recursive case</strong>, which starts the recursive loop and performs most of the computation.</p>
+<p>Here’s how you can define a recursive function that returns a reversed copy of a given string:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">reversed_string</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">text</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">reversed_string</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">+</span> <span class="n">text</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">...</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reversed_string</span><span class="p">(</span><span class="s2">"Hello, World!"</span><span class="p">)</span>
+<span class="go">'!dlroW ,olleH'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this example, you first check for the base case. If the input string has exactly one character, you return the string back to the caller.</p>
+<p>The last statement, which is the recursive case, calls <code>reversed_string()</code> itself. The call uses the slice <code>text[1:]</code> of the input string as an argument. This slice contains all the characters in <code>text</code>, except for the first one. The next step is to add the result of the recursive call together with the single-character string <code>text[:1]</code>, which contains the first character of <code>text</code>.</p>
+<p>A significant issue to note in the example above is that if you pass in a long string as an argument to <code>reversed_string()</code>, then you’ll get a <code>RecursionError</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">very_long_greeting</span> <span class="o">=</span> <span class="s2">"Hello, World!"</span> <span class="o">*</span> <span class="mi">1_000</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reversed_string</span><span class="p">(</span><span class="n">very_long_greeting</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">    </span><span class="o">...</span>
+<span class="gr">RecursionError</span>: <span class="n">maximum recursion depth exceeded while calling a Python object</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Hitting Python’s default recursion limit is an important issue that you should consider in your code. However, if you really need to use recursion, then you still have the option to set the recursion limit manually.</p>
+<p>You can check the recursion limit of your current Python interpreter by calling <a href="https://docs.python.org/3/library/sys.html#sys.getrecursionlimit"><code>getrecursionlimit()</code></a> from <a href="https://docs.python.org/3/library/sys.html#module-sys"><code>sys</code></a>. By default, this value is usually <code>1000</code>. You can tweak this limit using <a href="https://docs.python.org/3/library/sys.html#sys.setrecursionlimit"><code>setrecursionlimit()</code></a> from the same module, <code>sys</code>. With these functions, you can configure the Python environment so that your recursive solution can work. Go ahead and give it a try!</p>
+</section><section class="section3"><h3 id="using-reduce-to-reverse-strings">Using <code>reduce()</code> to Reverse Strings<a class="headerlink" href="https://realpython.com/reverse-string-python/#using-reduce-to-reverse-strings" title="Permanent link"></a></h3>
+<p>If you prefer using a functional programming approach, you can use <a href="https://realpython.com/python-reduce-function/"><code>reduce()</code></a> from <a href="https://docs.python.org/3/library/functools.html#module-functools"><code>functools</code></a> to reverse strings. Python’s <code>reduce()</code> takes a <a href="https://en.wikipedia.org/wiki/Fold_(higher-order_function)">folding</a> or reduction function and an iterable as arguments. Then it applies the provided function to the items in the input iterable and returns a single cumulative value.</p>
+<p>Here’s how you can take advantage of <code>reduce()</code> to reverse strings:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">reversed_string</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">b</span> <span class="o">+</span> <span class="n">a</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+<span class="gp">...</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reversed_string</span><span class="p">(</span><span class="s2">"Hello, World!"</span><span class="p">)</span>
+<span class="go">'!dlroW ,olleH'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this example, the <a href="https://realpython.com/python-lambda/"><code>lambda</code></a> function takes two strings and concatenates them in reverse order. The call to <code>reduce()</code> applies the <code>lambda</code> to <code>text</code> in a loop and builds a reversed copy of the original string.</p>
+</section></section><section class="section2"><h2 id="iterating-through-strings-in-reverse">Iterating Through Strings in Reverse<a class="headerlink" href="https://realpython.com/reverse-string-python/#iterating-through-strings-in-reverse" title="Permanent link"></a></h2>
+<p>Sometimes you might want to iterate through existing strings in reverse order, a technique typically known as <strong>reverse iteration</strong>. Depending on your specific needs, you can do reverse iteration on strings by using one of the following options:</p>
+<ul>
+<li>The <code>reversed()</code> built-in function</li>
+<li>The slicing operator, <code>[::-1]</code></li>
+</ul>
+<p>Reverse iteration is arguably the most common use case of these tools, so in the following few sections, you’ll learn about how to use them in an iteration context.</p>
+<section class="section3"><h3 id="the-reversed-built-in-function">The <code>reversed()</code> Built-in Function<a class="headerlink" href="https://realpython.com/reverse-string-python/#the-reversed-built-in-function" title="Permanent link"></a></h3>
+<p>The most readable and Pythonic approach to iterate over a string in reverse order is to use <code>reversed()</code>. You already learned about this function a few moments ago when you used it along with <code>.join()</code> to create reversed strings.</p>
+<p>However, the main intent and use case of <code>reversed()</code> is to support reverse iteration on Python iterables. With a string as an argument, <code>reversed()</code> returns an iterator that yields characters from the input string in reverse order.</p>
+<p>Here’s how you can iterate over a string in reverse order with <code>reversed()</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">greeting</span> <span class="o">=</span> <span class="s2">"Hello, World!"</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">greeting</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">!</span>
+<span class="go">d</span>
+<span class="go">l</span>
+<span class="go">r</span>
+<span class="go">o</span>
+<span class="go">W</span>
+
+<span class="go">,</span>
+<span class="go">o</span>
+<span class="go">l</span>
+<span class="go">l</span>
+<span class="go">e</span>
+<span class="go">H</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">reversed</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span>
+<span class="go">&lt;reversed object at 0x7f17aa89e070&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The <code>for</code> loop in this example is very readable. The name of <code>reversed()</code> clearly expresses its intent and communicates that the function doesn’t produce any <a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)">side effects</a> on the input data. Since <code>reversed()</code> returns an iterator, the loop is also efficient regarding memory usage.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/58257184031/?c=31941813441&amp;p=58946116052&amp;r=62178" rel="nofollow" target="_blank"><img src="./reversing-strings-in-python_files/16bf1efe41b538fae54711c58c701f0e" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section><section class="section3"><h3 id="the-slicing-operator-1">The Slicing Operator, <code>[::-1]</code><a class="headerlink" href="https://realpython.com/reverse-string-python/#the-slicing-operator-1" title="Permanent link"></a></h3>
+<p>The second approach to perform reverse iteration over strings is to use the extended slicing syntax you saw before in the <code>a_string[::-1]</code> example. Even though this approach won’t favor memory efficiency and readability, it still provides a quick way to iterate over a reversed copy of an existing string:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">greeting</span> <span class="o">=</span> <span class="s2">"Hello, World!"</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">greeting</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">!</span>
+<span class="go">d</span>
+<span class="go">l</span>
+<span class="go">r</span>
+<span class="go">o</span>
+<span class="go">W</span>
+
+<span class="go">,</span>
+<span class="go">o</span>
+<span class="go">l</span>
+<span class="go">l</span>
+<span class="go">e</span>
+<span class="go">H</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">greeting</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">'!dlroW ,olleH'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this example, you apply the slicing operator on <code>greeting</code> to create a reversed copy of it. Then you use that new reversed string to feed the loop. In this case, you’re iterating over a new reversed string, so this solution is less memory-efficient than using <code>reversed()</code>.</p>
+</section></section><section class="section2"><h2 id="creating-a-custom-reversible-string">Creating a Custom Reversible String<a class="headerlink" href="https://realpython.com/reverse-string-python/#creating-a-custom-reversible-string" title="Permanent link"></a></h2>
+<p>If you’ve ever tried to <a href="https://realpython.com/python-reverse-list/">reverse a Python list</a>, then you know that <a href="https://realpython.com/python-list/">lists</a> have a handy method called <code>.reverse()</code> that reverses the underlying list <a href="https://realpython.com/python-reverse-list/">in place</a>. Since strings are immutable in Python, they don’t provide a similar method.</p>
+<p>However, you can still create a custom string subclass with a <code>.reverse()</code> method that mimics <code>list.reverse()</code>. Here’s how you can do that:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">UserString</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">ReversibleString</span><span class="p">(</span><span class="n">UserString</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">...</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p><code>ReversibleString</code> inherits from <a href="https://realpython.com/inherit-python-str/"><code>UserString</code></a>, which is a class from the <a href="https://realpython.com/python-collections-module/"><code>collections</code></a> module. <code>UserString</code> is a wrapper around the <a href="https://docs.python.org/3/library/stdtypes.html#str"><code>str</code></a> built-in data type. It was specially designed for creating subclasses of <code>str</code>. <code>UserString</code> is handy when you need to create custom string-like classes with additional functionalities.</p>
+<p><code>UserString</code> provides the same functionality as a regular string. It also adds a public attribute called <code>.data</code> that holds and gives you access to the wrapped string object.</p>
+<p>Inside <code>ReversibleString</code>, you create <code>.reverse()</code>. This method reverses the wrapped string in <code>.data</code> and reassigns the result back to <code>.data</code>. From the outside, calling <code>.reverse()</code> works like reversing the string in place. However, what it actually does is create a new string containing the original data in reverse order.</p>
+<p>Here’s how <code>ReversibleString</code> works in practice:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="n">ReversibleString</span><span class="p">(</span><span class="s2">"Hello, World!"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text</span>
+<span class="go">'Hello, World!'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Reverse the string in place</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text</span>
+<span class="go">'!dlroW ,olleH'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>When you call <code>.reverse()</code> on <code>text</code>, the method acts as if you’re doing an in-place mutation of the underlying string. However, you’re actually creating a new string and assigning it back to the wrapped string. Note that <code>text</code> now holds the original string in reverse order.</p>
+<p>Since <code>UserString</code> provides the same functionality as its superclass <code>str</code>, you can use <code>reversed()</code> out of the box to perform reverse iteration:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="n">ReversibleString</span><span class="p">(</span><span class="s2">"Hello, World!"</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Support reverse iteration out of the box</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">!</span>
+<span class="go">d</span>
+<span class="go">l</span>
+<span class="go">r</span>
+<span class="go">o</span>
+<span class="go">W</span>
+
+<span class="go">,</span>
+<span class="go">o</span>
+<span class="go">l</span>
+<span class="go">l</span>
+<span class="go">e</span>
+<span class="go">H</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text</span>
+<span class="go">"Hello, World!"</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Here, you call <code>reversed()</code> with <code>text</code> as an argument to feed a <code>for</code> loop. This call works as expected and returns the corresponding iterator because <code>UserString</code> inherits the required behavior from <code>str</code>. Note that calling <code>reversed()</code> doesn’t affect the original string.</p>
+</section><section class="section2"><h2 id="sorting-python-strings-in-reverse-order">Sorting Python Strings in Reverse Order<a class="headerlink" href="https://realpython.com/reverse-string-python/#sorting-python-strings-in-reverse-order" title="Permanent link"></a></h2>
+<p>The last topic you’ll learn about is how to sort the characters of a string in reverse order. This can be handy when you’re working with strings in no particular order and you need to sort them in reverse alphabetical order.</p>
+<p>To approach this problem, you can use <a href="https://realpython.com/python-sort/"><code>sorted()</code></a>. This built-in function returns a list containing all the items of the input iterable in order. Besides the input iterable, <code>sorted()</code> also accepts a <code>reverse</code> keyword argument. You can set this argument to <code>True</code> if you want the input iterable to be sorted in descending order:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">vowels</span> <span class="o">=</span> <span class="s2">"eauoi"</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sort in ascending order</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">vowels</span><span class="p">)</span>
+<span class="go">['a', 'e', 'i', 'o', 'u']</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sort in descending order</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">vowels</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">['u', 'o', 'i', 'e', 'a']</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>When you call <code>sorted()</code> with a string as an argument and <code>reverse</code> set to <code>True</code>, you get a list containing the characters of the input string in reverse or descending order. Since <code>sorted()</code> returns a <code>list</code> object, you need a way to turn that list back into a string. Again, you can use <code>.join()</code> just like you did in earlier sections:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">vowels</span> <span class="o">=</span> <span class="s2">"eauoi"</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">vowels</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="go">'uoiea'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this code snippet, you call <code>.join()</code> on an empty string, which plays the role of a separator. The argument to <code>.join()</code> is the result of calling <code>sorted()</code> with <code>vowels</code> as an argument and <code>reverse</code> set to <code>True</code>.</p>
+<p>You can also take advantage of <code>sorted()</code> to iterate through a string in sorted and reversed order:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">vowel</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">vowels</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">vowel</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="go">u</span>
+<span class="go">o</span>
+<span class="go">i</span>
+<span class="go">e</span>
+<span class="go">a</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The <code>reverse</code> argument to <code>sorted()</code> allows you to sort iterables, including strings, in descending order. So, if you ever need a string’s characters sorted in reverse alphabetical order, then <code>sorted()</code> is for you.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/6931855635/?c=50660871541&amp;p=58946116052&amp;r=12298" rel="nofollow" target="_blank"><img src="./reversing-strings-in-python_files/1f0846795c8392a130000105121b5a3c" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section><section class="section2"><h2 id="conclusion">Conclusion<a class="headerlink" href="https://realpython.com/reverse-string-python/#conclusion" title="Permanent link"></a></h2>
+<p>Reversing and working with strings in <strong>reverse order</strong> can be a common task in programming. Python provides a set of tools and techniques that can help you perform string reversal quickly and efficiently. In this tutorial, you learned about those tools and techniques and how to take advantage of them in your string processing challenges.</p>
+<p><strong>In this tutorial, you learned how to:</strong></p>
+<ul>
+<li>Quickly build reversed strings through <strong>slicing</strong></li>
+<li>Create reversed copies of existing strings using <strong><code>reversed()</code></strong> and <strong><code>.join()</code></strong></li>
+<li>Use <strong>iteration</strong> and <strong>recursion</strong> to create reversed strings by hand</li>
+<li><strong>Loop</strong> over your strings in reverse order</li>
+<li>Sort your strings in descending order using <strong><code>sorted()</code></strong></li>
+</ul>
+<p>Even though this topic might not have many exciting use cases by itself, understanding how to reverse strings can be useful in coding interviews for entry-level positions. You’ll also find that mastering the different ways to reverse a string can help you really conceptualize the immutability of strings in Python, which is a notable feature of the language.</p>
+</section>
+
+    
+      
+      <div class="d-flex justify-content-center flex-wrap gap-2 my-3">
+        
+
+
+<completion-status class="btn-group mb-0" article-slug="reverse-string-python" data-api-article-bookmark-url="/api/v1/articles/reverse-string-python/bookmark/" data-api-article-completion-status-url="/api/v1/articles/reverse-string-python/completion_status/">
+  <button data-target-complete-button="" title="Click to mark as completed" class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">Mark as Completed</button>
+  <button data-target-bookmark-button="" title="Add bookmark" class="btn btn-secondary border-left"><span class="icon baseline" aria-hidden="true">
+    <svg aria-hidden="true">
+      <use href="/static/icons.1440a154cfa8.svg#light--bookmark"></use>
+    </svg>
+    
+  </span></button>
+</completion-status>
+
+        
+<div class="btn-group mb-0">
+  <a class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" title="Liked it" role="button" aria-label="Thumbs up (liked it)" href="https://realpython.com/feedback/survey/article/reverse-string-python/liked/?from=article-footer" target="_blank"><span class="icon" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-up"></use></svg></span></a> 
+  <a class="btn btn-secondary border-left" role="button" aria-label="Thumbs down (disliked it)" title="Disliked it" href="https://realpython.com/feedback/survey/article/reverse-string-python/disliked/?from=article-footer" target="_blank"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-down"></use></svg></span></a>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+<share-button url="https://realpython.com/reverse-string-python/" url-title="Reverse Strings in Python: reversed(), Slicing, and More" twitter-text="Interesting #Python article by @realpython:" email-subject="Python article for you" email-body="Check out this Python article:%0A%0AReverse Strings in Python: reversed(), Slicing, and More">
+  <button class="btn btn-secondary" type="button" title="Share" aria-label="Share"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@share-light"></use></svg></span>Share</button>
+</share-button>
+
+
+      </div>
+    
+
+    
+      
+<div class="border rounded p-3 card mb-2 text-wrap-pretty">
+  <p class="mb-0"><span class="badge badge-pill badge-success"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--play-circle"></use></svg></span> Watch Now</span> This tutorial has a related video course created by the Real Python team. Watch it together with the written tutorial to deepen your understanding: <a class="stretched-link text-success" href="https://realpython.com/courses/python-reverse-string/"><strong>Reversing Strings in Python</strong></a></p>
+</div>
+
+    
+  </div>
+
+  
+    
+
+<div class="card mt-4 mb-4 bg-secondary">
+  <p class="card-header h3 text-center bg-light">🐍 Python Tricks 💌</p>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-7">
+          <p>Get a short &amp; sweet <strong>Python Trick</strong> delivered to your inbox every couple of days. No spam ever. Unsubscribe any time. Curated by the Real Python team.</p>
+        </div>
+        <div class="col-xs-12 col-sm-5">
+          <img loading="lazy" class="img-fluid rounded mb-3" src="./reversing-strings-in-python_files/pytrick-dict-merge.webp" width="738" height="490" alt="Python Tricks Dictionary Merge">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <form class="col-12" action="https://realpython.com/optins/process/" method="post">
+          <input type="hidden" name="csrfmiddlewaretoken" value="ouCojqDjXnGR4Yq6rEbVO95F6VB1r9gcGDHWtp0K6EraK5s2lWl07gr3fzB5KQys">
+          <input type="hidden" name="slug" value="static-python-tricks-footer">
+          <div class="form-group">
+            <input name="email" type="email" class="form-control form-control-lg" placeholder="Email Address" required="">
+          </div>
+          <button name="submit" type="submit" class="btn btn-primary btn-lg btn-block">Send Me Python Tricks »</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  
+
+
+
+<div class="card mt-3" id="author">
+  <p class="card-header h3">About <strong>Leodanis Pozo Ramos</strong></p>
+  <div class="card-body">
+    <div class="container p-0">
+      <div class="row">
+        <div class="col-12 col-md-3 align-self-center">
+          <a href="https://realpython.com/team/lpozoramos/" aria-hidden="true" tabindex="-1">
+            <img loading="lazy" src="./reversing-strings-in-python_files/Perfil_final1.9f896bc212f6.jpg" srcset="/cdn-cgi/image/width=215,height=215,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/Perfil_final1.9f896bc212f6.jpg 215w, /cdn-cgi/image/width=287,height=287,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/Perfil_final1.9f896bc212f6.jpg 287w, /cdn-cgi/image/width=431,height=431,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/Perfil_final1.9f896bc212f6.jpg 431w, /cdn-cgi/image/width=862,height=862,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/Perfil_final1.9f896bc212f6.jpg 862w" sizes="(min-width: 580px) 154px, calc(33.08vw - 24px)" width="862" height="862" style="background: #534032;" class="d-block d-md-none rounded-circle img-fluid w-33 mb-0 mx-auto" alt="Leodanis Pozo Ramos">
+            <img loading="lazy" src="./reversing-strings-in-python_files/Perfil_final1.9f896bc212f6.jpg" srcset="/cdn-cgi/image/width=215,height=215,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/Perfil_final1.9f896bc212f6.jpg 215w, /cdn-cgi/image/width=287,height=287,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/Perfil_final1.9f896bc212f6.jpg 287w, /cdn-cgi/image/width=431,height=431,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/Perfil_final1.9f896bc212f6.jpg 431w, /cdn-cgi/image/width=862,height=862,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/Perfil_final1.9f896bc212f6.jpg 862w" sizes="(min-width: 1200px) 140px, calc(-1.5vw + 137px)" width="862" height="862" style="background: #534032;" class="d-none d-md-block rounded-circle img-fluid w-100 mb-0" alt="Leodanis Pozo Ramos">
+          </a>
+        </div>
+        <div class="col mt-3">
+          <p>Leodanis is an industrial engineer who loves Python and software development. He's a self-taught Python developer with 6+ years of experience. He's an avid technical writer with a growing number of articles published on Real Python and other sites.</p>
+          <a href="https://realpython.com/team/lpozoramos/" class="card-link">» More about Leodanis</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <hr class="my-0">
+  <div class="card-body pb-0">
+    <div class="container">
+      <div class="row">
+        <p><em>Each tutorial at Real Python is created by a team of developers so that it meets our high quality standards. The team members who worked on this tutorial are:</em></p>
+      </div>
+
+      
+        
+          <div class="row align-items-center w-100 mx-auto">
+        
+
+        <div class="col-4 col-sm-2 align-self-center">
+          
+            <a href="https://realpython.com/team/asantos/" aria-hidden="true" tabindex="-1"><img loading="lazy" src="./reversing-strings-in-python_files/PP.9b8b026f75b8.jpg" srcset="/cdn-cgi/image/width=239,height=239,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 239w, /cdn-cgi/image/width=319,height=319,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 319w, /cdn-cgi/image/width=479,height=479,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 479w, /cdn-cgi/image/width=959,height=959,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 959w" sizes="(min-width: 1200px) 73px, (min-width: 780px) calc(-0.75vw + 69px), (min-width: 580px) 43px, calc(33.46vw - 64px)" width="959" height="959" style="background: #dadad8;" class="rounded-circle img-fluid w-100" alt="Aldren Santos"></a>
+          
+        </div>
+        <div class="col pl-0 d-none d-sm-block">
+          <a href="https://realpython.com/team/asantos/" class="card-link small"><p>Aldren</p></a>
+        </div>
+
+        
+
+        
+      
+        
+
+        <div class="col-4 col-sm-2 align-self-center">
+          
+            <a href="https://realpython.com/team/bzaczynski/" aria-hidden="true" tabindex="-1"><img loading="lazy" src="./reversing-strings-in-python_files/coders_lab_2109368.259b1599fbee.jpg" srcset="/cdn-cgi/image/width=423,height=423,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/coders_lab_2109368.259b1599fbee.jpg 423w, /cdn-cgi/image/width=564,height=564,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/coders_lab_2109368.259b1599fbee.jpg 564w, /cdn-cgi/image/width=847,height=847,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/coders_lab_2109368.259b1599fbee.jpg 847w, /cdn-cgi/image/width=1694,height=1694,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/coders_lab_2109368.259b1599fbee.jpg 1694w" sizes="(min-width: 1200px) 73px, (min-width: 780px) calc(-0.75vw + 69px), (min-width: 580px) 43px, calc(33.46vw - 64px)" width="1694" height="1694" style="background: #dadada;" class="rounded-circle img-fluid w-100" alt="Bartosz Zaczyński"></a>
+          
+        </div>
+        <div class="col pl-0 d-none d-sm-block">
+          <a href="https://realpython.com/team/bzaczynski/" class="card-link small"><p>Bartosz</p></a>
+        </div>
+
+        
+
+        
+      
+        
+
+        <div class="col-4 col-sm-2 align-self-center">
+          
+            <a href="https://realpython.com/team/sparker/" aria-hidden="true" tabindex="-1"><img loading="lazy" src="./reversing-strings-in-python_files/profpic_sp.a008488b6af0.jpeg" srcset="/cdn-cgi/image/width=200,height=200,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/profpic_sp.a008488b6af0.jpeg 200w, /cdn-cgi/image/width=266,height=266,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/profpic_sp.a008488b6af0.jpeg 266w, /cdn-cgi/image/width=400,height=400,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/profpic_sp.a008488b6af0.jpeg 400w, /cdn-cgi/image/width=800,height=800,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/profpic_sp.a008488b6af0.jpeg 800w" sizes="(min-width: 1200px) 73px, (min-width: 780px) calc(-0.75vw + 69px), (min-width: 580px) 43px, calc(33.46vw - 64px)" width="800" height="800" style="background: #c5b2a3;" class="rounded-circle img-fluid w-100" alt="Sadie Parker"></a>
+          
+        </div>
+        <div class="col pl-0 d-none d-sm-block">
+          <a href="https://realpython.com/team/sparker/" class="card-link small"><p>Sadie</p></a>
+        </div>
+
+        
+
+        
+          </div>
+        
+      
+    </div>
+  </div>
+  
+
+</div>
+
+
+
+
+
+  
+    
+
+<div class="bg-light rounded py-4 my-4 shadow shadow-sm mx-n2">
+  
+  <div class="col-12 text-center d-block d-md-none">
+    <p class="h2 mb-3">Master <u><span class="marker-highlight">Real-World Python Skills</span></u> With Unlimited Access to Real&nbsp;Python</p>
+    <p class="mb-1"><img loading="lazy" class="w-75" src="./reversing-strings-in-python_files/lesson-locked.f5105cfd26db.svg" width="510" height="260" alt="Locked learning resources"></p>
+    <p class="mx-auto w-75 mb-3 small"><strong>Join us and get access to thousands of tutorials, hands-on video courses, and a community of expert&nbsp;Pythonistas:</strong></p>
+    <p class="mb-0"><a href="https://realpython.com/account/join/?utm_source=rp_article_footer&amp;utm_content=reverse-string-python" class="btn btn-primary btn-sm px-4 mb-0">Level Up Your Python Skills »</a>
+  </p></div>
+
+  
+  <div class="col-12 text-center d-none d-md-block">
+    <p class="h2 mb-2">Master <u><span class="marker-highlight">Real-World Python Skills</span></u><br>With Unlimited Access to Real&nbsp;Python</p>
+    <p class="mb-2"><img loading="lazy" class="w-50 mb-2" src="./reversing-strings-in-python_files/lesson-locked.f5105cfd26db.svg" width="510" height="260" alt="Locked learning resources"></p>
+    <p class="mx-auto w-50 mb-3"><strong>Join us and get access to thousands of tutorials, hands-on video courses, and a community of expert Pythonistas:</strong></p>
+    <p><a href="https://realpython.com/account/join/?utm_source=rp_article_footer&amp;utm_content=reverse-string-python" class="btn btn-primary btn-lg px-4">Level Up Your Python Skills »</a>
+  </p></div>
+</div>
+
+  
+
+  
+  <div class="card mt-4" id="reader-comments">
+    <p class="card-header h3">What Do You Think?</p>
+    
+    <div class="text-center mt-3 mb-0 p-0">
+      <div class="mb-2">
+        <strong class="mr-2">Rate this article:</strong>
+        
+<div class="btn-group mb-0">
+  <a class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" title="Liked it" role="button" aria-label="Thumbs up (liked it)" href="https://realpython.com/feedback/survey/article/reverse-string-python/liked/?from=article-comments" target="_blank"><span class="icon" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-up"></use></svg></span></a> 
+  <a class="btn btn-secondary border-left" role="button" aria-label="Thumbs down (disliked it)" title="Disliked it" href="https://realpython.com/feedback/survey/article/reverse-string-python/disliked/?from=article-comments" target="_blank"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-down"></use></svg></span></a>
+</div>
+
+      </div>
+      
+
+
+
+<div class="d-flex justify-content-center flex-wrap gap-2 my-3">
+  
+  
+  <a target="_blank" rel="nofollow" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Frealpython.com%2Freverse-string-python%2F" class="btn btn-sm share-linkedin" aria-label="Share on LinkedIn"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--linkedin"></use></svg></span>LinkedIn</a>
+  
+  
+  <a target="_blank" rel="nofollow" href="https://twitter.com/intent/tweet/?text=Interesting%20Python%20article%20on%20%40realpython%3A%20Reverse%20Strings%20in%20Python%3A%20reversed%28%29%2C%20Slicing%2C%20and%20More&amp;url=https%3A%2F%2Frealpython.com%2Freverse-string-python%2F" class="btn btn-sm share-x-twitter" aria-label="Share on X/Twitter"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--x-twitter"></use></svg></span>Twitter</a>
+  
+  
+  <a target="_blank" rel="nofollow" href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Frealpython.com%2Freverse-string-python%2F" class="btn btn-sm share-facebook" aria-label="Share on Facebook"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--facebook"></use></svg></span>Facebook</a>
+  
+  
+  <a target="_blank" rel="nofollow" href="mailto:?subject=Python%20article%20for%20you&amp;body=Reverse%20Strings%20in%20Python%3A%20reversed%28%29%2C%20Slicing%2C%20and%20More%20on%20Real%20Python%0A%0Ahttps%3A%2F%2Frealpython.com%2Freverse-string-python%2F%0A" class="btn btn-sm share-email" aria-label="Share via Email"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--envelope"></use></svg></span>Email</a>
+  
+  
+</div>
+
+    </div>
+    
+    <div class="card-body pt-0 text-wrap-pretty">
+      <p>What’s your #1 takeaway or favorite thing you learned? How are you going to put your newfound skills to use? Leave a comment below and let us know.</p>
+
+      <div class="alert alert-dark">
+        <p class="mb-0"><strong>Commenting Tips:</strong> The most useful comments are those written with the goal of learning from or helping out other students. <a href="https://realpython.com/python-beginner-tips/#tip-9-ask-good-questions" target="_blank">Get tips for asking good questions</a> and <a href="https://support.realpython.com/" target="_blank">get answers to common questions in our support portal</a>.</p><hr>Looking for a real-time conversation? Visit the <a href="https://realpython.com/community/" target="_blank">Real Python Community Chat</a> or join the next <a href="https://realpython.com/office-hours/" target="_blank">“Office&nbsp;Hours” Live Q&amp;A Session</a>. Happy Pythoning!<p></p>
+
+      </div>
+
+      <div id="disqus_recommendations" style="margin-bottom: 12px;"><iframe id="dsq-app7270" name="dsq-app7270" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./reversing-strings-in-python_files/saved_resource.html" style="width: 100% !important; border: none !important; overflow: hidden !important; height: 270px !important; display: inline !important; box-sizing: border-box !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div><div class="mb-4" id="disqus_thread"><iframe id="dsq-app9697" name="dsq-app9697" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./reversing-strings-in-python_files/saved_resource(1).html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 1382px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+      
+    </div>
+  </div>
+
+  <div class="card mt-4 mb-4">
+    <p class="card-header h3">Keep Learning</p>
+    <div class="card-body">
+      <p class="mb-0">Related Topics:
+      
+        
+<a href="https://realpython.com/tutorials/basics/" class="badge badge-light text-muted">basics</a>
+
+      
+        
+<a href="https://realpython.com/tutorials/best-practices/" class="badge badge-light text-muted">best-practices</a>
+
+      
+        
+<a href="https://realpython.com/tutorials/python/" class="badge badge-light text-muted">python</a>
+
+      
+      </p>
+      
+        <p class="mt-3 mb-0">Recommended Video Course: <a class="text-success" href="https://realpython.com/courses/python-reverse-string/">Reversing Strings in Python</a></p>
+      
+    </div>
+  </div>
+
+  
+    
+    
+      
+<div class="modal fade" tabindex="-1" role="dialog" id="rpvc">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header border-0">
+        <div class="col-12 col-lg-9 mx-auto modal-title text-center my-2">
+          <h2 class="my-0">Master <u>Real-World Python Skills</u> With Unlimited Access to Real Python</h2>
+        </div>
+      </div>
+
+      
+      <div class="modal-body bg-light">
+        <div class="col-12 text-center">
+
+          <div class="col-12 col-lg-8 mx-auto mb-2 mt-3">
+            <a href="https://realpython.com/account/join/?utm_source=rp&amp;utm_medium=web&amp;utm_campaign=pwn&amp;utm_content=v2&amp;next=%2Freverse-string-python%2F"><img loading="lazy" class="w-100" src="./reversing-strings-in-python_files/lesson-locked.f5105cfd26db.svg" width="510" height="260" alt="Unlock all content"></a>
+
+            <p class="mb-3"><strong>Join us and get access to thousands of tutorials, hands-on video courses, and a community of expert Pythonistas:</strong></p>
+          </div>
+
+          <p><a href="https://realpython.com/account/join/?utm_source=rp&amp;utm_medium=web&amp;utm_campaign=pwn&amp;utm_content=v2" class="btn btn-primary btn-lg px-4"><span class="icon baseline mr-2" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@unlock"></use></svg></span>Unlock All Content »</a></p>
+
+        </div>
+      </div>
+      
+
+      <div class="modal-footer border-0">
+        <button class="text-muted btn" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+      <script src="./reversing-strings-in-python_files/pw.dc84fc526165.js.download" async=""></script>
+    
+  
+
+
+    </div>
+
+  </div>
+
+    </div>
+
+    
+    
+
+    
+    
+      
+        
+          <div class="modal fade" id="modal-python-basics-sample-download" tabindex="-1" aria-labelledby="modal-python-basics-sample-download-title" aria-describedby="modal-python-basics-sample-download-desc">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header bg-light pt-3 pb-2">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="progress" style="height: .5rem;" aria-hidden="true">
+                <div class="progress-bar progress-bar-striped progress-bar-animated w-75" role="progressbar"></div>
+              </div>
+            </div>
+            <div class="col-12">
+              <p id="modal-python-basics-sample-download-desc" class="text-muted text-center mb-0 mt-2">Almost there! Complete this form and click the button below to gain instant&nbsp;access:</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+
+      <div class="modal-body m-4">
+        <div class="container-fluid">
+          <div class="row align-items-center text-center">
+            <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+              
+              
+                <img loading="lazy" class="img-fluid rounded" src="./reversing-strings-in-python_files/python-basics-3d-transparent-square.4fe8f4be40f7.png" width="1000" height="1000" srcset="/cdn-cgi/image/width=250,format=auto/https://files.realpython.com/media/python-basics-3d-transparent-square.4fe8f4be40f7.png 250w, /cdn-cgi/image/width=333,format=auto/https://files.realpython.com/media/python-basics-3d-transparent-square.4fe8f4be40f7.png 333w, /cdn-cgi/image/width=500,format=auto/https://files.realpython.com/media/python-basics-3d-transparent-square.4fe8f4be40f7.png 500w, /cdn-cgi/image/width=1000,format=auto/https://files.realpython.com/media/python-basics-3d-transparent-square.4fe8f4be40f7.png 1000w" sizes="(min-width: 1000px) 207px, (min-width: 580px) 382px, calc(100vw - 134px)" alt="Python Basics: A Practical Introduction to Python 3">
+              
+            </div>
+            <div class="col">
+              <p id="modal-python-basics-sample-download-title" class="text-center h3 mb-4">"Python Basics: A Practical Introduction to Python 3" – Free Sample Chapter (PDF)</p>
+
+              <form class="col-12" action="https://realpython.com/optins/process/" method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value="ouCojqDjXnGR4Yq6rEbVO95F6VB1r9gcGDHWtp0K6EraK5s2lWl07gr3fzB5KQys">
+                <input type="hidden" name="slug" value="python-basics-sample-download">
+                <input type="hidden" name="source_path" value="/reverse-string-python/"> 
+                <div class="form-group">
+                  <input type="email" name="email" class="form-control" placeholder="Email Address" required="" autofocus="">
+                </div>
+                <button name="submit" type="submit" class="btn btn-primary btn-block text-wrap">Send My Sample Chapter »</button>
+                <p class="mb-0 mt-2 text-muted text-center"><small>🔒 No spam. We take your privacy seriously.</small></p>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+        
+      
+    
+
+    
+      
+<footer class="footer">
+  <div class="container">
+    
+      <div class="mx-auto mt-4 mb-0" style="max-width: 768px;">
+        
+
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:12.5%;"></div>
+  <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/6329231077/?c=67692636049&amp;p=58946116052&amp;r=00290" rel="nofollow" target="_blank"><img src="./reversing-strings-in-python_files/a06935292d9e664600113998d124efa2" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+<a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a>
+
+
+      </div>
+    
+
+    <p class="text-center text-muted w-75 mx-auto">© 2012–2024 Real&nbsp;Python&nbsp;⋅ <a href="https://realpython.com/newsletter/">Newsletter</a>&nbsp;⋅ <a href="https://realpython.com/podcasts/rpp/">Podcast</a>&nbsp;⋅ <a href="https://www.youtube.com/realpython">YouTube</a>&nbsp;⋅ <a href="https://twitter.com/realpython">Twitter</a>&nbsp;⋅ <a href="https://facebook.com/LearnRealPython">Facebook</a>&nbsp;⋅ <a href="https://www.instagram.com/realpython/">Instagram</a>&nbsp;⋅ <a href="https://realpython.com/">Python&nbsp;Tutorials</a>&nbsp;⋅ <a href="https://realpython.com/search">Search</a>&nbsp;⋅ <a href="https://realpython.com/privacy-policy/">Privacy Policy</a>&nbsp;⋅ <a href="https://realpython.com/energy-policy/">Energy Policy</a>&nbsp;⋅ <a href="https://realpython.com/sponsorships/">Advertise</a>&nbsp;⋅ <a href="https://realpython.com/contact/">Contact</a><br><span class="icon baseline text-color-red" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--heart"></use></svg></span> Happy Pythoning!</p>
+  </div>
+</footer>
+
+    
+
+    
+
+    
+    <script>
+      (function() {
+        var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
+        if (!isAndroid) {
+          return;
+        }
+
+        var styles = `
+        @font-face {
+          font-family: 'DejaVu Sans Mono';
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+          src: url('/static/mfonts/dejavu-sans-mono.33f00225f915.woff2') format('woff2'),
+               url('/static/mfonts/dejavu-sans-mono.0da77d3739f3.woff') format('woff'),
+               url('/static/mfonts/dejavu-sans-mono.c2356fc49835.ttf') format('truetype');
+        }
+        code, kbd, pre, samp {
+          font-family: 'DejaVu Sans Mono', monospace;
+        }
+        `
+
+        var styleSheet = document.createElement("style")
+        styleSheet.type = "text/css"
+        styleSheet.innerText = styles
+        document.head.appendChild(styleSheet)
+      })();
+    </script>
+
+    
+    
+    <script src="./reversing-strings-in-python_files/jquery.min.2c872dbe60f4.js.download"></script>
+    <script src="./reversing-strings-in-python_files/popper.min.aeebb49d0b64.js.download"></script>
+    <script src="./reversing-strings-in-python_files/bootstrap.min.248284cdd069.js.download"></script>
+
+    
+    
+
+
+    <script>
+    (function() {
+      document.querySelectorAll(".js-search-form-submit").forEach(function(el) {
+        el.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.currentTarget.parentElement.submit();
+        })
+      });
+    })();
+    </script>
+    <script src="./reversing-strings-in-python_files/codeblock.fd057f64871d.js.download" async=""></script>
+    <script src="./reversing-strings-in-python_files/lightbox.5abaefa8b384.js.download" async=""></script>
+    <script src="./reversing-strings-in-python_files/platforms-ui.a69aad1c6777.js.download" async=""></script>
+    
+    <script src="./reversing-strings-in-python_files/session.a2647010a4be.js.download" async=""></script>
+    
+
+    <script src="./reversing-strings-in-python_files/table-of-contents.1878a66e56ce.js.download" defer=""></script>
+<script src="./reversing-strings-in-python_files/completion-status.c5660d84687e.js.download" defer=""></script>
+<script src="./reversing-strings-in-python_files/share-button.6511bf1c1a9a.js.download" defer=""></script>
+
+
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+<script>window.rp_prop_id = '58946116052';</script>
+<script src="./reversing-strings-in-python_files/tag.js.download" async=""></script>
+
+
+
+<script id="js-context" type="application/json">{"is_completed": false, "is_bookmarked": false, "api_article_bookmark_url": "/api/v1/articles/reverse-string-python/bookmark/", "api_article_completion_status_url": "/api/v1/articles/reverse-string-python/completion_status/", "api_article_progress_url": "/api/v1/articles/reverse-string-python/progress/"}</script>
+
+
+  <script src="./reversing-strings-in-python_files/progress.d60fa4010861.js.download" async=""></script>
+
+
+
+
+
+  
+    <script id="dsq-count-scr" src="./reversing-strings-in-python_files/count.js.download" async=""></script>
+    <script>
+      var disqus_config = function () {
+        this.page.url = 'https://realpython.com/reverse-string-python/';
+        this.page.identifier = 'https://realpython.com/reverse-string-python/';
+        this.callbacks.onReady = [function() {
+          if (window.onDisqusReady) {
+            window.onDisqusReady();
+          }
+        }];
+      };
+      var disqus_script_url = 'https://realpython.disqus.com/embed.js';
+    </script>
+    <script src="./reversing-strings-in-python_files/lazy-disqus.91224536ec68.js.download" defer=""></script>
+  
+
+
+  
+  
+  <script src="./reversing-strings-in-python_files/OneSignalSDK.page.js.download" defer=""></script>
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(function(OneSignal) {
+      OneSignal.init({
+        appId: "c0081e20-a523-42bb-b0ac-04c5a9e8bf40",
+        safari_web_id: "web.onesignal.auto.337e82fd-eeda-48f8-8fe5-d2f6dec774c2",
+        notifyButton: {
+          enable: true,
+          position: "bottom-left",
+          showCredit: false,
+          text: {
+            "tip.state.unsubscribed": "Receive a notification when we post a new tutorial",
+            "tip.state.subscribed": "You're subscribed to new tutorial notifications",
+            'tip.state.blocked': "You've blocked notifications",
+            'message.prenotify': 'Click to subscribe to notifications',
+            "message.action.subscribed": "Great, we'll let you know when the next tutorial comes out!",
+            'message.action.resubscribed': "You're subscribed to notifications",
+            'message.action.unsubscribed': "You won't receive notifications again",
+            'dialog.main.title': 'Manage Site Notifications',
+            'dialog.main.button.subscribe': 'SUBSCRIBE',
+            'dialog.main.button.unsubscribe': 'UNSUBSCRIBE',
+            'dialog.blocked.title': 'Unblock Notifications',
+            'dialog.blocked.message': "Follow these instructions to allow notifications:"
+          },
+          
+        },
+      });
+    });
+  </script>
+  
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Reverse Strings in Python: reversed(), Slicing, and More",
+    
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://files.realpython.com/media/Reverse-a-String-in-Python_Watermarked.580a70dab81f.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://realpython.com/reverse-string-python/"
+    },
+    "datePublished": "2021-09-27T14:00:00+00:00",
+    "dateModified": "2023-07-31T20:54:52.125923+00:00",
+     "publisher": {
+      "@type": "Organization",
+      "name": "Real Python",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "/static/real-python-logo-square-tiny.b2452b6d3823.png",
+        "width": 60,
+        "height": 60
+      }
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Real Python",
+      "url": "https://realpython.com",
+      "logo": "/static/real-python-logo-square.146e987bf77c.png"
+    },
+    "description": "In this step\u002Dby\u002Dstep tutorial, you\u0027ll learn how to reverse strings in Python by using available tools such as reversed() and slicing operations. You\u0027ll also learn about a few useful ways to build reversed strings by hand."
+  }
+  </script>
+  
+
+
+    <script src="./reversing-strings-in-python_files/optins.41a0db820ee2.js.download" async=""></script>
+    <script src="./reversing-strings-in-python_files/autocomplete.ecb9103353c8.js.download" async=""></script>
+
+    
+
+<script>
+  var _cio = _cio || [];
+  (function(){
+      var a,b,c;a=function(f){return function(){_cio.push([f].
+      concat(Array.prototype.slice.call(arguments,0)))}};b=["load","identify",
+      "sidentify","track","page","on","off"];for(c=0;c<b.length;c++){_cio[b[c]]=a(b[c])};
+      var t = document.createElement('script'),
+          s = document.getElementsByTagName('script')[0];
+      t.async = true;
+      t.id    = 'cio-tracker';
+      t.setAttribute('data-site-id', '7c2f77c7758d22126955');
+      t.setAttribute('data-use-array-params', 'true');
+      t.setAttribute('data-in-app-org-id', '0ed756ae-4cd1-4bb7-912c-1b37e39b6595');
+      t.setAttribute('data-use-in-app', 'true');
+      t.src = 'https://assets.customer.io/assets/track.js';
+      s.parentNode.insertBefore(t, s);
+  })();
+  (function(){
+    try {
+      var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    } catch (e) {
+      var tz = null;
+    }
+    var opts = {
+      
+      id: '58cfc528-9e15-4f9c-ba87-cd171794ed8c',
+      created_at: 1647928579,
+      last_seen_at: 1724556773,
+      has_active_subscription: false,
+      first_name: 'Natalia',
+    };
+    if (tz) {
+      opts.timezone = tz;
+    }
+    _cio.identify(opts);
+  })();
+</script>
+
+
+    
+
+    
+
+    
+
+    
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2220911568135371');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2220911568135371&ev=PageView&noscript=1"
+/></noscript>
+
+
+    
+
+    
+<script>!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});</script>
+
+<script>
+window.Beacon('init', 'f6ddfa28-ffa8-423f-b3b1-50e29e420c43')
+
+Beacon("identify", {
+  email: "natalia.shif@gmail.com",
+  name: "nataliashif",
+  has_active_subscription: "False",
+  username: "natalia.shif",
+  userid: "434279"
+});
+</script>
+
+
+  
+
+<div id="onesignal-bell-container" class="onesignal-bell-container onesignal-reset onesignal-bell-container-bottom-left"><div id="onesignal-bell-launcher" class="onesignal-bell-launcher onesignal-bell-launcher-md onesignal-bell-launcher-bottom-left onesignal-bell-launcher-theme-default onesignal-bell-launcher-active"><div class="onesignal-bell-launcher-button"><svg class="onesignal-bell-svg" xmlns="http://www.w3.org/2000/svg" width="99.7" height="99.7" viewBox="0 0 99.7 99.7" style="filter: drop-shadow(0 2px 4px rgba(34,36,38,0.35));; -webkit-filter: drop-shadow(0 2px 4px rgba(34,36,38,0.35));;"><circle class="background" cx="49.9" cy="49.9" r="49.9" style=""></circle><path class="foreground" d="M50.1 66.2H27.7s-2-.2-2-2.1c0-1.9 1.7-2 1.7-2s6.7-3.2 6.7-5.5S33 52.7 33 43.3s6-16.6 13.2-16.6c0 0 1-2.4 3.9-2.4 2.8 0 3.8 2.4 3.8 2.4 7.2 0 13.2 7.2 13.2 16.6s-1 11-1 13.3c0 2.3 6.7 5.5 6.7 5.5s1.7.1 1.7 2c0 1.8-2.1 2.1-2.1 2.1H50.1zm-7.2 2.3h14.5s-1 6.3-7.2 6.3-7.3-6.3-7.3-6.3z" style=""></path><ellipse class="stroke" cx="49.9" cy="49.9" rx="37.4" ry="36.9" style=""></ellipse></svg></div><div class="onesignal-bell-launcher-badge" style="filter: drop-shadow(0 2px 4px rgba(34,36,38,0));; -webkit-filter: drop-shadow(0 2px 4px rgba(34,36,38,0));;"></div><div class="onesignal-bell-launcher-message"><div class="onesignal-bell-launcher-message-body"></div></div><div class="onesignal-bell-launcher-dialog" style="filter: drop-shadow(0px 2px 2px rgba(34,36,38,.15));; -webkit-filter: drop-shadow(0px 2px 2px rgba(34,36,38,.15));;"><div class="onesignal-bell-launcher-dialog-body"></div></div></div></div><div id="G8044c0cc" class="gist-10b80b6d-a54d-47b4-9891-45df82a59e46" style="display: none; height: 0px;">
+    <div id="gist-embed">
+        <style>
+            #x-gist-floating-top, #x-gist-floating-top-left, #x-gist-floating-top-right {
+                position: fixed;
+                top: 0px;
+                z-index: 1000000;
+            }
+            #x-gist-floating-bottom, #x-gist-floating-bottom-left, #x-gist-floating-bottom-right {
+                position: fixed;
+                bottom: 0px;
+                z-index: 1000000;
+            }
+            #x-gist-bottom, #x-gist-top, #x-gist-floating-top, #x-gist-floating-bottom {
+                left: 50%;
+                transform: translate(-50%, 0%);
+            }
+            #x-gist-floating-top-right, #x-gist-floating-bottom-right {
+                right: 0px;
+            }
+            #gist-embed {
+                position: relative;
+                height: 100%;
+                width: 100%;
+            }
+            #gist-embed-container {
+                position: relative;
+                height: 100%;
+                width: 100%;
+            }
+            #gist-embed-container .gist-frame {
+                height: 100%;
+                width: 100%;
+                border: none;
+            }
+            #x-gist-top.gist-10b80b6d-a54d-47b4-9891-45df82a59e46,
+            #x-gist-bottom.gist-10b80b6d-a54d-47b4-9891-45df82a59e46,
+            #x-gist-floating-top.gist-10b80b6d-a54d-47b4-9891-45df82a59e46,
+            #x-gist-floating-bottom.gist-10b80b6d-a54d-47b4-9891-45df82a59e46,
+            #x-gist-floating-top-left.gist-10b80b6d-a54d-47b4-9891-45df82a59e46,
+            #x-gist-floating-top-right.gist-10b80b6d-a54d-47b4-9891-45df82a59e46,
+            #x-gist-floating-bottom-left.gist-10b80b6d-a54d-47b4-9891-45df82a59e46,
+            #x-gist-floating-bottom-right.gist-10b80b6d-a54d-47b4-9891-45df82a59e46 {
+                transition: height 0.1s ease-in-out;
+            }
+            @media (max-width: 800px) {
+                #x-gist-top.gist-10b80b6d-a54d-47b4-9891-45df82a59e46,
+                #x-gist-bottom.gist-10b80b6d-a54d-47b4-9891-45df82a59e46,
+                #x-gist-floating-top.gist-10b80b6d-a54d-47b4-9891-45df82a59e46,
+                #x-gist-floating-bottom.gist-10b80b6d-a54d-47b4-9891-45df82a59e46,
+                #x-gist-floating-top-left.gist-10b80b6d-a54d-47b4-9891-45df82a59e46,
+                #x-gist-floating-top-right.gist-10b80b6d-a54d-47b4-9891-45df82a59e46,
+                #x-gist-floating-bottom-left.gist-10b80b6d-a54d-47b4-9891-45df82a59e46,
+                #x-gist-floating-bottom-right.gist-10b80b6d-a54d-47b4-9891-45df82a59e46 {
+                    width: 100% !important;
+                }
+            }
+        </style>
+        <div id="gist-embed-container">
+            <iframe id="gist-10b80b6d-a54d-47b4-9891-45df82a59e46" class="gist-frame" src="./reversing-strings-in-python_files/index.html"></iframe>
+        </div>
+    </div></div><div id="beacon-container"><div class="hsds-beacon"><div class="Beacon"><div class="ContainerGradient-sc-62zoy-0 dkxqZi"></div><div class="ContainerFramecss__WrapperUI-sc-d7rzhh-0 itSWDc BeaconContainer is-configDisplayRight"></div><div class="FabButtonFramecss__FabButtonFrameUI-sc-y1b4md-0 bbHIsf BeaconFabButtonFrame" style="border-radius: 60px; height: 60px; position: fixed; transform: scale(1); width: 105px; z-index: 1049;"><span class="FabButtonFramecss__FabButtonPulseUI-sc-y1b4md-1 hzrFgd"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M60 30C60 51.25 51.25 60 30 60C8.75 60 1.99634e-09 51.25 1.99563e-09 30C1.99492e-09 8.75 8.75 0 30 0C51.25 0 60 8.75 60 30Z"></path>
+</svg>
+</span><span class="FabButtonFramecss__FabButtonPulseUI-sc-y1b4md-1 hzrFgd"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M60 30C60 51.25 51.25 60 30 60C8.75 60 1.99634e-09 51.25 1.99563e-09 30C1.99492e-09 8.75 8.75 0 30 0C51.25 0 60 8.75 60 30Z"></path>
+</svg>
+</span><iframe title="Help Scout Beacon - Open" id="" allowtransparency="true" data-cy="FrameComponent" src="./reversing-strings-in-python_files/saved_resource(2).html"></iframe></div></div></div></div><iframe style="display: none;" src="./reversing-strings-in-python_files/saved_resource(3).html"></iframe><iframe style="display: none;" src="./reversing-strings-in-python_files/saved_resource(4).html"></iframe></body></html>

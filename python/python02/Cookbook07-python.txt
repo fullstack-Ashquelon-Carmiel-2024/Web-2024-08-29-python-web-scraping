@@ -1,0 +1,89 @@
+1. check that python is installed 
+
+> python --version 
+
+if it is installed, but not returns the version, then
+it is not in the PATH variable
+
+edit PATH and enter there the python.exe location
+
+2. install pip 
+> python -m pip install pip --upgrade
+
+About pip:
+
+https://medium.com/@pdx.lucasm/understanding-pip-the-package-installer-for-python-d3401de7072a
+
+
+3. check what is installed globally
+
+> pip list 
+
+4. > cd <project dir>
+
+Create virtual environment for our app:
+> python -m venv .venv
+
+5. To activate the virtual environment
+in powershell
+> ./.venv/Scripts/activate
+
+in bash
+> source ./.venv/Scripts/activate
+
+(to get out from the environment:
+
+> deactivate
+)
+
+6. Install pipenv:
+
+> pip install pipenv
+
+Check which virtual environment is activated now:
+
+> pipenv --venv
+
+If pipenv is not found install it globally:
+
+> py -m pip install pipenv
+
+or for the user globally
+
+> pip install pipenv --user
+
+7. > pip install flask
+
+to check that it is installed
+> pip list
+
+8. application.py:
+
+from flask import Flask
+
+9. If vs code not seeing the environment, 
+we shoud show it where is the current
+python interpreter
+
+Ctrl-Shift-P
+Python: Select interpreter
+
++ browse to the interpreter at .venv/Scripts/python.exe
+
+10. To save the environment:
+
+> pip freeze > requirements.txt
+
+(> makes redirection of the output into requirements.txt)
+
+After that in some other place we can restore this environment:
+> pip install -r requirements.txt
+
+Each time when we install smth we should run the "freeze"
+
+to keep requirements.txt up to date, like
+
+> pip install flask && pip freeze > requirements.txt
+
+
+11. 

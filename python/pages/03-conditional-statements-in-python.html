@@ -1,0 +1,2499 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://realpython.com/python-conditional-statements/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <link href="https://files.realpython.com/" rel="preconnect">
+
+    <title>Conditional Statements in Python – Real Python</title>
+    <meta name="author" content="Real Python">
+    <meta name="description" content="In this step-by-step tutorial you&#39;ll learn how to work with conditional (&quot;if&quot;) statements in Python. Master if-statements and see how to write complex decision making code in your programs.">
+    <meta name="keywords" content="">
+
+    
+  
+
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+
+    
+      <link rel="stylesheet" href="./conditional-statements-in-python_files/realpython.min.d94753535dde.css">
+      <link rel="stylesheet" href="./conditional-statements-in-python_files/font.5ac42994de49.css">
+      <link rel="stylesheet" href="./conditional-statements-in-python_files/glightbox.min.9b438b29cef1.css" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;"><noscript><link rel="stylesheet" href="/static/glightbox.min.9b438b29cef1.css"></noscript>
+      
+        <link rel="stylesheet" href="./conditional-statements-in-python_files/animate.min.c0be8e53226a.css">
+      
+    
+
+    
+  
+  <link rel="preload" as="image" href="./conditional-statements-in-python_files/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg" imagesrcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg 1920w" imagesizes="(min-width: 1200px) 690px, (min-width: 780px) calc(-5vw + 669px), (min-width: 580px) 510px, calc(100vw - 30px)">
+
+
+    
+    
+      <link rel="canonical" href="https://realpython.com/python-conditional-statements/">
+
+      
+      
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg">
+        <meta property="og:image" content="https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg">
+      
+      <meta name="twitter:creator" content="@realpython">
+      <meta name="twitter:site" content="@realpython">
+      <meta property="og:title" content="Conditional Statements in Python – Real Python">
+      <meta property="og:type" content="article">
+      <meta property="og:url" content="https://realpython.com/python-conditional-statements/">
+      <meta property="og:description" content="In this step-by-step tutorial you&#39;ll learn how to work with conditional (&quot;if&quot;) statements in Python. Master if-statements and see how to write complex decision making code in your programs.">
+    
+
+    <link href="https://realpython.com/static/favicon.68cbf4197b0c.png" rel="icon">
+    <link href="https://realpython.com/atom.xml" rel="alternate" title="Real Python" type="application/atom+xml">
+    <link rel="manifest" href="https://realpython.com/manifest.json">
+
+    
+
+    
+    
+
+    
+    <script type="text/javascript" src="./conditional-statements-in-python_files/vendor.5fe8f3bc.js.download"></script><script type="text/javascript" src="./conditional-statements-in-python_files/main.fa8b6644.js.download"></script><script async="" src="./conditional-statements-in-python_files/gist.min.js.download"></script><script async="" src="./conditional-statements-in-python_files/in-app.js.download"></script><script type="text/javascript" async="" src="./conditional-statements-in-python_files/saved_resource"></script><script type="text/javascript" async="" src="./conditional-statements-in-python_files/js"></script><script src="./conditional-statements-in-python_files/2220911568135371" async=""></script><script async="" src="./conditional-statements-in-python_files/fbevents.js.download"></script><script async="" id="cio-tracker" data-site-id="7c2f77c7758d22126955" data-use-array-params="true" data-in-app-org-id="0ed756ae-4cd1-4bb7-912c-1b37e39b6595" data-use-in-app="true" src="./conditional-statements-in-python_files/track.js.download"></script><script async="" src="./conditional-statements-in-python_files/analytics.js.download"></script><script id="icons-data" type="application/json">{"iconsUrl": "/static/icons.1440a154cfa8.svg"}</script>
+    <script id="optins-data" type="application/json">{"turnstileSiteKey": "0x4AAAAAAAQQUCLRXBi8NnUh"}</script>
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  
+
+  ga('create', 'UA-35184939-1', 'auto', {'allowLinker': true});
+
+  
+
+  
+
+  
+  
+  ga('set', {
+    dimension1: true,
+    dimension2: false
+  });
+  
+
+  ga('send', 'pageview');
+  
+</script>
+
+
+<script async="" src="./conditional-statements-in-python_files/js(1)"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L7L6L5F6Y6');
+
+  
+</script>
+
+  <script src="./conditional-statements-in-python_files/OneSignalSDK.page.es6.js.download" defer=""></script><script src="./conditional-statements-in-python_files/count-data.js.download"></script><link rel="stylesheet" href="./conditional-statements-in-python_files/OneSignalSDK.page.styles.css"><style hs-beacon="active" data-styled-version="5.1.1"></style></head>
+  <body>
+    
+      
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark flex-column  user-select-none">
+  <div class="container flex-row">
+
+    <a class="navbar-brand" href="https://realpython.com/">
+      <img src="./conditional-statements-in-python_files/real-python-logo.893c30edea53.svg" width="165" height="40" class="d-inline-block align-top" alt="Real Python">
+    </a>
+
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse navbar-nav-scroll" id="navbarSupportedContent" role="navigation" aria-label="Main Navigation">
+
+      <ul class="navbar-nav mr-2">
+
+        <li class="nav-item">
+          <a class="nav-link rounded" href="https://realpython.com/start-here/">Start&nbsp;Here</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link rounded dropdown-toggle" href="https://realpython.com/python-conditional-statements/#" id="navbarDropdownLibrary" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--python"></use></svg></span> Learn Python
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownLibrary">
+            
+<a class="dropdown-item " href="https://realpython.com/search?kind=article&amp;kind=course&amp;order=newest" style="color: #ff7e73; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--graduation-cap"></use></svg></span>Python Tutorials&nbsp;→<br><small class="text-secondary">In-depth articles and video courses</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/learning-paths/" style="color: #ffc873; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@learning-path"></use></svg></span>Learning Paths&nbsp;→<br><small class="text-secondary">Guided study plans for accelerated learning</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/quizzes/" style="color: #abe0e5; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span>Quizzes&nbsp;→<br><small class="text-secondary">Check your learning progress</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/tutorials/all/" style="color: #ccc; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@category"></use></svg></span>Browse Topics&nbsp;→<br><small class="text-secondary">Focus on a specific area or skill level</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/community/" style="color: #e5c6ab; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--message-smile"></use></svg></span>Community Chat&nbsp;→<br><small class="text-secondary">Learn with other Pythonistas</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/office-hours/" style="color: #e5c6ab; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--users"></use></svg></span>Office Hours&nbsp;→<br><small class="text-secondary">Live Q&amp;A calls with Python experts</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/podcasts/rpp/" style="color: #b8abe5; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@podcast"></use></svg></span>Podcast&nbsp;→<br><small class="text-secondary">Hear what’s new in the world of Python</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/products/books/" style="color: #abe5b1; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--book-heart"></use></svg></span>Books&nbsp;→<br><small class="text-secondary">Round out your knowledge and learn offline</small></a>
+
+
+            
+
+            
+              
+              
+<a class="dropdown-item border-top" href="https://realpython.com/account/join/" style="color: #ffc107; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--star"></use></svg></span>Unlock All Content&nbsp;→</a>
+
+              
+            
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link rounded dropdown-toggle" href="https://realpython.com/python-conditional-statements/#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            More
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+            <a class="dropdown-item" href="https://realpython.com/learner-stories/">Learner Stories</a>
+            <a class="dropdown-item" href="https://realpython.com/newsletter/">Python Newsletter</a>
+            <a class="dropdown-item" href="https://www.pythonjobshq.com/" target="_blank">Python Job Board</a>
+            <a class="dropdown-item" href="https://realpython.com/team/">Meet the Team</a>
+            <a class="dropdown-item" href="https://realpython.com/write-for-us/">Become a Tutorial Writer</a>
+            <a class="dropdown-item" href="https://realpython.com/become-an-instructor/">Become a Video Instructor</a>
+          </div>
+        </li>
+
+      </ul> 
+
+      
+      <div class="d-block d-lg-none"> 
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link rounded" href="https://realpython.com/search" title="Search"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--search"></use></svg></span> Search</a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="d-none d-lg-flex align-items-center mr-2 flex-fill">
+        <form class="form-inline w-100 position-relative" action="https://realpython.com/search" method="GET">
+          <a class="js-search-form-submit position-absolute" href="https://realpython.com/search" title="Search" aria-hidden="true" tabindex="-1"><span class="icon baseline text-muted pl-2" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--search"></use></svg></span></a>
+          <input class="search-autocomplete search-field form-control form-control-md mr-sm-1 mr-lg-2 w-100" style="padding-left: 2rem;" maxlength="50" type="search" placeholder="Search" aria-label="Search" aria-keyshortcuts="/ Control+J Meta+J" name="q" autocomplete="off">
+          <span class="search-hotkey-indicator position-absolute px-2 border border-input text-input rounded small user-select-none" style="right: 1em;" title="Press / (forward slash) or Ctrl+J to open search" aria-hidden="true">/</span>
+          <input type="hidden" name="_from" value="nav">
+        </form>
+      </div>
+      
+
+      <ul class="navbar-nav ml-auto">
+        
+          <li class="nav-item form-inline mr-2 my-2 ml-3 ml-lg-0">
+            <a class="btn btn-sm btn-primary px-5 px-lg-3" href="https://realpython.com/account/join/">Join</a>
+          </li>
+        
+
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link rounded dropdown-toggle  p-2 m-0" href="https://realpython.com/python-conditional-statements/#" id="navbarDropdownMyAccount" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="rounded-circle ml-2 ml-lg-0" style="width: 45px; height: 45px;" width="500" height="500" src="./conditional-statements-in-python_files/8c4bba554c92b873ce60db74986b5b34.png" loading="lazy" alt="User avatar">
+              <span class="notifications-indicator-container">
+                <span class="notifications-indicator notifications-indicator-visible"></span>
+              </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMyAccount">
+              
+
+
+
+  
+    <a class="dropdown-item" href="https://realpython.com/account/notifications/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--bell"></use></svg></span>Notifications <span class="badge badge-pill badge-danger">9+</span></a>
+  
+
+
+<a class="dropdown-item" href="https://realpython.com/account/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--sliders"></use></svg></span>Manage Account</a>
+
+
+  <a class="dropdown-item" href="https://realpython.com/account/join/"><span class="icon baseline text-warning mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--star"></use></svg></span>Get Full Access</a>
+
+
+<a class="dropdown-item" href="https://realpython.com/search?status=in-progress&amp;order=recent"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@continue-learning"></use></svg></span>Continue Learning</a>
+
+<a class="dropdown-item" href="https://realpython.com/account/bookmarks/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--bookmark"></use></svg></span>Bookmarks</a>
+
+<a class="dropdown-item" href="https://realpython.com/certificates/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@certificate"></use></svg></span>Certificates</a>
+
+<a class="dropdown-item" href="https://realpython.com/account/purchases/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--cart-shopping"></use></svg></span>Purchases</a>
+
+
+
+
+
+<a class="dropdown-item" href="https://realpython.com/account/logout/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--right-from-bracket"></use></svg></span>Sign Out</a>
+
+            </div>
+          </li>
+        
+      </ul>
+
+    
+    </div>
+
+  </div>
+
+  
+
+</nav>
+
+    
+
+    <div class="container main-content">
+      
+
+      
+  <div class="row justify-content-center">
+
+    
+    <aside class="col-md-7 col-lg-4 order-2 d-none d-lg-block">
+      
+  
+
+
+
+
+<div class="card mb-3 bg-secondary">
+  <form class="card-body" action="https://realpython.com/optins/process/" method="post">
+    <div class="form-group">
+      <p class="h5 text-muted text-center">— FREE Email Series —</p>
+      <p class="h3 text-center">🐍 Python Tricks 💌</p>
+      <p><img loading="lazy" class="img-fluid rounded" src="./conditional-statements-in-python_files/pytrick-dict-merge.webp" width="738" height="490" alt="Python Tricks Dictionary Merge"></p>
+    </div>
+    <div class="form-group">
+      <input type="hidden" name="csrfmiddlewaretoken" value="idZgzYAiIgrIDIEHlS3Iwe3MlExMWMLmAm4OJXXJRxc1jPGDfadNPlpauixQft3C">
+      <input type="hidden" name="slug" value="static-python-tricks-sidebar">
+      <input type="email" class="form-control form-control-md" name="email" placeholder="Email…" required="">
+    </div>
+    <button type="submit" name="submit" class="btn btn-primary btn-md btn-block">Get Python Tricks »</button>
+    <p class="mb-0 mt-2 text-muted text-center">🔒 No spam. Unsubscribe any time.</p>
+  </form>
+</div>
+
+
+  
+
+
+<div class="sidebar-module sidebar-module-inset border">
+  <a href="https://realpython.com/tutorials/all/" class="badge badge-light text-muted"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@category"></use></svg></span>Browse Topics</a>
+
+  <a href="https://realpython.com/learning-paths/" class="badge badge-light text-muted"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--map-location-dot"></use></svg></span>Guided Learning Paths</a>
+
+  <br>
+
+  <a href="https://realpython.com/search?level=basics" class="badge badge-light text-muted"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span> Basics</a>
+
+  <a href="https://realpython.com/search?level=intermediate" class="badge badge-light text-muted"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span><span class="icon baseline tight-left" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span> Intermediate</a>
+
+  <a href="https://realpython.com/search?level=advanced" class="badge badge-light text-muted"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span><span class="icon baseline tight-left" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span><span class="icon baseline tight-left" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span> Advanced</a>
+
+  <hr class="my-2">
+
+  
+    
+  
+    
+  
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/api/" class="badge badge-light text-muted">api</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/best-practices/" class="badge badge-light text-muted">best-practices</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/career/" class="badge badge-light text-muted">career</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/community/" class="badge badge-light text-muted">community</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/databases/" class="badge badge-light text-muted">databases</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/data-science/" class="badge badge-light text-muted">data-science</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/data-structures/" class="badge badge-light text-muted">data-structures</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/data-viz/" class="badge badge-light text-muted">data-viz</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/devops/" class="badge badge-light text-muted">devops</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/django/" class="badge badge-light text-muted">django</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/docker/" class="badge badge-light text-muted">docker</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/editors/" class="badge badge-light text-muted">editors</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/flask/" class="badge badge-light text-muted">flask</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/front-end/" class="badge badge-light text-muted">front-end</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/gamedev/" class="badge badge-light text-muted">gamedev</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/gui/" class="badge badge-light text-muted">gui</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/machine-learning/" class="badge badge-light text-muted">machine-learning</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/numpy/" class="badge badge-light text-muted">numpy</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/projects/" class="badge badge-light text-muted">projects</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/python/" class="badge badge-light text-muted">python</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/testing/" class="badge badge-light text-muted">testing</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/tools/" class="badge badge-light text-muted">tools</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/web-dev/" class="badge badge-light text-muted">web-dev</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/web-scraping/" class="badge badge-light text-muted">web-scraping</a>
+
+    
+  
+</div>
+
+
+
+  
+<div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+  
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:100%;"></div>
+  <div class="rpad" data-unit="1x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/66345373785/?c=11232171364&amp;p=58946116052&amp;r=02950" rel="nofollow" target="_blank"><img src="./conditional-statements-in-python_files/441dd75c66ffa1c50fa01bf15b7aeba1" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+
+
+</div>
+
+
+
+  <div class="sidebar-sticky ">
+    
+      
+
+
+<table-of-contents>
+  <div class="bg-light sidebar-module sidebar-module-inset">
+    <p class="h4 text-muted"><a class="link-unstyled" href="https://realpython.com/python-conditional-statements/#toc">Table of Contents</a></p>
+    <div class="toc">
+<ul>
+<li><a href="https://realpython.com/python-conditional-statements/#introduction-to-the-if-statement">Introduction to the if Statement</a></li>
+<li><a href="https://realpython.com/python-conditional-statements/#grouping-statements-indentation-and-blocks">Grouping Statements: Indentation and Blocks</a><ul>
+<li><a href="https://realpython.com/python-conditional-statements/#python-its-all-about-the-indentation">Python: It’s All About the Indentation</a></li>
+<li><a href="https://realpython.com/python-conditional-statements/#what-do-other-languages-do">What Do Other Languages Do?</a></li>
+<li><a href="https://realpython.com/python-conditional-statements/#which-is-better">Which Is Better?</a></li>
+</ul>
+</li>
+<li><a href="https://realpython.com/python-conditional-statements/#the-else-and-elif-clauses">The else and elif Clauses</a></li>
+<li><a href="https://realpython.com/python-conditional-statements/#one-line-if-statements">One-Line if Statements</a></li>
+<li><a href="https://realpython.com/python-conditional-statements/#conditional-expressions-pythons-ternary-operator">Conditional Expressions (Python’s Ternary Operator)</a></li>
+<li><a href="https://realpython.com/python-conditional-statements/#the-python-pass-statement">The Python pass Statement</a></li>
+<li><a href="https://realpython.com/python-conditional-statements/#conclusion">Conclusion</a></li>
+</ul>
+</div>
+
+  </div>
+</table-of-contents>
+
+    
+
+    <div class="sidebar-module sidebar-module-inset d-flex justify-content-center flex-wrap row-gap-1 col-gap-2 my-3 py-0">
+      
+
+
+<completion-status class="btn-group mb-0" article-slug="python-conditional-statements" data-api-article-bookmark-url="/api/v1/articles/python-conditional-statements/bookmark/" data-api-article-completion-status-url="/api/v1/articles/python-conditional-statements/completion_status/">
+  <button data-target-complete-button="" title="Click to mark as completed" class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">Mark as Completed</button>
+  <button data-target-bookmark-button="" title="Add bookmark" class="btn btn-secondary border-left"><span class="icon baseline" aria-hidden="true">
+    <svg aria-hidden="true">
+      <use href="/static/icons.1440a154cfa8.svg#light--bookmark"></use>
+    </svg>
+    
+  </span></button>
+</completion-status>
+
+      <div class="w-100"></div> 
+      
+<div class="btn-group mb-0">
+  <a class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" title="Liked it" role="button" aria-label="Thumbs up (liked it)" href="https://realpython.com/feedback/survey/article/python-conditional-statements/liked/?from=article-sidebar" target="_blank"><span class="icon" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-up"></use></svg></span></a> 
+  <a class="btn btn-secondary border-left" role="button" aria-label="Thumbs down (disliked it)" title="Disliked it" href="https://realpython.com/feedback/survey/article/python-conditional-statements/disliked/?from=article-sidebar" target="_blank"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-down"></use></svg></span></a>
+</div>
+
+      
+        
+
+
+
+
+
+
+
+
+
+<share-button url="https://realpython.com/python-conditional-statements/" url-title="Conditional Statements in Python" twitter-text="Interesting #Python article by @realpython:" email-subject="Python article for you" email-body="Check out this Python article:%0A%0AConditional Statements in Python">
+  <button class="btn btn-secondary" type="button" title="Share" aria-label="Share"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@share-light"></use></svg></span>Share</button>
+</share-button>
+
+
+      
+    </div>
+
+    
+      <div class="sidebar-module sidebar-module-inset border card">
+        <p><span class="badge badge-pill badge-success"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--play-circle"></use></svg></span> Recommended Video Course</span><br><a class="stretched-link text-success" href="https://realpython.com/courses/python-conditional-statements/">Conditional Statements in Python (if/elif/else)</a></p>
+      </div>
+    
+
+    
+      <div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+        
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:25%;"></div>
+  <div class="rpad" data-unit="4x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/64754707389/?c=31941813441&amp;p=58946116052&amp;r=96676" rel="nofollow" target="_blank"><img src="./conditional-statements-in-python_files/257f65e32c1713399c59dacea36eb818" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+
+
+      </div>
+    
+
+    
+  </div>
+
+
+    </aside>
+
+    <div class="col-md-11 col-lg-8 article with-headerlinks">
+      
+
+  
+    <figure class="embed-responsive embed-responsive-16by9 rounded">
+      
+        <img class="card-img-top m-0 p-0 embed-responsive-item" style="object-fit: contain; background: #abe5b2;" alt="Conditional Statements in Python" width="1920" height="1080" src="./conditional-statements-in-python_files/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg 1920w" sizes="(min-width: 1200px) 690px, (min-width: 780px) calc(-5vw + 669px), (min-width: 580px) 510px, calc(100vw - 30px)" fetchpriority="high">
+      
+    </figure>
+  
+
+  <h1>Conditional Statements in Python</h1>
+  <div class="mb-0">
+    
+      <span class="text-muted">by <a class="text-muted" href="https://realpython.com/python-conditional-statements/#author">John Sturtz</a>
+    
+    
+      <span class="icon baseline ml-2" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--clock-o"></use></svg></span> Sep 05, 2018
+    
+    
+      <span class="icon baseline ml-2 mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--comments"></use></svg></span><a class="text-muted" href="https://realpython.com/python-conditional-statements/#reader-comments"><span class="disqus-comment-count" data-disqus-identifier="https://realpython.com/python-conditional-statements/">12 Comments</span></a>
+    
+    
+
+    <span class="d-inline d-md-block"> 
+      <span class="icon baseline ml-2 ml-md-0" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@category"></use></svg></span>
+      
+        
+<a href="https://realpython.com/tutorials/basics/" class="badge badge-light text-muted">basics</a>
+
+      
+        
+<a href="https://realpython.com/tutorials/python/" class="badge badge-light text-muted">python</a>
+
+      
+    </span>
+
+    <div class="d-flex justify-content-between gap-2 my-3">
+      
+
+
+<completion-status class="btn-group mb-0" article-slug="python-conditional-statements" data-api-article-bookmark-url="/api/v1/articles/python-conditional-statements/bookmark/" data-api-article-completion-status-url="/api/v1/articles/python-conditional-statements/completion_status/">
+  <button data-target-complete-button="" title="Click to mark as completed" class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">Mark as Completed</button>
+  <button data-target-bookmark-button="" title="Add bookmark" class="btn btn-secondary border-left"><span class="icon baseline" aria-hidden="true">
+    <svg aria-hidden="true">
+      <use href="/static/icons.1440a154cfa8.svg#light--bookmark"></use>
+    </svg>
+    
+  </span></button>
+</completion-status>
+
+      
+        
+
+
+
+
+
+
+
+
+
+<share-button url="https://realpython.com/python-conditional-statements/" url-title="Conditional Statements in Python" twitter-text="Interesting #Python article by @realpython:" email-subject="Python article for you" email-body="Check out this Python article:%0A%0AConditional Statements in Python">
+  <button class="btn btn-secondary" type="button" title="Share" aria-label="Share"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@share-light"></use></svg></span>Share</button>
+</share-button>
+
+
+      
+    </div>
+  </span></div>
+
+  
+
+  <div class="article-body">
+    
+      <div class="bg-light sidebar-module sidebar-module-inset" id="toc">
+        <p class="h3 mb-2 text-muted">Table of Contents</p>
+        <div class="toc">
+<ul>
+<li><a href="https://realpython.com/python-conditional-statements/#introduction-to-the-if-statement">Introduction to the if Statement</a></li>
+<li><a href="https://realpython.com/python-conditional-statements/#grouping-statements-indentation-and-blocks">Grouping Statements: Indentation and Blocks</a><ul>
+<li><a href="https://realpython.com/python-conditional-statements/#python-its-all-about-the-indentation">Python: It’s All About the Indentation</a></li>
+<li><a href="https://realpython.com/python-conditional-statements/#what-do-other-languages-do">What Do Other Languages Do?</a></li>
+<li><a href="https://realpython.com/python-conditional-statements/#which-is-better">Which Is Better?</a></li>
+</ul>
+</li>
+<li><a href="https://realpython.com/python-conditional-statements/#the-else-and-elif-clauses">The else and elif Clauses</a></li>
+<li><a href="https://realpython.com/python-conditional-statements/#one-line-if-statements">One-Line if Statements</a></li>
+<li><a href="https://realpython.com/python-conditional-statements/#conditional-expressions-pythons-ternary-operator">Conditional Expressions (Python’s Ternary Operator)</a></li>
+<li><a href="https://realpython.com/python-conditional-statements/#the-python-pass-statement">The Python pass Statement</a></li>
+<li><a href="https://realpython.com/python-conditional-statements/#conclusion">Conclusion</a></li>
+</ul>
+</div>
+
+      </div>
+    
+
+    
+    <div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+      
+
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:12.5%;"></div>
+  <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/5748061207/?c=11232171364&amp;p=58946116052&amp;r=81489" rel="nofollow" target="_blank"><img src="./conditional-statements-in-python_files/bba83554c49ffce9838fddbf61a42999" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+<a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a>
+
+
+    </div>
+    
+
+    
+      
+<div class="border rounded p-3 card mb-2 text-wrap-pretty">
+  <p class="mb-0"><span class="badge badge-pill badge-success"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--play-circle"></use></svg></span> Watch Now</span> This tutorial has a related video course created by the Real Python team. Watch it together with the written tutorial to deepen your understanding: <a class="stretched-link text-success" href="https://realpython.com/courses/python-conditional-statements/"><strong>Conditional Statements in Python (if/elif/else)</strong></a></p>
+</div>
+
+    
+
+    <p>From the previous tutorials in this series, you now have quite a bit of Python code under your belt.  Everything you have seen so far has consisted of <strong>sequential execution</strong>, in which statements are always performed one after the next, in exactly the order specified.</p>
+<p>But the world is often more complicated than that.  Frequently, a program needs to skip over some statements, execute a series of statements repetitively, or choose between alternate sets of statements to execute.</p>
+<p>That is where <strong>control structures</strong> come in.  A control structure directs the order of execution of the statements in a program (referred to as the program’s <a href="https://en.wikipedia.org/wiki/Control_flow">control flow</a>).</p>
+<p><strong>Here’s what you’ll learn in this tutorial:</strong> You’ll encounter your first Python control structure, the <code>if</code> statement.</p>
+<p>In the real world, we commonly must evaluate information around us and then choose one course of action or another based on what we observe:</p>
+<blockquote>
+<p>If the weather is nice, then I’ll mow the lawn. (It’s implied that if the weather isn’t nice, then I won’t mow the lawn.)</p>
+</blockquote>
+<p>In a Python program, the <code>if</code> statement is how you perform this sort of decision-making.  It allows for <strong>conditional</strong> execution of a statement or group of statements based on the value of an expression.</p>
+<p>The outline of this tutorial is as follows:</p>
+<ul>
+<li>First, you’ll get a quick overview of the <code>if</code> statement in its simplest form.</li>
+<li>Next, using the <code>if</code> statement as a model, you’ll see why control structures require some mechanism for grouping statements together into <strong>compound statements</strong> or <strong>blocks</strong>.  You’ll learn how this is done in Python.</li>
+<li>Lastly, you’ll tie it all together and learn how to write complex decision-making code.</li>
+</ul>
+<p>Ready? Here we go!</p>
+<div class="container border rounded text-wrap-pretty my-3">
+
+  <p class="my-3"><mark class="marker-highlight"><strong><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span> Take the Quiz:</strong></mark> Test your knowledge with our interactive “Python Conditional Statements” quiz. You’ll receive a score upon completion to help you track your learning progress:</p>
+
+  <hr>
+
+  <div class="row my-3">
+    <div class="col-xs-12 col-sm-4 col-md-3 align-self-center">
+
+      <a href="https://realpython.com/quizzes/python-conditional-statements/" tabindex="-1">
+        <div class="embed-responsive embed-responsive-16by9">
+
+            <img class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #abe5b2;" alt="Conditional Statements in Python" src="./conditional-statements-in-python_files/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg 1920w" sizes="(min-width: 1200px) 142px, (min-width: 1000px) 122px, (min-width: 780px) 112px, (min-width: 580px) 139px, calc(100vw - 62px)">
+
+
+          <div class="card-img-overlay d-flex align-items-center">
+            <div class="mx-auto">
+              <span class="text-light" style="opacity: 0.90;"><span class="icon baseline scale2x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span></span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+    <div class="col">
+      <div class="mt-3 d-md-none"></div> 
+      <p class="small text-muted mb-0"><strong>Interactive Quiz</strong></p>
+      <a href="https://realpython.com/quizzes/python-conditional-statements/" class="stretched-link"><span class="my-0 h4">Python Conditional Statements</span></a> 
+      <p class="text-muted mb-0 small">Test your understanding of Python conditional statements</p>
+    </div>
+  </div>
+
+</div>
+
+<section class="section2"><h2 id="introduction-to-the-if-statement">Introduction to the <code>if</code> Statement<a class="headerlink" href="https://realpython.com/python-conditional-statements/#introduction-to-the-if-statement" title="Permanent link"></a></h2>
+<p>We’ll start by looking at the most basic type of <code>if</code> statement. In its simplest form, it looks like this:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">if</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In the form shown above:</p>
+<ul>
+<li><code>&lt;expr&gt;</code> is an expression evaluated in a <a href="https://realpython.com/python-boolean/">Boolean</a> context, as discussed in the section on <a href="https://realpython.com/python-operators-expressions/#logical-operators">Logical Operators</a> in the Operators and Expressions in Python tutorial.</li>
+<li><code>&lt;statement&gt;</code> is a valid Python statement, which must be indented.  (You will see why very soon.)</li>
+</ul>
+<p>If <code>&lt;expr&gt;</code> is true (evaluates to a value that is “truthy”), then <code>&lt;statement&gt;</code> is executed. If <code>&lt;expr&gt;</code> is false, then <code>&lt;statement&gt;</code> is skipped over and not executed.</p>
+<p>Note that the colon (<code>:</code>) following <code>&lt;expr&gt;</code> is required. Some programming languages require <code>&lt;expr&gt;</code> to be enclosed in parentheses, but Python does not.</p>
+<p>Here are several examples of this type of <code>if</code> statement:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>                            <span class="c1"># Truthy</span>
+</span><span class="hll"><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'yes'</span><span class="p">)</span>
+</span><span class="gp">...</span>
+<span class="go">yes</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span>                            <span class="c1"># Falsy</span>
+</span><span class="hll"><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'yes'</span><span class="p">)</span>
+</span><span class="gp">...</span>
+
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">x</span><span class="p">:</span>                                <span class="c1"># Falsy</span>
+</span><span class="hll"><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'yes'</span><span class="p">)</span>
+</span><span class="gp">...</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">y</span><span class="p">:</span>                                <span class="c1"># Truthy</span>
+</span><span class="hll"><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'yes'</span><span class="p">)</span>
+</span><span class="gp">...</span>
+<span class="go">yes</span>
+
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">x</span> <span class="ow">or</span> <span class="n">y</span><span class="p">:</span>                           <span class="c1"># Truthy</span>
+</span><span class="hll"><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'yes'</span><span class="p">)</span>
+</span><span class="gp">...</span>
+<span class="go">yes</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">x</span> <span class="ow">and</span> <span class="n">y</span><span class="p">:</span>                          <span class="c1"># Falsy</span>
+</span><span class="hll"><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'yes'</span><span class="p">)</span>
+</span><span class="gp">...</span>
+
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="s1">'aul'</span> <span class="ow">in</span> <span class="s1">'grault'</span><span class="p">:</span>                <span class="c1"># Truthy</span>
+</span><span class="hll"><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'yes'</span><span class="p">)</span>
+</span><span class="gp">...</span>
+<span class="go">yes</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="s1">'quux'</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">]:</span>  <span class="c1"># Falsy</span>
+</span><span class="hll"><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'yes'</span><span class="p">)</span>
+</span><span class="gp">...</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> If you are trying these examples interactively in a REPL session, you’ll find that, when you hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> after typing in the <code>print('yes')</code> statement, nothing happens.</p>
+<p>Because this is a multiline statement, you need to hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> a second time to tell the interpreter that you’re finished with it.  This extra newline is not necessary in code executed from a script file.</p>
+</div>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/27750251087/?c=11232171364&amp;p=58946116052&amp;r=10596" rel="nofollow" target="_blank"><img src="./conditional-statements-in-python_files/bba83554c49ffce9838fddbf61a42999" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section><section class="section2"><h2 id="grouping-statements-indentation-and-blocks">Grouping Statements: Indentation and Blocks<a class="headerlink" href="https://realpython.com/python-conditional-statements/#grouping-statements-indentation-and-blocks" title="Permanent link"></a></h2>
+<p>So far, so good.</p>
+<p>But let’s say you want to evaluate a condition and then do more than one thing if it is true:</p>
+<blockquote>
+<p>If the weather is nice, then I will:</p>
+<ul>
+<li>Mow the lawn</li>
+<li>Weed the garden</li>
+<li>Take the dog for a walk</li>
+</ul>
+<p>(If the weather isn’t nice, then I won’t do any of these things.)</p>
+</blockquote>
+<p>In all the examples shown above, each <code>if &lt;expr&gt;:</code> has been followed by only a single <code>&lt;statement&gt;</code>.  There needs to be some way to say “If <code>&lt;expr&gt;</code> is true, do all of the following things.”</p>
+<p>The usual approach taken by most programming languages is to define a syntactic device that groups multiple statements into one <strong>compound statement</strong> or <strong>block</strong>. A block is regarded syntactically as a single entity.  When it is the target of an <code>if</code> statement, and <code>&lt;expr&gt;</code> is true, then all the statements in the block are executed. If <code>&lt;expr&gt;</code> is false, then none of them are.</p>
+<p>Virtually all programming languages provide the capability to define blocks, but they don’t all provide it in the same way.  Let’s see how Python does it.</p>
+<section class="section3"><h3 id="python-its-all-about-the-indentation">Python: It’s All About the Indentation<a class="headerlink" href="https://realpython.com/python-conditional-statements/#python-its-all-about-the-indentation" title="Permanent link"></a></h3>
+<p>Python follows a convention known as the <a href="https://en.wikipedia.org/wiki/Off-side_rule">off-side rule</a>, a term coined by British computer scientist Peter J. Landin. (The term is taken from the offside law in association football.) Languages that adhere to the off-side rule define blocks by indentation. Python is one of a relatively small set of <a href="https://en.wikipedia.org/wiki/Off-side_rule#Off-side_rule_languages">off-side rule languages</a>.</p>
+<p>Recall from the previous tutorial on Python program structure that <a href="https://realpython.com/python-program-structure/#whitespace-as-indentation">indentation has special significance</a> in a Python program.  Now you know why: indentation is used to define compound statements or blocks. In a Python program, contiguous statements that are indented to the same level are considered to be part of the same block.</p>
+<p>Thus, a compound <code>if</code> statement in Python looks like this:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="linenos"> 1</span><span class="k">if</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span>
+<span class="linenos"> 2</span>    <span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;</span>
+<span class="linenos"> 3</span>    <span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;</span>
+<span class="linenos"> 4</span>    <span class="o">...</span>
+<span class="linenos"> 5</span>    <span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;</span>
+<span class="linenos"> 6</span><span class="o">&lt;</span><span class="n">following_statement</span><span class="o">&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Here, all the statements at the matching indentation level (lines 2 to 5) are considered part of the same block.  The entire block is executed if <code>&lt;expr&gt;</code> is true, or skipped over if <code>&lt;expr&gt;</code> is false.  Either way, execution proceeds with <code>&lt;following_statement&gt;</code> (line 6) afterward.</p>
+<figure class="js-lightbox"><a href="./conditional-statements-in-python_files/t.78f3bacaa261.png" target="_blank"><img loading="lazy" class="img-fluid mx-auto d-block w-50" src="./conditional-statements-in-python_files/t.78f3bacaa261.png" width="1161" height="567" srcset="/cdn-cgi/image/width=290,format=auto/https://files.realpython.com/media/t.78f3bacaa261.png 290w, /cdn-cgi/image/width=387,format=auto/https://files.realpython.com/media/t.78f3bacaa261.png 387w, /cdn-cgi/image/width=580,format=auto/https://files.realpython.com/media/t.78f3bacaa261.png 580w, /cdn-cgi/image/width=1161,format=auto/https://files.realpython.com/media/t.78f3bacaa261.png 1161w" sizes="(min-width: 1200px) 690px, (min-width: 780px) calc(-5vw + 669px), (min-width: 580px) 510px, calc(100vw - 30px)" alt="Python conditional statement" data-asset="454"></a><figcaption class="figure-caption text-center">Python Compound if Statement</figcaption></figure>
+
+<p>Notice that there is no token that denotes the end of the block.  Rather, the end of the block is indicated by a line that is indented less than the lines of the block itself.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> In the Python documentation, a group of statements defined by indentation is often referred to as a <strong>suite</strong>. This tutorial series uses the terms block and suite interchangeably.</p>
+</div>
+<p>Consider this script file <code>foo.py</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="linenos"> 1</span><span class="k">if</span> <span class="s1">'foo'</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">,</span> <span class="s1">'qux'</span><span class="p">]:</span>
+<span class="linenos"> 2</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'Expression was true'</span><span class="p">)</span>
+<span class="linenos"> 3</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'Executing statement in suite'</span><span class="p">)</span>
+<span class="linenos"> 4</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'...'</span><span class="p">)</span>
+<span class="linenos"> 5</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'Done.'</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="nb">print</span><span class="p">(</span><span class="s1">'After conditional'</span><span class="p">)</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Running <code>foo.py</code> produces this output:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="doscon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--yellow">
+    <span class="mr-2 noselect" aria-label="Language">Windows Command Prompt</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">C:\&gt;</span> python foo.py
+<span class="go">After conditional</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The four <a href="https://realpython.com/python-print/"><code>print()</code></a> statements on lines 2 to 5 are indented to the same level as one another.  They constitute the block that would be executed if the condition were true.  But it is false, so all the statements in the block are skipped. After the end of the compound <code>if</code> statement has been reached (whether the statements in the block on lines 2 to 5 are executed or not), execution proceeds to the first statement having a lesser indentation level: the <a href="https://realpython.com/courses/python-print/"><code>print()</code></a> statement on line 6.</p>
+<p>Blocks can be nested to arbitrary depth.  Each indent defines a new block, and each outdent ends the preceding block.  The resulting structure is straightforward, consistent, and intuitive.</p>
+<p>Here is a more complicated script file called <code>blocks.py</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="c1"># Does line execute?                        Yes    No</span>
+<span class="c1">#                                           ---    --</span>
+<span class="k">if</span> <span class="s1">'foo'</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">]:</span>        <span class="c1">#  x</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Outer condition is true'</span><span class="p">)</span>      <span class="c1">#  x</span>
+
+    <span class="k">if</span> <span class="mi">10</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>                           <span class="c1">#  x</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'Inner condition 1'</span><span class="p">)</span>        <span class="c1">#        x</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Between inner conditions'</span><span class="p">)</span>     <span class="c1">#  x</span>
+
+    <span class="k">if</span> <span class="mi">10</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>                           <span class="c1">#  x</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'Inner condition 2'</span><span class="p">)</span>        <span class="c1">#  x</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'End of outer condition'</span><span class="p">)</span>       <span class="c1">#  x</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'After outer condition'</span><span class="p">)</span>            <span class="c1">#  x</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The output generated when this script is run is shown below:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="doscon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--yellow">
+    <span class="mr-2 noselect" aria-label="Language">Windows Command Prompt</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">C:\&gt;</span> python blocks.py
+<span class="go">Outer condition is true</span>
+<span class="go">Between inner conditions</span>
+<span class="go">Inner condition 2</span>
+<span class="go">End of outer condition</span>
+<span class="go">After outer condition</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> In case you have been wondering, the off-side rule is the reason for the necessity of the extra newline when entering multiline statements in a REPL session.  The interpreter otherwise has no way to know that the last statement of the block has been entered.</p>
+</div>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/57356986228/?c=41067926597&amp;p=58946116052&amp;r=84810" rel="nofollow" target="_blank"><img src="./conditional-statements-in-python_files/6fe6464c8bf6ec2cbcf3f1f0e778156b" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section><section class="section3"><h3 id="what-do-other-languages-do">What Do Other Languages Do?<a class="headerlink" href="https://realpython.com/python-conditional-statements/#what-do-other-languages-do" title="Permanent link"></a></h3>
+<p>Perhaps you’re curious what the alternatives are.  How are blocks defined in languages that don’t adhere to the off-side rule?</p>
+<p>The tactic used by most programming languages is to designate special tokens that mark the start and end of a block.  For example, in Perl blocks are defined with pairs of curly braces (<code>{}</code>) like this:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="perl">
+  <div class="codeblock__header d-flex justify-content-between codeblock--purple">
+    <span class="mr-2 noselect" aria-label="Language">Perl</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="c1"># (This is Perl, not Python)</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="sr">&lt;expr&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sr">&lt;statement&gt;</span><span class="p">;</span>
+<span class="w">    </span><span class="sr">&lt;statement&gt;</span><span class="p">;</span>
+<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="sr">&lt;statement&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="sr">&lt;following_statement&gt;</span><span class="p">;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>C/C++, <a href="https://realpython.com/oop-in-python-vs-java/">Java</a>, and a whole host of <a href="https://en.wikipedia.org/wiki/List_of_programming_languages_by_type#Curly-bracket_languages">other languages</a> use curly braces in this way.</p>
+<figure class="js-lightbox"><a href="./conditional-statements-in-python_files/t.7dbd895afc69.png" target="_blank"><img loading="lazy" class="img-fluid mx-auto d-block w-50" src="./conditional-statements-in-python_files/t.7dbd895afc69.png" width="1191" height="642" srcset="/cdn-cgi/image/width=297,format=auto/https://files.realpython.com/media/t.7dbd895afc69.png 297w, /cdn-cgi/image/width=397,format=auto/https://files.realpython.com/media/t.7dbd895afc69.png 397w, /cdn-cgi/image/width=595,format=auto/https://files.realpython.com/media/t.7dbd895afc69.png 595w, /cdn-cgi/image/width=1191,format=auto/https://files.realpython.com/media/t.7dbd895afc69.png 1191w" sizes="(min-width: 1200px) 690px, (min-width: 780px) calc(-5vw + 669px), (min-width: 580px) 510px, calc(100vw - 30px)" alt="Perl conditional statement" data-asset="453"></a><figcaption class="figure-caption text-center">Compound if Statement in C/C++, Perl, and Java</figcaption></figure>
+
+<p>Other languages, such as Algol and Pascal, use keywords <code>begin</code> and <code>end</code> to enclose blocks.</p>
+</section><section class="section3"><h3 id="which-is-better">Which Is Better?<a class="headerlink" href="https://realpython.com/python-conditional-statements/#which-is-better" title="Permanent link"></a></h3>
+<p>Better is in the eye of the beholder. On the whole, programmers tend to feel rather strongly about how they do things. Debate about the merits of the off-side rule can run pretty hot.</p>
+<p>On the plus side:</p>
+<ul>
+<li>Python’s use of indentation is clean, concise, and consistent.</li>
+<li>In programming languages that do not use the off-side rule, indentation of code is completely independent of block definition and code function.  It’s possible to write code that is indented in a manner that does not actually match how the code executes, thus creating a mistaken impression when a person just glances at it.  This sort of mistake is virtually impossible to make in Python.</li>
+<li>Use of indentation to define blocks forces you to maintain code formatting standards you probably should be using anyway.</li>
+</ul>
+<p>On the negative side:</p>
+<ul>
+<li>Many programmers don’t like to be forced to do things a certain way.  They tend to have strong opinions about what looks good and what doesn’t, and they don’t like to be shoehorned into a specific choice.</li>
+<li>Some editors insert a mix of space and tab characters to the left of indented lines, which makes it difficult for the Python interpreter to determine indentation levels.  On the other hand, it is frequently possible to configure editors not to do this. It generally isn’t considered desirable to have a mix of tabs and spaces in source code anyhow, no matter the language.</li>
+</ul>
+<p>Like it or not, if you’re programming in Python, you’re stuck with the off-side rule. All control structures in Python use it, as you will see in several future tutorials.</p>
+<p>For what it’s worth, many programmers who have been used to languages with more traditional means of block definition have initially recoiled at Python’s way but have gotten comfortable with it and have even grown to prefer it.</p>
+</section></section><section class="section2"><h2 id="the-else-and-elif-clauses">The <code>else</code> and <code>elif</code> Clauses<a class="headerlink" href="https://realpython.com/python-conditional-statements/#the-else-and-elif-clauses" title="Permanent link"></a></h2>
+<p>Now you know how to use an <code>if</code> statement to conditionally execute a single statement or a block of several statements.  It’s time to find out what else you can do.</p>
+<p>Sometimes, you want to evaluate a condition and take one path if it is true but specify an alternative path if it is not.  This is accomplished with an <code>else</code> clause:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">if</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>If <code>&lt;expr&gt;</code> is true, the first suite is executed, and the second is skipped.  If <code>&lt;expr&gt;</code> is false, the first suite is skipped and the second is executed.  Either way, execution then resumes after the second suite. Both suites are defined by indentation, as described above.</p>
+<p>In this example, <code>x</code> is less than <code>50</code>, so the first suite (lines 4 to 5) are executed, and the second suite (lines 7 to 8) are skipped:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="linenos"> 1</span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>
+<span class="linenos"> 4</span><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'(first suite)'</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'x is small'</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="linenos"> 7</span><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'(second suite)'</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'x is large'</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="gp">...</span>
+<span class="linenos">10</span><span class="go">(first suite)</span>
+<span class="linenos">11</span><span class="go">x is small</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Here, on the other hand, <code>x</code> is greater than <code>50</code>, so the first suite is passed over, and the second suite executed:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="linenos"> 1</span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">120</span>
+<span class="linenos"> 2</span><span class="gp">&gt;&gt;&gt;</span>
+<span class="linenos"> 3</span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>
+<span class="linenos"> 4</span><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'(first suite)'</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'x is small'</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="linenos"> 7</span><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'(second suite)'</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'x is large'</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="gp">...</span>
+<span class="linenos">10</span><span class="go">(second suite)</span>
+<span class="linenos">11</span><span class="go">x is large</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>There is also syntax for branching execution based on several alternatives. For this, use one or more <code>elif</code> (short for <em>else if</em>) clauses.  Python evaluates each <code>&lt;expr&gt;</code> in turn and executes the suite corresponding to the first that is true. If none of the expressions are true, and an <code>else</code> clause is specified, then its suite is executed:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">if</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span>
+<span class="k">elif</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span>
+<span class="k">elif</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span>
+    <span class="o">...</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>An arbitrary number of <code>elif</code> clauses can be specified.  The <code>else</code> clause is optional.  If it is present, there can be only one, and it must be specified last:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">name</span> <span class="o">=</span> <span class="s1">'Joe'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">'Fred'</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'Hello Fred'</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">'Xander'</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'Hello Xander'</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">'Joe'</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'Hello Joe'</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">'Arnold'</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'Hello Arnold'</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"I don't know who you are!"</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">Hello Joe</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>At most, one of the code blocks specified will be executed. If an <code>else</code> clause isn’t included, and all the conditions are false, then none of the blocks will be executed.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> Using a lengthy <code>if</code>/<code>elif</code>/<code>else</code> series can be a little inelegant, especially when the actions are simple statements like <code>print()</code>.  In many cases, there may be a more Pythonic way to accomplish the same thing.</p>
+<p>Here’s one possible alternative to the example above using the <code>dict.get()</code> method:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">names</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s1">'Fred'</span><span class="p">:</span> <span class="s1">'Hello Fred'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Xander'</span><span class="p">:</span> <span class="s1">'Hello Xander'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Joe'</span><span class="p">:</span> <span class="s1">'Hello Joe'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Arnold'</span><span class="p">:</span> <span class="s1">'Hello Arnold'</span>
+<span class="gp">... </span><span class="p">}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">names</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Joe'</span><span class="p">,</span> <span class="s2">"I don't know who you are!"</span><span class="p">))</span>
+<span class="go">Hello Joe</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">names</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Rick'</span><span class="p">,</span> <span class="s2">"I don't know who you are!"</span><span class="p">))</span>
+<span class="go">I don't know who you are!</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Recall from the tutorial on Python dictionaries that the <a href="https://realpython.com/python-dicts/#built-in-dictionary-methods"><code>dict.get()</code></a> method searches a dictionary for the specified key and returns the associated value if it is found, or the given default value if it isn’t.</p>
+</div>
+<p>An <code>if</code> statement with <code>elif</code> clauses uses short-circuit evaluation, analogous to what you saw with the <code>and</code> and <code>or</code> operators.  Once one of the expressions is found to be true and its block is executed, none of the remaining expressions are tested.  This is demonstrated below:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">var</span>  <span class="c1"># Not defined</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;pyshell#58&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">var</span>
+<span class="gr">NameError</span>: <span class="n">name 'var' is not defined</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="s1">'a'</span> <span class="ow">in</span> <span class="s1">'bar'</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">elif</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"This won't happen"</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">elif</span> <span class="n">var</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"This won't either"</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">foo</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The second expression contains a division by zero, and the third references an undefined <a href="https://realpython.com/python-variables/">variable</a> <code>var</code>.  Either would raise an error, but neither is evaluated because the first condition specified is true.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/47546671741/?c=58525073567&amp;p=58946116052&amp;r=44260" rel="nofollow" target="_blank"><img src="./conditional-statements-in-python_files/026fb4432c518a9d24e5ba3f93da2599" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section><section class="section2"><h2 id="one-line-if-statements">One-Line <code>if</code> Statements<a class="headerlink" href="https://realpython.com/python-conditional-statements/#one-line-if-statements" title="Permanent link"></a></h2>
+<p>It is customary to write <code>if &lt;expr&gt;</code> on one line and <code>&lt;statement&gt;</code> indented on the following line like this:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">if</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>But it is permissible to write an entire <code>if</code> statement on one line.  The following is functionally equivalent to the example above:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">if</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>There can even be more than one <code>&lt;statement&gt;</code> on the same line, separated by semicolons:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">if</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">statement_1</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">&lt;</span><span class="n">statement_2</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">...</span><span class="p">;</span> <span class="o">&lt;</span><span class="n">statement_n</span><span class="o">&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>But what does this mean?  There are two possible interpretations:</p>
+<ol>
+<li>
+<p>If <code>&lt;expr&gt;</code> is true, execute <code>&lt;statement_1&gt;</code>. </p>
+<p>Then, execute <code>&lt;statement_2&gt; ... &lt;statement_n&gt;</code> unconditionally, irrespective of whether <code>&lt;expr&gt;</code> is true or not.</p>
+</li>
+<li>
+<p>If <code>&lt;expr&gt;</code> is true, execute all of <code>&lt;statement_1&gt; ... &lt;statement_n&gt;</code>. Otherwise, don’t execute any of them.</p>
+</li>
+</ol>
+<p>Python takes the latter interpretation.  The semicolon separating the <code>&lt;statements&gt;</code> has higher precedence than the colon following <code>&lt;expr&gt;</code>—in computer lingo, the semicolon is said to bind more tightly than the colon. Thus, the <code>&lt;statements&gt;</code> are treated as a suite, and either all of them are executed, or none of them are:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="s1">'f'</span> <span class="ow">in</span> <span class="s1">'foo'</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'1'</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'2'</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'3'</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">1</span>
+<span class="go">2</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="s1">'z'</span> <span class="ow">in</span> <span class="s1">'foo'</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'1'</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'2'</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'3'</span><span class="p">)</span>
+<span class="gp">...</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Multiple statements may be specified on the same line as an <code>elif</code> or <code>else</code> clause as well:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'bar'</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'baz'</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'qux'</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'quux'</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'corge'</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'grault'</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">qux</span>
+<span class="go">quux</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'bar'</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'baz'</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'qux'</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'quux'</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'corge'</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'grault'</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">corge</span>
+<span class="go">grault</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>While all of this works, and the interpreter allows it, it is generally discouraged on the grounds that it leads to poor readability, particularly for complex <code>if</code> statements.  <a href="https://www.python.org/dev/peps/pep-0008/#other-recommendations">PEP 8</a> specifically recommends against it.</p>
+<p>As usual, it is somewhat a matter of taste. Most people would find the following more visually appealing and easier to understand at first glance than the example above:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'bar'</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'baz'</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'qux'</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'quux'</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'corge'</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'grault'</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">corge</span>
+<span class="go">grault</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>If an <code>if</code> statement is simple enough, though, putting it all on one line may be reasonable.  Something like this probably wouldn’t raise anyone’s hackles too much:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="n">debugging</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Set to True to turn debugging on.</span>
+
+    <span class="o">.</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+
+<span class="k">if</span> <span class="n">debugging</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'About to call function foo()'</span><span class="p">)</span>
+<span class="n">foo</span><span class="p">()</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+</section><section class="section2"><h2 id="conditional-expressions-pythons-ternary-operator">Conditional Expressions (Python’s Ternary Operator)<a class="headerlink" href="https://realpython.com/python-conditional-statements/#conditional-expressions-pythons-ternary-operator" title="Permanent link"></a></h2>
+<p>Python supports one additional decision-making entity called a conditional expression. (It is also referred to as a conditional operator or ternary operator in various places in the Python documentation.) Conditional expressions were proposed for addition to the language in <a href="https://www.python.org/dev/peps/pep-0308">PEP 308</a> and green-lighted by Guido in 2005.</p>
+<p>In its simplest form, the syntax of the conditional expression is as follows:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="o">&lt;</span><span class="n">expr1</span><span class="o">&gt;</span> <span class="k">if</span> <span class="o">&lt;</span><span class="n">conditional_expr</span><span class="o">&gt;</span> <span class="k">else</span> <span class="o">&lt;</span><span class="n">expr2</span><span class="o">&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>This is different from the <code>if</code> statement forms listed above because it is not a control structure that directs the flow of program execution.  It acts more like an operator that defines an expression.  In the above example, <code>&lt;conditional_expr&gt;</code> is evaluated first.  If it is true, the expression evaluates to <code>&lt;expr1&gt;</code>. If it is false, the expression evaluates to <code>&lt;expr2&gt;</code>.</p>
+<p>Notice the non-obvious order: the middle expression is evaluated first, and based on that result, one of the expressions on the ends is returned.  Here are some examples that will hopefully help clarify:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">raining</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Let's go to the"</span><span class="p">,</span> <span class="s1">'beach'</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">raining</span> <span class="k">else</span> <span class="s1">'library'</span><span class="p">)</span>
+<span class="go">Let's go to the beach</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">raining</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Let's go to the"</span><span class="p">,</span> <span class="s1">'beach'</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">raining</span> <span class="k">else</span> <span class="s1">'library'</span><span class="p">)</span>
+<span class="go">Let's go to the library</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">age</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">'minor'</span> <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">21</span> <span class="k">else</span> <span class="s1">'adult'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">'minor'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">'yes'</span> <span class="k">if</span> <span class="p">(</span><span class="s1">'qux'</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">])</span> <span class="k">else</span> <span class="s1">'no'</span>
+<span class="go">'no'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> Python’s conditional expression is similar to the <code>&lt;conditional_expr&gt; ? &lt;expr1&gt; : &lt;expr2&gt;</code> syntax used by many other languages—C, Perl and Java to name a few.  In fact, the <code>?:</code> operator is commonly called the ternary operator in those languages, which is probably the reason Python’s conditional expression is sometimes referred to as the Python ternary operator.</p>
+<p>You can see in PEP 308 that the <code>&lt;conditional_expr&gt; ? &lt;expr1&gt; : &lt;expr2&gt;</code> syntax was considered for Python but ultimately rejected in favor of the syntax shown above.</p>
+</div>
+<p>A common use of the conditional expression is to select variable assignment.  For example, suppose you want to find the larger of two numbers.  Of course, there is a built-in function, <a href="https://realpython.com/python-min-and-max/"><code>max()</code></a>, that does just this (and more) that you could use. But suppose you want to write your own code from scratch.</p>
+<p>You could use a standard <code>if</code> statement with an <code>else</code> clause:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">m</span> <span class="o">=</span> <span class="n">a</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">m</span> <span class="o">=</span> <span class="n">b</span>
+<span class="gp">...</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>But a conditional expression is shorter and arguably more readable as well:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">a</span> <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="k">else</span> <span class="n">b</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Remember that the conditional expression behaves like an expression syntactically. It can be used as part of a longer expression.  The conditional expression has lower precedence than virtually all the other operators, so parentheses are needed to group it by itself.</p>
+<p>In the following example, the <code>+</code> operator binds more tightly than the conditional expression, so <code>1 + x</code> and <code>y + 2</code> are evaluated first, followed by the conditional expression.  The parentheses in the second case are unnecessary and do not change the result:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">40</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="k">else</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span>
+<span class="go">42</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="k">else</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span>
+<span class="go">42</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>If you want the conditional expression to be evaluated first, you need to surround it with grouping parentheses.  In the next example, <code>(x if x &gt; y else y)</code> is evaluated first.  The result is <code>y</code>, which is <code>40</code>, so <code>z</code> is assigned <code>1 + 40 + 2</code> = <code>43</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">40</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="k">else</span> <span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span>
+<span class="go">43</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>If you are using a conditional expression as part of a larger expression, it probably is a good idea to use grouping parentheses for clarification even if they are not needed.</p>
+<p>Conditional expressions also use <a href="https://realpython.com/python-operators-expressions/#compound-logical-expressions-and-short-circuit-evaluation">short-circuit evaluation</a> like compound logical expressions.  Portions of a conditional expression are not evaluated if they don’t need to be.</p>
+<p>In the expression <code>&lt;expr1&gt; if &lt;conditional_expr&gt; else &lt;expr2&gt;</code>:</p>
+<ul>
+<li>If <code>&lt;conditional_expr&gt;</code> is true, <code>&lt;expr1&gt;</code> is returned and <code>&lt;expr2&gt;</code> is not evaluated.</li>
+<li>If <code>&lt;conditional_expr&gt;</code> is false, <code>&lt;expr2&gt;</code> is returned and <code>&lt;expr1&gt;</code> is not evaluated.</li>
+</ul>
+<p>As before, you can verify this by using terms that would raise an error:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="s1">'foo'</span> <span class="k">if</span> <span class="kc">True</span> <span class="k">else</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+<span class="go">'foo'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span> <span class="k">if</span> <span class="kc">False</span> <span class="k">else</span> <span class="s1">'bar'</span>
+<span class="go">'bar'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In both cases, the <code>1/0</code> terms are not evaluated, so no exception is raised.</p>
+<p>Conditional expressions can also be chained together, as a sort of alternative <code>if</code>/<code>elif</code>/<code>else</code> structure, as shown here:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'foo'</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">else</span>
+<span class="gp">... </span>     <span class="s1">'bar'</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="k">else</span>
+<span class="gp">... </span>     <span class="s1">'baz'</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="k">else</span>
+<span class="gp">... </span>     <span class="s1">'qux'</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="k">else</span>
+<span class="gp">... </span>     <span class="s1">'quux'</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">'baz'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>It’s not clear that this has any significant advantage over the corresponding <code>if</code>/<code>elif</code>/<code>else</code> statement, but it is syntactically correct Python.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/58257184031/?c=31941813441&amp;p=58946116052&amp;r=66412" rel="nofollow" target="_blank"><img src="./conditional-statements-in-python_files/16bf1efe41b538fae54711c58c701f0e" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section><section class="section2"><h2 id="the-python-pass-statement">The Python <code>pass</code> Statement<a class="headerlink" href="https://realpython.com/python-conditional-statements/#the-python-pass-statement" title="Permanent link"></a></h2>
+<p>Occasionally, you may find that you want to write what is called a code stub:  a placeholder for where you will eventually put a block of code that you haven’t implemented yet.</p>
+<p>In languages where token delimiters are used to define blocks, like the curly braces in Perl and C, empty delimiters can be used to define a code stub.  For example, the following is legitimate Perl or C code:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="perl">
+  <div class="codeblock__header d-flex justify-content-between codeblock--purple">
+    <span class="mr-2 noselect" aria-label="Language">Perl</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="c1"># This is not Python</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Here, the empty curly braces define an empty block.  Perl or C will evaluate the expression <code>x</code>, and then even if it is true, quietly do nothing.</p>
+<p>Because Python uses indentation instead of delimiters, it is not possible to specify an empty block. If you introduce an <code>if</code> statement with <code>if &lt;expr&gt;:</code>, something has to come after it, either on the same line or indented on the following line.</p>
+<p>Consider this script <code>foo.py</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">)</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>If you try to run <code>foo.py</code>, you’ll get this:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="doscon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--yellow">
+    <span class="mr-2 noselect" aria-label="Language">Windows Command Prompt</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">C:\&gt;</span> python foo.py
+<span class="go">  File "foo.py", line 3</span>
+<span class="go">    print('foo')</span>
+<span class="go">        ^</span>
+<span class="go">IndentationError: expected an indented block</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The <a href="https://realpython.com/python-pass/">Python <code>pass</code> statement</a> solves this problem.  It doesn’t change program behavior at all.  It is used as a placeholder to keep the interpreter happy in any situation where a statement is syntactically required, but you don’t really want to do anything:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">)</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Now <code>foo.py</code> runs without error:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="doscon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--yellow">
+    <span class="mr-2 noselect" aria-label="Language">Windows Command Prompt</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">C:\&gt;</span> python foo.py
+<span class="go">foo</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+</section><section class="section2"><h2 id="conclusion">Conclusion<a class="headerlink" href="https://realpython.com/python-conditional-statements/#conclusion" title="Permanent link"></a></h2>
+<p>With the completion of this tutorial, you are beginning to write Python code that goes beyond simple sequential execution:</p>
+<ul>
+<li>You were introduced to the concept of <strong>control structures</strong>. These are compound statements that alter program <strong>control flow</strong>—the order of execution of program statements.</li>
+<li>You learned how to group individual statements together into a <strong>block</strong> or <strong>suite</strong>.</li>
+<li>You encountered your first control structure, the <strong><code>if</code></strong> statement, which makes it possible to <strong>conditionally</strong> execute a statement or block based on evaluation of program data.</li>
+</ul>
+<p>All of these concepts are crucial to developing more complex Python code.</p>
+<p>The next two tutorials will present two new control structures:  the <strong><code>while</code></strong> statement and the <strong><code>for</code></strong> statement.  These structures facilitate <strong>iteration</strong>, execution of a statement or block of statements repeatedly.</p>
+<div class="container border rounded text-wrap-pretty my-3">
+
+  <p class="my-3"><mark class="marker-highlight"><strong><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span> Take the Quiz:</strong></mark> Test your knowledge with our interactive “Python Conditional Statements” quiz. You’ll receive a score upon completion to help you track your learning progress:</p>
+
+  <hr>
+
+  <div class="row my-3">
+    <div class="col-xs-12 col-sm-4 col-md-3 align-self-center">
+
+      <a href="https://realpython.com/quizzes/python-conditional-statements/" tabindex="-1">
+        <div class="embed-responsive embed-responsive-16by9">
+
+            <img class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #abe5b2;" alt="Conditional Statements in Python" src="./conditional-statements-in-python_files/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg 1920w" sizes="(min-width: 1200px) 142px, (min-width: 1000px) 122px, (min-width: 780px) 112px, (min-width: 580px) 139px, calc(100vw - 62px)">
+
+
+          <div class="card-img-overlay d-flex align-items-center">
+            <div class="mx-auto">
+              <span class="text-light" style="opacity: 0.90;"><span class="icon baseline scale2x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span></span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+    <div class="col">
+      <div class="mt-3 d-md-none"></div> 
+      <p class="small text-muted mb-0"><strong>Interactive Quiz</strong></p>
+      <a href="https://realpython.com/quizzes/python-conditional-statements/" class="stretched-link"><span class="my-0 h4">Python Conditional Statements</span></a> 
+      <p class="text-muted mb-0 small">Test your understanding of Python conditional statements</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="container py-3 series-nav mb-3">
+  <div class="row justify-content-between">
+    <div class="col-12 col-md-3 text-left text-muted ml-1"><a href="https://realpython.com/python-program-structure/"> «&nbsp;Python Program Structure</a></div>
+    <div class="col-12 col-md-3 text-center text-muted"><a href="https://realpython.com/python-conditional-statements/#">Conditional Statements in Python</a></div>
+    <div class="col-12 col-md-3 text-right text-muted mr-1"><a href="https://realpython.com/python-while-loop/">Python "while" Loops&nbsp;»</a></div>
+  </div>
+</div>
+
+</section>
+
+    
+      
+      <div class="d-flex justify-content-center flex-wrap gap-2 my-3">
+        
+
+
+<completion-status class="btn-group mb-0" article-slug="python-conditional-statements" data-api-article-bookmark-url="/api/v1/articles/python-conditional-statements/bookmark/" data-api-article-completion-status-url="/api/v1/articles/python-conditional-statements/completion_status/">
+  <button data-target-complete-button="" title="Click to mark as completed" class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">Mark as Completed</button>
+  <button data-target-bookmark-button="" title="Add bookmark" class="btn btn-secondary border-left"><span class="icon baseline" aria-hidden="true">
+    <svg aria-hidden="true">
+      <use href="/static/icons.1440a154cfa8.svg#light--bookmark"></use>
+    </svg>
+    
+  </span></button>
+</completion-status>
+
+        
+<div class="btn-group mb-0">
+  <a class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" title="Liked it" role="button" aria-label="Thumbs up (liked it)" href="https://realpython.com/feedback/survey/article/python-conditional-statements/liked/?from=article-footer" target="_blank"><span class="icon" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-up"></use></svg></span></a> 
+  <a class="btn btn-secondary border-left" role="button" aria-label="Thumbs down (disliked it)" title="Disliked it" href="https://realpython.com/feedback/survey/article/python-conditional-statements/disliked/?from=article-footer" target="_blank"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-down"></use></svg></span></a>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+<share-button url="https://realpython.com/python-conditional-statements/" url-title="Conditional Statements in Python" twitter-text="Interesting #Python article by @realpython:" email-subject="Python article for you" email-body="Check out this Python article:%0A%0AConditional Statements in Python">
+  <button class="btn btn-secondary" type="button" title="Share" aria-label="Share"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@share-light"></use></svg></span>Share</button>
+</share-button>
+
+
+      </div>
+    
+
+    
+      
+<div class="border rounded p-3 card mb-2 text-wrap-pretty">
+  <p class="mb-0"><span class="badge badge-pill badge-success"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--play-circle"></use></svg></span> Watch Now</span> This tutorial has a related video course created by the Real Python team. Watch it together with the written tutorial to deepen your understanding: <a class="stretched-link text-success" href="https://realpython.com/courses/python-conditional-statements/"><strong>Conditional Statements in Python (if/elif/else)</strong></a></p>
+</div>
+
+    
+  </div>
+
+  
+    
+
+<div class="card mt-4 mb-4 bg-secondary">
+  <p class="card-header h3 text-center bg-light">🐍 Python Tricks 💌</p>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-7">
+          <p>Get a short &amp; sweet <strong>Python Trick</strong> delivered to your inbox every couple of days. No spam ever. Unsubscribe any time. Curated by the Real Python team.</p>
+        </div>
+        <div class="col-xs-12 col-sm-5">
+          <img loading="lazy" class="img-fluid rounded mb-3" src="./conditional-statements-in-python_files/pytrick-dict-merge.webp" width="738" height="490" alt="Python Tricks Dictionary Merge">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <form class="col-12" action="https://realpython.com/optins/process/" method="post">
+          <input type="hidden" name="csrfmiddlewaretoken" value="idZgzYAiIgrIDIEHlS3Iwe3MlExMWMLmAm4OJXXJRxc1jPGDfadNPlpauixQft3C">
+          <input type="hidden" name="slug" value="static-python-tricks-footer">
+          <div class="form-group">
+            <input name="email" type="email" class="form-control form-control-lg" placeholder="Email Address" required="">
+          </div>
+          <button name="submit" type="submit" class="btn btn-primary btn-lg btn-block">Send Me Python Tricks »</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  
+
+
+
+<div class="card mt-3" id="author">
+  <p class="card-header h3">About <strong>John Sturtz</strong></p>
+  <div class="card-body">
+    <div class="container p-0">
+      <div class="row">
+        <div class="col-12 col-md-3 align-self-center">
+          <a href="https://realpython.com/team/jsturtz/" aria-hidden="true" tabindex="-1">
+            <img loading="lazy" src="./conditional-statements-in-python_files/img007.18d0e80683f7.jpg" srcset="/cdn-cgi/image/width=89,height=89,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 89w, /cdn-cgi/image/width=119,height=119,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 119w, /cdn-cgi/image/width=179,height=179,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 179w, /cdn-cgi/image/width=358,height=358,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 358w" sizes="(min-width: 580px) 154px, calc(33.08vw - 24px)" width="358" height="358" style="background: #5a270c;" class="d-block d-md-none rounded-circle img-fluid w-33 mb-0 mx-auto" alt="John Sturtz">
+            <img loading="lazy" src="./conditional-statements-in-python_files/img007.18d0e80683f7.jpg" srcset="/cdn-cgi/image/width=89,height=89,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 89w, /cdn-cgi/image/width=119,height=119,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 119w, /cdn-cgi/image/width=179,height=179,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 179w, /cdn-cgi/image/width=358,height=358,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 358w" sizes="(min-width: 1200px) 140px, calc(-1.5vw + 137px)" width="358" height="358" style="background: #5a270c;" class="d-none d-md-block rounded-circle img-fluid w-100 mb-0" alt="John Sturtz">
+          </a>
+        </div>
+        <div class="col mt-3">
+          <p>John is an avid Pythonista and a member of the Real Python tutorial team.</p>
+          <a href="https://realpython.com/team/jsturtz/" class="card-link">» More about John</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <hr class="my-0">
+  <div class="card-body pb-0">
+    <div class="container">
+      <div class="row">
+        <p><em>Each tutorial at Real Python is created by a team of developers so that it meets our high quality standards. The team members who worked on this tutorial are:</em></p>
+      </div>
+
+      
+        
+          <div class="row align-items-center w-100 mx-auto">
+        
+
+        <div class="col-4 col-sm-2 align-self-center">
+          
+            <a href="https://realpython.com/team/asantos/" aria-hidden="true" tabindex="-1"><img loading="lazy" src="./conditional-statements-in-python_files/PP.9b8b026f75b8.jpg" srcset="/cdn-cgi/image/width=239,height=239,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 239w, /cdn-cgi/image/width=319,height=319,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 319w, /cdn-cgi/image/width=479,height=479,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 479w, /cdn-cgi/image/width=959,height=959,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 959w" sizes="(min-width: 1200px) 73px, (min-width: 780px) calc(-0.75vw + 69px), (min-width: 580px) 43px, calc(33.46vw - 64px)" width="959" height="959" style="background: #dadad8;" class="rounded-circle img-fluid w-100" alt="Aldren Santos"></a>
+          
+        </div>
+        <div class="col pl-0 d-none d-sm-block">
+          <a href="https://realpython.com/team/asantos/" class="card-link small"><p>Aldren</p></a>
+        </div>
+
+        
+
+        
+      
+        
+
+        <div class="col-4 col-sm-2 align-self-center">
+          
+            <a href="https://realpython.com/team/bsolomon/" aria-hidden="true" tabindex="-1"><img loading="lazy" src="./conditional-statements-in-python_files/Screen_Shot_2021-09-28_at_3.13.21_PM.3310c56e90bd.jpg" srcset="/cdn-cgi/image/width=297,height=297,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/Screen_Shot_2021-09-28_at_3.13.21_PM.3310c56e90bd.jpg 297w, /cdn-cgi/image/width=396,height=396,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/Screen_Shot_2021-09-28_at_3.13.21_PM.3310c56e90bd.jpg 396w, /cdn-cgi/image/width=594,height=594,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/Screen_Shot_2021-09-28_at_3.13.21_PM.3310c56e90bd.jpg 594w, /cdn-cgi/image/width=1188,height=1188,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/Screen_Shot_2021-09-28_at_3.13.21_PM.3310c56e90bd.jpg 1188w" sizes="(min-width: 1200px) 73px, (min-width: 780px) calc(-0.75vw + 69px), (min-width: 580px) 43px, calc(33.46vw - 64px)" width="1188" height="1188" style="background: #485855;" class="rounded-circle img-fluid w-100" alt="Brad Solomon"></a>
+          
+        </div>
+        <div class="col pl-0 d-none d-sm-block">
+          <a href="https://realpython.com/team/bsolomon/" class="card-link small"><p>Brad</p></a>
+        </div>
+
+        
+
+        
+      
+        
+
+        <div class="col-4 col-sm-2 align-self-center">
+          
+            <a href="https://realpython.com/team/jjablonski/" aria-hidden="true" tabindex="-1"><img loading="lazy" src="./conditional-statements-in-python_files/jjablonksi-avatar.e37c4f83308e.jpg" srcset="/cdn-cgi/image/width=200,height=200,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg 200w, /cdn-cgi/image/width=266,height=266,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg 266w, /cdn-cgi/image/width=400,height=400,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg 400w, /cdn-cgi/image/width=800,height=800,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg 800w" sizes="(min-width: 1200px) 73px, (min-width: 780px) calc(-0.75vw + 69px), (min-width: 580px) 43px, calc(33.46vw - 64px)" width="800" height="800" style="background: #b8b9bb;" class="rounded-circle img-fluid w-100" alt="Joanna Jablonski"></a>
+          
+        </div>
+        <div class="col pl-0 d-none d-sm-block">
+          <a href="https://realpython.com/team/jjablonski/" class="card-link small"><p>Joanna</p></a>
+        </div>
+
+        
+
+        
+          </div>
+        
+      
+    </div>
+  </div>
+  
+
+</div>
+
+
+
+
+
+  
+    
+
+<div class="bg-light rounded py-4 my-4 shadow shadow-sm mx-n2">
+  
+  <div class="col-12 text-center d-block d-md-none">
+    <p class="h2 mb-3">Master <u><span class="marker-highlight">Real-World Python Skills</span></u> With Unlimited Access to Real&nbsp;Python</p>
+    <p class="mb-1"><img loading="lazy" class="w-75" src="./conditional-statements-in-python_files/lesson-locked.f5105cfd26db.svg" width="510" height="260" alt="Locked learning resources"></p>
+    <p class="mx-auto w-75 mb-3 small"><strong>Join us and get access to thousands of tutorials, hands-on video courses, and a community of expert&nbsp;Pythonistas:</strong></p>
+    <p class="mb-0"><a href="https://realpython.com/account/join/?utm_source=rp_article_footer&amp;utm_content=python-conditional-statements" class="btn btn-primary btn-sm px-4 mb-0">Level Up Your Python Skills »</a>
+  </p></div>
+
+  
+  <div class="col-12 text-center d-none d-md-block">
+    <p class="h2 mb-2">Master <u><span class="marker-highlight">Real-World Python Skills</span></u><br>With Unlimited Access to Real&nbsp;Python</p>
+    <p class="mb-2"><img loading="lazy" class="w-50 mb-2" src="./conditional-statements-in-python_files/lesson-locked.f5105cfd26db.svg" width="510" height="260" alt="Locked learning resources"></p>
+    <p class="mx-auto w-50 mb-3"><strong>Join us and get access to thousands of tutorials, hands-on video courses, and a community of expert Pythonistas:</strong></p>
+    <p><a href="https://realpython.com/account/join/?utm_source=rp_article_footer&amp;utm_content=python-conditional-statements" class="btn btn-primary btn-lg px-4">Level Up Your Python Skills »</a>
+  </p></div>
+</div>
+
+  
+
+  
+  <div class="card mt-4" id="reader-comments">
+    <p class="card-header h3">What Do You Think?</p>
+    
+    <div class="text-center mt-3 mb-0 p-0">
+      <div class="mb-2">
+        <strong class="mr-2">Rate this article:</strong>
+        
+<div class="btn-group mb-0">
+  <a class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" title="Liked it" role="button" aria-label="Thumbs up (liked it)" href="https://realpython.com/feedback/survey/article/python-conditional-statements/liked/?from=article-comments" target="_blank"><span class="icon" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-up"></use></svg></span></a> 
+  <a class="btn btn-secondary border-left" role="button" aria-label="Thumbs down (disliked it)" title="Disliked it" href="https://realpython.com/feedback/survey/article/python-conditional-statements/disliked/?from=article-comments" target="_blank"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-down"></use></svg></span></a>
+</div>
+
+      </div>
+      
+
+
+
+<div class="d-flex justify-content-center flex-wrap gap-2 my-3">
+  
+  
+  <a target="_blank" rel="nofollow" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Frealpython.com%2Fpython-conditional-statements%2F" class="btn btn-sm share-linkedin" aria-label="Share on LinkedIn"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--linkedin"></use></svg></span>LinkedIn</a>
+  
+  
+  <a target="_blank" rel="nofollow" href="https://twitter.com/intent/tweet/?text=Interesting%20Python%20article%20on%20%40realpython%3A%20Conditional%20Statements%20in%20Python&amp;url=https%3A%2F%2Frealpython.com%2Fpython-conditional-statements%2F" class="btn btn-sm share-x-twitter" aria-label="Share on X/Twitter"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--x-twitter"></use></svg></span>Twitter</a>
+  
+  
+  <a target="_blank" rel="nofollow" href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Frealpython.com%2Fpython-conditional-statements%2F" class="btn btn-sm share-facebook" aria-label="Share on Facebook"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--facebook"></use></svg></span>Facebook</a>
+  
+  
+  <a target="_blank" rel="nofollow" href="mailto:?subject=Python%20article%20for%20you&amp;body=Conditional%20Statements%20in%20Python%20on%20Real%20Python%0A%0Ahttps%3A%2F%2Frealpython.com%2Fpython-conditional-statements%2F%0A" class="btn btn-sm share-email" aria-label="Share via Email"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--envelope"></use></svg></span>Email</a>
+  
+  
+</div>
+
+    </div>
+    
+    <div class="card-body pt-0 text-wrap-pretty">
+      <p>What’s your #1 takeaway or favorite thing you learned? How are you going to put your newfound skills to use? Leave a comment below and let us know.</p>
+
+      <div class="alert alert-dark">
+        <p class="mb-0"><strong>Commenting Tips:</strong> The most useful comments are those written with the goal of learning from or helping out other students. <a href="https://realpython.com/python-beginner-tips/#tip-9-ask-good-questions" target="_blank">Get tips for asking good questions</a> and <a href="https://support.realpython.com/" target="_blank">get answers to common questions in our support portal</a>.</p><hr>Looking for a real-time conversation? Visit the <a href="https://realpython.com/community/" target="_blank">Real Python Community Chat</a> or join the next <a href="https://realpython.com/office-hours/" target="_blank">“Office&nbsp;Hours” Live Q&amp;A Session</a>. Happy Pythoning!<p></p>
+
+      </div>
+
+      <div class="mb-4" id="disqus_thread">
+      
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="card mt-4 mb-4">
+    <p class="card-header h3">Keep Learning</p>
+    <div class="card-body">
+      <p class="mb-0">Related Topics:
+      
+        
+<a href="https://realpython.com/tutorials/basics/" class="badge badge-light text-muted">basics</a>
+
+      
+        
+<a href="https://realpython.com/tutorials/python/" class="badge badge-light text-muted">python</a>
+
+      
+      </p>
+      
+        <p class="mt-3 mb-0">Recommended Video Course: <a class="text-success" href="https://realpython.com/courses/python-conditional-statements/">Conditional Statements in Python (if/elif/else)</a></p>
+      
+    </div>
+  </div>
+
+  
+    
+    
+      
+<div class="modal fade" tabindex="-1" role="dialog" id="rpvc">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header border-0">
+        <div class="col-12 col-lg-9 mx-auto modal-title text-center my-2">
+          <h2 class="my-0">Master <u>Real-World Python Skills</u> With Unlimited Access to Real Python</h2>
+        </div>
+      </div>
+
+      
+      <div class="modal-body bg-light">
+        <div class="col-12 text-center">
+
+          <div class="col-12 col-lg-8 mx-auto mb-2 mt-3">
+            <a href="https://realpython.com/account/join/?utm_source=rp&amp;utm_medium=web&amp;utm_campaign=pwn&amp;utm_content=v2&amp;next=%2Fpython-conditional-statements%2F"><img loading="lazy" class="w-100" src="./conditional-statements-in-python_files/lesson-locked.f5105cfd26db.svg" width="510" height="260" alt="Unlock all content"></a>
+
+            <p class="mb-3"><strong>Join us and get access to thousands of tutorials, hands-on video courses, and a community of expert Pythonistas:</strong></p>
+          </div>
+
+          <p><a href="https://realpython.com/account/join/?utm_source=rp&amp;utm_medium=web&amp;utm_campaign=pwn&amp;utm_content=v2" class="btn btn-primary btn-lg px-4"><span class="icon baseline mr-2" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@unlock"></use></svg></span>Unlock All Content »</a></p>
+
+        </div>
+      </div>
+      
+
+      <div class="modal-footer border-0">
+        <button class="text-muted btn" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+      <script src="./conditional-statements-in-python_files/pw.dc84fc526165.js.download" async=""></script>
+    
+  
+
+
+    </div>
+
+  </div>
+
+    </div>
+
+    
+    
+
+    
+    
+
+    
+      
+<footer class="footer">
+  <div class="container">
+    
+      <div class="mx-auto mt-4 mb-0" style="max-width: 768px;">
+        
+
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:12.5%;"></div>
+  <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/11225539816/?c=48874902176&amp;p=58946116052&amp;r=36359" rel="nofollow" target="_blank"><img src="./conditional-statements-in-python_files/cae48de6b6f52aa978e17ea36747a9fc" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+<a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a>
+
+
+      </div>
+    
+
+    <p class="text-center text-muted w-75 mx-auto">© 2012–2024 Real&nbsp;Python&nbsp;⋅ <a href="https://realpython.com/newsletter/">Newsletter</a>&nbsp;⋅ <a href="https://realpython.com/podcasts/rpp/">Podcast</a>&nbsp;⋅ <a href="https://www.youtube.com/realpython">YouTube</a>&nbsp;⋅ <a href="https://twitter.com/realpython">Twitter</a>&nbsp;⋅ <a href="https://facebook.com/LearnRealPython">Facebook</a>&nbsp;⋅ <a href="https://www.instagram.com/realpython/">Instagram</a>&nbsp;⋅ <a href="https://realpython.com/">Python&nbsp;Tutorials</a>&nbsp;⋅ <a href="https://realpython.com/search">Search</a>&nbsp;⋅ <a href="https://realpython.com/privacy-policy/">Privacy Policy</a>&nbsp;⋅ <a href="https://realpython.com/energy-policy/">Energy Policy</a>&nbsp;⋅ <a href="https://realpython.com/sponsorships/">Advertise</a>&nbsp;⋅ <a href="https://realpython.com/contact/">Contact</a><br><span class="icon baseline text-color-red" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--heart"></use></svg></span> Happy Pythoning!</p>
+  </div>
+</footer>
+
+    
+
+    
+
+    
+    <script>
+      (function() {
+        var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
+        if (!isAndroid) {
+          return;
+        }
+
+        var styles = `
+        @font-face {
+          font-family: 'DejaVu Sans Mono';
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+          src: url('/static/mfonts/dejavu-sans-mono.33f00225f915.woff2') format('woff2'),
+               url('/static/mfonts/dejavu-sans-mono.0da77d3739f3.woff') format('woff'),
+               url('/static/mfonts/dejavu-sans-mono.c2356fc49835.ttf') format('truetype');
+        }
+        code, kbd, pre, samp {
+          font-family: 'DejaVu Sans Mono', monospace;
+        }
+        `
+
+        var styleSheet = document.createElement("style")
+        styleSheet.type = "text/css"
+        styleSheet.innerText = styles
+        document.head.appendChild(styleSheet)
+      })();
+    </script>
+
+    
+    
+    <script src="./conditional-statements-in-python_files/jquery.min.2c872dbe60f4.js.download"></script>
+    <script src="./conditional-statements-in-python_files/popper.min.aeebb49d0b64.js.download"></script>
+    <script src="./conditional-statements-in-python_files/bootstrap.min.248284cdd069.js.download"></script>
+
+    
+    
+
+
+    <script>
+    (function() {
+      document.querySelectorAll(".js-search-form-submit").forEach(function(el) {
+        el.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.currentTarget.parentElement.submit();
+        })
+      });
+    })();
+    </script>
+    <script src="./conditional-statements-in-python_files/codeblock.fd057f64871d.js.download" async=""></script>
+    <script src="./conditional-statements-in-python_files/lightbox.5abaefa8b384.js.download" async=""></script>
+    <script src="./conditional-statements-in-python_files/platforms-ui.a69aad1c6777.js.download" async=""></script>
+    
+    <script src="./conditional-statements-in-python_files/session.a2647010a4be.js.download" async=""></script>
+    
+
+    <script src="./conditional-statements-in-python_files/table-of-contents.1878a66e56ce.js.download" defer=""></script>
+<script src="./conditional-statements-in-python_files/completion-status.c5660d84687e.js.download" defer=""></script>
+<script src="./conditional-statements-in-python_files/share-button.6511bf1c1a9a.js.download" defer=""></script>
+
+
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+<script>window.rp_prop_id = '58946116052';</script>
+<script src="./conditional-statements-in-python_files/tag.js.download" async=""></script>
+
+
+
+<script id="js-context" type="application/json">{"is_completed": false, "is_bookmarked": false, "api_article_bookmark_url": "/api/v1/articles/python-conditional-statements/bookmark/", "api_article_completion_status_url": "/api/v1/articles/python-conditional-statements/completion_status/", "api_article_progress_url": "/api/v1/articles/python-conditional-statements/progress/"}</script>
+
+
+  <script src="./conditional-statements-in-python_files/progress.d60fa4010861.js.download" async=""></script>
+
+
+
+
+
+  
+    <script id="dsq-count-scr" src="./conditional-statements-in-python_files/count.js.download" async=""></script>
+    <script>
+      var disqus_config = function () {
+        this.page.url = 'https://realpython.com/python-conditional-statements/';
+        this.page.identifier = 'https://realpython.com/python-conditional-statements/';
+        this.callbacks.onReady = [function() {
+          if (window.onDisqusReady) {
+            window.onDisqusReady();
+          }
+        }];
+      };
+      var disqus_script_url = 'https://realpython.disqus.com/embed.js';
+    </script>
+    <script src="./conditional-statements-in-python_files/lazy-disqus.91224536ec68.js.download" defer=""></script>
+  
+
+
+  
+  
+  <script src="./conditional-statements-in-python_files/OneSignalSDK.page.js.download" defer=""></script>
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(function(OneSignal) {
+      OneSignal.init({
+        appId: "c0081e20-a523-42bb-b0ac-04c5a9e8bf40",
+        safari_web_id: "web.onesignal.auto.337e82fd-eeda-48f8-8fe5-d2f6dec774c2",
+        notifyButton: {
+          enable: true,
+          position: "bottom-left",
+          showCredit: false,
+          text: {
+            "tip.state.unsubscribed": "Receive a notification when we post a new tutorial",
+            "tip.state.subscribed": "You're subscribed to new tutorial notifications",
+            'tip.state.blocked': "You've blocked notifications",
+            'message.prenotify': 'Click to subscribe to notifications',
+            "message.action.subscribed": "Great, we'll let you know when the next tutorial comes out!",
+            'message.action.resubscribed': "You're subscribed to notifications",
+            'message.action.unsubscribed': "You won't receive notifications again",
+            'dialog.main.title': 'Manage Site Notifications',
+            'dialog.main.button.subscribe': 'SUBSCRIBE',
+            'dialog.main.button.unsubscribe': 'UNSUBSCRIBE',
+            'dialog.blocked.title': 'Unblock Notifications',
+            'dialog.blocked.message': "Follow these instructions to allow notifications:"
+          },
+          
+        },
+      });
+    });
+  </script>
+  
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Conditional Statements in Python",
+    
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://realpython.com/python-conditional-statements/"
+    },
+    "datePublished": "2018-09-05T14:00:00+00:00",
+    "dateModified": "2024-01-18T15:13:30.704671+00:00",
+     "publisher": {
+      "@type": "Organization",
+      "name": "Real Python",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "/static/real-python-logo-square-tiny.b2452b6d3823.png",
+        "width": 60,
+        "height": 60
+      }
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Real Python",
+      "url": "https://realpython.com",
+      "logo": "/static/real-python-logo-square.146e987bf77c.png"
+    },
+    "description": "In this step\u002Dby\u002Dstep tutorial you\u0027ll learn how to work with conditional (\u0022if\u0022) statements in Python. Master if\u002Dstatements and see how to write complex decision making code in your programs."
+  }
+  </script>
+  
+
+
+    <script src="./conditional-statements-in-python_files/optins.41a0db820ee2.js.download" async=""></script>
+    <script src="./conditional-statements-in-python_files/autocomplete.ecb9103353c8.js.download" async=""></script>
+
+    
+
+<script>
+  var _cio = _cio || [];
+  (function(){
+      var a,b,c;a=function(f){return function(){_cio.push([f].
+      concat(Array.prototype.slice.call(arguments,0)))}};b=["load","identify",
+      "sidentify","track","page","on","off"];for(c=0;c<b.length;c++){_cio[b[c]]=a(b[c])};
+      var t = document.createElement('script'),
+          s = document.getElementsByTagName('script')[0];
+      t.async = true;
+      t.id    = 'cio-tracker';
+      t.setAttribute('data-site-id', '7c2f77c7758d22126955');
+      t.setAttribute('data-use-array-params', 'true');
+      t.setAttribute('data-in-app-org-id', '0ed756ae-4cd1-4bb7-912c-1b37e39b6595');
+      t.setAttribute('data-use-in-app', 'true');
+      t.src = 'https://assets.customer.io/assets/track.js';
+      s.parentNode.insertBefore(t, s);
+  })();
+  (function(){
+    try {
+      var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    } catch (e) {
+      var tz = null;
+    }
+    var opts = {
+      
+      id: '58cfc528-9e15-4f9c-ba87-cd171794ed8c',
+      created_at: 1647928579,
+      last_seen_at: 1724556164,
+      has_active_subscription: false,
+      first_name: 'Natalia',
+    };
+    if (tz) {
+      opts.timezone = tz;
+    }
+    _cio.identify(opts);
+  })();
+</script>
+
+
+    
+
+    
+
+    
+
+    
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2220911568135371');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2220911568135371&ev=PageView&noscript=1"
+/></noscript>
+
+
+    
+
+    
+<script>!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});</script>
+
+<script>
+window.Beacon('init', 'f6ddfa28-ffa8-423f-b3b1-50e29e420c43')
+
+Beacon("identify", {
+  email: "natalia.shif@gmail.com",
+  name: "nataliashif",
+  has_active_subscription: "False",
+  username: "natalia.shif",
+  userid: "434279"
+});
+</script>
+
+
+  
+
+<div id="onesignal-bell-container" class="onesignal-bell-container onesignal-reset onesignal-bell-container-bottom-left"><div id="onesignal-bell-launcher" class="onesignal-bell-launcher onesignal-bell-launcher-md onesignal-bell-launcher-bottom-left onesignal-bell-launcher-theme-default onesignal-bell-launcher-active"><div class="onesignal-bell-launcher-button"><svg class="onesignal-bell-svg" xmlns="http://www.w3.org/2000/svg" width="99.7" height="99.7" viewBox="0 0 99.7 99.7" style="filter: drop-shadow(0 2px 4px rgba(34,36,38,0.35));; -webkit-filter: drop-shadow(0 2px 4px rgba(34,36,38,0.35));;"><circle class="background" cx="49.9" cy="49.9" r="49.9" style=""></circle><path class="foreground" d="M50.1 66.2H27.7s-2-.2-2-2.1c0-1.9 1.7-2 1.7-2s6.7-3.2 6.7-5.5S33 52.7 33 43.3s6-16.6 13.2-16.6c0 0 1-2.4 3.9-2.4 2.8 0 3.8 2.4 3.8 2.4 7.2 0 13.2 7.2 13.2 16.6s-1 11-1 13.3c0 2.3 6.7 5.5 6.7 5.5s1.7.1 1.7 2c0 1.8-2.1 2.1-2.1 2.1H50.1zm-7.2 2.3h14.5s-1 6.3-7.2 6.3-7.3-6.3-7.3-6.3z" style=""></path><ellipse class="stroke" cx="49.9" cy="49.9" rx="37.4" ry="36.9" style=""></ellipse></svg></div><div class="onesignal-bell-launcher-badge" style="filter: drop-shadow(0 2px 4px rgba(34,36,38,0));; -webkit-filter: drop-shadow(0 2px 4px rgba(34,36,38,0));;"></div><div class="onesignal-bell-launcher-message"><div class="onesignal-bell-launcher-message-body"></div></div><div class="onesignal-bell-launcher-dialog" style="filter: drop-shadow(0px 2px 2px rgba(34,36,38,.15));; -webkit-filter: drop-shadow(0px 2px 2px rgba(34,36,38,.15));;"><div class="onesignal-bell-launcher-dialog-body"></div></div></div></div><div id="G45f1317a" class="gist-5e94ffec-0252-4656-95f4-8465dca7dc2d" style="display: none; height: 0px;">
+    <div id="gist-embed">
+        <style>
+            #x-gist-floating-top, #x-gist-floating-top-left, #x-gist-floating-top-right {
+                position: fixed;
+                top: 0px;
+                z-index: 1000000;
+            }
+            #x-gist-floating-bottom, #x-gist-floating-bottom-left, #x-gist-floating-bottom-right {
+                position: fixed;
+                bottom: 0px;
+                z-index: 1000000;
+            }
+            #x-gist-bottom, #x-gist-top, #x-gist-floating-top, #x-gist-floating-bottom {
+                left: 50%;
+                transform: translate(-50%, 0%);
+            }
+            #x-gist-floating-top-right, #x-gist-floating-bottom-right {
+                right: 0px;
+            }
+            #gist-embed {
+                position: relative;
+                height: 100%;
+                width: 100%;
+            }
+            #gist-embed-container {
+                position: relative;
+                height: 100%;
+                width: 100%;
+            }
+            #gist-embed-container .gist-frame {
+                height: 100%;
+                width: 100%;
+                border: none;
+            }
+            #x-gist-top.gist-5e94ffec-0252-4656-95f4-8465dca7dc2d,
+            #x-gist-bottom.gist-5e94ffec-0252-4656-95f4-8465dca7dc2d,
+            #x-gist-floating-top.gist-5e94ffec-0252-4656-95f4-8465dca7dc2d,
+            #x-gist-floating-bottom.gist-5e94ffec-0252-4656-95f4-8465dca7dc2d,
+            #x-gist-floating-top-left.gist-5e94ffec-0252-4656-95f4-8465dca7dc2d,
+            #x-gist-floating-top-right.gist-5e94ffec-0252-4656-95f4-8465dca7dc2d,
+            #x-gist-floating-bottom-left.gist-5e94ffec-0252-4656-95f4-8465dca7dc2d,
+            #x-gist-floating-bottom-right.gist-5e94ffec-0252-4656-95f4-8465dca7dc2d {
+                transition: height 0.1s ease-in-out;
+            }
+            @media (max-width: 800px) {
+                #x-gist-top.gist-5e94ffec-0252-4656-95f4-8465dca7dc2d,
+                #x-gist-bottom.gist-5e94ffec-0252-4656-95f4-8465dca7dc2d,
+                #x-gist-floating-top.gist-5e94ffec-0252-4656-95f4-8465dca7dc2d,
+                #x-gist-floating-bottom.gist-5e94ffec-0252-4656-95f4-8465dca7dc2d,
+                #x-gist-floating-top-left.gist-5e94ffec-0252-4656-95f4-8465dca7dc2d,
+                #x-gist-floating-top-right.gist-5e94ffec-0252-4656-95f4-8465dca7dc2d,
+                #x-gist-floating-bottom-left.gist-5e94ffec-0252-4656-95f4-8465dca7dc2d,
+                #x-gist-floating-bottom-right.gist-5e94ffec-0252-4656-95f4-8465dca7dc2d {
+                    width: 100% !important;
+                }
+            }
+        </style>
+        <div id="gist-embed-container">
+            <iframe id="gist-5e94ffec-0252-4656-95f4-8465dca7dc2d" class="gist-frame" src="./conditional-statements-in-python_files/index.html"></iframe>
+        </div>
+    </div></div><div id="beacon-container"><div class="hsds-beacon"><div class="Beacon"><div class="ContainerGradient-sc-62zoy-0 dkxqZi"></div><div class="ContainerFramecss__WrapperUI-sc-d7rzhh-0 itSWDc BeaconContainer is-configDisplayRight"></div><div class="FabButtonFramecss__FabButtonFrameUI-sc-y1b4md-0 bbHIsf BeaconFabButtonFrame" style="border-radius: 60px; height: 60px; position: fixed; transform: scale(1); width: 105px; z-index: 1049;"><span class="FabButtonFramecss__FabButtonPulseUI-sc-y1b4md-1 hzrFgd"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M60 30C60 51.25 51.25 60 30 60C8.75 60 1.99634e-09 51.25 1.99563e-09 30C1.99492e-09 8.75 8.75 0 30 0C51.25 0 60 8.75 60 30Z"></path>
+</svg>
+</span><span class="FabButtonFramecss__FabButtonPulseUI-sc-y1b4md-1 hzrFgd"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M60 30C60 51.25 51.25 60 30 60C8.75 60 1.99634e-09 51.25 1.99563e-09 30C1.99492e-09 8.75 8.75 0 30 0C51.25 0 60 8.75 60 30Z"></path>
+</svg>
+</span><iframe title="Help Scout Beacon - Open" id="" allowtransparency="true" data-cy="FrameComponent" src="./conditional-statements-in-python_files/saved_resource.html"></iframe></div></div></div></div></body></html>

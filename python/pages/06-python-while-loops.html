@@ -1,0 +1,2309 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://realpython.com/python-while-loop/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <link href="https://files.realpython.com/" rel="preconnect">
+
+    <title>Python "while" Loops (Indefinite Iteration) – Real Python</title>
+    <meta name="author" content="Real Python">
+    <meta name="description" content="In this tutorial, you&#39;ll learn about indefinite iteration using the Python while loop. You’ll be able to construct basic and complex while loops, interrupt loop execution with break and continue, use the else clause with a while loop, and deal with infinite loops.">
+    <meta name="keywords" content="">
+
+    
+  
+
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+
+    
+      <link rel="stylesheet" href="./python-while-loops_files/realpython.min.d94753535dde.css">
+      <link rel="stylesheet" href="./python-while-loops_files/font.5ac42994de49.css">
+      <link rel="stylesheet" href="./python-while-loops_files/glightbox.min.9b438b29cef1.css" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;"><noscript><link rel="stylesheet" href="/static/glightbox.min.9b438b29cef1.css"></noscript>
+      
+        <link rel="stylesheet" href="./python-while-loops_files/animate.min.c0be8e53226a.css">
+      
+    
+
+    
+  
+  <link rel="preload" as="image" href="./python-while-loops_files/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg" imagesrcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg 1920w" imagesizes="(min-width: 1200px) 690px, (min-width: 780px) calc(-5vw + 669px), (min-width: 580px) 510px, calc(100vw - 30px)">
+
+
+    
+    
+      <link rel="canonical" href="https://realpython.com/python-while-loop/">
+
+      
+      
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg">
+        <meta property="og:image" content="https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg">
+      
+      <meta name="twitter:creator" content="@realpython">
+      <meta name="twitter:site" content="@realpython">
+      <meta property="og:title" content="Python &quot;while&quot; Loops (Indefinite Iteration) – Real Python">
+      <meta property="og:type" content="article">
+      <meta property="og:url" content="https://realpython.com/python-while-loop/">
+      <meta property="og:description" content="In this tutorial, you&#39;ll learn about indefinite iteration using the Python while loop. You’ll be able to construct basic and complex while loops, interrupt loop execution with break and continue, use the else clause with a while loop, and deal with infinite loops.">
+    
+
+    <link href="https://realpython.com/static/favicon.68cbf4197b0c.png" rel="icon">
+    <link href="https://realpython.com/atom.xml" rel="alternate" title="Real Python" type="application/atom+xml">
+    <link rel="manifest" href="https://realpython.com/manifest.json">
+
+    
+
+    
+    
+
+    
+    <script async="" src="./python-while-loops_files/gist.min.js.download"></script><script type="text/javascript" src="./python-while-loops_files/vendor.5fe8f3bc.js.download"></script><script type="text/javascript" src="./python-while-loops_files/main.fa8b6644.js.download"></script><script async="" src="./python-while-loops_files/in-app.js.download"></script><script type="text/javascript" async="" src="./python-while-loops_files/saved_resource"></script><script type="text/javascript" async="" src="./python-while-loops_files/js"></script><script src="./python-while-loops_files/2220911568135371" async=""></script><script async="" src="./python-while-loops_files/fbevents.js.download"></script><script async="" id="cio-tracker" data-site-id="7c2f77c7758d22126955" data-use-array-params="true" data-in-app-org-id="0ed756ae-4cd1-4bb7-912c-1b37e39b6595" data-use-in-app="true" src="./python-while-loops_files/track.js.download"></script><script async="" src="./python-while-loops_files/analytics.js.download"></script><script id="icons-data" type="application/json">{"iconsUrl": "/static/icons.1440a154cfa8.svg"}</script>
+    <script id="optins-data" type="application/json">{"turnstileSiteKey": "0x4AAAAAAAQQUCLRXBi8NnUh"}</script>
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  
+
+  ga('create', 'UA-35184939-1', 'auto', {'allowLinker': true});
+
+  
+
+  
+
+  
+  
+  ga('set', {
+    dimension1: true,
+    dimension2: false
+  });
+  
+
+  ga('send', 'pageview');
+  
+</script>
+
+
+<script async="" src="./python-while-loops_files/js(1)"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L7L6L5F6Y6');
+
+  
+</script>
+
+  <script src="./python-while-loops_files/OneSignalSDK.page.es6.js.download" defer=""></script><script src="./python-while-loops_files/count-data.js.download"></script><link rel="stylesheet" href="./python-while-loops_files/OneSignalSDK.page.styles.css"><style hs-beacon="active" data-styled-version="5.1.1"></style></head>
+  <body>
+    
+      
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark flex-column  user-select-none">
+  <div class="container flex-row">
+
+    <a class="navbar-brand" href="https://realpython.com/">
+      <img src="./python-while-loops_files/real-python-logo.893c30edea53.svg" width="165" height="40" class="d-inline-block align-top" alt="Real Python">
+    </a>
+
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse navbar-nav-scroll" id="navbarSupportedContent" role="navigation" aria-label="Main Navigation">
+
+      <ul class="navbar-nav mr-2">
+
+        <li class="nav-item">
+          <a class="nav-link rounded" href="https://realpython.com/start-here/">Start&nbsp;Here</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link rounded dropdown-toggle" href="https://realpython.com/python-while-loop/#" id="navbarDropdownLibrary" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--python"></use></svg></span> Learn Python
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownLibrary">
+            
+<a class="dropdown-item " href="https://realpython.com/search?kind=article&amp;kind=course&amp;order=newest" style="color: #ff7e73; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--graduation-cap"></use></svg></span>Python Tutorials&nbsp;→<br><small class="text-secondary">In-depth articles and video courses</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/learning-paths/" style="color: #ffc873; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@learning-path"></use></svg></span>Learning Paths&nbsp;→<br><small class="text-secondary">Guided study plans for accelerated learning</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/quizzes/" style="color: #abe0e5; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span>Quizzes&nbsp;→<br><small class="text-secondary">Check your learning progress</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/tutorials/all/" style="color: #ccc; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@category"></use></svg></span>Browse Topics&nbsp;→<br><small class="text-secondary">Focus on a specific area or skill level</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/community/" style="color: #e5c6ab; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--message-smile"></use></svg></span>Community Chat&nbsp;→<br><small class="text-secondary">Learn with other Pythonistas</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/office-hours/" style="color: #e5c6ab; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--users"></use></svg></span>Office Hours&nbsp;→<br><small class="text-secondary">Live Q&amp;A calls with Python experts</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/podcasts/rpp/" style="color: #b8abe5; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@podcast"></use></svg></span>Podcast&nbsp;→<br><small class="text-secondary">Hear what’s new in the world of Python</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/products/books/" style="color: #abe5b1; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--book-heart"></use></svg></span>Books&nbsp;→<br><small class="text-secondary">Round out your knowledge and learn offline</small></a>
+
+
+            
+
+            
+              
+              
+<a class="dropdown-item border-top" href="https://realpython.com/account/join/" style="color: #ffc107; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--star"></use></svg></span>Unlock All Content&nbsp;→</a>
+
+              
+            
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link rounded dropdown-toggle" href="https://realpython.com/python-while-loop/#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            More
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+            <a class="dropdown-item" href="https://realpython.com/learner-stories/">Learner Stories</a>
+            <a class="dropdown-item" href="https://realpython.com/newsletter/">Python Newsletter</a>
+            <a class="dropdown-item" href="https://www.pythonjobshq.com/" target="_blank">Python Job Board</a>
+            <a class="dropdown-item" href="https://realpython.com/team/">Meet the Team</a>
+            <a class="dropdown-item" href="https://realpython.com/write-for-us/">Become a Tutorial Writer</a>
+            <a class="dropdown-item" href="https://realpython.com/become-an-instructor/">Become a Video Instructor</a>
+          </div>
+        </li>
+
+      </ul> 
+
+      
+      <div class="d-block d-lg-none"> 
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link rounded" href="https://realpython.com/search" title="Search"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--search"></use></svg></span> Search</a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="d-none d-lg-flex align-items-center mr-2 flex-fill">
+        <form class="form-inline w-100 position-relative" action="https://realpython.com/search" method="GET">
+          <a class="js-search-form-submit position-absolute" href="https://realpython.com/search" title="Search" aria-hidden="true" tabindex="-1"><span class="icon baseline text-muted pl-2" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--search"></use></svg></span></a>
+          <input class="search-autocomplete search-field form-control form-control-md mr-sm-1 mr-lg-2 w-100" style="padding-left: 2rem;" maxlength="50" type="search" placeholder="Search" aria-label="Search" aria-keyshortcuts="/ Control+J Meta+J" name="q" autocomplete="off">
+          <span class="search-hotkey-indicator position-absolute px-2 border border-input text-input rounded small user-select-none" style="right: 1em;" title="Press / (forward slash) or Ctrl+J to open search" aria-hidden="true">/</span>
+          <input type="hidden" name="_from" value="nav">
+        </form>
+      </div>
+      
+
+      <ul class="navbar-nav ml-auto">
+        
+          <li class="nav-item form-inline mr-2 my-2 ml-3 ml-lg-0">
+            <a class="btn btn-sm btn-primary px-5 px-lg-3" href="https://realpython.com/account/join/">Join</a>
+          </li>
+        
+
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link rounded dropdown-toggle  p-2 m-0" href="https://realpython.com/python-while-loop/#" id="navbarDropdownMyAccount" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="rounded-circle ml-2 ml-lg-0" style="width: 45px; height: 45px;" width="500" height="500" src="./python-while-loops_files/8c4bba554c92b873ce60db74986b5b34.png" loading="lazy" alt="User avatar">
+              <span class="notifications-indicator-container">
+                <span class="notifications-indicator notifications-indicator-visible"></span>
+              </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMyAccount">
+              
+
+
+
+  
+    <a class="dropdown-item" href="https://realpython.com/account/notifications/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--bell"></use></svg></span>Notifications <span class="badge badge-pill badge-danger">9+</span></a>
+  
+
+
+<a class="dropdown-item" href="https://realpython.com/account/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--sliders"></use></svg></span>Manage Account</a>
+
+
+  <a class="dropdown-item" href="https://realpython.com/account/join/"><span class="icon baseline text-warning mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--star"></use></svg></span>Get Full Access</a>
+
+
+<a class="dropdown-item" href="https://realpython.com/search?status=in-progress&amp;order=recent"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@continue-learning"></use></svg></span>Continue Learning</a>
+
+<a class="dropdown-item" href="https://realpython.com/account/bookmarks/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--bookmark"></use></svg></span>Bookmarks</a>
+
+<a class="dropdown-item" href="https://realpython.com/certificates/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@certificate"></use></svg></span>Certificates</a>
+
+<a class="dropdown-item" href="https://realpython.com/account/purchases/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--cart-shopping"></use></svg></span>Purchases</a>
+
+
+
+
+
+<a class="dropdown-item" href="https://realpython.com/account/logout/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--right-from-bracket"></use></svg></span>Sign Out</a>
+
+            </div>
+          </li>
+        
+      </ul>
+
+    
+    </div>
+
+  </div>
+
+  
+
+</nav>
+
+    
+
+    <div class="container main-content">
+      
+
+      
+  <div class="row justify-content-center">
+
+    
+    <aside class="col-md-7 col-lg-4 order-2 d-none d-lg-block">
+      
+  
+
+
+
+
+<div class="card mb-3 bg-secondary">
+  <form class="card-body" action="https://realpython.com/optins/process/" method="post">
+    <div class="form-group">
+      <p class="h5 text-muted text-center">— FREE Email Series —</p>
+      <p class="h3 text-center">🐍 Python Tricks 💌</p>
+      <p><img loading="lazy" class="img-fluid rounded" src="./python-while-loops_files/pytrick-dict-merge.webp" width="738" height="490" alt="Python Tricks Dictionary Merge"></p>
+    </div>
+    <div class="form-group">
+      <input type="hidden" name="csrfmiddlewaretoken" value="r6Mx6Qa05Y6GLm3riPiWL0LHtA3X08zTJfR5gPxrefRZrt5nc7s14775Ce31jPR9">
+      <input type="hidden" name="slug" value="static-python-tricks-sidebar">
+      <input type="email" class="form-control form-control-md" name="email" placeholder="Email…" required="">
+    </div>
+    <button type="submit" name="submit" class="btn btn-primary btn-md btn-block">Get Python Tricks »</button>
+    <p class="mb-0 mt-2 text-muted text-center">🔒 No spam. Unsubscribe any time.</p>
+  </form>
+</div>
+
+
+  
+
+
+<div class="sidebar-module sidebar-module-inset border">
+  <a href="https://realpython.com/tutorials/all/" class="badge badge-light text-muted"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@category"></use></svg></span>Browse Topics</a>
+
+  <a href="https://realpython.com/learning-paths/" class="badge badge-light text-muted"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--map-location-dot"></use></svg></span>Guided Learning Paths</a>
+
+  <br>
+
+  <a href="https://realpython.com/search?level=basics" class="badge badge-light text-muted"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span> Basics</a>
+
+  <a href="https://realpython.com/search?level=intermediate" class="badge badge-light text-muted"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span><span class="icon baseline tight-left" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span> Intermediate</a>
+
+  <a href="https://realpython.com/search?level=advanced" class="badge badge-light text-muted"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span><span class="icon baseline tight-left" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span><span class="icon baseline tight-left" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span> Advanced</a>
+
+  <hr class="my-2">
+
+  
+    
+  
+    
+  
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/api/" class="badge badge-light text-muted">api</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/best-practices/" class="badge badge-light text-muted">best-practices</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/career/" class="badge badge-light text-muted">career</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/community/" class="badge badge-light text-muted">community</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/databases/" class="badge badge-light text-muted">databases</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/data-science/" class="badge badge-light text-muted">data-science</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/data-structures/" class="badge badge-light text-muted">data-structures</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/data-viz/" class="badge badge-light text-muted">data-viz</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/devops/" class="badge badge-light text-muted">devops</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/django/" class="badge badge-light text-muted">django</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/docker/" class="badge badge-light text-muted">docker</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/editors/" class="badge badge-light text-muted">editors</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/flask/" class="badge badge-light text-muted">flask</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/front-end/" class="badge badge-light text-muted">front-end</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/gamedev/" class="badge badge-light text-muted">gamedev</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/gui/" class="badge badge-light text-muted">gui</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/machine-learning/" class="badge badge-light text-muted">machine-learning</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/numpy/" class="badge badge-light text-muted">numpy</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/projects/" class="badge badge-light text-muted">projects</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/python/" class="badge badge-light text-muted">python</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/testing/" class="badge badge-light text-muted">testing</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/tools/" class="badge badge-light text-muted">tools</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/web-dev/" class="badge badge-light text-muted">web-dev</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/web-scraping/" class="badge badge-light text-muted">web-scraping</a>
+
+    
+  
+</div>
+
+
+
+  
+<div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+  
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:100%;"></div>
+  <div class="rpad" data-unit="1x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/48994424078/?c=41067926597&amp;p=58946116052&amp;r=21196" rel="nofollow" target="_blank"><img src="./python-while-loops_files/a5ff22ab118c293a4dc784ccb831c29e" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+
+
+</div>
+
+
+
+  <div class="sidebar-sticky ">
+    
+      
+
+
+<table-of-contents>
+  <div class="bg-light sidebar-module sidebar-module-inset">
+    <p class="h4 text-muted"><a class="link-unstyled" href="https://realpython.com/python-while-loop/#toc">Table of Contents</a></p>
+    <div class="toc">
+<ul>
+<li><a href="https://realpython.com/python-while-loop/#the-while-loop">The while Loop</a></li>
+<li><a href="https://realpython.com/python-while-loop/#the-python-break-and-continue-statements">The Python break and continue Statements</a></li>
+<li><a href="https://realpython.com/python-while-loop/#the-else-clause">The else Clause</a></li>
+<li><a href="https://realpython.com/python-while-loop/#infinite-loops">Infinite Loops</a></li>
+<li><a href="https://realpython.com/python-while-loop/#nested-while-loops">Nested while Loops</a></li>
+<li><a href="https://realpython.com/python-while-loop/#one-line-while-loops">One-Line while Loops</a></li>
+<li><a href="https://realpython.com/python-while-loop/#conclusion">Conclusion</a></li>
+</ul>
+</div>
+
+  </div>
+</table-of-contents>
+
+    
+
+    <div class="sidebar-module sidebar-module-inset d-flex justify-content-center flex-wrap row-gap-1 col-gap-2 my-3 py-0">
+      
+
+
+<completion-status class="btn-group mb-0" article-slug="python-while-loop" data-api-article-bookmark-url="/api/v1/articles/python-while-loop/bookmark/" data-api-article-completion-status-url="/api/v1/articles/python-while-loop/completion_status/">
+  <button data-target-complete-button="" title="Click to mark as completed" class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">Mark as Completed</button>
+  <button data-target-bookmark-button="" title="Add bookmark" class="btn btn-secondary border-left"><span class="icon baseline" aria-hidden="true">
+    <svg aria-hidden="true">
+      <use href="/static/icons.1440a154cfa8.svg#light--bookmark"></use>
+    </svg>
+    
+  </span></button>
+</completion-status>
+
+      <div class="w-100"></div> 
+      
+<div class="btn-group mb-0">
+  <a class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" title="Liked it" role="button" aria-label="Thumbs up (liked it)" href="https://realpython.com/feedback/survey/article/python-while-loop/liked/?from=article-sidebar" target="_blank"><span class="icon" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-up"></use></svg></span></a> 
+  <a class="btn btn-secondary border-left" role="button" aria-label="Thumbs down (disliked it)" title="Disliked it" href="https://realpython.com/feedback/survey/article/python-while-loop/disliked/?from=article-sidebar" target="_blank"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-down"></use></svg></span></a>
+</div>
+
+      
+        
+
+
+
+
+
+
+
+
+
+<share-button url="https://realpython.com/python-while-loop/" url-title="Python &quot;while&quot; Loops (Indefinite Iteration)" twitter-text="Interesting #Python article by @realpython:" email-subject="Python article for you" email-body="Check out this Python article:%0A%0APython &quot;while&quot; Loops (Indefinite Iteration)">
+  <button class="btn btn-secondary" type="button" title="Share" aria-label="Share"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@share-light"></use></svg></span>Share</button>
+</share-button>
+
+
+      
+    </div>
+
+    
+      <div class="sidebar-module sidebar-module-inset border card">
+        <p><span class="badge badge-pill badge-success"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--play-circle"></use></svg></span> Recommended Video Course</span><br><a class="stretched-link text-success" href="https://realpython.com/courses/mastering-while-loops/">Mastering While Loops</a></p>
+      </div>
+    
+
+    
+      <div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+        
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:25%;"></div>
+  <div class="rpad" data-unit="4x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/19491843653/?c=31941813441&amp;p=58946116052&amp;r=15100" rel="nofollow" target="_blank"><img src="./python-while-loops_files/609393a03ca1e3437385150e8a1a022e" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+
+
+      </div>
+    
+
+    
+  </div>
+
+
+    </aside>
+
+    <div class="col-md-11 col-lg-8 article with-headerlinks">
+      
+
+  
+    <figure class="embed-responsive embed-responsive-16by9 rounded">
+      
+        <img class="card-img-top m-0 p-0 embed-responsive-item" style="object-fit: contain; background: #abe0e6;" alt="Python &quot;while&quot; Loops (Indefinite Iteration)" width="1920" height="1080" src="./python-while-loops_files/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg 1920w" sizes="(min-width: 1200px) 690px, (min-width: 780px) calc(-5vw + 669px), (min-width: 580px) 510px, calc(100vw - 30px)" fetchpriority="high">
+      
+    </figure>
+  
+
+  <h1>Python "while" Loops (Indefinite Iteration)</h1>
+  <div class="mb-0">
+    
+      <span class="text-muted">by <a class="text-muted" href="https://realpython.com/python-while-loop/#author">John Sturtz</a>
+    
+    
+      <span class="icon baseline ml-2" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--clock-o"></use></svg></span> Nov 07, 2018
+    
+    
+      <span class="icon baseline ml-2 mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--comments"></use></svg></span><a class="text-muted" href="https://realpython.com/python-while-loop/#reader-comments"><span class="disqus-comment-count" data-disqus-identifier="https://realpython.com/python-while-loop/">19 Comments</span></a>
+    
+    
+
+    <span class="d-inline d-md-block"> 
+      <span class="icon baseline ml-2 ml-md-0" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@category"></use></svg></span>
+      
+        
+<a href="https://realpython.com/tutorials/basics/" class="badge badge-light text-muted">basics</a>
+
+      
+        
+<a href="https://realpython.com/tutorials/python/" class="badge badge-light text-muted">python</a>
+
+      
+    </span>
+
+    <div class="d-flex justify-content-between gap-2 my-3">
+      
+
+
+<completion-status class="btn-group mb-0" article-slug="python-while-loop" data-api-article-bookmark-url="/api/v1/articles/python-while-loop/bookmark/" data-api-article-completion-status-url="/api/v1/articles/python-while-loop/completion_status/">
+  <button data-target-complete-button="" title="Click to mark as completed" class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">Mark as Completed</button>
+  <button data-target-bookmark-button="" title="Add bookmark" class="btn btn-secondary border-left"><span class="icon baseline" aria-hidden="true">
+    <svg aria-hidden="true">
+      <use href="/static/icons.1440a154cfa8.svg#light--bookmark"></use>
+    </svg>
+    
+  </span></button>
+</completion-status>
+
+      
+        
+
+
+
+
+
+
+
+
+
+<share-button url="https://realpython.com/python-while-loop/" url-title="Python &quot;while&quot; Loops (Indefinite Iteration)" twitter-text="Interesting #Python article by @realpython:" email-subject="Python article for you" email-body="Check out this Python article:%0A%0APython &quot;while&quot; Loops (Indefinite Iteration)">
+  <button class="btn btn-secondary" type="button" title="Share" aria-label="Share"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@share-light"></use></svg></span>Share</button>
+</share-button>
+
+
+      
+    </div>
+  </span></div>
+
+  
+
+  <div class="article-body">
+    
+      <div class="bg-light sidebar-module sidebar-module-inset" id="toc">
+        <p class="h3 mb-2 text-muted">Table of Contents</p>
+        <div class="toc">
+<ul>
+<li><a href="https://realpython.com/python-while-loop/#the-while-loop">The while Loop</a></li>
+<li><a href="https://realpython.com/python-while-loop/#the-python-break-and-continue-statements">The Python break and continue Statements</a></li>
+<li><a href="https://realpython.com/python-while-loop/#the-else-clause">The else Clause</a></li>
+<li><a href="https://realpython.com/python-while-loop/#infinite-loops">Infinite Loops</a></li>
+<li><a href="https://realpython.com/python-while-loop/#nested-while-loops">Nested while Loops</a></li>
+<li><a href="https://realpython.com/python-while-loop/#one-line-while-loops">One-Line while Loops</a></li>
+<li><a href="https://realpython.com/python-while-loop/#conclusion">Conclusion</a></li>
+</ul>
+</div>
+
+      </div>
+    
+
+    
+    <div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+      
+
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:12.5%;"></div>
+  <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/57356986228/?c=41067926597&amp;p=58946116052&amp;r=17359" rel="nofollow" target="_blank"><img src="./python-while-loops_files/6fe6464c8bf6ec2cbcf3f1f0e778156b" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+<a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a>
+
+
+    </div>
+    
+
+    
+      
+<div class="border rounded p-3 card mb-2 text-wrap-pretty">
+  <p class="mb-0"><span class="badge badge-pill badge-success"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--play-circle"></use></svg></span> Watch Now</span> This tutorial has a related video course created by the Real Python team. Watch it together with the written tutorial to deepen your understanding: <a class="stretched-link text-success" href="https://realpython.com/courses/mastering-while-loops/"><strong>Mastering While Loops</strong></a></p>
+</div>
+
+    
+
+    <p><strong>Iteration</strong> means executing the same block of code over and over, potentially many times.  A programming structure that implements iteration is called a <strong>loop</strong>.</p>
+<p>In programming, there are two types of iteration, indefinite and definite:</p>
+<ul>
+<li>
+<p>With <strong>indefinite iteration</strong>, the number of times the loop is executed isn’t specified explicitly in advance.  Rather, the designated block is executed repeatedly as long as some condition is met.</p>
+</li>
+<li>
+<p>With <strong>definite iteration</strong>, the number of times the designated block will be executed is specified explicitly at the time the loop starts.</p>
+</li>
+</ul>
+<p><strong>In this tutorial, you’ll:</strong></p>
+<ul>
+<li>Learn about the <code>while</code> loop, the Python control structure used for indefinite iteration</li>
+<li>See how to break out of a loop or loop iteration prematurely</li>
+<li>Explore infinite loops</li>
+</ul>
+<p>When you’re finished, you should have a good grasp of how to use indefinite iteration in Python.</p>
+<div class="alert alert-warning" role="alert"><p><strong>Free Bonus:</strong> <a href="https://realpython.com/python-while-loop/" class="alert-link" data-toggle="modal" data-target="#modal-python-cheat-sheet-experiment" data-focus="false">Click here to get our free Python Cheat Sheet</a> that shows you the basics of Python 3, like working with data types, dictionaries, lists, and Python functions.</p></div>
+
+<div class="container border rounded text-wrap-pretty my-3">
+
+  <p class="my-3"><mark class="marker-highlight"><strong><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span> Take the Quiz:</strong></mark> Test your knowledge with our interactive “Python "while" Loops” quiz. You’ll receive a score upon completion to help you track your learning progress:</p>
+
+  <hr>
+
+  <div class="row my-3">
+    <div class="col-xs-12 col-sm-4 col-md-3 align-self-center">
+
+      <a href="https://realpython.com/quizzes/python-while-loop/" tabindex="-1">
+        <div class="embed-responsive embed-responsive-16by9">
+
+            <img class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #abe0e6;" alt="Python &quot;while&quot; Loops (Indefinite Iteration)" src="./python-while-loops_files/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg 1920w" sizes="(min-width: 1200px) 142px, (min-width: 1000px) 122px, (min-width: 780px) 112px, (min-width: 580px) 139px, calc(100vw - 62px)">
+
+
+          <div class="card-img-overlay d-flex align-items-center">
+            <div class="mx-auto">
+              <span class="text-light" style="opacity: 0.90;"><span class="icon baseline scale2x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span></span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+    <div class="col">
+      <div class="mt-3 d-md-none"></div> 
+      <p class="small text-muted mb-0"><strong>Interactive Quiz</strong></p>
+      <a href="https://realpython.com/quizzes/python-while-loop/" class="stretched-link"><span class="my-0 h4">Python "while" Loops</span></a> 
+      <p class="text-muted mb-0 small">Test your understanding of Python while loops</p>
+    </div>
+  </div>
+
+</div>
+
+<section class="section2"><h2 id="the-while-loop">The <code>while</code> Loop<a class="headerlink" href="https://realpython.com/python-while-loop/#the-while-loop" title="Permanent link"></a></h2>
+<p>Let’s see how Python’s <code>while</code> statement is used to construct loops.  We’ll start simple and embellish as we go.</p>
+<p>The format of a rudimentary <code>while</code> loop is shown below:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">while</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p><code>&lt;statement(s)&gt;</code> represents the block to be repeatedly executed, often referred to as the body of the loop.  This is denoted with indentation, just as in an <a href="https://realpython.com/python-conditional-statements/"><code>if</code> statement</a>.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Remember:</strong>  All control structures in Python use indentation to define blocks.  See the discussion on <a href="https://realpython.com/python-conditional-statements/#python-its-all-about-the-indentation">grouping statements</a> in the previous tutorial to review.</p>
+</div>
+<p>The controlling expression, <code>&lt;expr&gt;</code>, typically involves one or more variables that are initialized prior to starting the loop and then modified somewhere in the loop body.  </p>
+<p>When a <code>while</code> loop is encountered, <code>&lt;expr&gt;</code> is first evaluated in <a href="https://realpython.com/python-data-types/#boolean-type-boolean-context-and-truthiness">Boolean context</a>.  If it is true, the loop body is executed.  Then <code>&lt;expr&gt;</code> is checked again, and if still true, the body is executed again.  This continues until <code>&lt;expr&gt;</code> becomes false, at which point program execution proceeds to the first statement beyond the loop body.</p>
+<p>Consider this loop:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="linenos"> 1</span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="linenos"> 2</span><span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos"> 3</span><span class="gp">... </span>    <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="linenos"> 4</span><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="gp">...</span>
+<span class="linenos"> 6</span><span class="go">4</span>
+<span class="linenos"> 7</span><span class="go">3</span>
+<span class="linenos"> 8</span><span class="go">2</span>
+<span class="linenos"> 9</span><span class="go">1</span>
+<span class="linenos">10</span><span class="go">0</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Here’s what’s happening in this example:</p>
+<ul>
+<li>
+<p><code>n</code> is initially <code>5</code>.  The expression in the <code>while</code> statement header on line 2 is <code>n &gt; 0</code>, which is true, so the loop body executes.  Inside the loop body on line 3, <code>n</code> is decremented by <code>1</code> to <code>4</code>, and then printed.</p>
+</li>
+<li>
+<p>When the body of the loop has finished, program execution returns to the top of the loop at line 2, and the expression is evaluated again.  It is still true, so the body executes again, and <code>3</code> is printed.</p>
+</li>
+<li>
+<p>This continues until <code>n</code> becomes <code>0</code>.  At that point, when the expression is tested, it is false, and the loop terminates.  Execution would resume at the first statement following the loop body, but there isn’t one in this case.</p>
+</li>
+</ul>
+<p>Note that the controlling expression of the <code>while</code> loop is tested first, before anything else happens.  If it’s false to start with, the loop body will never be executed at all:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">...</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In the example above, when the loop is encountered, <code>n</code> is <code>0</code>.  The controlling expression <code>n &gt; 0</code> is already false, so the loop body never executes.</p>
+<p>Here’s another <code>while</code> loop involving a list, rather than a numeric comparison:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="n">a</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="gp">...</span>
+<span class="go">baz</span>
+<span class="go">bar</span>
+<span class="go">foo</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>When a <a href="https://realpython.com/python-operators-expressions/#evaluation-of-non-boolean-values-in-boolean-context">list is evaluated in Boolean context</a>, it is truthy if it has elements in it and falsy if it is empty.  In this example, <code>a</code> is true as long as it has elements in it.  Once all the items have been removed with the <code>.pop()</code> method and the list is empty, <code>a</code> is false, and the loop terminates.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/5748061207/?c=11232171364&amp;p=58946116052&amp;r=71576" rel="nofollow" target="_blank"><img src="./python-while-loops_files/bba83554c49ffce9838fddbf61a42999" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section><section class="section2"><h2 id="the-python-break-and-continue-statements">The Python <code>break</code> and <code>continue</code> Statements<a class="headerlink" href="https://realpython.com/python-while-loop/#the-python-break-and-continue-statements" title="Permanent link"></a></h2>
+<p>In each example you have seen so far, the entire body of the <code>while</code> loop is executed on each iteration.  Python provides two <a href="https://realpython.com/python-keywords/">keywords</a> that terminate a loop iteration prematurely:</p>
+<ul>
+<li>
+<p>The Python <strong><code>break</code></strong> statement immediately terminates a loop entirely.  Program execution proceeds to the first statement following the loop body.</p>
+</li>
+<li>
+<p>The Python <strong><code>continue</code></strong> statement immediately terminates the current loop iteration.  Execution jumps to the top of the loop, and the controlling expression is re-evaluated to determine whether the loop will execute again or terminate.</p>
+</li>
+</ul>
+<p>The distinction between <code>break</code> and <code>continue</code> is demonstrated in the following diagram:</p>
+<figure class="js-lightbox"><a href="./python-while-loops_files/t.899f357dd948.png" target="_blank"><img loading="lazy" class="img-fluid mx-auto d-block w-50" src="./python-while-loops_files/t.899f357dd948.png" width="708" height="798" srcset="/cdn-cgi/image/width=177,format=auto/https://files.realpython.com/media/t.899f357dd948.png 177w, /cdn-cgi/image/width=236,format=auto/https://files.realpython.com/media/t.899f357dd948.png 236w, /cdn-cgi/image/width=354,format=auto/https://files.realpython.com/media/t.899f357dd948.png 354w, /cdn-cgi/image/width=708,format=auto/https://files.realpython.com/media/t.899f357dd948.png 708w" sizes="(min-width: 1200px) 690px, (min-width: 780px) calc(-5vw + 669px), (min-width: 580px) 510px, calc(100vw - 30px)" alt="Python while loops: break and continue statements" data-asset="443"></a><figcaption class="figure-caption text-center">break and continue</figcaption></figure>
+
+<p>Here’s a script file called <code>break.py</code> that demonstrates the <code>break</code> statement:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="linenos"> 1</span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="linenos"> 2</span><span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos"> 3</span>    <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="linenos"> 4</span>    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+<span class="hll"><span class="linenos"> 5</span>        <span class="k">break</span>
+</span><span class="linenos"> 6</span>    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="nb">print</span><span class="p">(</span><span class="s1">'Loop ended.'</span><span class="p">)</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Running <code>break.py</code> from a command-line interpreter produces the following output:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="doscon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--yellow">
+    <span class="mr-2 noselect" aria-label="Language">Windows Command Prompt</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">C:\Users\john\Documents&gt;</span>python break.py
+<span class="go">4</span>
+<span class="go">3</span>
+<span class="go">Loop ended.</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>When <code>n</code> becomes <code>2</code>, the <code>break</code> statement is executed.  The loop is terminated completely, and program execution jumps to the <a href="https://realpython.com/python-print/"><code>print()</code> statement</a> on line 7.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> If your programming background is in <a href="https://realpython.com/c-for-python-programmers/">C</a>, <a href="https://realpython.com/python-vs-cpp/">C++</a>, <a href="https://realpython.com/java-vs-python/">Java</a>, or <a href="https://realpython.com/python-vs-javascript/">JavaScript</a>, then you may be wondering where Python’s do-while loop is. Well, the bad news is that Python doesn’t have a do-while construct. But the good news is that you can use a <code>while</code> loop with a <code>break</code> statement to <a href="https://realpython.com/python-do-while/">emulate it</a>.</p>
+</div>
+<p>The next script, <code>continue.py</code>, is identical except for a <code>continue</code> statement in place of the <code>break</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="linenos"> 1</span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="linenos"> 2</span><span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos"> 3</span>    <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="linenos"> 4</span>    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+<span class="hll"><span class="linenos"> 5</span>        <span class="k">continue</span>
+</span><span class="linenos"> 6</span>    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="nb">print</span><span class="p">(</span><span class="s1">'Loop ended.'</span><span class="p">)</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The output of <code>continue.py</code> looks like this:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="doscon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--yellow">
+    <span class="mr-2 noselect" aria-label="Language">Windows Command Prompt</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">C:\Users\john\Documents&gt;</span>python continue.py
+<span class="go">4</span>
+<span class="go">3</span>
+<span class="go">1</span>
+<span class="go">0</span>
+<span class="go">Loop ended.</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>This time, when <code>n</code> is <code>2</code>, the <code>continue</code> statement causes termination of that iteration.  Thus, <code>2</code> isn’t printed.  Execution returns to the top of the loop, the condition is re-evaluated, and it is still true.  The loop resumes, terminating when <code>n</code> becomes <code>0</code>, as previously.</p>
+</section><section class="section2"><h2 id="the-else-clause">The <code>else</code> Clause<a class="headerlink" href="https://realpython.com/python-while-loop/#the-else-clause" title="Permanent link"></a></h2>
+<p>Python allows an optional <code>else</code> clause at the end of a <code>while</code> loop. This is a unique feature of Python, not found in most other programming languages.  The syntax is shown below:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">while</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">additional_statement</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The <code>&lt;additional_statement(s)&gt;</code> specified in the <code>else</code> clause will be executed when the <code>while</code> loop terminates.</p>
+<figure class="js-lightbox"><a href="./python-while-loops_files/t.a370f09e82c4.png" target="_blank"><img loading="lazy" class="img-fluid mx-auto d-block w-25" src="./python-while-loops_files/t.a370f09e82c4.png" width="693" height="576" srcset="/cdn-cgi/image/width=173,format=auto/https://files.realpython.com/media/t.a370f09e82c4.png 173w, /cdn-cgi/image/width=231,format=auto/https://files.realpython.com/media/t.a370f09e82c4.png 231w, /cdn-cgi/image/width=346,format=auto/https://files.realpython.com/media/t.a370f09e82c4.png 346w, /cdn-cgi/image/width=693,format=auto/https://files.realpython.com/media/t.a370f09e82c4.png 693w" sizes="(min-width: 1200px) 690px, (min-width: 780px) calc(-5vw + 669px), (min-width: 580px) 510px, calc(100vw - 30px)" alt="thought balloon" data-asset="659"></a></figure>
+
+<p>About now, you may be thinking,  “How is that useful?” You could accomplish the same thing by putting those statements immediately after the <code>while</code> loop, without the <code>else</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">while</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">additional_statement</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>What’s the difference?</p>
+<p>In the latter case, without the <code>else</code> clause, <code>&lt;additional_statement(s)&gt;</code> will be executed after the <code>while</code> loop terminates, no matter what.</p>
+<p>When <code>&lt;additional_statement(s)&gt;</code> are placed in an <code>else</code> clause, they will be executed only if the loop terminates “by exhaustion”—that is, if the loop iterates until the controlling condition becomes false.  If the loop is exited by a <code>break</code> statement, the <code>else</code> clause won’t be executed.</p>
+<p>Consider the following example:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="hll"><span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+</span><span class="hll"><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'Loop done.'</span><span class="p">)</span>
+</span><span class="gp">...</span>
+<span class="go">4</span>
+<span class="go">3</span>
+<span class="go">2</span>
+<span class="go">1</span>
+<span class="go">0</span>
+<span class="go">Loop done.</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this case, the loop repeated until the condition was exhausted: <code>n</code> became <code>0</code>, so <code>n &gt; 0</code> became false.  Because the loop lived out its natural life, so to speak, the <code>else</code> clause was executed.  Now observe the difference here:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="hll"><span class="gp">... </span>    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+</span><span class="hll"><span class="gp">... </span>        <span class="k">break</span>
+</span><span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'Loop done.'</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">4</span>
+<span class="go">3</span>
+<span class="go">2</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>This loop is terminated prematurely with <code>break</code>, so the <code>else</code> clause isn’t executed.</p>
+<p>It may seem as if the meaning of the word <code>else</code> doesn’t quite fit the <code>while</code> loop as well as it does the <code>if</code> statement.  <a href="https://en.wikipedia.org/wiki/Guido_van_Rossum">Guido van Rossum</a>, the creator of Python, has actually said that, if he had it to do over again, he’d leave the <code>while</code> loop’s <code>else</code> clause out of the language.</p>
+<p>One of the following interpretations might help to make it more intuitive:</p>
+<ul>
+<li>
+<p>Think of the header of the loop (<code>while n &gt; 0</code>) as an <code>if</code> statement (<code>if n &gt; 0</code>) that gets executed over and over, with the <code>else</code> clause finally being executed when the condition becomes false.</p>
+</li>
+<li>
+<p>Think of <code>else</code> as though it were <code>nobreak</code>, in that the block that follows gets executed if there wasn’t a <code>break</code>.</p>
+</li>
+</ul>
+<p>If you don’t find either of these interpretations helpful, then feel free to ignore them.</p>
+<p>When might an <code>else</code> clause on a <code>while</code> loop be useful?  One common situation is if you are searching a list for a specific item.  You can use <code>break</code> to exit the loop if the item is found, and the <code>else</code> clause can contain code that is meant to be executed if the item isn’t found:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">,</span> <span class="s1">'qux'</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">'corge'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="c1"># Processing for item found</span>
+<span class="gp">... </span>        <span class="k">break</span>
+<span class="gp">... </span>    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="c1"># Processing for item not found</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s1">'not found in list.'</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">corge not found in list.</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> The code shown above is useful to illustrate the concept, but you’d actually be very unlikely to search a list that way.</p>
+<p>First of all, lists are usually processed with definite iteration, not a <code>while</code> loop. Definite iteration is covered in the next tutorial in this series.</p>
+<p>Secondly, Python provides built-in ways to search for an item in a list.  You can use the <code>in</code> operator:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s1">'found in list.'</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s1">'not found in list.'</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">corge not found in list.</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The <code>list.index()</code> method would also work.  This method raises a <code>ValueError</code> exception if the item isn’t found in the list, so you need to understand exception handling to use it.  In Python, you use a <code>try</code> statement to handle an exception.  An example is given below:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">'corge'</span><span class="p">))</span>
+<span class="gp">... </span><span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s1">'not found in list.'</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">corge not found in list.</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>You will learn about exception handling later in this series.</p>
+</div>
+<p>An <code>else</code> clause with a <code>while</code> loop is a bit of an oddity, not often seen.  But don’t shy away from it if you find a situation in which you feel it adds clarity to your code!</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/27750251087/?c=11232171364&amp;p=58946116052&amp;r=84252" rel="nofollow" target="_blank"><img src="./python-while-loops_files/bba83554c49ffce9838fddbf61a42999" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section><section class="section2"><h2 id="infinite-loops">Infinite Loops<a class="headerlink" href="https://realpython.com/python-while-loop/#infinite-loops" title="Permanent link"></a></h2>
+<p>Suppose you write a <code>while</code> loop that theoretically never ends.  Sounds weird, right?</p>
+<p>Consider this example:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">foo</span>
+<span class="go">foo</span>
+<span class="go">foo</span>
+<span class="go">  .</span>
+<span class="go">  .</span>
+<span class="go">  .</span>
+<span class="go">foo</span>
+<span class="go">foo</span>
+<span class="go">foo</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;pyshell#2&gt;"</span>, line <span class="m">2</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">)</span>
+<span class="nc">KeyboardInterrupt</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>This code was terminated by <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span>, which generates an interrupt from the keyboard.  Otherwise, it would have gone on unendingly.  Many <code>foo</code> output lines have been removed and replaced by the vertical ellipsis in the output shown.</p>
+<p>Clearly, <code>True</code> will never be false, or we’re all in very big trouble.  Thus, <code>while True:</code> initiates an infinite loop that will theoretically run forever.</p>
+<p>Maybe that doesn’t sound like something you’d want to do, but this pattern is actually quite common.  For example, you might write code for a service that starts up and runs forever accepting service requests.  “Forever” in this context means until you shut it down, or until the heat death of the universe, whichever comes first.</p>
+<p>More prosaically, remember that loops can be broken out of with the <code>break</code> statement.  It may be more straightforward to terminate a loop based on conditions recognized within the loop body, rather than on a condition evaluated at the top.</p>
+<p>Here’s another variant of the loop shown above that successively removes items from a <a href="https://realpython.com/python-lists-tuples/">list</a> using <code>.pop()</code> until it is empty:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">a</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">break</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="gp">...</span>
+<span class="go">baz</span>
+<span class="go">bar</span>
+<span class="go">foo</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>When <code>a</code> becomes empty, <code>not a</code> becomes true, and the <code>break</code> statement exits the loop.</p>
+<p>You can also specify multiple <code>break</code> statements in a loop:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="o">&lt;</span><span class="n">expr1</span><span class="o">&gt;</span><span class="p">:</span>  <span class="c1"># One condition for loop termination</span>
+        <span class="k">break</span>
+    <span class="o">...</span>
+    <span class="k">if</span> <span class="o">&lt;</span><span class="n">expr2</span><span class="o">&gt;</span><span class="p">:</span>  <span class="c1"># Another termination condition</span>
+        <span class="k">break</span>
+    <span class="o">...</span>
+    <span class="k">if</span> <span class="o">&lt;</span><span class="n">expr3</span><span class="o">&gt;</span><span class="p">:</span>  <span class="c1"># Yet another</span>
+        <span class="k">break</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In cases like this, where there are multiple reasons to end the loop, it is often cleaner to <code>break</code> out from several different locations, rather than try to specify all the termination conditions in the loop header.</p>
+<p>Infinite loops can be very useful.  Just remember that you must ensure the loop gets broken out of at some point, so it doesn’t truly become infinite.</p>
+</section><section class="section2"><h2 id="nested-while-loops">Nested <code>while</code> Loops<a class="headerlink" href="https://realpython.com/python-while-loop/#nested-while-loops" title="Permanent link"></a></h2>
+<p>In general, Python control structures can be nested within one another.  For example, <code>if</code>/<code>elif</code>/<code>else</code> conditional statements can be nested:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">gender</span> <span class="o">==</span> <span class="s1">'M'</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'son'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'daughter'</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span> <span class="ow">and</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">65</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">gender</span> <span class="o">==</span> <span class="s1">'M'</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'father'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'mother'</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">gender</span> <span class="o">==</span> <span class="s1">'M'</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'grandfather'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'grandmother'</span><span class="p">)</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Similarly, a <code>while</code> loop can be contained within another <code>while</code> loop, as shown here:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">]</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+</span><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="gp">... </span>    <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'baz'</span><span class="p">,</span> <span class="s1">'qux'</span><span class="p">]</span>
+<span class="hll"><span class="gp">... </span>    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+</span><span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">'&gt;'</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="gp">...</span>
+<span class="go">foo</span>
+<span class="go">&gt; baz</span>
+<span class="go">&gt; qux</span>
+<span class="go">bar</span>
+<span class="go">&gt; baz</span>
+<span class="go">&gt; qux</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>A <code>break</code> or <code>continue</code> statement found within nested loops applies to the nearest enclosing loop:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">while</span> <span class="o">&lt;</span><span class="n">expr1</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="n">statement</span>
+    <span class="n">statement</span>
+
+    <span class="k">while</span> <span class="o">&lt;</span><span class="n">expr2</span><span class="o">&gt;</span><span class="p">:</span>
+        <span class="n">statement</span>
+        <span class="n">statement</span>
+<span class="hll">        <span class="k">break</span>  <span class="c1"># Applies to while &lt;expr2&gt;: loop</span>
+</span>
+<span class="hll">    <span class="k">break</span>  <span class="c1"># Applies to while &lt;expr1&gt;: loop</span>
+</span></code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Additionally, <code>while</code> loops can be nested inside <code>if</code>/<code>elif</code>/<code>else</code> statements, and vice versa:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">if</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="n">statement</span>
+    <span class="k">while</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span>
+        <span class="n">statement</span>
+        <span class="n">statement</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">while</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span>
+        <span class="n">statement</span>
+        <span class="n">statement</span>
+    <span class="n">statement</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">while</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span>
+        <span class="n">statement</span>
+    <span class="k">elif</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span>
+        <span class="n">statement</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">statement</span>
+
+    <span class="k">if</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">:</span>
+        <span class="n">statement</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In fact, all the Python control structures can be intermingled with one another to whatever extent you need.  That is as it should be.  Imagine how frustrating it would be if there were unexpected restrictions like “A <code>while</code> loop can’t be contained within an <code>if</code> statement” or “<code>while</code> loops can only be nested inside one another at most four deep.”  You’d have a very difficult time remembering them all.</p>
+<p>Seemingly arbitrary numeric or logical limitations are considered a sign of poor program language design.  Happily, you won’t find many in Python.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/47546671741/?c=58525073567&amp;p=58946116052&amp;r=80232" rel="nofollow" target="_blank"><img src="./python-while-loops_files/026fb4432c518a9d24e5ba3f93da2599" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section><section class="section2"><h2 id="one-line-while-loops">One-Line <code>while</code> Loops<a class="headerlink" href="https://realpython.com/python-while-loop/#one-line-while-loops" title="Permanent link"></a></h2>
+<p>As with an <code>if</code> statement, a <code>while</code> loop can be specified on one line.  If there are multiple statements in the block that makes up the loop body, they can be separated by semicolons (<code>;</code>):</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="go">4</span>
+<span class="go">3</span>
+<span class="go">2</span>
+<span class="go">1</span>
+<span class="go">0</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>This only works with simple statements though.  You can’t combine two compound statements into one line.  Thus, you can specify a <code>while</code> loop all on one line as above, and you write an <code>if</code> statement on one line:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="kc">True</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">)</span>
+
+<span class="go">foo</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>But you can’t do this:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span> <span class="k">if</span> <span class="kc">True</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">)</span>
+<span class="go">SyntaxError: invalid syntax</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Remember that <a href="https://www.python.org/dev/peps/pep-0008/#other-recommendations">PEP 8</a> discourages multiple statements on one line.  So you probably shouldn’t be doing any of this very often anyhow.</p>
+</section><section class="section2"><h2 id="conclusion">Conclusion<a class="headerlink" href="https://realpython.com/python-while-loop/#conclusion" title="Permanent link"></a></h2>
+<p>In this tutorial, you learned about <strong>indefinite iteration</strong> using the Python <code>while</code> loop.  You’re now able to:</p>
+<ul>
+<li>Construct basic and complex <code>while</code> loops</li>
+<li>Interrupt loop execution with <code>break</code> and <code>continue</code></li>
+<li>Use the <code>else</code> clause with a <code>while</code> loop</li>
+<li>Deal with infinite loops</li>
+</ul>
+<p>You should now have a good grasp of how to execute a piece of code repetitively.</p>
+<div class="container border rounded text-wrap-pretty my-3">
+
+  <p class="my-3"><mark class="marker-highlight"><strong><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span> Take the Quiz:</strong></mark> Test your knowledge with our interactive “Python "while" Loops” quiz. You’ll receive a score upon completion to help you track your learning progress:</p>
+
+  <hr>
+
+  <div class="row my-3">
+    <div class="col-xs-12 col-sm-4 col-md-3 align-self-center">
+
+      <a href="https://realpython.com/quizzes/python-while-loop/" tabindex="-1">
+        <div class="embed-responsive embed-responsive-16by9">
+
+            <img class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #abe0e6;" alt="Python &quot;while&quot; Loops (Indefinite Iteration)" src="./python-while-loops_files/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg 1920w" sizes="(min-width: 1200px) 142px, (min-width: 1000px) 122px, (min-width: 780px) 112px, (min-width: 580px) 139px, calc(100vw - 62px)">
+
+
+          <div class="card-img-overlay d-flex align-items-center">
+            <div class="mx-auto">
+              <span class="text-light" style="opacity: 0.90;"><span class="icon baseline scale2x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span></span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+    <div class="col">
+      <div class="mt-3 d-md-none"></div> 
+      <p class="small text-muted mb-0"><strong>Interactive Quiz</strong></p>
+      <a href="https://realpython.com/quizzes/python-while-loop/" class="stretched-link"><span class="my-0 h4">Python "while" Loops</span></a> 
+      <p class="text-muted mb-0 small">Test your understanding of Python while loops</p>
+    </div>
+  </div>
+
+</div>
+
+<p>The next tutorial in this series covers <strong>definite iteration</strong> with <code>for</code> loops—recurrent execution where the number of repetitions is specified explicitly.</p>
+<div class="container py-3 series-nav mb-3">
+  <div class="row justify-content-between">
+    <div class="col-12 col-md-3 text-left text-muted ml-1"><a href="https://realpython.com/python-conditional-statements/"> «&nbsp;Conditional Statements in Python</a></div>
+    <div class="col-12 col-md-3 text-center text-muted"><a href="https://realpython.com/python-while-loop/#">Python "while" Loops</a></div>
+    <div class="col-12 col-md-3 text-right text-muted mr-1"><a href="https://realpython.com/python-for-loop/">Python "for" Loops&nbsp;»</a></div>
+  </div>
+</div>
+
+</section>
+
+    
+      
+      <div class="d-flex justify-content-center flex-wrap gap-2 my-3">
+        
+
+
+<completion-status class="btn-group mb-0" article-slug="python-while-loop" data-api-article-bookmark-url="/api/v1/articles/python-while-loop/bookmark/" data-api-article-completion-status-url="/api/v1/articles/python-while-loop/completion_status/">
+  <button data-target-complete-button="" title="Click to mark as completed" class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">Mark as Completed</button>
+  <button data-target-bookmark-button="" title="Add bookmark" class="btn btn-secondary border-left"><span class="icon baseline" aria-hidden="true">
+    <svg aria-hidden="true">
+      <use href="/static/icons.1440a154cfa8.svg#light--bookmark"></use>
+    </svg>
+    
+  </span></button>
+</completion-status>
+
+        
+<div class="btn-group mb-0">
+  <a class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" title="Liked it" role="button" aria-label="Thumbs up (liked it)" href="https://realpython.com/feedback/survey/article/python-while-loop/liked/?from=article-footer" target="_blank"><span class="icon" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-up"></use></svg></span></a> 
+  <a class="btn btn-secondary border-left" role="button" aria-label="Thumbs down (disliked it)" title="Disliked it" href="https://realpython.com/feedback/survey/article/python-while-loop/disliked/?from=article-footer" target="_blank"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-down"></use></svg></span></a>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+<share-button url="https://realpython.com/python-while-loop/" url-title="Python &quot;while&quot; Loops (Indefinite Iteration)" twitter-text="Interesting #Python article by @realpython:" email-subject="Python article for you" email-body="Check out this Python article:%0A%0APython &quot;while&quot; Loops (Indefinite Iteration)">
+  <button class="btn btn-secondary" type="button" title="Share" aria-label="Share"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@share-light"></use></svg></span>Share</button>
+</share-button>
+
+
+      </div>
+    
+
+    
+      
+<div class="border rounded p-3 card mb-2 text-wrap-pretty">
+  <p class="mb-0"><span class="badge badge-pill badge-success"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--play-circle"></use></svg></span> Watch Now</span> This tutorial has a related video course created by the Real Python team. Watch it together with the written tutorial to deepen your understanding: <a class="stretched-link text-success" href="https://realpython.com/courses/mastering-while-loops/"><strong>Mastering While Loops</strong></a></p>
+</div>
+
+    
+  </div>
+
+  
+    
+
+<div class="card mt-4 mb-4 bg-secondary">
+  <p class="card-header h3 text-center bg-light">🐍 Python Tricks 💌</p>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-7">
+          <p>Get a short &amp; sweet <strong>Python Trick</strong> delivered to your inbox every couple of days. No spam ever. Unsubscribe any time. Curated by the Real Python team.</p>
+        </div>
+        <div class="col-xs-12 col-sm-5">
+          <img loading="lazy" class="img-fluid rounded mb-3" src="./python-while-loops_files/pytrick-dict-merge.webp" width="738" height="490" alt="Python Tricks Dictionary Merge">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <form class="col-12" action="https://realpython.com/optins/process/" method="post">
+          <input type="hidden" name="csrfmiddlewaretoken" value="r6Mx6Qa05Y6GLm3riPiWL0LHtA3X08zTJfR5gPxrefRZrt5nc7s14775Ce31jPR9">
+          <input type="hidden" name="slug" value="static-python-tricks-footer">
+          <div class="form-group">
+            <input name="email" type="email" class="form-control form-control-lg" placeholder="Email Address" required="">
+          </div>
+          <button name="submit" type="submit" class="btn btn-primary btn-lg btn-block">Send Me Python Tricks »</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  
+
+
+
+<div class="card mt-3" id="author">
+  <p class="card-header h3">About <strong>John Sturtz</strong></p>
+  <div class="card-body">
+    <div class="container p-0">
+      <div class="row">
+        <div class="col-12 col-md-3 align-self-center">
+          <a href="https://realpython.com/team/jsturtz/" aria-hidden="true" tabindex="-1">
+            <img loading="lazy" src="./python-while-loops_files/img007.18d0e80683f7.jpg" srcset="/cdn-cgi/image/width=89,height=89,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 89w, /cdn-cgi/image/width=119,height=119,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 119w, /cdn-cgi/image/width=179,height=179,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 179w, /cdn-cgi/image/width=358,height=358,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 358w" sizes="(min-width: 580px) 154px, calc(33.08vw - 24px)" width="358" height="358" style="background: #5a270c;" class="d-block d-md-none rounded-circle img-fluid w-33 mb-0 mx-auto" alt="John Sturtz">
+            <img loading="lazy" src="./python-while-loops_files/img007.18d0e80683f7.jpg" srcset="/cdn-cgi/image/width=89,height=89,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 89w, /cdn-cgi/image/width=119,height=119,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 119w, /cdn-cgi/image/width=179,height=179,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 179w, /cdn-cgi/image/width=358,height=358,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 358w" sizes="(min-width: 1200px) 140px, calc(-1.5vw + 137px)" width="358" height="358" style="background: #5a270c;" class="d-none d-md-block rounded-circle img-fluid w-100 mb-0" alt="John Sturtz">
+          </a>
+        </div>
+        <div class="col mt-3">
+          <p>John is an avid Pythonista and a member of the Real Python tutorial team.</p>
+          <a href="https://realpython.com/team/jsturtz/" class="card-link">» More about John</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <hr class="my-0">
+  <div class="card-body pb-0">
+    <div class="container">
+      <div class="row">
+        <p><em>Each tutorial at Real Python is created by a team of developers so that it meets our high quality standards. The team members who worked on this tutorial are:</em></p>
+      </div>
+
+      
+        
+          <div class="row align-items-center w-100 mx-auto">
+        
+
+        <div class="col-4 col-sm-2 align-self-center">
+          
+            <a href="https://realpython.com/team/asantos/" aria-hidden="true" tabindex="-1"><img loading="lazy" src="./python-while-loops_files/PP.9b8b026f75b8.jpg" srcset="/cdn-cgi/image/width=239,height=239,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 239w, /cdn-cgi/image/width=319,height=319,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 319w, /cdn-cgi/image/width=479,height=479,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 479w, /cdn-cgi/image/width=959,height=959,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 959w" sizes="(min-width: 1200px) 73px, (min-width: 780px) calc(-0.75vw + 69px), (min-width: 580px) 43px, calc(33.46vw - 64px)" width="959" height="959" style="background: #dadad8;" class="rounded-circle img-fluid w-100" alt="Aldren Santos"></a>
+          
+        </div>
+        <div class="col pl-0 d-none d-sm-block">
+          <a href="https://realpython.com/team/asantos/" class="card-link small"><p>Aldren</p></a>
+        </div>
+
+        
+
+        
+      
+        
+
+        <div class="col-4 col-sm-2 align-self-center">
+          
+            <a href="https://realpython.com/team/jjablonski/" aria-hidden="true" tabindex="-1"><img loading="lazy" src="./python-while-loops_files/jjablonksi-avatar.e37c4f83308e.jpg" srcset="/cdn-cgi/image/width=200,height=200,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg 200w, /cdn-cgi/image/width=266,height=266,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg 266w, /cdn-cgi/image/width=400,height=400,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg 400w, /cdn-cgi/image/width=800,height=800,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg 800w" sizes="(min-width: 1200px) 73px, (min-width: 780px) calc(-0.75vw + 69px), (min-width: 580px) 43px, calc(33.46vw - 64px)" width="800" height="800" style="background: #b8b9bb;" class="rounded-circle img-fluid w-100" alt="Joanna Jablonski"></a>
+          
+        </div>
+        <div class="col pl-0 d-none d-sm-block">
+          <a href="https://realpython.com/team/jjablonski/" class="card-link small"><p>Joanna</p></a>
+        </div>
+
+        
+
+        
+      
+        
+
+        <div class="col-4 col-sm-2 align-self-center">
+          
+            <a href="https://realpython.com/team/kstratis/" aria-hidden="true" tabindex="-1"><img loading="lazy" src="./python-while-loops_files/KEK9iuEG_400x400.28b60a4581c0.jpg" srcset="/cdn-cgi/image/width=100,height=100,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/KEK9iuEG_400x400.28b60a4581c0.jpg 100w, /cdn-cgi/image/width=133,height=133,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/KEK9iuEG_400x400.28b60a4581c0.jpg 133w, /cdn-cgi/image/width=200,height=200,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/KEK9iuEG_400x400.28b60a4581c0.jpg 200w, /cdn-cgi/image/width=400,height=400,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/KEK9iuEG_400x400.28b60a4581c0.jpg 400w" sizes="(min-width: 1200px) 73px, (min-width: 780px) calc(-0.75vw + 69px), (min-width: 580px) 43px, calc(33.46vw - 64px)" width="400" height="400" style="background: #d8c5b4;" class="rounded-circle img-fluid w-100" alt="Kyle Stratis"></a>
+          
+        </div>
+        <div class="col pl-0 d-none d-sm-block">
+          <a href="https://realpython.com/team/kstratis/" class="card-link small"><p>Kyle</p></a>
+        </div>
+
+        
+
+        
+          </div>
+        
+      
+    </div>
+  </div>
+  
+
+</div>
+
+
+
+
+
+  
+    
+
+<div class="bg-light rounded py-4 my-4 shadow shadow-sm mx-n2">
+  
+  <div class="col-12 text-center d-block d-md-none">
+    <p class="h2 mb-3">Master <u><span class="marker-highlight">Real-World Python Skills</span></u> With Unlimited Access to Real&nbsp;Python</p>
+    <p class="mb-1"><img loading="lazy" class="w-75" src="./python-while-loops_files/lesson-locked.f5105cfd26db.svg" width="510" height="260" alt="Locked learning resources"></p>
+    <p class="mx-auto w-75 mb-3 small"><strong>Join us and get access to thousands of tutorials, hands-on video courses, and a community of expert&nbsp;Pythonistas:</strong></p>
+    <p class="mb-0"><a href="https://realpython.com/account/join/?utm_source=rp_article_footer&amp;utm_content=python-while-loop" class="btn btn-primary btn-sm px-4 mb-0">Level Up Your Python Skills »</a>
+  </p></div>
+
+  
+  <div class="col-12 text-center d-none d-md-block">
+    <p class="h2 mb-2">Master <u><span class="marker-highlight">Real-World Python Skills</span></u><br>With Unlimited Access to Real&nbsp;Python</p>
+    <p class="mb-2"><img loading="lazy" class="w-50 mb-2" src="./python-while-loops_files/lesson-locked.f5105cfd26db.svg" width="510" height="260" alt="Locked learning resources"></p>
+    <p class="mx-auto w-50 mb-3"><strong>Join us and get access to thousands of tutorials, hands-on video courses, and a community of expert Pythonistas:</strong></p>
+    <p><a href="https://realpython.com/account/join/?utm_source=rp_article_footer&amp;utm_content=python-while-loop" class="btn btn-primary btn-lg px-4">Level Up Your Python Skills »</a>
+  </p></div>
+</div>
+
+  
+
+  
+  <div class="card mt-4" id="reader-comments">
+    <p class="card-header h3">What Do You Think?</p>
+    
+    <div class="text-center mt-3 mb-0 p-0">
+      <div class="mb-2">
+        <strong class="mr-2">Rate this article:</strong>
+        
+<div class="btn-group mb-0">
+  <a class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" title="Liked it" role="button" aria-label="Thumbs up (liked it)" href="https://realpython.com/feedback/survey/article/python-while-loop/liked/?from=article-comments" target="_blank"><span class="icon" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-up"></use></svg></span></a> 
+  <a class="btn btn-secondary border-left" role="button" aria-label="Thumbs down (disliked it)" title="Disliked it" href="https://realpython.com/feedback/survey/article/python-while-loop/disliked/?from=article-comments" target="_blank"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-down"></use></svg></span></a>
+</div>
+
+      </div>
+      
+
+
+
+<div class="d-flex justify-content-center flex-wrap gap-2 my-3">
+  
+  
+  <a target="_blank" rel="nofollow" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Frealpython.com%2Fpython-while-loop%2F" class="btn btn-sm share-linkedin" aria-label="Share on LinkedIn"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--linkedin"></use></svg></span>LinkedIn</a>
+  
+  
+  <a target="_blank" rel="nofollow" href="https://twitter.com/intent/tweet/?text=Interesting%20Python%20article%20on%20%40realpython%3A%20Python%20%22while%22%20Loops%20%28Indefinite%20Iteration%29&amp;url=https%3A%2F%2Frealpython.com%2Fpython-while-loop%2F" class="btn btn-sm share-x-twitter" aria-label="Share on X/Twitter"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--x-twitter"></use></svg></span>Twitter</a>
+  
+  
+  <a target="_blank" rel="nofollow" href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Frealpython.com%2Fpython-while-loop%2F" class="btn btn-sm share-facebook" aria-label="Share on Facebook"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--facebook"></use></svg></span>Facebook</a>
+  
+  
+  <a target="_blank" rel="nofollow" href="mailto:?subject=Python%20article%20for%20you&amp;body=Python%20%22while%22%20Loops%20%28Indefinite%20Iteration%29%20on%20Real%20Python%0A%0Ahttps%3A%2F%2Frealpython.com%2Fpython-while-loop%2F%0A" class="btn btn-sm share-email" aria-label="Share via Email"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--envelope"></use></svg></span>Email</a>
+  
+  
+</div>
+
+    </div>
+    
+    <div class="card-body pt-0 text-wrap-pretty">
+      <p>What’s your #1 takeaway or favorite thing you learned? How are you going to put your newfound skills to use? Leave a comment below and let us know.</p>
+
+      <div class="alert alert-dark">
+        <p class="mb-0"><strong>Commenting Tips:</strong> The most useful comments are those written with the goal of learning from or helping out other students. <a href="https://realpython.com/python-beginner-tips/#tip-9-ask-good-questions" target="_blank">Get tips for asking good questions</a> and <a href="https://support.realpython.com/" target="_blank">get answers to common questions in our support portal</a>.</p><hr>Looking for a real-time conversation? Visit the <a href="https://realpython.com/community/" target="_blank">Real Python Community Chat</a> or join the next <a href="https://realpython.com/office-hours/" target="_blank">“Office&nbsp;Hours” Live Q&amp;A Session</a>. Happy Pythoning!<p></p>
+
+      </div>
+
+      <div class="mb-4" id="disqus_thread">
+      
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="card mt-4 mb-4">
+    <p class="card-header h3">Keep Learning</p>
+    <div class="card-body">
+      <p class="mb-0">Related Topics:
+      
+        
+<a href="https://realpython.com/tutorials/basics/" class="badge badge-light text-muted">basics</a>
+
+      
+        
+<a href="https://realpython.com/tutorials/python/" class="badge badge-light text-muted">python</a>
+
+      
+      </p>
+      
+        <p class="mt-3 mb-0">Recommended Video Course: <a class="text-success" href="https://realpython.com/courses/mastering-while-loops/">Mastering While Loops</a></p>
+      
+    </div>
+  </div>
+
+  
+    
+    
+      
+<div class="modal fade" tabindex="-1" role="dialog" id="rpvc">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header border-0">
+        <div class="col-12 col-lg-9 mx-auto modal-title text-center my-2">
+          <h2 class="my-0">Master <u>Real-World Python Skills</u> With Unlimited Access to Real Python</h2>
+        </div>
+      </div>
+
+      
+      <div class="modal-body bg-light">
+        <div class="col-12 text-center">
+
+          <div class="col-12 col-lg-8 mx-auto mb-2 mt-3">
+            <a href="https://realpython.com/account/join/?utm_source=rp&amp;utm_medium=web&amp;utm_campaign=pwn&amp;utm_content=v2&amp;next=%2Fpython-while-loop%2F"><img loading="lazy" class="w-100" src="./python-while-loops_files/lesson-locked.f5105cfd26db.svg" width="510" height="260" alt="Unlock all content"></a>
+
+            <p class="mb-3"><strong>Join us and get access to thousands of tutorials, hands-on video courses, and a community of expert Pythonistas:</strong></p>
+          </div>
+
+          <p><a href="https://realpython.com/account/join/?utm_source=rp&amp;utm_medium=web&amp;utm_campaign=pwn&amp;utm_content=v2" class="btn btn-primary btn-lg px-4"><span class="icon baseline mr-2" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@unlock"></use></svg></span>Unlock All Content »</a></p>
+
+        </div>
+      </div>
+      
+
+      <div class="modal-footer border-0">
+        <button class="text-muted btn" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+      <script src="./python-while-loops_files/pw.dc84fc526165.js.download" async=""></script>
+    
+  
+
+
+    </div>
+
+  </div>
+
+    </div>
+
+    
+    
+
+    
+    
+      
+        
+          <div class="modal fade" id="modal-python-cheat-sheet-experiment" tabindex="-1" aria-labelledby="modal-python-cheat-sheet-experiment-title" aria-describedby="modal-python-cheat-sheet-experiment-desc">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header bg-light pt-3 pb-2">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="progress" style="height: .5rem;" aria-hidden="true">
+                <div class="progress-bar progress-bar-striped progress-bar-animated w-75" role="progressbar"></div>
+              </div>
+            </div>
+            <div class="col-12">
+              <p id="modal-python-cheat-sheet-experiment-desc" class="text-muted text-center mb-0 mt-2">Almost there! Complete this form and click the button below to gain instant&nbsp;access:</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+
+      <div class="modal-body m-4">
+        <div class="container-fluid">
+          <div class="row align-items-center text-center">
+            <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+              
+              
+                <img loading="lazy" class="img-fluid rounded" src="./python-while-loops_files/python-logo.webp" width="1000" height="1000" srcset="/cdn-cgi/image/width=250,format=auto/https://files.realpython.com/media/python-logo.8eb72ea6927b.png 250w, /cdn-cgi/image/width=333,format=auto/https://files.realpython.com/media/python-logo.8eb72ea6927b.png 333w, /cdn-cgi/image/width=500,format=auto/https://files.realpython.com/media/python-logo.8eb72ea6927b.png 500w, /cdn-cgi/image/width=1000,format=auto/https://files.realpython.com/media/python-logo.8eb72ea6927b.png 1000w" sizes="(min-width: 1000px) 207px, (min-width: 580px) 382px, calc(100vw - 134px)" alt="Python Logo">
+              
+            </div>
+            <div class="col">
+              <p id="modal-python-cheat-sheet-experiment-title" class="text-center h3 mb-4">Get the Python Cheat Sheet (Free PDF)</p>
+
+              <form class="col-12" action="https://realpython.com/optins/process/" method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value="r6Mx6Qa05Y6GLm3riPiWL0LHtA3X08zTJfR5gPxrefRZrt5nc7s14775Ce31jPR9">
+                <input type="hidden" name="slug" value="python-cheat-sheet-experiment">
+                <input type="hidden" name="source_path" value="/python-while-loop/"> 
+                <div class="form-group">
+                  <input type="email" name="email" class="form-control" placeholder="Email Address" required="" autofocus="">
+                </div>
+                <button name="submit" type="submit" class="btn btn-primary btn-block text-wrap">Send My Python Cheat Sheet »</button>
+                <p class="mb-0 mt-2 text-muted text-center"><small>🔒 No spam. We take your privacy seriously.</small></p>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+        
+      
+    
+
+    
+      
+<footer class="footer">
+  <div class="container">
+    
+      <div class="mx-auto mt-4 mb-0" style="max-width: 768px;">
+        
+
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:12.5%;"></div>
+  <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/58257184031/?c=31941813441&amp;p=58946116052&amp;r=65813" rel="nofollow" target="_blank"><img src="./python-while-loops_files/16bf1efe41b538fae54711c58c701f0e" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+<a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a>
+
+
+      </div>
+    
+
+    <p class="text-center text-muted w-75 mx-auto">© 2012–2024 Real&nbsp;Python&nbsp;⋅ <a href="https://realpython.com/newsletter/">Newsletter</a>&nbsp;⋅ <a href="https://realpython.com/podcasts/rpp/">Podcast</a>&nbsp;⋅ <a href="https://www.youtube.com/realpython">YouTube</a>&nbsp;⋅ <a href="https://twitter.com/realpython">Twitter</a>&nbsp;⋅ <a href="https://facebook.com/LearnRealPython">Facebook</a>&nbsp;⋅ <a href="https://www.instagram.com/realpython/">Instagram</a>&nbsp;⋅ <a href="https://realpython.com/">Python&nbsp;Tutorials</a>&nbsp;⋅ <a href="https://realpython.com/search">Search</a>&nbsp;⋅ <a href="https://realpython.com/privacy-policy/">Privacy Policy</a>&nbsp;⋅ <a href="https://realpython.com/energy-policy/">Energy Policy</a>&nbsp;⋅ <a href="https://realpython.com/sponsorships/">Advertise</a>&nbsp;⋅ <a href="https://realpython.com/contact/">Contact</a><br><span class="icon baseline text-color-red" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--heart"></use></svg></span> Happy Pythoning!</p>
+  </div>
+</footer>
+
+    
+
+    
+
+    
+    <script>
+      (function() {
+        var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
+        if (!isAndroid) {
+          return;
+        }
+
+        var styles = `
+        @font-face {
+          font-family: 'DejaVu Sans Mono';
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+          src: url('/static/mfonts/dejavu-sans-mono.33f00225f915.woff2') format('woff2'),
+               url('/static/mfonts/dejavu-sans-mono.0da77d3739f3.woff') format('woff'),
+               url('/static/mfonts/dejavu-sans-mono.c2356fc49835.ttf') format('truetype');
+        }
+        code, kbd, pre, samp {
+          font-family: 'DejaVu Sans Mono', monospace;
+        }
+        `
+
+        var styleSheet = document.createElement("style")
+        styleSheet.type = "text/css"
+        styleSheet.innerText = styles
+        document.head.appendChild(styleSheet)
+      })();
+    </script>
+
+    
+    
+    <script src="./python-while-loops_files/jquery.min.2c872dbe60f4.js.download"></script>
+    <script src="./python-while-loops_files/popper.min.aeebb49d0b64.js.download"></script>
+    <script src="./python-while-loops_files/bootstrap.min.248284cdd069.js.download"></script>
+
+    
+    
+
+
+    <script>
+    (function() {
+      document.querySelectorAll(".js-search-form-submit").forEach(function(el) {
+        el.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.currentTarget.parentElement.submit();
+        })
+      });
+    })();
+    </script>
+    <script src="./python-while-loops_files/codeblock.fd057f64871d.js.download" async=""></script>
+    <script src="./python-while-loops_files/lightbox.5abaefa8b384.js.download" async=""></script>
+    <script src="./python-while-loops_files/platforms-ui.a69aad1c6777.js.download" async=""></script>
+    
+    <script src="./python-while-loops_files/session.a2647010a4be.js.download" async=""></script>
+    
+
+    <script src="./python-while-loops_files/table-of-contents.1878a66e56ce.js.download" defer=""></script>
+<script src="./python-while-loops_files/completion-status.c5660d84687e.js.download" defer=""></script>
+<script src="./python-while-loops_files/share-button.6511bf1c1a9a.js.download" defer=""></script>
+
+
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+<script>window.rp_prop_id = '58946116052';</script>
+<script src="./python-while-loops_files/tag.js.download" async=""></script>
+
+
+
+<script id="js-context" type="application/json">{"is_completed": false, "is_bookmarked": false, "api_article_bookmark_url": "/api/v1/articles/python-while-loop/bookmark/", "api_article_completion_status_url": "/api/v1/articles/python-while-loop/completion_status/", "api_article_progress_url": "/api/v1/articles/python-while-loop/progress/"}</script>
+
+
+  <script src="./python-while-loops_files/progress.d60fa4010861.js.download" async=""></script>
+
+
+
+
+
+  
+    <script id="dsq-count-scr" src="./python-while-loops_files/count.js.download" async=""></script>
+    <script>
+      var disqus_config = function () {
+        this.page.url = 'https://realpython.com/python-while-loop/';
+        this.page.identifier = 'https://realpython.com/python-while-loop/';
+        this.callbacks.onReady = [function() {
+          if (window.onDisqusReady) {
+            window.onDisqusReady();
+          }
+        }];
+      };
+      var disqus_script_url = 'https://realpython.disqus.com/embed.js';
+    </script>
+    <script src="./python-while-loops_files/lazy-disqus.91224536ec68.js.download" defer=""></script>
+  
+
+
+  
+  
+  <script src="./python-while-loops_files/OneSignalSDK.page.js.download" defer=""></script>
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(function(OneSignal) {
+      OneSignal.init({
+        appId: "c0081e20-a523-42bb-b0ac-04c5a9e8bf40",
+        safari_web_id: "web.onesignal.auto.337e82fd-eeda-48f8-8fe5-d2f6dec774c2",
+        notifyButton: {
+          enable: true,
+          position: "bottom-left",
+          showCredit: false,
+          text: {
+            "tip.state.unsubscribed": "Receive a notification when we post a new tutorial",
+            "tip.state.subscribed": "You're subscribed to new tutorial notifications",
+            'tip.state.blocked': "You've blocked notifications",
+            'message.prenotify': 'Click to subscribe to notifications',
+            "message.action.subscribed": "Great, we'll let you know when the next tutorial comes out!",
+            'message.action.resubscribed': "You're subscribed to notifications",
+            'message.action.unsubscribed': "You won't receive notifications again",
+            'dialog.main.title': 'Manage Site Notifications',
+            'dialog.main.button.subscribe': 'SUBSCRIBE',
+            'dialog.main.button.unsubscribe': 'UNSUBSCRIBE',
+            'dialog.blocked.title': 'Unblock Notifications',
+            'dialog.blocked.message': "Follow these instructions to allow notifications:"
+          },
+          
+        },
+      });
+    });
+  </script>
+  
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Python \u0022while\u0022 Loops (Indefinite Iteration)",
+    
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://files.realpython.com/media/Python-while-Loops-Indefinite-Iteration_Watermarked.2dfa40d8e92c.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://realpython.com/python-while-loop/"
+    },
+    "datePublished": "2018-11-07T14:00:00+00:00",
+    "dateModified": "2022-07-18T18:39:53.187914+00:00",
+     "publisher": {
+      "@type": "Organization",
+      "name": "Real Python",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "/static/real-python-logo-square-tiny.b2452b6d3823.png",
+        "width": 60,
+        "height": 60
+      }
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Real Python",
+      "url": "https://realpython.com",
+      "logo": "/static/real-python-logo-square.146e987bf77c.png"
+    },
+    "description": "In this tutorial, you\u0027ll learn about indefinite iteration using the Python while loop. You’ll be able to construct basic and complex while loops, interrupt loop execution with break and continue, use the else clause with a while loop, and deal with infinite loops."
+  }
+  </script>
+  
+
+
+    <script src="./python-while-loops_files/optins.41a0db820ee2.js.download" async=""></script>
+    <script src="./python-while-loops_files/autocomplete.ecb9103353c8.js.download" async=""></script>
+
+    
+
+<script>
+  var _cio = _cio || [];
+  (function(){
+      var a,b,c;a=function(f){return function(){_cio.push([f].
+      concat(Array.prototype.slice.call(arguments,0)))}};b=["load","identify",
+      "sidentify","track","page","on","off"];for(c=0;c<b.length;c++){_cio[b[c]]=a(b[c])};
+      var t = document.createElement('script'),
+          s = document.getElementsByTagName('script')[0];
+      t.async = true;
+      t.id    = 'cio-tracker';
+      t.setAttribute('data-site-id', '7c2f77c7758d22126955');
+      t.setAttribute('data-use-array-params', 'true');
+      t.setAttribute('data-in-app-org-id', '0ed756ae-4cd1-4bb7-912c-1b37e39b6595');
+      t.setAttribute('data-use-in-app', 'true');
+      t.src = 'https://assets.customer.io/assets/track.js';
+      s.parentNode.insertBefore(t, s);
+  })();
+  (function(){
+    try {
+      var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    } catch (e) {
+      var tz = null;
+    }
+    var opts = {
+      
+      id: '58cfc528-9e15-4f9c-ba87-cd171794ed8c',
+      created_at: 1647928579,
+      last_seen_at: 1724556112,
+      has_active_subscription: false,
+      first_name: 'Natalia',
+    };
+    if (tz) {
+      opts.timezone = tz;
+    }
+    _cio.identify(opts);
+  })();
+</script>
+
+
+    
+
+    
+
+    
+
+    
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2220911568135371');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2220911568135371&ev=PageView&noscript=1"
+/></noscript>
+
+
+    
+
+    
+<script>!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});</script>
+
+<script>
+window.Beacon('init', 'f6ddfa28-ffa8-423f-b3b1-50e29e420c43')
+
+Beacon("identify", {
+  email: "natalia.shif@gmail.com",
+  name: "nataliashif",
+  has_active_subscription: "False",
+  username: "natalia.shif",
+  userid: "434279"
+});
+</script>
+
+
+  
+
+<div id="onesignal-bell-container" class="onesignal-bell-container onesignal-reset onesignal-bell-container-bottom-left"><div id="onesignal-bell-launcher" class="onesignal-bell-launcher onesignal-bell-launcher-md onesignal-bell-launcher-bottom-left onesignal-bell-launcher-theme-default onesignal-bell-launcher-active"><div class="onesignal-bell-launcher-button"><svg class="onesignal-bell-svg" xmlns="http://www.w3.org/2000/svg" width="99.7" height="99.7" viewBox="0 0 99.7 99.7" style="filter: drop-shadow(0 2px 4px rgba(34,36,38,0.35));; -webkit-filter: drop-shadow(0 2px 4px rgba(34,36,38,0.35));;"><circle class="background" cx="49.9" cy="49.9" r="49.9" style=""></circle><path class="foreground" d="M50.1 66.2H27.7s-2-.2-2-2.1c0-1.9 1.7-2 1.7-2s6.7-3.2 6.7-5.5S33 52.7 33 43.3s6-16.6 13.2-16.6c0 0 1-2.4 3.9-2.4 2.8 0 3.8 2.4 3.8 2.4 7.2 0 13.2 7.2 13.2 16.6s-1 11-1 13.3c0 2.3 6.7 5.5 6.7 5.5s1.7.1 1.7 2c0 1.8-2.1 2.1-2.1 2.1H50.1zm-7.2 2.3h14.5s-1 6.3-7.2 6.3-7.3-6.3-7.3-6.3z" style=""></path><ellipse class="stroke" cx="49.9" cy="49.9" rx="37.4" ry="36.9" style=""></ellipse></svg></div><div class="onesignal-bell-launcher-badge" style="filter: drop-shadow(0 2px 4px rgba(34,36,38,0));; -webkit-filter: drop-shadow(0 2px 4px rgba(34,36,38,0));;"></div><div class="onesignal-bell-launcher-message"><div class="onesignal-bell-launcher-message-body"></div></div><div class="onesignal-bell-launcher-dialog" style="filter: drop-shadow(0px 2px 2px rgba(34,36,38,.15));; -webkit-filter: drop-shadow(0px 2px 2px rgba(34,36,38,.15));;"><div class="onesignal-bell-launcher-dialog-body"></div></div></div></div><div id="beacon-container"><div class="hsds-beacon"><div class="Beacon"><div class="ContainerGradient-sc-62zoy-0 dkxqZi"></div><div class="ContainerFramecss__WrapperUI-sc-d7rzhh-0 itSWDc BeaconContainer is-configDisplayRight"></div><div class="FabButtonFramecss__FabButtonFrameUI-sc-y1b4md-0 bbHIsf BeaconFabButtonFrame" style="border-radius: 60px; height: 60px; position: fixed; transform: scale(1); width: 105px; z-index: 1049;"><span class="FabButtonFramecss__FabButtonPulseUI-sc-y1b4md-1 hzrFgd"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M60 30C60 51.25 51.25 60 30 60C8.75 60 1.99634e-09 51.25 1.99563e-09 30C1.99492e-09 8.75 8.75 0 30 0C51.25 0 60 8.75 60 30Z"></path>
+</svg>
+</span><span class="FabButtonFramecss__FabButtonPulseUI-sc-y1b4md-1 hzrFgd"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M60 30C60 51.25 51.25 60 30 60C8.75 60 1.99634e-09 51.25 1.99563e-09 30C1.99492e-09 8.75 8.75 0 30 0C51.25 0 60 8.75 60 30Z"></path>
+</svg>
+</span><iframe title="Help Scout Beacon - Open" id="" allowtransparency="true" data-cy="FrameComponent" src="./python-while-loops_files/saved_resource.html"></iframe></div></div></div></div><div id="G7b34f6e3" style="display: none; height: 0px;" class="gist-e6a1a29e-dd65-462f-824a-571c9af79467">
+    <div id="gist-embed">
+        <style>
+            #x-gist-floating-top, #x-gist-floating-top-left, #x-gist-floating-top-right {
+                position: fixed;
+                top: 0px;
+                z-index: 1000000;
+            }
+            #x-gist-floating-bottom, #x-gist-floating-bottom-left, #x-gist-floating-bottom-right {
+                position: fixed;
+                bottom: 0px;
+                z-index: 1000000;
+            }
+            #x-gist-bottom, #x-gist-top, #x-gist-floating-top, #x-gist-floating-bottom {
+                left: 50%;
+                transform: translate(-50%, 0%);
+            }
+            #x-gist-floating-top-right, #x-gist-floating-bottom-right {
+                right: 0px;
+            }
+            #gist-embed {
+                position: relative;
+                height: 100%;
+                width: 100%;
+            }
+            #gist-embed-container {
+                position: relative;
+                height: 100%;
+                width: 100%;
+            }
+            #gist-embed-container .gist-frame {
+                height: 100%;
+                width: 100%;
+                border: none;
+            }
+            #x-gist-top.gist-e6a1a29e-dd65-462f-824a-571c9af79467,
+            #x-gist-bottom.gist-e6a1a29e-dd65-462f-824a-571c9af79467,
+            #x-gist-floating-top.gist-e6a1a29e-dd65-462f-824a-571c9af79467,
+            #x-gist-floating-bottom.gist-e6a1a29e-dd65-462f-824a-571c9af79467,
+            #x-gist-floating-top-left.gist-e6a1a29e-dd65-462f-824a-571c9af79467,
+            #x-gist-floating-top-right.gist-e6a1a29e-dd65-462f-824a-571c9af79467,
+            #x-gist-floating-bottom-left.gist-e6a1a29e-dd65-462f-824a-571c9af79467,
+            #x-gist-floating-bottom-right.gist-e6a1a29e-dd65-462f-824a-571c9af79467 {
+                transition: height 0.1s ease-in-out;
+            }
+            @media (max-width: 800px) {
+                #x-gist-top.gist-e6a1a29e-dd65-462f-824a-571c9af79467,
+                #x-gist-bottom.gist-e6a1a29e-dd65-462f-824a-571c9af79467,
+                #x-gist-floating-top.gist-e6a1a29e-dd65-462f-824a-571c9af79467,
+                #x-gist-floating-bottom.gist-e6a1a29e-dd65-462f-824a-571c9af79467,
+                #x-gist-floating-top-left.gist-e6a1a29e-dd65-462f-824a-571c9af79467,
+                #x-gist-floating-top-right.gist-e6a1a29e-dd65-462f-824a-571c9af79467,
+                #x-gist-floating-bottom-left.gist-e6a1a29e-dd65-462f-824a-571c9af79467,
+                #x-gist-floating-bottom-right.gist-e6a1a29e-dd65-462f-824a-571c9af79467 {
+                    width: 100% !important;
+                }
+            }
+        </style>
+        <div id="gist-embed-container">
+            <iframe id="gist-e6a1a29e-dd65-462f-824a-571c9af79467" class="gist-frame" src="./python-while-loops_files/index.html"></iframe>
+        </div>
+    </div></div></body></html>

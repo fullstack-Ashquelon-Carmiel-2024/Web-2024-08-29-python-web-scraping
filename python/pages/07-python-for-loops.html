@@ -1,0 +1,2467 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)https://realpython.com/python-for-loop/#altering-for-loop-behavior -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <link href="https://files.realpython.com/" rel="preconnect">
+
+    <title>Python "for" Loops (Definite Iteration) – Real Python</title>
+    <meta name="author" content="Real Python">
+    <meta name="description" content="In this introductory tutorial, you&#39;ll learn all about how to perform definite iteration with Python for loops. You’ll see how other programming languages implement definite iteration, learn about iterables and iterators, and tie it all together to learn about Python’s for loop.">
+    <meta name="keywords" content="">
+
+    
+  
+
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+
+    
+      <link rel="stylesheet" href="./python-for-loops_files/realpython.min.d94753535dde.css">
+      <link rel="stylesheet" href="./python-for-loops_files/font.5ac42994de49.css">
+      <link rel="stylesheet" href="./python-for-loops_files/glightbox.min.9b438b29cef1.css" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;"><noscript><link rel="stylesheet" href="/static/glightbox.min.9b438b29cef1.css"></noscript>
+      
+        <link rel="stylesheet" href="./python-for-loops_files/animate.min.c0be8e53226a.css">
+      
+    
+
+    
+  
+  <link rel="preload" as="image" href="./python-for-loops_files/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg" imagesrcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg 1920w" imagesizes="(min-width: 1200px) 690px, (min-width: 780px) calc(-5vw + 669px), (min-width: 580px) 510px, calc(100vw - 30px)">
+
+
+    
+    
+      <link rel="canonical" href="https://realpython.com/python-for-loop/">
+
+      
+      
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg">
+        <meta property="og:image" content="https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg">
+      
+      <meta name="twitter:creator" content="@realpython">
+      <meta name="twitter:site" content="@realpython">
+      <meta property="og:title" content="Python &quot;for&quot; Loops (Definite Iteration) – Real Python">
+      <meta property="og:type" content="article">
+      <meta property="og:url" content="https://realpython.com/python-for-loop/">
+      <meta property="og:description" content="In this introductory tutorial, you&#39;ll learn all about how to perform definite iteration with Python for loops. You’ll see how other programming languages implement definite iteration, learn about iterables and iterators, and tie it all together to learn about Python’s for loop.">
+    
+
+    <link href="https://realpython.com/static/favicon.68cbf4197b0c.png" rel="icon">
+    <link href="https://realpython.com/atom.xml" rel="alternate" title="Real Python" type="application/atom+xml">
+    <link rel="manifest" href="https://realpython.com/manifest.json">
+
+    
+
+    
+    
+
+    
+    <script type="text/javascript" src="./python-for-loops_files/vendor.5fe8f3bc.js.download"></script><script type="text/javascript" src="./python-for-loops_files/main.fa8b6644.js.download"></script><script async="" src="./python-for-loops_files/gist.min.js.download"></script><script type="text/javascript" async="" src="./python-for-loops_files/saved_resource"></script><script async="" src="./python-for-loops_files/in-app.js.download"></script><script src="./python-for-loops_files/2220911568135371" async=""></script><script async="" src="./python-for-loops_files/fbevents.js.download"></script><script type="text/javascript" async="" src="./python-for-loops_files/js"></script><script async="" id="cio-tracker" data-site-id="7c2f77c7758d22126955" data-use-array-params="true" data-in-app-org-id="0ed756ae-4cd1-4bb7-912c-1b37e39b6595" data-use-in-app="true" src="./python-for-loops_files/track.js.download"></script><script async="" src="./python-for-loops_files/analytics.js.download"></script><script id="icons-data" type="application/json">{"iconsUrl": "/static/icons.1440a154cfa8.svg"}</script>
+    <script id="optins-data" type="application/json">{"turnstileSiteKey": "0x4AAAAAAAQQUCLRXBi8NnUh"}</script>
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  
+
+  ga('create', 'UA-35184939-1', 'auto', {'allowLinker': true});
+
+  
+
+  
+
+  
+  
+  ga('set', {
+    dimension1: true,
+    dimension2: false
+  });
+  
+
+  ga('send', 'pageview');
+  
+</script>
+
+
+<script async="" src="./python-for-loops_files/js(1)"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L7L6L5F6Y6');
+
+  
+</script>
+
+  <script src="./python-for-loops_files/count-data.js.download"></script><script src="./python-for-loops_files/OneSignalSDK.page.es6.js.download" defer=""></script><link rel="stylesheet" href="./python-for-loops_files/OneSignalSDK.page.styles.css"><style hs-beacon="active" data-styled-version="5.1.1"></style></head>
+  <body>
+    
+      
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark flex-column  user-select-none">
+  <div class="container flex-row">
+
+    <a class="navbar-brand" href="https://realpython.com/">
+      <img src="./python-for-loops_files/real-python-logo.893c30edea53.svg" width="165" height="40" class="d-inline-block align-top" alt="Real Python">
+    </a>
+
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse navbar-nav-scroll" id="navbarSupportedContent" role="navigation" aria-label="Main Navigation">
+
+      <ul class="navbar-nav mr-2">
+
+        <li class="nav-item">
+          <a class="nav-link rounded" href="https://realpython.com/start-here/">Start&nbsp;Here</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link rounded dropdown-toggle" href="https://realpython.com/python-for-loop/#" id="navbarDropdownLibrary" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--python"></use></svg></span> Learn Python
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownLibrary">
+            
+<a class="dropdown-item " href="https://realpython.com/search?kind=article&amp;kind=course&amp;order=newest" style="color: #ff7e73; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--graduation-cap"></use></svg></span>Python Tutorials&nbsp;→<br><small class="text-secondary">In-depth articles and video courses</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/learning-paths/" style="color: #ffc873; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@learning-path"></use></svg></span>Learning Paths&nbsp;→<br><small class="text-secondary">Guided study plans for accelerated learning</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/quizzes/" style="color: #abe0e5; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span>Quizzes&nbsp;→<br><small class="text-secondary">Check your learning progress</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/tutorials/all/" style="color: #ccc; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@category"></use></svg></span>Browse Topics&nbsp;→<br><small class="text-secondary">Focus on a specific area or skill level</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/community/" style="color: #e5c6ab; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--message-smile"></use></svg></span>Community Chat&nbsp;→<br><small class="text-secondary">Learn with other Pythonistas</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/office-hours/" style="color: #e5c6ab; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--users"></use></svg></span>Office Hours&nbsp;→<br><small class="text-secondary">Live Q&amp;A calls with Python experts</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/podcasts/rpp/" style="color: #b8abe5; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@podcast"></use></svg></span>Podcast&nbsp;→<br><small class="text-secondary">Hear what’s new in the world of Python</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/products/books/" style="color: #abe5b1; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--book-heart"></use></svg></span>Books&nbsp;→<br><small class="text-secondary">Round out your knowledge and learn offline</small></a>
+
+
+            
+
+            
+              
+              
+<a class="dropdown-item border-top" href="https://realpython.com/account/join/" style="color: #ffc107; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--star"></use></svg></span>Unlock All Content&nbsp;→</a>
+
+              
+            
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link rounded dropdown-toggle" href="https://realpython.com/python-for-loop/#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            More
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+            <a class="dropdown-item" href="https://realpython.com/learner-stories/">Learner Stories</a>
+            <a class="dropdown-item" href="https://realpython.com/newsletter/">Python Newsletter</a>
+            <a class="dropdown-item" href="https://www.pythonjobshq.com/" target="_blank">Python Job Board</a>
+            <a class="dropdown-item" href="https://realpython.com/team/">Meet the Team</a>
+            <a class="dropdown-item" href="https://realpython.com/write-for-us/">Become a Tutorial Writer</a>
+            <a class="dropdown-item" href="https://realpython.com/become-an-instructor/">Become a Video Instructor</a>
+          </div>
+        </li>
+
+      </ul> 
+
+      
+      <div class="d-block d-lg-none"> 
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link rounded" href="https://realpython.com/search" title="Search"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--search"></use></svg></span> Search</a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="d-none d-lg-flex align-items-center mr-2 flex-fill">
+        <form class="form-inline w-100 position-relative" action="https://realpython.com/search" method="GET">
+          <a class="js-search-form-submit position-absolute" href="https://realpython.com/search" title="Search" aria-hidden="true" tabindex="-1"><span class="icon baseline text-muted pl-2" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--search"></use></svg></span></a>
+          <input class="search-autocomplete search-field form-control form-control-md mr-sm-1 mr-lg-2 w-100" style="padding-left: 2rem;" maxlength="50" type="search" placeholder="Search" aria-label="Search" aria-keyshortcuts="/ Control+J Meta+J" name="q" autocomplete="off">
+          <span class="search-hotkey-indicator position-absolute px-2 border border-input text-input rounded small user-select-none" style="right: 1em;" title="Press / (forward slash) or Ctrl+J to open search" aria-hidden="true">/</span>
+          <input type="hidden" name="_from" value="nav">
+        </form>
+      </div>
+      
+
+      <ul class="navbar-nav ml-auto">
+        
+          <li class="nav-item form-inline mr-2 my-2 ml-3 ml-lg-0">
+            <a class="btn btn-sm btn-primary px-5 px-lg-3" href="https://realpython.com/account/join/">Join</a>
+          </li>
+        
+
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link rounded dropdown-toggle  p-2 m-0" href="https://realpython.com/python-for-loop/#" id="navbarDropdownMyAccount" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="rounded-circle ml-2 ml-lg-0" style="width: 45px; height: 45px;" width="500" height="500" src="./python-for-loops_files/8c4bba554c92b873ce60db74986b5b34.png" loading="lazy" alt="User avatar">
+              <span class="notifications-indicator-container">
+                <span class="notifications-indicator notifications-indicator-visible"></span>
+              </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMyAccount">
+              
+
+
+
+  
+    <a class="dropdown-item" href="https://realpython.com/account/notifications/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--bell"></use></svg></span>Notifications <span class="badge badge-pill badge-danger">9+</span></a>
+  
+
+
+<a class="dropdown-item" href="https://realpython.com/account/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--sliders"></use></svg></span>Manage Account</a>
+
+
+  <a class="dropdown-item" href="https://realpython.com/account/join/"><span class="icon baseline text-warning mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--star"></use></svg></span>Get Full Access</a>
+
+
+<a class="dropdown-item" href="https://realpython.com/search?status=in-progress&amp;order=recent"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@continue-learning"></use></svg></span>Continue Learning</a>
+
+<a class="dropdown-item" href="https://realpython.com/account/bookmarks/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--bookmark"></use></svg></span>Bookmarks</a>
+
+<a class="dropdown-item" href="https://realpython.com/certificates/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@certificate"></use></svg></span>Certificates</a>
+
+<a class="dropdown-item" href="https://realpython.com/account/purchases/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--cart-shopping"></use></svg></span>Purchases</a>
+
+
+
+
+
+<a class="dropdown-item" href="https://realpython.com/account/logout/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--right-from-bracket"></use></svg></span>Sign Out</a>
+
+            </div>
+          </li>
+        
+      </ul>
+
+    
+    </div>
+
+  </div>
+
+  
+
+</nav>
+
+    
+
+    <div class="container main-content">
+      
+
+      
+  <div class="row justify-content-center">
+
+    
+    <aside class="col-md-7 col-lg-4 order-2 d-none d-lg-block">
+      
+  
+
+
+
+
+<div class="card mb-3 bg-secondary">
+  <form class="card-body" action="https://realpython.com/optins/process/" method="post">
+    <div class="form-group">
+      <p class="h5 text-muted text-center">— FREE Email Series —</p>
+      <p class="h3 text-center">🐍 Python Tricks 💌</p>
+      <p><img loading="lazy" class="img-fluid rounded" src="./python-for-loops_files/pytrick-dict-merge.webp" width="738" height="490" alt="Python Tricks Dictionary Merge"></p>
+    </div>
+    <div class="form-group">
+      <input type="hidden" name="csrfmiddlewaretoken" value="PO3RZuWUcnNCpHudjqgfRzWLrazmFzxa7X8p9tjllEyV5Ow9dIqkaGi9AOzqYgPq">
+      <input type="hidden" name="slug" value="static-python-tricks-sidebar">
+      <input type="email" class="form-control form-control-md" name="email" placeholder="Email…" required="">
+    </div>
+    <button type="submit" name="submit" class="btn btn-primary btn-md btn-block">Get Python Tricks »</button>
+    <p class="mb-0 mt-2 text-muted text-center">🔒 No spam. Unsubscribe any time.</p>
+  </form>
+</div>
+
+
+  
+
+
+<div class="sidebar-module sidebar-module-inset border">
+  <a href="https://realpython.com/tutorials/all/" class="badge badge-light text-muted"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@category"></use></svg></span>Browse Topics</a>
+
+  <a href="https://realpython.com/learning-paths/" class="badge badge-light text-muted"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--map-location-dot"></use></svg></span>Guided Learning Paths</a>
+
+  <br>
+
+  <a href="https://realpython.com/search?level=basics" class="badge badge-light text-muted"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span> Basics</a>
+
+  <a href="https://realpython.com/search?level=intermediate" class="badge badge-light text-muted"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span><span class="icon baseline tight-left" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span> Intermediate</a>
+
+  <a href="https://realpython.com/search?level=advanced" class="badge badge-light text-muted"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span><span class="icon baseline tight-left" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span><span class="icon baseline tight-left" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span> Advanced</a>
+
+  <hr class="my-2">
+
+  
+    
+  
+    
+  
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/api/" class="badge badge-light text-muted">api</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/best-practices/" class="badge badge-light text-muted">best-practices</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/career/" class="badge badge-light text-muted">career</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/community/" class="badge badge-light text-muted">community</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/databases/" class="badge badge-light text-muted">databases</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/data-science/" class="badge badge-light text-muted">data-science</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/data-structures/" class="badge badge-light text-muted">data-structures</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/data-viz/" class="badge badge-light text-muted">data-viz</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/devops/" class="badge badge-light text-muted">devops</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/django/" class="badge badge-light text-muted">django</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/docker/" class="badge badge-light text-muted">docker</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/editors/" class="badge badge-light text-muted">editors</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/flask/" class="badge badge-light text-muted">flask</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/front-end/" class="badge badge-light text-muted">front-end</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/gamedev/" class="badge badge-light text-muted">gamedev</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/gui/" class="badge badge-light text-muted">gui</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/machine-learning/" class="badge badge-light text-muted">machine-learning</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/numpy/" class="badge badge-light text-muted">numpy</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/projects/" class="badge badge-light text-muted">projects</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/python/" class="badge badge-light text-muted">python</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/testing/" class="badge badge-light text-muted">testing</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/tools/" class="badge badge-light text-muted">tools</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/web-dev/" class="badge badge-light text-muted">web-dev</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/web-scraping/" class="badge badge-light text-muted">web-scraping</a>
+
+    
+  
+</div>
+
+
+
+  
+<div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+  
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:100%;"></div>
+  <div class="rpad" data-unit="1x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/48994424078/?c=41067926597&amp;p=58946116052&amp;r=73445" rel="nofollow" target="_blank"><img src="./python-for-loops_files/a5ff22ab118c293a4dc784ccb831c29e" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+
+
+</div>
+
+
+
+  <div class="sidebar-sticky ">
+    
+      
+
+
+<table-of-contents>
+  <div class="bg-light sidebar-module sidebar-module-inset">
+    <p class="h4 text-muted"><a class="link-unstyled" href="https://realpython.com/python-for-loop/#toc">Table of Contents</a></p>
+    <div class="toc">
+<ul>
+<li><a href="https://realpython.com/python-for-loop/#a-survey-of-definite-iteration-in-programming">A Survey of Definite Iteration in Programming</a><ul>
+<li><a href="https://realpython.com/python-for-loop/#numeric-range-loop">Numeric Range Loop</a></li>
+<li><a href="https://realpython.com/python-for-loop/#three-expression-loop">Three-Expression Loop</a></li>
+<li><a href="https://realpython.com/python-for-loop/#collection-based-or-iterator-based-loop">Collection-Based or Iterator-Based Loop</a></li>
+</ul>
+</li>
+<li><a href="https://realpython.com/python-for-loop/#the-python-for-loop">The Python for Loop</a><ul>
+<li><a href="https://realpython.com/python-for-loop/#iterables">Iterables</a></li>
+<li><a href="https://realpython.com/python-for-loop/#iterators">Iterators</a></li>
+</ul>
+</li>
+<li><a href="https://realpython.com/python-for-loop/#the-guts-of-the-python-for-loop">The Guts of the Python for Loop</a></li>
+<li><a href="https://realpython.com/python-for-loop/#iterating-through-a-dictionary">Iterating Through a Dictionary</a></li>
+<li><a href="https://realpython.com/python-for-loop/#the-range-function">The range() Function</a></li>
+<li class="active"><a href="https://realpython.com/python-for-loop/#altering-for-loop-behavior">Altering for Loop Behavior</a><ul>
+<li><a href="https://realpython.com/python-for-loop/#the-break-and-continue-statements">The break and continue Statements</a></li>
+<li><a href="https://realpython.com/python-for-loop/#the-else-clause">The else Clause</a></li>
+</ul>
+</li>
+<li class=""><a href="https://realpython.com/python-for-loop/#conclusion">Conclusion</a></li>
+</ul>
+</div>
+
+  </div>
+</table-of-contents>
+
+    
+
+    <div class="sidebar-module sidebar-module-inset d-flex justify-content-center flex-wrap row-gap-1 col-gap-2 my-3 py-0">
+      
+
+
+<completion-status class="btn-group mb-0" article-slug="python-for-loop" data-api-article-bookmark-url="/api/v1/articles/python-for-loop/bookmark/" data-api-article-completion-status-url="/api/v1/articles/python-for-loop/completion_status/">
+  <button data-target-complete-button="" title="Click to mark as completed" class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">Mark as Completed</button>
+  <button data-target-bookmark-button="" title="Add bookmark" class="btn btn-secondary border-left"><span class="icon baseline" aria-hidden="true">
+    <svg aria-hidden="true">
+      <use href="/static/icons.1440a154cfa8.svg#light--bookmark"></use>
+    </svg>
+    
+  </span></button>
+</completion-status>
+
+      <div class="w-100"></div> 
+      
+<div class="btn-group mb-0">
+  <a class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" title="Liked it" role="button" aria-label="Thumbs up (liked it)" href="https://realpython.com/feedback/survey/article/python-for-loop/liked/?from=article-sidebar" target="_blank"><span class="icon" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-up"></use></svg></span></a> 
+  <a class="btn btn-secondary border-left" role="button" aria-label="Thumbs down (disliked it)" title="Disliked it" href="https://realpython.com/feedback/survey/article/python-for-loop/disliked/?from=article-sidebar" target="_blank"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-down"></use></svg></span></a>
+</div>
+
+      
+        
+
+
+
+
+
+
+
+
+
+<share-button url="https://realpython.com/python-for-loop/" url-title="Python &quot;for&quot; Loops (Definite Iteration)" twitter-text="Interesting #Python article by @realpython:" email-subject="Python article for you" email-body="Check out this Python article:%0A%0APython &quot;for&quot; Loops (Definite Iteration)">
+  <button class="btn btn-secondary" type="button" title="Share" aria-label="Share"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@share-light"></use></svg></span>Share</button>
+</share-button>
+
+
+      
+    </div>
+
+    
+      <div class="sidebar-module sidebar-module-inset border card">
+        <p><span class="badge badge-pill badge-success"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--play-circle"></use></svg></span> Recommended Video Course</span><br><a class="stretched-link text-success" href="https://realpython.com/courses/python-for-loop/">For Loops in Python (Definite Iteration)</a></p>
+      </div>
+    
+
+    
+      <div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+        
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:25%;"></div>
+  <div class="rpad" data-unit="4x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/64754707389/?c=31941813441&amp;p=58946116052&amp;r=32638" rel="nofollow" target="_blank"><img src="./python-for-loops_files/257f65e32c1713399c59dacea36eb818" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+
+
+      </div>
+    
+
+    
+  </div>
+
+
+    </aside>
+
+    <div class="col-md-11 col-lg-8 article with-headerlinks">
+      
+
+  
+    <figure class="embed-responsive embed-responsive-16by9 rounded">
+      
+        <img class="card-img-top m-0 p-0 embed-responsive-item" style="object-fit: contain; background: #e5c5ac;" alt="Python &quot;for&quot; Loops (Definite Iteration)" width="1920" height="1080" src="./python-for-loops_files/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg 1920w" sizes="(min-width: 1200px) 690px, (min-width: 780px) calc(-5vw + 669px), (min-width: 580px) 510px, calc(100vw - 30px)" fetchpriority="high">
+      
+    </figure>
+  
+
+  <h1>Python "for" Loops (Definite Iteration)</h1>
+  <div class="mb-0">
+    
+      <span class="text-muted">by <a class="text-muted" href="https://realpython.com/python-for-loop/#author">John Sturtz</a>
+    
+    
+      <span class="icon baseline ml-2" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--clock-o"></use></svg></span> Jan 30, 2019
+    
+    
+      <span class="icon baseline ml-2 mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--comments"></use></svg></span><a class="text-muted" href="https://realpython.com/python-for-loop/#reader-comments"><span class="disqus-comment-count" data-disqus-identifier="https://realpython.com/python-for-loop/">20 Comments</span></a>
+    
+    
+
+    <span class="d-inline d-md-block"> 
+      <span class="icon baseline ml-2 ml-md-0" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@category"></use></svg></span>
+      
+        
+<a href="https://realpython.com/tutorials/basics/" class="badge badge-light text-muted">basics</a>
+
+      
+        
+<a href="https://realpython.com/tutorials/python/" class="badge badge-light text-muted">python</a>
+
+      
+    </span>
+
+    <div class="d-flex justify-content-between gap-2 my-3">
+      
+
+
+<completion-status class="btn-group mb-0" article-slug="python-for-loop" data-api-article-bookmark-url="/api/v1/articles/python-for-loop/bookmark/" data-api-article-completion-status-url="/api/v1/articles/python-for-loop/completion_status/">
+  <button data-target-complete-button="" title="Click to mark as completed" class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">Mark as Completed</button>
+  <button data-target-bookmark-button="" title="Add bookmark" class="btn btn-secondary border-left"><span class="icon baseline" aria-hidden="true">
+    <svg aria-hidden="true">
+      <use href="/static/icons.1440a154cfa8.svg#light--bookmark"></use>
+    </svg>
+    
+  </span></button>
+</completion-status>
+
+      
+        
+
+
+
+
+
+
+
+
+
+<share-button url="https://realpython.com/python-for-loop/" url-title="Python &quot;for&quot; Loops (Definite Iteration)" twitter-text="Interesting #Python article by @realpython:" email-subject="Python article for you" email-body="Check out this Python article:%0A%0APython &quot;for&quot; Loops (Definite Iteration)">
+  <button class="btn btn-secondary" type="button" title="Share" aria-label="Share"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@share-light"></use></svg></span>Share</button>
+</share-button>
+
+
+      
+    </div>
+  </span></div>
+
+  
+
+  <div class="article-body">
+    
+      <div class="bg-light sidebar-module sidebar-module-inset" id="toc">
+        <p class="h3 mb-2 text-muted">Table of Contents</p>
+        <div class="toc">
+<ul>
+<li><a href="https://realpython.com/python-for-loop/#a-survey-of-definite-iteration-in-programming">A Survey of Definite Iteration in Programming</a><ul>
+<li><a href="https://realpython.com/python-for-loop/#numeric-range-loop">Numeric Range Loop</a></li>
+<li><a href="https://realpython.com/python-for-loop/#three-expression-loop">Three-Expression Loop</a></li>
+<li><a href="https://realpython.com/python-for-loop/#collection-based-or-iterator-based-loop">Collection-Based or Iterator-Based Loop</a></li>
+</ul>
+</li>
+<li><a href="https://realpython.com/python-for-loop/#the-python-for-loop">The Python for Loop</a><ul>
+<li><a href="https://realpython.com/python-for-loop/#iterables">Iterables</a></li>
+<li><a href="https://realpython.com/python-for-loop/#iterators">Iterators</a></li>
+</ul>
+</li>
+<li><a href="https://realpython.com/python-for-loop/#the-guts-of-the-python-for-loop">The Guts of the Python for Loop</a></li>
+<li><a href="https://realpython.com/python-for-loop/#iterating-through-a-dictionary">Iterating Through a Dictionary</a></li>
+<li><a href="https://realpython.com/python-for-loop/#the-range-function">The range() Function</a></li>
+<li><a href="https://realpython.com/python-for-loop/#altering-for-loop-behavior">Altering for Loop Behavior</a><ul>
+<li><a href="https://realpython.com/python-for-loop/#the-break-and-continue-statements">The break and continue Statements</a></li>
+<li><a href="https://realpython.com/python-for-loop/#the-else-clause">The else Clause</a></li>
+</ul>
+</li>
+<li><a href="https://realpython.com/python-for-loop/#conclusion">Conclusion</a></li>
+</ul>
+</div>
+
+      </div>
+    
+
+    
+    <div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+      
+
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:12.5%;"></div>
+  <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/57356986228/?c=41067926597&amp;p=58946116052&amp;r=37951" rel="nofollow" target="_blank"><img src="./python-for-loops_files/6fe6464c8bf6ec2cbcf3f1f0e778156b" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+<a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a>
+
+
+    </div>
+    
+
+    
+      
+<div class="border rounded p-3 card mb-2 text-wrap-pretty">
+  <p class="mb-0"><span class="badge badge-pill badge-success"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--play-circle"></use></svg></span> Watch Now</span> This tutorial has a related video course created by the Real Python team. Watch it together with the written tutorial to deepen your understanding: <a class="stretched-link text-success" href="https://realpython.com/courses/python-for-loop/"><strong>For Loops in Python (Definite Iteration)</strong></a></p>
+</div>
+
+    
+
+    <p>This tutorial will show you how to perform <strong>definite iteration</strong> with a Python <code>for</code> loop.</p>
+<p>In the <a href="https://realpython.com/python-while-loop/">previous tutorial</a> in this introductory series, you learned the following:</p>
+<ul>
+<li>Repetitive execution of the same block of code over and over is referred to as <strong>iteration</strong>.</li>
+<li>There are two types of iteration:<ul>
+<li><strong>Definite</strong> iteration, in which the number of repetitions is specified explicitly in advance</li>
+<li><strong>Indefinite</strong> iteration, in which the code block executes until some condition is met</li>
+</ul>
+</li>
+<li>In Python, indefinite iteration is performed with a <code>while</code> loop.</li>
+</ul>
+<p><strong>Here’s what you’ll cover in this tutorial:</strong></p>
+<ul>
+<li>
+<p>You’ll start with a comparison of some different paradigms used by programming languages to implement definite iteration.</p>
+</li>
+<li>
+<p>Then you will learn about <strong>iterables</strong> and <strong>iterators</strong>, two concepts that form the basis of definite iteration in Python.</p>
+</li>
+<li>
+<p>Finally, you’ll tie it all together and learn about Python’s <code>for</code> loops.</p>
+</li>
+</ul>
+<div class="alert alert-warning" role="alert">
+<p><strong markdown="1">Free Download:</strong> <a href="https://realpython.com/bonus/python-tricks-sample-pdf/" class="alert-link" data-toggle="modal" data-target="#modal-python-tricks-sample-pdf" data-focus="false" markdown="1">Get a sample chapter from Python Tricks: The Book</a> that shows you Python’s best practices with simple examples you can apply instantly to write more beautiful + Pythonic code.</p>
+</div>
+<div class="container border rounded text-wrap-pretty my-3">
+
+  <p class="my-3"><mark class="marker-highlight"><strong><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span> Take the Quiz:</strong></mark> Test your knowledge with our interactive “The Python for Loop” quiz. You’ll receive a score upon completion to help you track your learning progress:</p>
+
+  <hr>
+
+  <div class="row my-3">
+    <div class="col-xs-12 col-sm-4 col-md-3 align-self-center">
+
+      <a href="https://realpython.com/quizzes/python-for-loop/" tabindex="-1">
+        <div class="embed-responsive embed-responsive-16by9">
+
+            <img class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #e5c5ac;" alt="Python &quot;for&quot; Loops (Definite Iteration)" src="./python-for-loops_files/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg 1920w" sizes="(min-width: 1200px) 142px, (min-width: 1000px) 122px, (min-width: 780px) 112px, (min-width: 580px) 139px, calc(100vw - 62px)">
+
+
+          <div class="card-img-overlay d-flex align-items-center">
+            <div class="mx-auto">
+              <span class="text-light" style="opacity: 0.90;"><span class="icon baseline scale2x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span></span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+    <div class="col">
+      <div class="mt-3 d-md-none"></div> 
+      <p class="small text-muted mb-0"><strong>Interactive Quiz</strong></p>
+      <a href="https://realpython.com/quizzes/python-for-loop/" class="stretched-link"><span class="my-0 h4">The Python for Loop</span></a> 
+      <p class="text-muted mb-0 small">In this quiz, you'll test your understanding of Python's `for` loop and the concepts of definite iteration, iterables, and iterators. With this knowledge, you'll be able to perform repetitive tasks in Python more efficiently.</p>
+    </div>
+  </div>
+
+</div>
+
+<section class="section2"><h2 id="a-survey-of-definite-iteration-in-programming">A Survey of Definite Iteration in Programming<a class="headerlink" href="https://realpython.com/python-for-loop/#a-survey-of-definite-iteration-in-programming" title="Permanent link"></a></h2>
+<p>Definite iteration loops are frequently referred to as <strong><code>for</code></strong> loops because <code>for</code> is the <a href="https://realpython.com/python-keywords/">keyword</a> that is used to introduce them in nearly all programming languages, including Python.</p>
+<p>Historically, programming languages have offered a few assorted flavors of <code>for</code> loop. These are briefly described in the following sections.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/5748061207/?c=11232171364&amp;p=58946116052&amp;r=68979" rel="nofollow" target="_blank"><img src="./python-for-loops_files/bba83554c49ffce9838fddbf61a42999" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div><section class="section3"><h3 id="numeric-range-loop">Numeric Range Loop<a class="headerlink" href="https://realpython.com/python-for-loop/#numeric-range-loop" title="Permanent link"></a></h3>
+<p>The most basic <code>for</code> loop is a simple numeric range statement with start and end values.  The exact format varies depending on the language but typically looks something like this:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="basic">
+  <div class="codeblock__header d-flex justify-content-between codeblock--purple">
+    <span class="mr-2 noselect" aria-label="Language">BASIC</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="vg">for</span><span class="w"> </span><span class="vg">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="il">1</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="il">10</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="vg">loop</span><span class="w"> </span><span class="vg">body</span><span class="o">&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Here, the body of the loop is executed ten times.  The <a href="https://realpython.com/python-variables/">variable</a> <code>i</code> assumes the value <code>1</code> on the first iteration, <code>2</code> on the second, and so on.  This sort of <code>for</code> loop is used in the languages BASIC, Algol, and Pascal.</p>
+</section><section class="section3"><h3 id="three-expression-loop">Three-Expression Loop<a class="headerlink" href="https://realpython.com/python-for-loop/#three-expression-loop" title="Permanent link"></a></h3>
+<p>Another form of <code>for</code> loop popularized by the <a href="https://realpython.com/c-for-python-programmers/">C programming language</a> contains three parts:</p>
+<ul>
+<li>An initialization</li>
+<li>An expression specifying an ending condition</li>
+<li>An action to be performed at the end of each iteration.</li>
+</ul>
+<p>This type of loop has the following form:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="c">
+  <div class="codeblock__header d-flex justify-content-between codeblock--purple">
+    <span class="mr-2 noselect" aria-label="Language">C</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">loop</span><span class="w"> </span><span class="n">body</span><span class="o">&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<div class="alert alert-primary" role="alert">
+<p><strong>Technical Note:</strong> In the C programming language, <code>i++</code> increments the variable <code>i</code>. It is roughly equivalent to <code>i += 1</code> in Python.</p>
+</div>
+<p>This loop is interpreted as follows:</p>
+<ul>
+<li>Initialize <code>i</code> to <code>1</code>.</li>
+<li>Continue looping as long as <code>i &lt;= 10</code>.</li>
+<li>Increment <code>i</code> by <code>1</code> after each loop iteration.</li>
+</ul>
+<p>Three-expression <code>for</code> loops are popular because the expressions specified for the three parts can be nearly anything, so this has quite a bit more flexibility than the simpler numeric range form shown above.  These <code>for</code> loops are also featured in the <a href="https://realpython.com/python-vs-cpp/">C++</a>, <a href="https://realpython.com/oop-in-python-vs-java/">Java</a>, PHP, and Perl languages.</p>
+</section><section class="section3"><h3 id="collection-based-or-iterator-based-loop">Collection-Based or Iterator-Based Loop<a class="headerlink" href="https://realpython.com/python-for-loop/#collection-based-or-iterator-based-loop" title="Permanent link"></a></h3>
+<p>This type of loop iterates over a collection of objects, rather than specifying numeric values or conditions:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">collection</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">loop</span> <span class="n">body</span><span class="o">&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Each time through the loop, the variable <code>i</code> takes on the value of the next object in <code>&lt;collection&gt;</code>.  This type of <code>for</code> loop is arguably the most generalized and abstract.  Perl and PHP also support this type of loop, but it is introduced by the keyword <code>foreach</code> instead of <code>for</code>.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Further Reading:</strong> See the <a href="https://en.wikipedia.org/wiki/For_loop">For loop</a> Wikipedia page for an in-depth look at the implementation of definite iteration across programming languages.</p>
+</div>
+</section></section><section class="section2"><h2 id="the-python-for-loop">The Python <code>for</code> Loop<a class="headerlink" href="https://realpython.com/python-for-loop/#the-python-for-loop" title="Permanent link"></a></h2>
+<p>Of the loop types listed above, Python only implements the last:  collection-based iteration.  At first blush, that may seem like a raw deal, but rest assured that Python’s implementation of definite iteration is so versatile that you won’t end up feeling cheated!</p>
+<p>Shortly, you’ll dig into the guts of Python’s <code>for</code> loop in detail.  But for now, let’s start with a quick prototype and example, just to get acquainted.</p>
+<p>Python’s <code>for</code> loop looks like this:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">for</span> <span class="o">&lt;</span><span class="n">var</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">iterable</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p><code>&lt;iterable&gt;</code> is a collection of objects—for example, a list or tuple.  The <code>&lt;statement(s)&gt;</code> in the loop body are denoted by indentation, as with all Python control structures, and are executed once for each item in <code>&lt;iterable&gt;</code>.  The loop variable <code>&lt;var&gt;</code> takes on the value of the next element in <code>&lt;iterable&gt;</code> each time through the loop.</p>
+<p>Here is a representative example:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">foo</span>
+<span class="go">bar</span>
+<span class="go">baz</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this example, <code>&lt;iterable&gt;</code> is the list <code>a</code>, and <code>&lt;var&gt;</code> is the variable <code>i</code>.  Each time through the loop, <code>i</code> takes on a successive item in <code>a</code>, so <a href="https://realpython.com/python-print/"><code>print()</code></a> displays the values <code>'foo'</code>, <code>'bar'</code>, and <code>'baz'</code>, respectively. A <code>for</code> loop like this is the Pythonic way to process the items in an iterable.</p>
+<p>But what exactly is an iterable?  Before examining <code>for</code> loops further, it will be beneficial to delve more deeply into what iterables are in Python.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/27750251087/?c=11232171364&amp;p=58946116052&amp;r=43840" rel="nofollow" target="_blank"><img src="./python-for-loops_files/bba83554c49ffce9838fddbf61a42999" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div><section class="section3"><h3 id="iterables">Iterables<a class="headerlink" href="https://realpython.com/python-for-loop/#iterables" title="Permanent link"></a></h3>
+<p>In Python, <a href="https://realpython.com/python-iterators-iterables/#getting-to-know-python-iterables">iterable</a> means an object can be used in iteration.  The term is used as:</p>
+<ul>
+<li><strong>An adjective:</strong> An object may be described as iterable. </li>
+<li><strong>A noun:</strong> An object may be characterized as an iterable.</li>
+</ul>
+<p>If an object is iterable, it can be passed to the built-in Python function <code>iter()</code>, which returns something called an <a href="https://realpython.com/python-iterators-iterables/#getting-to-know-python-iterators">iterator</a>. Yes, the terminology gets a bit repetitive. Hang in there. It all works out in the end.</p>
+<p>Each of the objects in the following example is an iterable and returns some type of iterator when passed to <code>iter()</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">iter</span><span class="p">(</span><span class="s1">'foobar'</span><span class="p">)</span>                             <span class="c1"># String</span>
+<span class="go">&lt;str_iterator object at 0x036E2750&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">iter</span><span class="p">([</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">])</span>                <span class="c1"># List</span>
+<span class="go">&lt;list_iterator object at 0x036E27D0&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">iter</span><span class="p">((</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">))</span>                <span class="c1"># Tuple</span>
+<span class="go">&lt;tuple_iterator object at 0x036E27F0&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">iter</span><span class="p">({</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">})</span>                <span class="c1"># Set</span>
+<span class="go">&lt;set_iterator object at 0x036DEA08&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">iter</span><span class="p">({</span><span class="s1">'foo'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">:</span> <span class="mi">3</span><span class="p">})</span>       <span class="c1"># Dict</span>
+<span class="go">&lt;dict_keyiterator object at 0x036DD990&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>These object types, on the other hand, aren’t iterable:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">iter</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>                                   <span class="c1"># Integer</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;pyshell#26&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="nb">iter</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="gr">TypeError</span>: <span class="n">'int' object is not iterable</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">iter</span><span class="p">(</span><span class="mf">3.1</span><span class="p">)</span>                                  <span class="c1"># Float</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;pyshell#27&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="nb">iter</span><span class="p">(</span><span class="mf">3.1</span><span class="p">)</span>
+<span class="gr">TypeError</span>: <span class="n">'float' object is not iterable</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">iter</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>                                  <span class="c1"># Built-in function</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;pyshell#28&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="nb">iter</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+<span class="gr">TypeError</span>: <span class="n">'builtin_function_or_method' object is not iterable</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>All the data types you have encountered so far that are collection or container types are iterable.  These include the <a href="https://realpython.com/python-strings/">string</a>, <a href="https://realpython.com/python-lists-tuples/#python-lists">list</a>, <a href="https://realpython.com/python-lists-tuples/#python-tuples">tuple</a>, <a href="https://realpython.com/python-dicts/">dict</a>, <a href="https://realpython.com/python-sets/">set</a>, and <a href="https://realpython.com/python-sets/#frozen-sets">frozenset</a> types.</p>
+<p>But these are by no means the only types that you can iterate over.  Many objects that are built into Python or defined in modules are designed to be iterable.  For example, open files in Python are iterable.  As you will see soon in the tutorial on file I/O, iterating over an open file object reads data from the file.</p>
+<p>In fact, almost any object in Python can be made iterable.  Even user-defined objects can be designed in such a way that they can be iterated over.  (You will find out how that is done in the upcoming article on object-oriented programming.)</p>
+</section><section class="section3"><h3 id="iterators">Iterators<a class="headerlink" href="https://realpython.com/python-for-loop/#iterators" title="Permanent link"></a></h3>
+<p>Okay, now you know what it means for an object to be iterable, and you know how to use <code>iter()</code> to obtain an iterator from it.  Once you’ve got an iterator, what can you do with it?</p>
+<p>An iterator is essentially a value producer that yields successive values from its associated iterable object.  The built-in function <code>next()</code> is used to obtain the next value from in iterator.</p>
+<p>Here is an example using the same list as above:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">itr</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">itr</span>
+<span class="go">&lt;list_iterator object at 0x031EFD10&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">itr</span><span class="p">)</span>
+<span class="go">'foo'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">itr</span><span class="p">)</span>
+<span class="go">'bar'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">itr</span><span class="p">)</span>
+<span class="go">'baz'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this example, <code>a</code> is an iterable list and <code>itr</code> is the associated iterator, obtained with <code>iter()</code>.  Each <code>next(itr)</code> call obtains the next value from <code>itr</code>.</p>
+<p>Notice how an iterator retains its state internally.  It knows which values have been obtained already, so when you call <code>next()</code>, it knows what value to return next.</p>
+<p>What happens when the iterator runs out of values?  Let’s make one more <code>next()</code> call on the iterator above:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">itr</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;pyshell#10&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="nb">next</span><span class="p">(</span><span class="n">itr</span><span class="p">)</span>
+<span class="gr">StopIteration</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>If all the values from an iterator have been returned already, a subsequent <code>next()</code> call raises a <code>StopIteration</code> exception.  Any further attempts to obtain values from the iterator will fail.</p>
+<p>You can only obtain values from an iterator in one direction.  You can’t go backward. There is no <code>prev()</code> function.  But you can define two independent iterators on the same iterable object:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">['foo', 'bar', 'baz']</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">itr1</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">itr2</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">itr1</span><span class="p">)</span>
+</span><span class="go">'foo'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">itr1</span><span class="p">)</span>
+<span class="go">'bar'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">itr1</span><span class="p">)</span>
+<span class="go">'baz'</span>
+
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">itr2</span><span class="p">)</span>
+</span><span class="go">'foo'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Even when iterator <code>itr1</code> is already at the end of the list, <code>itr2</code> is still at the beginning.  Each iterator maintains its own internal state, independent of the other.</p>
+<p>If you want to grab all the values from an iterator at once, you can use the built-in <code>list()</code> function. Among other possible uses, <code>list()</code> takes an iterator as its argument, and returns a list consisting of all the values that the iterator yielded:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">itr</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">itr</span><span class="p">)</span>
+<span class="go">['foo', 'bar', 'baz']</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Similarly, the built-in <code>tuple()</code> and <code>set()</code> functions return a tuple and a set, respectively, from all the values an iterator yields:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">itr</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">tuple</span><span class="p">(</span><span class="n">itr</span><span class="p">)</span>
+<span class="go">('foo', 'bar', 'baz')</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">itr</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">itr</span><span class="p">)</span>
+<span class="go">{'baz', 'foo', 'bar'}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>It isn’t necessarily advised to make a habit of this.  Part of the elegance of iterators is that they are “lazy.”  That means that when you create an iterator, it doesn’t generate all the items it can yield just then.  It waits until you ask for them with <code>next()</code>.  Items are not created until they are requested.</p>
+<p>When you use <code>list()</code>, <code>tuple()</code>, or the like, you are forcing the iterator to generate all its values at once, so they can all be returned.  If the total number of objects the iterator returns is very large, that may take a long time.</p>
+<p>In fact, it is possible to create an iterator in Python that returns an endless series of objects using <a href="https://realpython.com/introduction-to-python-generators/">generator functions</a> and <a href="https://realpython.com/python-itertools/"><code>itertools</code></a>. If you try to grab all the values at once from an endless iterator, the program will <a href="https://en.wikipedia.org/wiki/Hang_(computing)">hang</a>.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/47546671741/?c=58525073567&amp;p=58946116052&amp;r=60263" rel="nofollow" target="_blank"><img src="./python-for-loops_files/026fb4432c518a9d24e5ba3f93da2599" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section></section><section class="section2"><h2 id="the-guts-of-the-python-for-loop">The Guts of the Python <code>for</code> Loop<a class="headerlink" href="https://realpython.com/python-for-loop/#the-guts-of-the-python-for-loop" title="Permanent link"></a></h2>
+<p>You now have been introduced to all the concepts you need to fully understand how Python’s <code>for</code> loop works.  Before proceeding, let’s review the relevant terms:</p>
+<div class="table-responsive">
+<table class="table table-hover">
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Iteration</strong></td>
+<td>The process of looping through the objects or items in a collection</td>
+</tr>
+<tr>
+<td><strong>Iterable</strong></td>
+<td>An object (or the adjective used to describe an object) that can be iterated over</td>
+</tr>
+<tr>
+<td><strong>Iterator</strong></td>
+<td>The object that produces successive items or values from its associated iterable</td>
+</tr>
+<tr>
+<td><strong><code>iter()</code></strong></td>
+<td>The built-in function used to obtain an iterator from an iterable</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Now, consider again the simple <code>for</code> loop presented at the start of this tutorial:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">foo</span>
+<span class="go">bar</span>
+<span class="go">baz</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>This loop can be described entirely in terms of the concepts you have just learned about.  To carry out the iteration this <code>for</code> loop describes, Python does the following:</p>
+<ul>
+<li>Calls <code>iter()</code> to obtain an iterator for <code>a</code></li>
+<li>Calls <code>next()</code> repeatedly to obtain each item from the iterator in turn</li>
+<li>Terminates the loop when <code>next()</code> raises the <code>StopIteration</code> exception</li>
+</ul>
+<p>The loop body is executed once for each item <code>next()</code> returns, with loop variable <code>i</code> set to the given item for each iteration.</p>
+<p>This sequence of events is summarized in the following diagram:</p>
+<figure class="js-lightbox"><a href="./python-for-loops_files/t.ba63222d63f5.png" target="_blank"><img loading="lazy" class="img-fluid mx-auto d-block w-50" src="./python-for-loops_files/t.ba63222d63f5.png" width="1062" height="996" srcset="/cdn-cgi/image/width=265,format=auto/https://files.realpython.com/media/t.ba63222d63f5.png 265w, /cdn-cgi/image/width=354,format=auto/https://files.realpython.com/media/t.ba63222d63f5.png 354w, /cdn-cgi/image/width=531,format=auto/https://files.realpython.com/media/t.ba63222d63f5.png 531w, /cdn-cgi/image/width=1062,format=auto/https://files.realpython.com/media/t.ba63222d63f5.png 1062w" sizes="(min-width: 1200px) 690px, (min-width: 780px) calc(-5vw + 669px), (min-width: 580px) 510px, calc(100vw - 30px)" alt="Python for loop diagram" data-asset="444"></a><figcaption class="figure-caption text-center">Schematic Diagram of a Python for Loop</figcaption></figure>
+
+<p>Perhaps this seems like a lot of unnecessary monkey business, but the benefit is substantial.  Python treats looping over all iterables in exactly this way, and in Python, iterables and iterators abound:</p>
+<ul>
+<li>
+<p>Many built-in and library objects are iterable.</p>
+</li>
+<li>
+<p>There is a Standard Library module called <code>itertools</code> containing many functions that return iterables.</p>
+</li>
+<li>
+<p>User-defined objects created with Python’s object-oriented capability can be made to be iterable.</p>
+</li>
+<li>
+<p>Python features a construct called a generator that allows you to create your own iterator in a simple, straightforward way.</p>
+</li>
+</ul>
+<p>You will discover more about all the above throughout this series.  They can all be the target of a <code>for</code> loop, and the syntax is the same across the board.  It’s elegant in its simplicity and eminently versatile.</p>
+</section><section class="section2"><h2 id="iterating-through-a-dictionary">Iterating Through a Dictionary<a class="headerlink" href="https://realpython.com/python-for-loop/#iterating-through-a-dictionary" title="Permanent link"></a></h2>
+<p>You saw earlier that an iterator can be obtained from a dictionary with <code>iter()</code>, so you know dictionaries must be iterable.  What happens when you loop through a dictionary?  Let’s see:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'foo'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">foo</span>
+<span class="go">bar</span>
+<span class="go">baz</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>As you can see, when a <code>for</code> loop <a href="https://realpython.com/iterate-through-dictionary-python/">iterates through a dictionary</a>, the loop variable is assigned to the dictionary’s keys.</p>
+<p>To access the dictionary values within the loop, you can make a dictionary reference using the key as usual:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+<span class="gp">...</span>
+<span class="go">1</span>
+<span class="go">2</span>
+<span class="go">3</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>You can also iterate through a dictionary’s values directly by using <code>.values()</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">1</span>
+<span class="go">2</span>
+<span class="go">3</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In fact, you can iterate through both the keys and values of a dictionary simultaneously.  That is because the loop variable of a <code>for</code> loop isn’t limited to just a single variable.  It can also be a tuple, in which case the assignments are made from the items in the iterable using packing and unpacking, just as with an assignment statement:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+<span class="go">1 2</span>
+
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]:</span>
+</span><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">1 2</span>
+<span class="go">3 4</span>
+<span class="go">5 6</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>As noted in the tutorial on Python <a href="https://realpython.com/python-dicts/#built-in-dictionary-methods">dictionaries</a>, the dictionary method <code>.items()</code> effectively returns a list of key/value pairs as tuples:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'foo'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="go">dict_items([('foo', 1), ('bar', 2), ('baz', 3)])</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Thus, the Pythonic way to iterate through a dictionary accessing both the keys and values looks like this:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'foo'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'k ='</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="s1">', v ='</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">k = foo , v = 1</span>
+<span class="go">k = bar , v = 2</span>
+<span class="go">k = baz , v = 3</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/58257184031/?c=31941813441&amp;p=58946116052&amp;r=60055" rel="nofollow" target="_blank"><img src="./python-for-loops_files/16bf1efe41b538fae54711c58c701f0e" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section><section class="section2"><h2 id="the-range-function">The <code>range()</code> Function<a class="headerlink" href="https://realpython.com/python-for-loop/#the-range-function" title="Permanent link"></a></h2>
+<p>In the first section of this tutorial, you saw a type of <code>for</code> loop called a <a href="https://realpython.com/python-for-loop/#numeric-range-loop">numeric range loop</a>, in which starting and ending numeric values are specified.  Although this form of <code>for</code> loop isn’t directly built into Python, it is easily arrived at.</p>
+<p>For example, if you wanted to iterate through the values from <code>0</code> to <code>4</code>, you could simply do this:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">0</span>
+<span class="go">1</span>
+<span class="go">2</span>
+<span class="go">3</span>
+<span class="go">4</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>This solution isn’t too bad when there are just a few numbers.  But if the number range were much larger, it would become tedious pretty quickly.</p>
+<p>Happily, Python provides a better option—the built-in <code>range()</code> function, which returns an iterable that yields a sequence of integers.</p>
+<p><code>range(&lt;end&gt;)</code> returns an iterable that yields integers starting with <code>0</code>, up to but not including <code>&lt;end&gt;</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">range(0, 5)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">&lt;class 'range'&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Note that <code>range()</code> returns an object of class <code>range</code>, not a list or tuple of the values.  Because a <code>range</code> object is an iterable, you can obtain the values by iterating over them with a <code>for</code> loop:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">0</span>
+<span class="go">1</span>
+<span class="go">2</span>
+<span class="go">3</span>
+<span class="go">4</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>You could also snag all the values at once with <code>list()</code> or <code>tuple()</code>.  In a REPL session, that can be a convenient way to quickly display what the values are:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">[0, 1, 2, 3, 4]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">tuple</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">(0, 1, 2, 3, 4)</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>However, when <code>range()</code> is used in code that is part of a larger application, it is typically considered poor practice to use <code>list()</code> or <code>tuple()</code> in this way.  Like iterators, <code>range</code> objects are lazy—the values in the specified range are not generated until they are requested.  Using <code>list()</code> or <code>tuple()</code> on a <code>range</code> object forces all the values to be returned at once.  This is rarely necessary, and if the list is long, it can waste time and memory.</p>
+<p><code>range(&lt;begin&gt;, &lt;end&gt;, &lt;stride&gt;)</code> returns an iterable that yields integers starting with <code>&lt;begin&gt;</code>, up to but not including <code>&lt;end&gt;</code>.  If specified, <code>&lt;stride&gt;</code> indicates an amount to skip between values (analogous to the stride value used for string and list slicing):</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="go">[5, 8, 11, 14, 17]</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>If <code>&lt;stride&gt;</code> is omitted, it defaults to <code>1</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">[5, 6, 7, 8, 9]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="go">[5, 6, 7, 8, 9]</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>All the parameters specified to <code>range()</code> must be integers, but any of them can be negative.  Naturally, if <code>&lt;begin&gt;</code> is greater than <code>&lt;end&gt;</code>, <code>&lt;stride&gt;</code> must be negative (if you want any results):</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="go">[-5, -4, -3, -2, -1, 0, 1, 2, 3, 4]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">))</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="go">[5, 4, 3, 2, 1, 0, -1, -2, -3, -4]</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<div class="alert alert-primary" role="alert">
+<p><strong>Technical Note:</strong> Strictly speaking, <code>range()</code> isn’t exactly a built-in function.  It is implemented as a callable class that creates an immutable sequence type.  But for practical purposes, it behaves like a built-in function.</p>
+<p>For more information on <code>range()</code>, see the Real Python article <a href="https://realpython.com/python-range">Python’s <code>range()</code> Function (Guide)</a>.</p>
+</div>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/6931855635/?c=50660871541&amp;p=58946116052&amp;r=99129" rel="nofollow" target="_blank"><img src="./python-for-loops_files/1f0846795c8392a130000105121b5a3c" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section><section class="section2"><h2 id="altering-for-loop-behavior">Altering <code>for</code> Loop Behavior<a class="headerlink" href="https://realpython.com/python-for-loop/#altering-for-loop-behavior" title="Permanent link"></a></h2>
+<p>You saw in the previous tutorial in this introductory series how execution of a <code>while</code> loop can be interrupted with <a href="https://realpython.com/python-while-loop/#interruption-of-loop-iteration"><code>break</code> and <code>continue</code> statements</a> and modified with an <a href="https://realpython.com/python-while-loop/#the-else-clause"><code>else</code> clause</a>. These capabilities are available with the <code>for</code> loop as well.</p>
+<section class="section3"><h3 id="the-break-and-continue-statements">The <code>break</code> and <code>continue</code> Statements<a class="headerlink" href="https://realpython.com/python-for-loop/#the-break-and-continue-statements" title="Permanent link"></a></h3>
+<p><code>break</code> and <code>continue</code> work the same way with <code>for</code> loops as with <code>while</code> loops. <code>break</code> terminates the loop completely and proceeds to the first statement following the loop:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">,</span> <span class="s1">'qux'</span><span class="p">]:</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="s1">'b'</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+<span class="hll"><span class="gp">... </span>        <span class="k">break</span>
+</span><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">foo</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p><code>continue</code> terminates the current iteration and proceeds to the next iteration:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">,</span> <span class="s1">'qux'</span><span class="p">]:</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="s1">'b'</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+<span class="hll"><span class="gp">... </span>        <span class="k">continue</span>
+</span><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">foo</span>
+<span class="go">qux</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+</section><section class="section3"><h3 id="the-else-clause">The <code>else</code> Clause<a class="headerlink" href="https://realpython.com/python-for-loop/#the-else-clause" title="Permanent link"></a></h3>
+<p>A <code>for</code> loop can have an <code>else</code> clause as well.  The interpretation is analogous to that of a <code>while</code> loop. The <code>else</code> clause will be executed if the loop terminates through exhaustion of the iterable:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">,</span> <span class="s1">'qux'</span><span class="p">]:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'Done.'</span><span class="p">)</span>  <span class="c1"># Will execute</span>
+<span class="gp">...</span>
+<span class="go">foo</span>
+<span class="go">bar</span>
+<span class="go">baz</span>
+<span class="go">qux</span>
+<span class="go">Done.</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The <code>else</code> clause won’t be executed if the list is broken out of with a <code>break</code> statement:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">,</span> <span class="s1">'qux'</span><span class="p">]:</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">'bar'</span><span class="p">:</span>
+<span class="hll"><span class="gp">... </span>        <span class="k">break</span>
+</span><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'Done.'</span><span class="p">)</span>  <span class="c1"># Will not execute</span>
+<span class="gp">...</span>
+<span class="go">foo</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+</section></section><section class="section2"><h2 id="conclusion">Conclusion<a class="headerlink" href="https://realpython.com/python-for-loop/#conclusion" title="Permanent link"></a></h2>
+<p>This tutorial presented the <code>for</code> loop, the workhorse of <strong>definite iteration</strong> in Python.</p>
+<p>You also learned about the inner workings of <strong>iterables</strong> and <strong>iterators</strong>, two important object types that underlie definite iteration, but also figure prominently in a wide variety of other Python code.</p>
+<p>In the next two tutorials in this introductory series, you will shift gears a little and explore how Python programs can interact with the user via <strong>input</strong> from the keyboard and <strong>output</strong> to the console.</p>
+<div class="container border rounded text-wrap-pretty my-3">
+
+  <p class="my-3"><mark class="marker-highlight"><strong><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span> Take the Quiz:</strong></mark> Test your knowledge with our interactive “The Python for Loop” quiz. You’ll receive a score upon completion to help you track your learning progress:</p>
+
+  <hr>
+
+  <div class="row my-3">
+    <div class="col-xs-12 col-sm-4 col-md-3 align-self-center">
+
+      <a href="https://realpython.com/quizzes/python-for-loop/" tabindex="-1">
+        <div class="embed-responsive embed-responsive-16by9">
+
+            <img class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #e5c5ac;" alt="Python &quot;for&quot; Loops (Definite Iteration)" src="./python-for-loops_files/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg 1920w" sizes="(min-width: 1200px) 142px, (min-width: 1000px) 122px, (min-width: 780px) 112px, (min-width: 580px) 139px, calc(100vw - 62px)">
+
+
+          <div class="card-img-overlay d-flex align-items-center">
+            <div class="mx-auto">
+              <span class="text-light" style="opacity: 0.90;"><span class="icon baseline scale2x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span></span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+    <div class="col">
+      <div class="mt-3 d-md-none"></div> 
+      <p class="small text-muted mb-0"><strong>Interactive Quiz</strong></p>
+      <a href="https://realpython.com/quizzes/python-for-loop/" class="stretched-link"><span class="my-0 h4">The Python for Loop</span></a> 
+      <p class="text-muted mb-0 small">In this quiz, you'll test your understanding of Python's `for` loop and the concepts of definite iteration, iterables, and iterators. With this knowledge, you'll be able to perform repetitive tasks in Python more efficiently.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="container py-3 series-nav mb-3">
+  <div class="row justify-content-between">
+    <div class="col-12 col-md-3 text-left text-muted ml-1"><a href="https://realpython.com/python-while-loop/"> «&nbsp;Python "while" Loops (Indefinite Iteration)</a></div>
+    <div class="col-12 col-md-3 text-center text-muted"><a href="https://realpython.com/python-for-loop/#">Python "for" Loops (Definite Iteration)</a></div>
+    <div class="col-12 col-md-3 text-right text-muted mr-1"><a href="https://realpython.com/python-input-output/">Basic Input and Output in Python&nbsp;»</a></div>
+  </div>
+</div>
+
+</section>
+
+    
+      
+      <div class="d-flex justify-content-center flex-wrap gap-2 my-3">
+        
+
+
+<completion-status class="btn-group mb-0" article-slug="python-for-loop" data-api-article-bookmark-url="/api/v1/articles/python-for-loop/bookmark/" data-api-article-completion-status-url="/api/v1/articles/python-for-loop/completion_status/">
+  <button data-target-complete-button="" title="Click to mark as completed" class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">Mark as Completed</button>
+  <button data-target-bookmark-button="" title="Add bookmark" class="btn btn-secondary border-left"><span class="icon baseline" aria-hidden="true">
+    <svg aria-hidden="true">
+      <use href="/static/icons.1440a154cfa8.svg#light--bookmark"></use>
+    </svg>
+    
+  </span></button>
+</completion-status>
+
+        
+<div class="btn-group mb-0">
+  <a class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" title="Liked it" role="button" aria-label="Thumbs up (liked it)" href="https://realpython.com/feedback/survey/article/python-for-loop/liked/?from=article-footer" target="_blank"><span class="icon" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-up"></use></svg></span></a> 
+  <a class="btn btn-secondary border-left" role="button" aria-label="Thumbs down (disliked it)" title="Disliked it" href="https://realpython.com/feedback/survey/article/python-for-loop/disliked/?from=article-footer" target="_blank"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-down"></use></svg></span></a>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+<share-button url="https://realpython.com/python-for-loop/" url-title="Python &quot;for&quot; Loops (Definite Iteration)" twitter-text="Interesting #Python article by @realpython:" email-subject="Python article for you" email-body="Check out this Python article:%0A%0APython &quot;for&quot; Loops (Definite Iteration)">
+  <button class="btn btn-secondary" type="button" title="Share" aria-label="Share"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@share-light"></use></svg></span>Share</button>
+</share-button>
+
+
+      </div>
+    
+
+    
+      
+<div class="border rounded p-3 card mb-2 text-wrap-pretty">
+  <p class="mb-0"><span class="badge badge-pill badge-success"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--play-circle"></use></svg></span> Watch Now</span> This tutorial has a related video course created by the Real Python team. Watch it together with the written tutorial to deepen your understanding: <a class="stretched-link text-success" href="https://realpython.com/courses/python-for-loop/"><strong>For Loops in Python (Definite Iteration)</strong></a></p>
+</div>
+
+    
+  </div>
+
+  
+    
+
+<div class="card mt-4 mb-4 bg-secondary">
+  <p class="card-header h3 text-center bg-light">🐍 Python Tricks 💌</p>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-7">
+          <p>Get a short &amp; sweet <strong>Python Trick</strong> delivered to your inbox every couple of days. No spam ever. Unsubscribe any time. Curated by the Real Python team.</p>
+        </div>
+        <div class="col-xs-12 col-sm-5">
+          <img loading="lazy" class="img-fluid rounded mb-3" src="./python-for-loops_files/pytrick-dict-merge.webp" width="738" height="490" alt="Python Tricks Dictionary Merge">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <form class="col-12" action="https://realpython.com/optins/process/" method="post">
+          <input type="hidden" name="csrfmiddlewaretoken" value="PO3RZuWUcnNCpHudjqgfRzWLrazmFzxa7X8p9tjllEyV5Ow9dIqkaGi9AOzqYgPq">
+          <input type="hidden" name="slug" value="static-python-tricks-footer">
+          <div class="form-group">
+            <input name="email" type="email" class="form-control form-control-lg" placeholder="Email Address" required="">
+          </div>
+          <button name="submit" type="submit" class="btn btn-primary btn-lg btn-block">Send Me Python Tricks »</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  
+
+
+
+<div class="card mt-3" id="author">
+  <p class="card-header h3">About <strong>John Sturtz</strong></p>
+  <div class="card-body">
+    <div class="container p-0">
+      <div class="row">
+        <div class="col-12 col-md-3 align-self-center">
+          <a href="https://realpython.com/team/jsturtz/" aria-hidden="true" tabindex="-1">
+            <img loading="lazy" src="./python-for-loops_files/img007.18d0e80683f7.jpg" srcset="/cdn-cgi/image/width=89,height=89,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 89w, /cdn-cgi/image/width=119,height=119,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 119w, /cdn-cgi/image/width=179,height=179,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 179w, /cdn-cgi/image/width=358,height=358,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 358w" sizes="(min-width: 580px) 154px, calc(33.08vw - 24px)" width="358" height="358" style="background: #5a270c;" class="d-block d-md-none rounded-circle img-fluid w-33 mb-0 mx-auto" alt="John Sturtz">
+            <img loading="lazy" src="./python-for-loops_files/img007.18d0e80683f7.jpg" srcset="/cdn-cgi/image/width=89,height=89,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 89w, /cdn-cgi/image/width=119,height=119,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 119w, /cdn-cgi/image/width=179,height=179,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 179w, /cdn-cgi/image/width=358,height=358,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 358w" sizes="(min-width: 1200px) 140px, calc(-1.5vw + 137px)" width="358" height="358" style="background: #5a270c;" class="d-none d-md-block rounded-circle img-fluid w-100 mb-0" alt="John Sturtz">
+          </a>
+        </div>
+        <div class="col mt-3">
+          <p>John is an avid Pythonista and a member of the Real Python tutorial team.</p>
+          <a href="https://realpython.com/team/jsturtz/" class="card-link">» More about John</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <hr class="my-0">
+  <div class="card-body pb-0">
+    <div class="container">
+      <div class="row">
+        <p><em>Each tutorial at Real Python is created by a team of developers so that it meets our high quality standards. The team members who worked on this tutorial are:</em></p>
+      </div>
+
+      
+        
+          <div class="row align-items-center w-100 mx-auto">
+        
+
+        <div class="col-4 col-sm-2 align-self-center">
+          
+            <a href="https://realpython.com/team/asantos/" aria-hidden="true" tabindex="-1"><img loading="lazy" src="./python-for-loops_files/PP.9b8b026f75b8.jpg" srcset="/cdn-cgi/image/width=239,height=239,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 239w, /cdn-cgi/image/width=319,height=319,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 319w, /cdn-cgi/image/width=479,height=479,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 479w, /cdn-cgi/image/width=959,height=959,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 959w" sizes="(min-width: 1200px) 73px, (min-width: 780px) calc(-0.75vw + 69px), (min-width: 580px) 43px, calc(33.46vw - 64px)" width="959" height="959" style="background: #dadad8;" class="rounded-circle img-fluid w-100" alt="Aldren Santos"></a>
+          
+        </div>
+        <div class="col pl-0 d-none d-sm-block">
+          <a href="https://realpython.com/team/asantos/" class="card-link small"><p>Aldren</p></a>
+        </div>
+
+        
+
+        
+      
+        
+
+        <div class="col-4 col-sm-2 align-self-center">
+          
+            <a href="https://realpython.com/team/damos/" aria-hidden="true" tabindex="-1"><img loading="lazy" src="./python-for-loops_files/me-small.f5f49f1c48e1.jpg" srcset="/cdn-cgi/image/width=100,height=100,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/me-small.f5f49f1c48e1.jpg 100w, /cdn-cgi/image/width=133,height=133,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/me-small.f5f49f1c48e1.jpg 133w, /cdn-cgi/image/width=200,height=200,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/me-small.f5f49f1c48e1.jpg 200w, /cdn-cgi/image/width=400,height=400,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/me-small.f5f49f1c48e1.jpg 400w" sizes="(min-width: 1200px) 73px, (min-width: 780px) calc(-0.75vw + 69px), (min-width: 580px) 43px, calc(33.46vw - 64px)" width="400" height="400" style="background: #7c7e7d;" class="rounded-circle img-fluid w-100" alt="David Amos"></a>
+          
+        </div>
+        <div class="col pl-0 d-none d-sm-block">
+          <a href="https://realpython.com/team/damos/" class="card-link small"><p>David</p></a>
+        </div>
+
+        
+
+        
+      
+        
+
+        <div class="col-4 col-sm-2 align-self-center">
+          
+            <a href="https://realpython.com/team/jjablonski/" aria-hidden="true" tabindex="-1"><img loading="lazy" src="./python-for-loops_files/jjablonksi-avatar.e37c4f83308e.jpg" srcset="/cdn-cgi/image/width=200,height=200,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg 200w, /cdn-cgi/image/width=266,height=266,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg 266w, /cdn-cgi/image/width=400,height=400,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg 400w, /cdn-cgi/image/width=800,height=800,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg 800w" sizes="(min-width: 1200px) 73px, (min-width: 780px) calc(-0.75vw + 69px), (min-width: 580px) 43px, calc(33.46vw - 64px)" width="800" height="800" style="background: #b8b9bb;" class="rounded-circle img-fluid w-100" alt="Joanna Jablonski"></a>
+          
+        </div>
+        <div class="col pl-0 d-none d-sm-block">
+          <a href="https://realpython.com/team/jjablonski/" class="card-link small"><p>Joanna</p></a>
+        </div>
+
+        
+
+        
+          </div>
+        
+      
+    </div>
+  </div>
+  
+
+</div>
+
+
+
+
+
+  
+    
+
+<div class="bg-light rounded py-4 my-4 shadow shadow-sm mx-n2">
+  
+  <div class="col-12 text-center d-block d-md-none">
+    <p class="h2 mb-3">Master <u><span class="marker-highlight">Real-World Python Skills</span></u> With Unlimited Access to Real&nbsp;Python</p>
+    <p class="mb-1"><img loading="lazy" class="w-75" src="./python-for-loops_files/lesson-locked.f5105cfd26db.svg" width="510" height="260" alt="Locked learning resources"></p>
+    <p class="mx-auto w-75 mb-3 small"><strong>Join us and get access to thousands of tutorials, hands-on video courses, and a community of expert&nbsp;Pythonistas:</strong></p>
+    <p class="mb-0"><a href="https://realpython.com/account/join/?utm_source=rp_article_footer&amp;utm_content=python-for-loop" class="btn btn-primary btn-sm px-4 mb-0">Level Up Your Python Skills »</a>
+  </p></div>
+
+  
+  <div class="col-12 text-center d-none d-md-block">
+    <p class="h2 mb-2">Master <u><span class="marker-highlight">Real-World Python Skills</span></u><br>With Unlimited Access to Real&nbsp;Python</p>
+    <p class="mb-2"><img loading="lazy" class="w-50 mb-2" src="./python-for-loops_files/lesson-locked.f5105cfd26db.svg" width="510" height="260" alt="Locked learning resources"></p>
+    <p class="mx-auto w-50 mb-3"><strong>Join us and get access to thousands of tutorials, hands-on video courses, and a community of expert Pythonistas:</strong></p>
+    <p><a href="https://realpython.com/account/join/?utm_source=rp_article_footer&amp;utm_content=python-for-loop" class="btn btn-primary btn-lg px-4">Level Up Your Python Skills »</a>
+  </p></div>
+</div>
+
+  
+
+  
+  <div class="card mt-4" id="reader-comments">
+    <p class="card-header h3">What Do You Think?</p>
+    
+    <div class="text-center mt-3 mb-0 p-0">
+      <div class="mb-2">
+        <strong class="mr-2">Rate this article:</strong>
+        
+<div class="btn-group mb-0">
+  <a class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" title="Liked it" role="button" aria-label="Thumbs up (liked it)" href="https://realpython.com/feedback/survey/article/python-for-loop/liked/?from=article-comments" target="_blank"><span class="icon" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-up"></use></svg></span></a> 
+  <a class="btn btn-secondary border-left" role="button" aria-label="Thumbs down (disliked it)" title="Disliked it" href="https://realpython.com/feedback/survey/article/python-for-loop/disliked/?from=article-comments" target="_blank"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-down"></use></svg></span></a>
+</div>
+
+      </div>
+      
+
+
+
+<div class="d-flex justify-content-center flex-wrap gap-2 my-3">
+  
+  
+  <a target="_blank" rel="nofollow" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Frealpython.com%2Fpython-for-loop%2F" class="btn btn-sm share-linkedin" aria-label="Share on LinkedIn"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--linkedin"></use></svg></span>LinkedIn</a>
+  
+  
+  <a target="_blank" rel="nofollow" href="https://twitter.com/intent/tweet/?text=Interesting%20Python%20article%20on%20%40realpython%3A%20Python%20%22for%22%20Loops%20%28Definite%20Iteration%29&amp;url=https%3A%2F%2Frealpython.com%2Fpython-for-loop%2F" class="btn btn-sm share-x-twitter" aria-label="Share on X/Twitter"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--x-twitter"></use></svg></span>Twitter</a>
+  
+  
+  <a target="_blank" rel="nofollow" href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Frealpython.com%2Fpython-for-loop%2F" class="btn btn-sm share-facebook" aria-label="Share on Facebook"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--facebook"></use></svg></span>Facebook</a>
+  
+  
+  <a target="_blank" rel="nofollow" href="mailto:?subject=Python%20article%20for%20you&amp;body=Python%20%22for%22%20Loops%20%28Definite%20Iteration%29%20on%20Real%20Python%0A%0Ahttps%3A%2F%2Frealpython.com%2Fpython-for-loop%2F%0A" class="btn btn-sm share-email" aria-label="Share via Email"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--envelope"></use></svg></span>Email</a>
+  
+  
+</div>
+
+    </div>
+    
+    <div class="card-body pt-0 text-wrap-pretty">
+      <p>What’s your #1 takeaway or favorite thing you learned? How are you going to put your newfound skills to use? Leave a comment below and let us know.</p>
+
+      <div class="alert alert-dark">
+        <p class="mb-0"><strong>Commenting Tips:</strong> The most useful comments are those written with the goal of learning from or helping out other students. <a href="https://realpython.com/python-beginner-tips/#tip-9-ask-good-questions" target="_blank">Get tips for asking good questions</a> and <a href="https://support.realpython.com/" target="_blank">get answers to common questions in our support portal</a>.</p><hr>Looking for a real-time conversation? Visit the <a href="https://realpython.com/community/" target="_blank">Real Python Community Chat</a> or join the next <a href="https://realpython.com/office-hours/" target="_blank">“Office&nbsp;Hours” Live Q&amp;A Session</a>. Happy Pythoning!<p></p>
+
+      </div>
+
+      <div class="mb-4" id="disqus_thread">
+      
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="card mt-4 mb-4">
+    <p class="card-header h3">Keep Learning</p>
+    <div class="card-body">
+      <p class="mb-0">Related Topics:
+      
+        
+<a href="https://realpython.com/tutorials/basics/" class="badge badge-light text-muted">basics</a>
+
+      
+        
+<a href="https://realpython.com/tutorials/python/" class="badge badge-light text-muted">python</a>
+
+      
+      </p>
+      
+        <p class="mt-3 mb-0">Recommended Video Course: <a class="text-success" href="https://realpython.com/courses/python-for-loop/">For Loops in Python (Definite Iteration)</a></p>
+      
+    </div>
+  </div>
+
+  
+    
+    
+      
+<div class="modal fade" tabindex="-1" role="dialog" id="rpvc">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header border-0">
+        <div class="col-12 col-lg-9 mx-auto modal-title text-center my-2">
+          <h2 class="my-0">Master <u>Real-World Python Skills</u> With Unlimited Access to Real Python</h2>
+        </div>
+      </div>
+
+      
+      <div class="modal-body bg-light">
+        <div class="col-12 text-center">
+
+          <div class="col-12 col-lg-8 mx-auto mb-2 mt-3">
+            <a href="https://realpython.com/account/join/?utm_source=rp&amp;utm_medium=web&amp;utm_campaign=pwn&amp;utm_content=v2&amp;next=%2Fpython-for-loop%2F"><img loading="lazy" class="w-100" src="./python-for-loops_files/lesson-locked.f5105cfd26db.svg" width="510" height="260" alt="Unlock all content"></a>
+
+            <p class="mb-3"><strong>Join us and get access to thousands of tutorials, hands-on video courses, and a community of expert Pythonistas:</strong></p>
+          </div>
+
+          <p><a href="https://realpython.com/account/join/?utm_source=rp&amp;utm_medium=web&amp;utm_campaign=pwn&amp;utm_content=v2" class="btn btn-primary btn-lg px-4"><span class="icon baseline mr-2" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@unlock"></use></svg></span>Unlock All Content »</a></p>
+
+        </div>
+      </div>
+      
+
+      <div class="modal-footer border-0">
+        <button class="text-muted btn" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+      <script src="./python-for-loops_files/pw.dc84fc526165.js.download" async=""></script>
+    
+  
+
+
+    </div>
+
+  </div>
+
+    </div>
+
+    
+    
+
+    
+    
+      
+        
+          <div class="modal fade" id="modal-python-tricks-sample-pdf" tabindex="-1" aria-labelledby="modal-python-tricks-sample-pdf-title" aria-describedby="modal-python-tricks-sample-pdf-desc">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header bg-light pt-3 pb-2">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="progress" style="height: .5rem;" aria-hidden="true">
+                <div class="progress-bar progress-bar-striped progress-bar-animated w-75" role="progressbar"></div>
+              </div>
+            </div>
+            <div class="col-12">
+              <p id="modal-python-tricks-sample-pdf-desc" class="text-muted text-center mb-0 mt-2">Almost there! Complete this form and click the button below to gain instant&nbsp;access:</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+
+      <div class="modal-body m-4">
+        <div class="container-fluid">
+          <div class="row align-items-center text-center">
+            <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+              
+              
+                <img loading="lazy" class="img-fluid rounded" src="./python-for-loops_files/pytricks-book-mockup.e2bdf7273464.png" width="642" height="893" srcset="/cdn-cgi/image/width=160,format=auto/https://files.realpython.com/media/pytricks-book-mockup.e2bdf7273464.png 160w, /cdn-cgi/image/width=214,format=auto/https://files.realpython.com/media/pytricks-book-mockup.e2bdf7273464.png 214w, /cdn-cgi/image/width=321,format=auto/https://files.realpython.com/media/pytricks-book-mockup.e2bdf7273464.png 321w, /cdn-cgi/image/width=642,format=auto/https://files.realpython.com/media/pytricks-book-mockup.e2bdf7273464.png 642w" sizes="(min-width: 1000px) 207px, (min-width: 580px) 382px, calc(100vw - 134px)" alt="Python Tricks: The Book">
+              
+            </div>
+            <div class="col">
+              <p id="modal-python-tricks-sample-pdf-title" class="text-center h3 mb-4">"Python Tricks: The Book" – Free Sample Chapter (PDF)</p>
+
+              <form class="col-12" action="https://realpython.com/optins/process/" method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value="PO3RZuWUcnNCpHudjqgfRzWLrazmFzxa7X8p9tjllEyV5Ow9dIqkaGi9AOzqYgPq">
+                <input type="hidden" name="slug" value="python-tricks-sample-pdf">
+                <input type="hidden" name="source_path" value="/python-for-loop/"> 
+                <div class="form-group">
+                  <input type="email" name="email" class="form-control" placeholder="Email Address" required="" autofocus="">
+                </div>
+                <button name="submit" type="submit" class="btn btn-primary btn-block text-wrap">Send My Sample Chapter »</button>
+                <p class="mb-0 mt-2 text-muted text-center"><small>🔒 No spam. We take your privacy seriously.</small></p>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+        
+      
+    
+
+    
+      
+<footer class="footer">
+  <div class="container">
+    
+      <div class="mx-auto mt-4 mb-0" style="max-width: 768px;">
+        
+
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:12.5%;"></div>
+  <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/53740567618/?c=44675371757&amp;p=58946116052&amp;r=67168" rel="nofollow" target="_blank"><img src="./python-for-loops_files/32dc2b8267d0b6061434a93732943fa5" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+<a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a>
+
+
+      </div>
+    
+
+    <p class="text-center text-muted w-75 mx-auto">© 2012–2024 Real&nbsp;Python&nbsp;⋅ <a href="https://realpython.com/newsletter/">Newsletter</a>&nbsp;⋅ <a href="https://realpython.com/podcasts/rpp/">Podcast</a>&nbsp;⋅ <a href="https://www.youtube.com/realpython">YouTube</a>&nbsp;⋅ <a href="https://twitter.com/realpython">Twitter</a>&nbsp;⋅ <a href="https://facebook.com/LearnRealPython">Facebook</a>&nbsp;⋅ <a href="https://www.instagram.com/realpython/">Instagram</a>&nbsp;⋅ <a href="https://realpython.com/">Python&nbsp;Tutorials</a>&nbsp;⋅ <a href="https://realpython.com/search">Search</a>&nbsp;⋅ <a href="https://realpython.com/privacy-policy/">Privacy Policy</a>&nbsp;⋅ <a href="https://realpython.com/energy-policy/">Energy Policy</a>&nbsp;⋅ <a href="https://realpython.com/sponsorships/">Advertise</a>&nbsp;⋅ <a href="https://realpython.com/contact/">Contact</a><br><span class="icon baseline text-color-red" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--heart"></use></svg></span> Happy Pythoning!</p>
+  </div>
+</footer>
+
+    
+
+    
+
+    
+    <script>
+      (function() {
+        var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
+        if (!isAndroid) {
+          return;
+        }
+
+        var styles = `
+        @font-face {
+          font-family: 'DejaVu Sans Mono';
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+          src: url('/static/mfonts/dejavu-sans-mono.33f00225f915.woff2') format('woff2'),
+               url('/static/mfonts/dejavu-sans-mono.0da77d3739f3.woff') format('woff'),
+               url('/static/mfonts/dejavu-sans-mono.c2356fc49835.ttf') format('truetype');
+        }
+        code, kbd, pre, samp {
+          font-family: 'DejaVu Sans Mono', monospace;
+        }
+        `
+
+        var styleSheet = document.createElement("style")
+        styleSheet.type = "text/css"
+        styleSheet.innerText = styles
+        document.head.appendChild(styleSheet)
+      })();
+    </script>
+
+    
+    
+    <script src="./python-for-loops_files/jquery.min.2c872dbe60f4.js.download"></script>
+    <script src="./python-for-loops_files/popper.min.aeebb49d0b64.js.download"></script>
+    <script src="./python-for-loops_files/bootstrap.min.248284cdd069.js.download"></script>
+
+    
+    
+
+
+    <script>
+    (function() {
+      document.querySelectorAll(".js-search-form-submit").forEach(function(el) {
+        el.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.currentTarget.parentElement.submit();
+        })
+      });
+    })();
+    </script>
+    <script src="./python-for-loops_files/codeblock.fd057f64871d.js.download" async=""></script>
+    <script src="./python-for-loops_files/lightbox.5abaefa8b384.js.download" async=""></script>
+    <script src="./python-for-loops_files/platforms-ui.a69aad1c6777.js.download" async=""></script>
+    
+    <script src="./python-for-loops_files/session.a2647010a4be.js.download" async=""></script>
+    
+
+    <script src="./python-for-loops_files/table-of-contents.1878a66e56ce.js.download" defer=""></script>
+<script src="./python-for-loops_files/completion-status.c5660d84687e.js.download" defer=""></script>
+<script src="./python-for-loops_files/share-button.6511bf1c1a9a.js.download" defer=""></script>
+
+
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+<script>window.rp_prop_id = '58946116052';</script>
+<script src="./python-for-loops_files/tag.js.download" async=""></script>
+
+
+
+<script id="js-context" type="application/json">{"is_completed": false, "is_bookmarked": false, "api_article_bookmark_url": "/api/v1/articles/python-for-loop/bookmark/", "api_article_completion_status_url": "/api/v1/articles/python-for-loop/completion_status/", "api_article_progress_url": "/api/v1/articles/python-for-loop/progress/"}</script>
+
+
+  <script src="./python-for-loops_files/progress.d60fa4010861.js.download" async=""></script>
+
+
+
+
+
+  
+    <script id="dsq-count-scr" src="./python-for-loops_files/count.js.download" async=""></script>
+    <script>
+      var disqus_config = function () {
+        this.page.url = 'https://realpython.com/python-for-loop/';
+        this.page.identifier = 'https://realpython.com/python-for-loop/';
+        this.callbacks.onReady = [function() {
+          if (window.onDisqusReady) {
+            window.onDisqusReady();
+          }
+        }];
+      };
+      var disqus_script_url = 'https://realpython.disqus.com/embed.js';
+    </script>
+    <script src="./python-for-loops_files/lazy-disqus.91224536ec68.js.download" defer=""></script>
+  
+
+
+  
+  
+  <script src="./python-for-loops_files/OneSignalSDK.page.js.download" defer=""></script>
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(function(OneSignal) {
+      OneSignal.init({
+        appId: "c0081e20-a523-42bb-b0ac-04c5a9e8bf40",
+        safari_web_id: "web.onesignal.auto.337e82fd-eeda-48f8-8fe5-d2f6dec774c2",
+        notifyButton: {
+          enable: true,
+          position: "bottom-left",
+          showCredit: false,
+          text: {
+            "tip.state.unsubscribed": "Receive a notification when we post a new tutorial",
+            "tip.state.subscribed": "You're subscribed to new tutorial notifications",
+            'tip.state.blocked': "You've blocked notifications",
+            'message.prenotify': 'Click to subscribe to notifications',
+            "message.action.subscribed": "Great, we'll let you know when the next tutorial comes out!",
+            'message.action.resubscribed': "You're subscribed to notifications",
+            'message.action.unsubscribed': "You won't receive notifications again",
+            'dialog.main.title': 'Manage Site Notifications',
+            'dialog.main.button.subscribe': 'SUBSCRIBE',
+            'dialog.main.button.unsubscribe': 'UNSUBSCRIBE',
+            'dialog.blocked.title': 'Unblock Notifications',
+            'dialog.blocked.message': "Follow these instructions to allow notifications:"
+          },
+          
+        },
+      });
+    });
+  </script>
+  
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Python \u0022for\u0022 Loops (Definite Iteration)",
+    
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://files.realpython.com/media/Python-for-Loops-Definite-Iteration_Watermarked.9c0d36b6de30.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://realpython.com/python-for-loop/"
+    },
+    "datePublished": "2019-01-30T14:00:00+00:00",
+    "dateModified": "2023-11-16T14:41:57.551495+00:00",
+     "publisher": {
+      "@type": "Organization",
+      "name": "Real Python",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "/static/real-python-logo-square-tiny.b2452b6d3823.png",
+        "width": 60,
+        "height": 60
+      }
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Real Python",
+      "url": "https://realpython.com",
+      "logo": "/static/real-python-logo-square.146e987bf77c.png"
+    },
+    "description": "In this introductory tutorial, you\u0027ll learn all about how to perform definite iteration with Python for loops. You’ll see how other programming languages implement definite iteration, learn about iterables and iterators, and tie it all together to learn about Python’s for loop."
+  }
+  </script>
+  
+
+
+    <script src="./python-for-loops_files/optins.41a0db820ee2.js.download" async=""></script>
+    <script src="./python-for-loops_files/autocomplete.ecb9103353c8.js.download" async=""></script>
+
+    
+
+<script>
+  var _cio = _cio || [];
+  (function(){
+      var a,b,c;a=function(f){return function(){_cio.push([f].
+      concat(Array.prototype.slice.call(arguments,0)))}};b=["load","identify",
+      "sidentify","track","page","on","off"];for(c=0;c<b.length;c++){_cio[b[c]]=a(b[c])};
+      var t = document.createElement('script'),
+          s = document.getElementsByTagName('script')[0];
+      t.async = true;
+      t.id    = 'cio-tracker';
+      t.setAttribute('data-site-id', '7c2f77c7758d22126955');
+      t.setAttribute('data-use-array-params', 'true');
+      t.setAttribute('data-in-app-org-id', '0ed756ae-4cd1-4bb7-912c-1b37e39b6595');
+      t.setAttribute('data-use-in-app', 'true');
+      t.src = 'https://assets.customer.io/assets/track.js';
+      s.parentNode.insertBefore(t, s);
+  })();
+  (function(){
+    try {
+      var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    } catch (e) {
+      var tz = null;
+    }
+    var opts = {
+      
+      id: '58cfc528-9e15-4f9c-ba87-cd171794ed8c',
+      created_at: 1647928579,
+      last_seen_at: 1724556104,
+      has_active_subscription: false,
+      first_name: 'Natalia',
+    };
+    if (tz) {
+      opts.timezone = tz;
+    }
+    _cio.identify(opts);
+  })();
+</script>
+
+
+    
+
+    
+
+    
+
+    
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2220911568135371');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2220911568135371&ev=PageView&noscript=1"
+/></noscript>
+
+
+    
+
+    
+<script>!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});</script>
+
+<script>
+window.Beacon('init', 'f6ddfa28-ffa8-423f-b3b1-50e29e420c43')
+
+Beacon("identify", {
+  email: "natalia.shif@gmail.com",
+  name: "nataliashif",
+  has_active_subscription: "False",
+  username: "natalia.shif",
+  userid: "434279"
+});
+</script>
+
+
+  
+
+<div id="onesignal-bell-container" class="onesignal-bell-container onesignal-reset onesignal-bell-container-bottom-left"><div id="onesignal-bell-launcher" class="onesignal-bell-launcher onesignal-bell-launcher-md onesignal-bell-launcher-bottom-left onesignal-bell-launcher-theme-default onesignal-bell-launcher-active"><div class="onesignal-bell-launcher-button"><svg class="onesignal-bell-svg" xmlns="http://www.w3.org/2000/svg" width="99.7" height="99.7" viewBox="0 0 99.7 99.7" style="filter: drop-shadow(0 2px 4px rgba(34,36,38,0.35));; -webkit-filter: drop-shadow(0 2px 4px rgba(34,36,38,0.35));;"><circle class="background" cx="49.9" cy="49.9" r="49.9" style=""></circle><path class="foreground" d="M50.1 66.2H27.7s-2-.2-2-2.1c0-1.9 1.7-2 1.7-2s6.7-3.2 6.7-5.5S33 52.7 33 43.3s6-16.6 13.2-16.6c0 0 1-2.4 3.9-2.4 2.8 0 3.8 2.4 3.8 2.4 7.2 0 13.2 7.2 13.2 16.6s-1 11-1 13.3c0 2.3 6.7 5.5 6.7 5.5s1.7.1 1.7 2c0 1.8-2.1 2.1-2.1 2.1H50.1zm-7.2 2.3h14.5s-1 6.3-7.2 6.3-7.3-6.3-7.3-6.3z" style=""></path><ellipse class="stroke" cx="49.9" cy="49.9" rx="37.4" ry="36.9" style=""></ellipse></svg></div><div class="onesignal-bell-launcher-badge" style="filter: drop-shadow(0 2px 4px rgba(34,36,38,0));; -webkit-filter: drop-shadow(0 2px 4px rgba(34,36,38,0));;"></div><div class="onesignal-bell-launcher-message"><div class="onesignal-bell-launcher-message-body"></div></div><div class="onesignal-bell-launcher-dialog" style="filter: drop-shadow(0px 2px 2px rgba(34,36,38,.15));; -webkit-filter: drop-shadow(0px 2px 2px rgba(34,36,38,.15));;"><div class="onesignal-bell-launcher-dialog-body"></div></div></div></div><div id="beacon-container"><div class="hsds-beacon"><div class="Beacon"><div class="ContainerGradient-sc-62zoy-0 dkxqZi"></div><div class="ContainerFramecss__WrapperUI-sc-d7rzhh-0 itSWDc BeaconContainer is-configDisplayRight"></div><div class="FabButtonFramecss__FabButtonFrameUI-sc-y1b4md-0 bbHIsf BeaconFabButtonFrame" style="border-radius: 60px; height: 60px; position: fixed; transform: scale(1); width: 105px; z-index: 1049;"><span class="FabButtonFramecss__FabButtonPulseUI-sc-y1b4md-1 hzrFgd"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M60 30C60 51.25 51.25 60 30 60C8.75 60 1.99634e-09 51.25 1.99563e-09 30C1.99492e-09 8.75 8.75 0 30 0C51.25 0 60 8.75 60 30Z"></path>
+</svg>
+</span><span class="FabButtonFramecss__FabButtonPulseUI-sc-y1b4md-1 hzrFgd"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M60 30C60 51.25 51.25 60 30 60C8.75 60 1.99634e-09 51.25 1.99563e-09 30C1.99492e-09 8.75 8.75 0 30 0C51.25 0 60 8.75 60 30Z"></path>
+</svg>
+</span><iframe title="Help Scout Beacon - Open" id="" allowtransparency="true" data-cy="FrameComponent" src="./python-for-loops_files/saved_resource.html"></iframe></div></div></div></div><div id="G3c191909" style="display: none; height: 0px;" class="gist-d2f8388b-ced1-485b-8f3b-53b424db7c55">
+    <div id="gist-embed">
+        <style>
+            #x-gist-floating-top, #x-gist-floating-top-left, #x-gist-floating-top-right {
+                position: fixed;
+                top: 0px;
+                z-index: 1000000;
+            }
+            #x-gist-floating-bottom, #x-gist-floating-bottom-left, #x-gist-floating-bottom-right {
+                position: fixed;
+                bottom: 0px;
+                z-index: 1000000;
+            }
+            #x-gist-bottom, #x-gist-top, #x-gist-floating-top, #x-gist-floating-bottom {
+                left: 50%;
+                transform: translate(-50%, 0%);
+            }
+            #x-gist-floating-top-right, #x-gist-floating-bottom-right {
+                right: 0px;
+            }
+            #gist-embed {
+                position: relative;
+                height: 100%;
+                width: 100%;
+            }
+            #gist-embed-container {
+                position: relative;
+                height: 100%;
+                width: 100%;
+            }
+            #gist-embed-container .gist-frame {
+                height: 100%;
+                width: 100%;
+                border: none;
+            }
+            #x-gist-top.gist-d2f8388b-ced1-485b-8f3b-53b424db7c55,
+            #x-gist-bottom.gist-d2f8388b-ced1-485b-8f3b-53b424db7c55,
+            #x-gist-floating-top.gist-d2f8388b-ced1-485b-8f3b-53b424db7c55,
+            #x-gist-floating-bottom.gist-d2f8388b-ced1-485b-8f3b-53b424db7c55,
+            #x-gist-floating-top-left.gist-d2f8388b-ced1-485b-8f3b-53b424db7c55,
+            #x-gist-floating-top-right.gist-d2f8388b-ced1-485b-8f3b-53b424db7c55,
+            #x-gist-floating-bottom-left.gist-d2f8388b-ced1-485b-8f3b-53b424db7c55,
+            #x-gist-floating-bottom-right.gist-d2f8388b-ced1-485b-8f3b-53b424db7c55 {
+                transition: height 0.1s ease-in-out;
+            }
+            @media (max-width: 800px) {
+                #x-gist-top.gist-d2f8388b-ced1-485b-8f3b-53b424db7c55,
+                #x-gist-bottom.gist-d2f8388b-ced1-485b-8f3b-53b424db7c55,
+                #x-gist-floating-top.gist-d2f8388b-ced1-485b-8f3b-53b424db7c55,
+                #x-gist-floating-bottom.gist-d2f8388b-ced1-485b-8f3b-53b424db7c55,
+                #x-gist-floating-top-left.gist-d2f8388b-ced1-485b-8f3b-53b424db7c55,
+                #x-gist-floating-top-right.gist-d2f8388b-ced1-485b-8f3b-53b424db7c55,
+                #x-gist-floating-bottom-left.gist-d2f8388b-ced1-485b-8f3b-53b424db7c55,
+                #x-gist-floating-bottom-right.gist-d2f8388b-ced1-485b-8f3b-53b424db7c55 {
+                    width: 100% !important;
+                }
+            }
+        </style>
+        <div id="gist-embed-container">
+            <iframe id="gist-d2f8388b-ced1-485b-8f3b-53b424db7c55" class="gist-frame" src="./python-for-loops_files/index.html"></iframe>
+        </div>
+    </div></div></body></html>

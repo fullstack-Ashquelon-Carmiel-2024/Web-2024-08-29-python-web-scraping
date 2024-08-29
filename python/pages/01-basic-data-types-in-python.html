@@ -1,0 +1,2459 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <link href="https://files.realpython.com/" rel="preconnect">
+
+    <title>Basic Data Types in Python</title>
+    <meta name="author" content="Real Python">
+    <meta name="description" content="In this tutorial, you&#39;ll learn about the basic data types that are built into Python, including numbers, strings, bytes, and Booleans.">
+    <meta name="keywords" content="">
+
+    
+  
+
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+
+    
+      <link rel="stylesheet" href="./basic-data-types-in-python_files/realpython.min.d94753535dde.css">
+      <link rel="stylesheet" href="./basic-data-types-in-python_files/font.5ac42994de49.css">
+      <link rel="stylesheet" href="./basic-data-types-in-python_files/glightbox.min.9b438b29cef1.css" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;"><noscript><link rel="stylesheet" href="/static/glightbox.min.9b438b29cef1.css"></noscript>
+      
+    
+
+    
+  
+  <link rel="preload" as="image" href="./basic-data-types-in-python_files/Basic-Data-Types-in-Python_Watermarked.e3dd34457952.jpg" imagesrcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Basic-Data-Types-in-Python_Watermarked.e3dd34457952.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Basic-Data-Types-in-Python_Watermarked.e3dd34457952.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Basic-Data-Types-in-Python_Watermarked.e3dd34457952.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Basic-Data-Types-in-Python_Watermarked.e3dd34457952.jpg 1920w" imagesizes="(min-width: 1200px) 690px, (min-width: 780px) calc(-5vw + 669px), (min-width: 580px) 510px, calc(100vw - 30px)">
+
+
+    
+    
+      <link rel="canonical" href="https://realpython.com/python-data-types/">
+
+      
+      
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="https://files.realpython.com/media/Basic-Data-Types-in-Python_Watermarked.e3dd34457952.jpg">
+        <meta property="og:image" content="https://files.realpython.com/media/Basic-Data-Types-in-Python_Watermarked.e3dd34457952.jpg">
+      
+      <meta name="twitter:creator" content="@realpython">
+      <meta name="twitter:site" content="@realpython">
+      <meta property="og:title" content="Basic Data Types in Python: A Quick Exploration – Real Python">
+      <meta property="og:type" content="article">
+      <meta property="og:url" content="https://realpython.com/python-data-types/">
+      <meta property="og:description" content="In this tutorial, you&#39;ll learn about the basic data types that are built into Python, including numbers, strings, bytes, and Booleans.">
+    
+
+    <link href="https://realpython.com/static/favicon.68cbf4197b0c.png" rel="icon">
+    <link href="https://realpython.com/atom.xml" rel="alternate" title="Real Python" type="application/atom+xml">
+    <link rel="manifest" href="https://realpython.com/manifest.json">
+
+
+  <body>
+    
+      
+    
+
+    <div class="container main-content">
+      
+
+      
+  <div class="row justify-content-center">
+
+    
+   <div class="col-md-11 col-lg-8 article with-headerlinks">
+      
+  
+
+  <h1>Basic Data Types in Python: A Quick Exploration</h1>
+  <h2>Is taken from <a href="https://realpython.com/python-data-types/">Real Python</a></h2>
+  
+
+  <div class="article-body">
+    
+      <div class="bg-light sidebar-module sidebar-module-inset" id="toc">
+        <p class="h3 mb-2 text-muted">Table of Contents</p>
+        <div class="toc">
+<ul>
+<li><a href="#pythons-basic-data-types">Python’s Basic Data Types</a></li>
+<li><a href="#integer-numbers">Integer Numbers</a><ul>
+<li><a href="#integer-literals">Integer Literals</a></li>
+<li><a href="#integer-methods">Integer Methods</a></li>
+<li><a href="#the-built-in-int-function">The Built-in int() Function</a></li>
+</ul>
+</li>
+<li><a href="#floating-point-numbers">Floating-Point Numbers</a><ul>
+<li><a href="#floating-point-literals">Floating-Point Literals</a></li>
+<li><a href="#floating-point-numbers-representation">Floating-Point Numbers Representation</a></li>
+<li><a href="#floating-point-methods">Floating-Point Methods</a></li>
+<li><a href="#the-built-in-float-function">The Built-in float() Function</a></li>
+</ul>
+</li>
+
+<li><a href="#strings-and-characters">Strings and Characters</a><ul>
+<li><a href="#regular-string-literals">Regular String Literals</a></li>
+<li><a href="#escape-sequences-in-strings">Escape Sequences in Strings</a></li>
+<li><a href="#raw-string-literals">Raw String Literals</a></li>
+<li><a href="#f-string-literals">F-String Literals</a></li>
+<li><a href="#string-methods">String Methods</a></li>
+<li><a href="#common-sequence-operations-on-strings">Common Sequence Operations on Strings</a></li>
+<li><a href="#the-built-in-str-and-repr-functions">The Built-in str() and repr() Functions</a></li>
+</ul>
+</li>
+
+<li><a href="#booleans">Booleans</a><ul>
+<li><a href="#boolean-literals">Boolean Literals</a></li>
+<li><a href="#the-built-in-bool-function">The Built-in bool() Function</a></li>
+</ul>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</div>
+
+      </div>
+    
+
+    <p>Python has several basic data types that are built into the language. With these types, you can represent numeric values, text and binary data, and Boolean values in your code. So, these data types are the basic building blocks of most Python programs and projects.</p>
+<p><strong>In this tutorial, you’ll learn about:</strong></p>
+<ul>
+<li><strong>Numeric</strong> types, such as <strong><code>int</code></strong>, <strong><code>float</code></strong>, and <strong><code>complex</code></strong></li>
+<li>The <strong><code>str</code></strong> data type, which represents <strong>textual</strong> data</li>
+<li>The <strong><code>bytes</code></strong> and <strong><code>bytearray</code></strong> data types for storing <strong>bytes</strong> - REMOVED</li>
+<li><strong>Boolean</strong> values with the <strong><code>bool</code></strong> data type</li>
+</ul>
+
+<section class="section2"><h2 id="pythons-basic-data-types">Python’s Basic Data Types<a class="headerlink" href="#pythons-basic-data-types" title="Permanent link"></a></h2>
+<p>Python has several <strong>built-in data types</strong> that you can use out of the box because they’re built into the language. From all the built-in types available, you’ll find that a few of them represent <em>basic</em> objects, such as numbers, strings and characters, bytes, and Boolean values.</p>
+<p>Note that the term <strong>basic</strong> refers to objects that can represent data you typically find in real life, such as numbers and text. It doesn’t include composite data types, such as lists, tuples, dictionaries, and others.</p>
+<p>In Python, the built-in data types that you can consider basic are the following:</p>
+<div class="table-responsive">
+<table class="table table-hover">
+<thead>
+<tr>
+<th>Class</th>
+<th>Basic Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#integer-numbers"><code>int</code></a></td>
+<td>Integer numbers</td>
+</tr>
+<tr>
+<td><a href="#floating-point-numbers"><code>float</code></a></td>
+<td>Floating-point numbers</td>
+</tr>
+<tr>
+<td><a href="#complex-numbers"><code>complex</code></a></td>
+<td>Complex numbers</td>
+</tr>
+<tr>
+<td><a href="#strings-and-characters"><code>str</code></a></td>
+<td>Strings and characters</td>
+</tr>
+<tr>
+<td><a href="#bytes-and-bytearrays"><code>bytes</code>, <code>bytearray</code></a></td>
+<td>Bytes</td>
+</tr>
+<tr>
+<td><a href="#booleans"><code>bool</code></a></td>
+<td>Boolean values</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In the following sections, you’ll learn the basics of how to create, use, and work with all of these built-in data types in Python.</p>
+
+</section>
+
+<section class="section2"><h2 id="integer-numbers">Integer Numbers<a class="headerlink" href="#integer-numbers" title="Permanent link"></a></h2>
+
+  <p><strong>Integer numbers</strong> are whole numbers with no decimal places. They can be positive or negative numbers. For example, <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>-1</code>, <code>-2</code>, and <code>-3</code> are all integers. Usually, you’ll use positive integer numbers to count things.</p>
+<p>In Python, the integer data type is represented by the <a href="https://docs.python.org/3/library/functions.html#int"><code>int</code></a> class:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="go">&lt;class 'int'&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In the following sections, you’ll learn the basics of how to create and work with integer numbers in Python.</p>
+<section class="section3"><h3 id="integer-literals">Integer Literals<a class="headerlink" href="#integer-literals" title="Permanent link"></a></h3>
+<p>When you need to use integer numbers in your code, you’ll often use integer <a href="https://docs.python.org/3/reference/lexical_analysis.html#literals">literals</a> directly. Literals are constant values of built-in types spelled out literally, such as integers. Python provides a few different ways to create integer literals. The most common way is to use base-ten literals that look the same as integers look in math:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="mi">42</span>
+<span class="go">42</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="o">-</span><span class="mi">84</span>
+<span class="go">-84</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">0</span>
+<span class="go">0</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Here, you have three integer numbers: a positive one, a negative one, and zero. Note that to create negative integers, you need to prepend the minus sign (<code>-</code>) to the number.</p>
+<p>Python has no limit to how long an integer value can be. The only constraint is the amount of memory your system has. Beyond that, an integer can be as long as you need:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="mi">123123123123123123123123123123123123123123123123</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="go">123123123123123123123123123123123123123123123124</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>For a really, really long integer, you can get a <code>ValueError</code> when converting it to a string:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="mi">123</span> <span class="o">**</span> <span class="mi">10000</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">Exceeds the limit (4300 digits) for integer string conversion;</span>
+<span class="x">            use sys.set_int_max_str_digits() to increase the limit</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>If you need to print an integer number beyond the 4300-digit limit, then you can use the <a href="https://docs.python.org/3/library/sys.html#sys.set_int_max_str_digits"><code>sys.set_int_max_str_digits()</code></a> function to increase the limit and make your code work.</p>
+<p>When you’re working with long integers, you can use the underscore character to make the literals more readable:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="mi">1_000_000</span>
+<span class="go">1000000</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>With the underscore as a thousands separator, you can make your integer literals more readable for fellow programmers reading your code.</p>
+<p>You can also use other bases to represent integers. You can prepend the following characters to an integer value to indicate a base other than <code>10</code>:</p>
+<div class="table-responsive">
+<table class="table table-hover">
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Representation</th>
+<th>Base</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0b</code> or <code>0B</code> (Zero + b or B)</td>
+<td>Binary</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>0o</code> or <code>0O</code> (Zero + o or O)</td>
+<td>Octal</td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>0x</code> or <code>0X</code> (Zero + x or X)</td>
+<td>Hexadecimal</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Using the above characters, you can create integer literals using <a href="https://en.wikipedia.org/wiki/Binary_number">binary</a>, <a href="https://en.wikipedia.org/wiki/Octal">octal</a>, and <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a> representations. For example:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="mi">10</span>  <span class="c1"># Base 10</span>
+<span class="go">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">&lt;class 'int'&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="mb">0b10</span>  <span class="c1"># Base 2</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mb">0b10</span><span class="p">)</span>
+<span class="go">&lt;class 'int'&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="mo">0o10</span>  <span class="c1"># Base 8</span>
+<span class="go">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mo">0o10</span><span class="p">)</span>
+<span class="go">&lt;class 'int'&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="mh">0x10</span>  <span class="c1"># Base 16</span>
+<span class="go">16</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mh">0x10</span><span class="p">)</span>
+<span class="go">&lt;class 'int'&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Note that the underlying type of a Python integer is always <code>int</code>. So, in all cases, the built-in <code>type()</code> function returns <code>int</code>, irrespective of the base you use to build the literal.</p>
+
+</section>
+
+<section class="section3"><h3 id="integer-methods">Integer Methods<a class="headerlink" href="#integer-methods" title="Permanent link"></a></h3>
+<p>The built-in <code>int</code> type has a few methods that you can use in some situations. Here’s a quick summary of these methods:</p>
+<div class="table-responsive">
+<table class="table table-hover">
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#int.as_integer_ratio"><code>.as_integer_ratio()</code></a></td>
+<td>Returns a pair of integers whose ratio is equal to the original integer and has a positive denominator</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#int.bit_count"><code>.bit_count()</code></a></td>
+<td>Returns the number of ones in the binary representation of the absolute value of the integer</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#int.bit_length"><code>.bit_length()</code></a></td>
+<td>Returns the number of bits necessary to represent an integer in binary, excluding the sign and leading zeros</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#int.from_bytes"><code>.from_bytes()</code></a></td>
+<td>Returns the integer represented by the given array of bytes</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#int.to_bytes"><code>.to_bytes()</code></a></td>
+<td>Returns an array of bytes representing an integer</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#int.is_integer"><code>.is_integer()</code></a></td>
+<td>Returns <code>True</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>When you call the <code>.as_integer_ratio()</code> method on an integer value, you get the integer as the numerator and <code>1</code> as the denominator. As you’ll see in a moment, this method is more useful in floating-point numbers.</p>
+<p>Note that the <code>int</code> type also has a method called <code>.is_integer()</code>, which always returns <code>True</code>. This method exists for duck typing compatibility with floating-point numbers, which have the method as part of their public interface.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> To access an integer method on a literal, you need to wrap the literal in parentheses:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
+<span class="go">(42, 1)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="mf">42.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
+  File <span class="nb">"&lt;input&gt;"</span>, line <span class="m">1</span>
+<span class="w">    </span><span class="mf">42.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
+<span class="w">      </span><span class="pm">^</span>
+<span class="gr">SyntaxError</span>: <span class="n">invalid decimal literal</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The parentheses are required because the dot character (<code>.</code>) also defines floating-point numbers, as you’ll learn in a moment. If you don’t use the parentheses, then you get a <code>SyntaxError</code>.</p>
+</div>
+<p>The <code>.bit_count()</code> and <code>.bit_length()</code> methods can help you when working on <a href="https://en.wikipedia.org/wiki/Digital_signal_processing">digital signal processing</a>. For example, you may want every transmitted signal to have an even number of set bits:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">signal</span> <span class="o">=</span> <span class="mb">0b11010110</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">set_bits</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">bit_count</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">set_bits</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Even parity"</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Odd parity"</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">Odd parity</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this toy example, you use <code>.bit_count()</code> to ensure that the received signal has the correct parity. This way, you implement a basic error detection mechanism.</p>
+<p>Finally, the <code>.from_bytes()</code> and <code>.to_bytes()</code> methods can be useful in network programming. Often, you need to send and receive data over the network in binary format. To do this, you can use <code>.to_bytes()</code> to convert the message for network transmission. Similarly, you can use <code>.from_bytes()</code> to convert the message back.</p>
+</section><section class="section3"><h3 id="the-built-in-int-function">The Built-in <code>int()</code> Function<a class="headerlink" href="#the-built-in-int-function" title="Permanent link"></a></h3>
+<p>The built-in <code>int()</code> function provides another way to create integer values using different representations. With no arguments, the function returns <code>0</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">()</span>
+<span class="go">0</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>This feature makes <code>int()</code> especially useful when you need a factory function for classes like <code>defaultdict</code> from the <code>collections</code> module.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> In Python, the built-in functions associated with data types, such as <code>int()</code>, <code>float()</code>, <code>str()</code>, and <code>bytes()</code>, are classes with a function-style name. The Python documentation calls them functions, so you’ll follow that practice in this tutorial. However, keep in mind that something like <code>int()</code> is really a class constructor rather than a regular function.</p>
+</div>
+<p>The <code>int()</code> function is commonly used to convert other data types into integers, provided that they’re valid numeric values:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="mf">42.0</span><span class="p">)</span>
+<span class="go">42</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s2">"42"</span><span class="p">)</span>
+<span class="go">42</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s2">"one"</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;input&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="nb">int</span><span class="p">(</span><span class="s2">"one"</span><span class="p">)</span>
+<span class="gr">ValueError</span>: <span class="n">invalid literal for int() with base 10: 'one'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In these examples, you first use <code>int()</code> to convert a floating-point number into an integer. Then, you convert a string into an integer. Note that when it comes to strings, you must ensure that the input string is a valid numeric value. Otherwise, you’ll get a <code>ValueError</code> exception.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> When you use the <code>int()</code> function to convert floating-point numbers, you must be aware that the function just removes the decimal or fractional part.</p>
+</div>
+<p>This function can take an additional argument called <code>base</code>, which defaults to <code>10</code> for decimal integers. This argument allows you to convert strings that represent integer values, which are expressed using a different base:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s2">"0b10"</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">2</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s2">"10"</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="go">8</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s2">"10"</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="go">16</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this case, the first argument must be a string representing an integer value with or without a prefix. Then, you must provide the appropriate base in the second argument to run the conversion. Once you call the function, you get the resulting integer value.</p>
+
+</section></section><section class="section2"><h2 id="floating-point-numbers">Floating-Point Numbers<a class="headerlink" href="#floating-point-numbers" title="Permanent link"></a></h2>
+
+  <p><strong>Floating-point numbers</strong>, or just <strong>float</strong>, are numbers with a decimal place. For example, <code>1.0</code> and <code>3.14</code> are floating-point numbers. You can also have negative float numbers, such as <code>-2.75</code>. In Python, the name of the <a href="https://docs.python.org/3/library/functions.html#float"><code>float</code></a> class represents floating-point numbers:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="go">&lt;class 'float'&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In the following sections, you’ll learn the basics of how to create and work with floating-point numbers in Python.</p>
+<section class="section3"><h3 id="floating-point-literals">Floating-Point Literals<a class="headerlink" href="#floating-point-literals" title="Permanent link"></a></h3>
+<p>The <code>float</code> type in Python designates floating-point numbers. To create these types of numbers, you can also use literals, similar to what you use in math. However, in Python, the dot character (<code>.</code>) is what you must use to create floating-point literals:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="mf">4.2</span>
+<span class="go">4.2</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="mf">4.</span>
+<span class="go">4.0</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="mf">.2</span>
+<span class="go">0.2</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In these quick examples, you create floating-point numbers in three different ways. First, you have a literal build using an integer part, the dot, and the decimal part. You can also create a literal using the dot without specifying the decimal part, which defaults to <code>0</code>. Finally, you make a literal without specifying the integer part, which also defaults to <code>0</code>.</p>
+<p>You can also have negative float numbers:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="o">-</span><span class="mf">42.0</span>
+<span class="go">-42.0</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>To create a negative floating-point number using a literal, you need to prepend the minus sign (<code>-</code>) to the number.</p>
+<p>Similar to integer numbers, if you’re working with long floating-point numbers, you can use the underscore character as a thousands separator:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="mf">1_000_000.0</span>
+<span class="go">1000000.0</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>By using an underscore, you can make your floating-point literals more readable for humans, which is great.</p>
+<p>Optionally, you can use the characters <code>e</code> or <code>E</code> followed by a positive or negative integer to express the number using <a href="https://en.wikipedia.org/wiki/Scientific_notation">scientific notation</a>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="mf">.4e7</span>
+<span class="go">4000000.0</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="mf">4.2E-4</span>
+<span class="go">0.00042</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>By using the <code>e</code> or <code>E</code> character, you can represent any floating-point number using scientific notation, as you did in the above examples.</p>
+</section><section class="section3"><h3 id="floating-point-numbers-representation">Floating-Point Numbers Representation<a class="headerlink" href="#floating-point-numbers-representation" title="Permanent link"></a></h3>
+<p>Now, you can take a more in-depth look at how Python internally represents floating-point numbers. You can readily use floating-point numbers in Python without understanding them to this level, so don’t worry if this seems overly complicated. The information in this section is only meant to satisfy your curiosity.</p>
+
+<p>Almost all platforms represent Python <code>float</code> values as 64-bit (double-precision) values, according to the <a href="https://en.wikipedia.org/wiki/IEEE_754_revision">IEEE 754</a> standard. In that case, a floating-point number’s maximum value is approximately 1.8 ⨉ 10<sup>308</sup>. Python will indicate this number, and any numbers greater than that, by the <code>"inf"</code> string:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="mf">1.79e308</span>
+<span class="go">1.79e+308</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mf">1.8e308</span>
+<span class="go">inf</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The closest a nonzero number can be to zero is approximately 5.0 ⨉ 10<sup>-324</sup>. Anything closer to zero than that is effectively considered to be zero:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="mf">5e-324</span>
+<span class="go">5e-324</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mf">1e-324</span>
+<span class="go">0.0</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Python internally represents floating-point numbers as binary (base-2) fractions. Most decimal fractions can’t be represented exactly as binary fractions. So, in most cases, the internal representation of a floating-point number is an approximation of its actual value.</p>
+<p>In practice, the difference between the <em>actual</em> and <em>represented</em> values is small and should be manageable. However, there are some challenges you should be aware of.</p>
+
+</section>
+
+<section class="section3"><h3 id="floating-point-methods">Floating-Point Methods<a class="headerlink" href="#floating-point-methods" title="Permanent link"></a></h3>
+<p>The built-in <code>float</code> type has a few methods and attributes which can be useful in some situations. Here’s a quick summary of them:</p>
+<div class="table-responsive">
+<table class="table table-hover">
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#float.as_integer_ratio"><code>.as_integer_ratio()</code></a></td>
+<td>Returns a pair of integers whose ratio is exactly equal to the original <code>float</code></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#int.bit_length"><code>.is_integer()</code></a></td>
+<td>Returns <code>True</code> if the float instance is finite with integral value, and <code>False</code> otherwise</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#float.hex"><code>.hex()</code></a></td>
+<td>Returns a representation of a floating-point number as a hexadecimal string</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#float.fromhex"><code>.fromhex(string)</code></a></td>
+<td>Builds the <code>float</code> from a hexadecimal string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The <code>.as_integer_ratio()</code> method on a <code>float</code> value returns a pair of integers whose ratio equals the original number. You can use this method in scientific computations that require high precision. In these situations, you may need to avoid precision loss due to floating-point rounding errors.</p>
+<p>For example, say that you need to perform computations with the gravitational constant:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="mf">6.67430e-11</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
+<span class="go">(1290997375656627, 19342813113834066795298816)</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>With this exact ratio, you can perform calculations and prevent floating-point errors that may alter the results of your research.</p>
+<p>The <code>.is_integer()</code> method allows you to check whether a given <code>float</code> value is an integer:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mf">42.0</span><span class="p">)</span><span class="o">.</span><span class="n">is_integer</span><span class="p">()</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mf">42.42</span><span class="p">)</span><span class="o">.</span><span class="n">is_integer</span><span class="p">()</span>
+<span class="go">False</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>When the number after the decimal point is <code>0</code>, the <code>.is_integer()</code> method returns <code>True</code>. Otherwise, it returns <code>False</code>.</p>
+<p>Finally, the <code>.hex()</code> and <code>.fromhex()</code> methods allow you to work with floating-point values using a hexadecimal representation:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mf">42.0</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+<span class="go">'0x1.5000000000000p+5'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">"0x1.5000000000000p+5"</span><span class="p">)</span>
+<span class="go">42.0</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The <code>.hex()</code> method returns a string that represents the target float value as a hexadecimal value. Note that <code>.hex()</code> is an instance method. The <code>.fromhex()</code> method takes a string that represents a floating-point number as an argument and builds an actual float number from it.</p>
+<p>In both methods, the hexadecimal string has the following format:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="p">[</span><span class="n">sign</span><span class="p">]</span> <span class="p">[</span><span class="s2">"0x"</span><span class="p">]</span> <span class="n">integer</span> <span class="p">[</span><span class="s2">"."</span> <span class="n">fraction</span><span class="p">]</span> <span class="p">[</span><span class="s2">"p"</span> <span class="n">exponent</span><span class="p">]</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this template, apart from the <code>integer</code> identifier, the components are optional. Here’s what they mean:</p>
+<ul>
+<li><strong><code>sign</code></strong> defines whether the number is positive or negative. It may be either <code>+</code> or <code>-</code>. Only the <code>-</code> sign is required because <code>+</code> is the default.</li>
+<li><strong><code>"0x"</code></strong> is the hexadecimal prefix.</li>
+<li><strong><code>integer</code></strong> is a string of hexadecimal digits representing the whole part of the <code>float</code> number.</li>
+<li><strong><code>"."</code></strong> is a dot that separates the whole and fractional parts.</li>
+<li><strong><code>fraction</code></strong> is a string of hexadecimal digits representing the fractional part of the <code>float</code> number.</li>
+<li><strong><code>"p"</code></strong> allows for adding an exponent value.</li>
+<li><strong><code>exponent</code></strong> is a decimal integer with an optional leading sign.</li>
+</ul>
+<p>With these components, you’ll be able to create valid hexadecimal strings to process your floating-point numbers with the <code>.hex()</code> and <code>.fromhex()</code> methods.</p>
+</section><section class="section3"><h3 id="the-built-in-float-function">The Built-in <code>float()</code> Function<a class="headerlink" href="#the-built-in-float-function" title="Permanent link"></a></h3>
+<p>The built-in <code>float()</code> function provides another way to create floating-point values. When you call <code>float()</code> with no argument, then you get <code>0.0</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">()</span>
+<span class="go">0.0</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Again, this feature of <code>float()</code> allows you to use it as a factory function.</p>
+<p>The <code>float()</code> function also helps you convert other data types into <code>float</code>, provided that they’re valid numeric values:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="go">42.0</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="s2">"42"</span><span class="p">)</span>
+<span class="go">42.0</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="s2">"one"</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;input&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="nb">float</span><span class="p">(</span><span class="s2">"one"</span><span class="p">)</span>
+<span class="gr">ValueError</span>: <span class="n">could not convert string to float: 'one'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In these examples, you first use <code>float()</code> to convert an integer number into a float. Then, you convert a string into a float. Again, with strings, you need to make sure that the input string is a valid numeric value. Otherwise, you get a <code>ValueError</code> exception.</p>
+
+</section></section>
+
+
+<section class="section2"><h2 id="strings-and-characters">Strings and Characters<a class="headerlink" href="#strings-and-characters" title="Permanent link"></a></h2>
+<p>In Python, strings are sequences of character data that you can use to represent and store textual data. The string type in Python is called <a href="https://docs.python.org/3/library/stdtypes.html#str"><code>str</code></a>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s2">"Hello, World!"</span><span class="p">)</span>
+<span class="go">&lt;class 'str'&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this example, the argument to <code>type()</code> is a string literal that you commonly create using double quotes to enclose some text.</p>
+
+<p>In the following sections, you’ll learn the basics of how to create, use, format, and manipulate strings in Python.</p>
+<section class="section3"><h3 id="regular-string-literals">Regular String Literals<a class="headerlink" href="#regular-string-literals" title="Permanent link"></a></h3>
+<p>You can also use literals to create strings. To build a single-line string literal, you can use double (<code>""</code>) or single quotes (<code>''</code>) and, optionally, a sequence of characters in between them. All the characters between the opening and closing quotes are part of the string:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">"I am a string"</span><span class="p">)</span>
+<span class="go">I am a string</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">'I am a string too'</span><span class="p">)</span>
+<span class="go">I am a string too</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Python’s strings can contain as many characters as you need. The only limit is your computer’s memory.</p>
+<p>You can define empty strings by using the quotes without placing characters between them:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="s2">""</span>
+<span class="go">''</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">''</span>
+<span class="go">''</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+<span class="go">0</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>An empty string doesn’t contain any characters, so when you use the built-in <code>len()</code> function with an empty string as an argument, you get <code>0</code> as a result.</p>
+<p>There is yet another way to delimit strings in Python. You can create triple-quoted string literals, which can be delimited using either three single quotes or three double quotes. Triple-quoted strings are commonly used to build multiline string literals. However, you can also use them to create single-line literals:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="sd">"""A triple-quoted string in a single line"""</span>
+<span class="go">'A triple-quoted string in a single line'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">'''Another triple-quoted string in a single line'''</span>
+<span class="go">'Another triple-quoted string in a single line'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">"""A triple-quoted string</span>
+<span class="gp">... </span><span class="sd">that spans across multiple</span>
+<span class="gp">... </span><span class="sd">lines"""</span>
+<span class="go">'A triple-quoted string\nthat spans across multiple\nlines'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Even though you can use triple-quoted strings to create single-line string literals, the main use case of them would be to create multiline strings. In Python code, probably the most common use case for these string literals is when you need to provide docstrings for your packages, modules, functions, classes, and methods.</p>
+<p>What if you want to include a quote character as part of the string itself? Your first impulse might be to try something like this:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="s1">'This string contains a single quote ('</span><span class="p">)</span> <span class="n">character</span><span class="s1">'</span>
+  File <span class="nb">"&lt;input&gt;"</span>, line <span class="m">1</span>
+<span class="w">    </span><span class="s1">'This string contains a single quote ('</span><span class="p">)</span> <span class="n">character</span><span class="s1">'</span>
+<span class="w">                                           </span><span class="pm">^</span>
+<span class="gr">SyntaxError</span>: <span class="n">unmatched ')'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>As you can see, that doesn’t work so well. The string in this example opens with a single quote, so Python assumes the next single quote—the one in parentheses—is the closing delimiter. The final single quote is then a stray, which causes the syntax error shown.</p>
+<p>If you want to include either type of quote character within the string, then you can delimit the string with the other type. In other words, if a string is to contain a single quote, delimit it with double quotes and vice versa:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="s2">"This string contains a single quote (') character"</span>
+<span class="go">"This string contains a single quote (') character"</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">'This string contains a double quote (") character'</span>
+<span class="go">'This string contains a double quote (") character'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In these examples, your first string includes a single quote as part of the text. To do this, you use double quotes to delimit the literal. In the second example, you do the opposite.</p>
+
+</section>
+
+<section class="section3"><h3 id="escape-sequences-in-strings">Escape Sequences in Strings<a class="headerlink" href="#escape-sequences-in-strings" title="Permanent link"></a></h3>
+<p>Sometimes, you want Python to interpret a character or sequence of characters within a string differently. This may occur in one of two ways. You may want to:</p>
+<ol>
+<li>Apply special meaning to characters</li>
+<li>Suppress special character meaning</li>
+</ol>
+<p>You can accomplish these goals by using a backslash (<code>\</code>) character to indicate that the characters following it should be interpreted specially. The combination of a backslash and a specific character is called an <strong>escape sequence</strong>. That’s because the backslash causes the subsequent character to <em>escape</em> its usual meaning.</p>
+<p>You already know that if you use single quotes to delimit a string, then you can’t directly embed a single quote character as part of the string because, for that string, the single quote has a <strong>special meaning</strong>—it terminates the string. You can eliminate this limitation by using double quotes to delimit the string.</p>
+<p>Alternatively, you can escape the quote character using a backslash:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="s1">'This string contains a single quote (</span><span class="se">\'</span><span class="s1">) character'</span>
+<span class="go">"This string contains a single quote (') character"</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this example, the backslash escapes the single quote character by suppressing its usual meaning. Now, Python knows that your intention isn’t to terminate the string but to embed the single quote.</p>
+<p>The following is a table of escape sequences that cause Python to suppress the usual special interpretation of a character in a string:</p>
+<div class="table-responsive">
+<table class="table table-hover">
+<thead>
+<tr>
+<th class="text-center">Character</th>
+<th>Usual Interpretation</th>
+<th class="text-center">Escape Sequence</th>
+<th>Escaped Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="text-center"><code>'</code></td>
+<td>Delimit a string literal</td>
+<td class="text-center"><code>\'</code></td>
+<td>Literal single quote (<code>'</code>) character</td>
+</tr>
+<tr>
+<td class="text-center"><code>"</code></td>
+<td>Delimit a string literal</td>
+<td class="text-center"><code>\"</code></td>
+<td>Literal double quote (<code>"</code>) character</td>
+</tr>
+<tr>
+<td class="text-center"><code>&lt;newline&gt;</code></td>
+<td>Terminates the input line</td>
+<td class="text-center"><code>\&lt;newline&gt;</code></td>
+<td>Newline is ignored</td>
+</tr>
+<tr>
+<td class="text-center"><code>\</code></td>
+<td>Introduces an escape sequence</td>
+<td class="text-center"><code>\\</code></td>
+<td>Literal backslash (<code>\</code>) character</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You already have an idea of how the first two escape sequences work. Now, how does the newline escape sequence work? Usually, a newline character terminates a physical line of input. So, pressing <span class="keys"><kbd class="key-enter">Enter</kbd></span> in the middle of a string will cause an error:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="s2">"Hello</span>
+  File <span class="nb">"&lt;input&gt;"</span>, line <span class="m">1</span>
+<span class="w">    </span><span class="s2">"Hello</span>
+<span class="w">    </span><span class="pm">^</span>
+<span class="gr">SyntaxError</span>: <span class="n">incomplete input</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>When you press <span class="keys"><kbd class="key-enter">Enter</kbd></span> after typing <code>Hello</code>, you get a <code>SyntaxError</code>. If you need to break up a string over more than one line, then you can include a backslash before each new line:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="s2">"Hello</span><span class="se">\</span>
+<span class="gp">... </span><span class="s2">, World</span><span class="se">\</span>
+<span class="gp">... </span><span class="s2">!"</span>
+<span class="go">'Hello, World!'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>By using a backslash before pressing enter, you make Python ignore the new line and interpret the whole construct as a single line.</p>
+<p>Finally, sometimes you need to include a literal backslash character in a string. If that backslash doesn’t precede a character with a special meaning, then you can insert it right away:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="s2">"This string contains a backslash (\) character"</span>
+<span class="go">'This string contains a backslash (\\) character'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this example, the character after the backslash doesn’t match any known escape sequence, so Python inserts the actual backslash for you. Note how the resulting string automatically doubles the backslash. Even though this example works, the best practice is to always double the backslash when you need this character in a string.</p>
+<p>However, you may have the need to include a backslash right before a character that makes up an escape sequence:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="s2">"In this string, the backslash should be at the end </span><span class="se">\"</span>
+  File <span class="nb">"&lt;input&gt;"</span>, line <span class="m">1</span>
+<span class="w">    </span><span class="s2">"In this string, the backslash should be at the end </span><span class="se">\"</span>
+<span class="w">    </span><span class="pm">^</span>
+<span class="gr">SyntaxError</span>: <span class="n">incomplete input</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Because the sequence <code>\"</code> matches a known escape sequence, your string fails with a <code>SyntaxError</code>. To avoid this issue, you can double the backslash:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="s2">"In this string, the backslash should be at the end </span><span class="se">\\</span><span class="s2">"</span>
+<span class="go">'In this string, the backslash should be at the end \\'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this update, you double the backslash to escape the character and prevent Python from raising an error.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> When you use the built-in <code>print()</code> function to print a string that includes an escaped backslash, then you won’t see the double backslash in the output:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">"In this string, the backslash should be at the end </span><span class="se">\\</span><span class="s2">"</span><span class="p">)</span>
+<span class="go">In this string, the backslash should be at the end \</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this example, the output only displays one backslash, producing the desired effect.</p>
+</div>
+<p>Up to this point, you’ve learned how to suppress the meaning of a given character by escaping it. Suppose you need to create a string containing a tab character. Some text editors may allow you to insert a tab character directly into your code. However, this is considered a poor practice for several reasons:</p>
+<ul>
+<li>Computers can distinguish between tabs and a sequence of spaces, but human beings can’t because these characters are visually indistinguishable.</li>
+<li>Some text editors automatically eliminate tabs by expanding them to an appropriate number of spaces.</li>
+<li>Some Python REPL environments will not insert tabs into code.</li>
+</ul>
+<p>In Python, you can specify a tab character by the <code>\t</code> escape sequence:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Before</span><span class="se">\t</span><span class="s2">After"</span><span class="p">)</span>
+<span class="go">Before    After</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The <code>\t</code> escape sequence changes the usual meaning of the letter <code>t</code>. Instead, Python interprets the combination as a tab character.</p>
+<p>Here is a list of escape sequences that cause Python to apply special meaning to some characters instead of interpreting them literally:</p>
+<div class="table-responsive">
+<table class="table table-hover">
+<thead>
+<tr>
+<th>Escape Sequence</th>
+<th>Escaped Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\a</code></td>
+<td>ASCII Bell (<code>BEL</code>) character</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>ASCII Backspace (<code>BS</code>) character</td>
+</tr>
+<tr>
+<td><code>\f</code></td>
+<td>ASCII Formfeed (<code>FF</code>) character</td>
+</tr>
+<tr>
+<td><code>\n</code></td>
+<td>ASCII Linefeed (<code>LF</code>) character</td>
+</tr>
+<tr>
+<td><code>\N{&lt;name&gt;}</code></td>
+<td>Character from Unicode database with given <code>&lt;name&gt;</code></td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td>ASCII Carriage return (<code>CR</code>) character</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>ASCII Horizontal tab (<code>TAB</code>) character</td>
+</tr>
+<tr>
+<td><code>\uxxxx</code></td>
+<td>Unicode character with 16-bit hex value <code>xxxx</code></td>
+</tr>
+<tr>
+<td><code>\Uxxxxxxxx</code></td>
+<td>Unicode character with 32-bit hex value <code>xxxxxxxx</code></td>
+</tr>
+<tr>
+<td><code>\v</code></td>
+<td>ASCII Vertical tab (<code>VT</code>) character</td>
+</tr>
+<tr>
+<td><code>\ooo</code></td>
+<td>Character with octal value <code>ooo</code></td>
+</tr>
+<tr>
+<td><code>\xhh</code></td>
+<td>Character with hex value <code>hh</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Of these escape sequences, the newline or linefeed character (<code>\n</code>) is probably the most popular. This sequence is commonly used to create nicely formatted text outputs.</p>
+<p>Here are a few examples of the escape sequences in action:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Tab</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">"a</span><span class="se">\t</span><span class="s2">b"</span><span class="p">)</span>
+<span class="go">a    b</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Linefeed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">"a</span><span class="se">\n</span><span class="s2">b"</span><span class="p">)</span>
+<span class="go">a</span>
+<span class="go">b</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Octal</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\141</span><span class="s2">"</span><span class="p">)</span>
+<span class="go">a</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Hex</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\x61</span><span class="s2">"</span><span class="p">)</span>
+<span class="go">a</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Unicode by name</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\N{rightwards arrow}</span><span class="s2">"</span><span class="p">)</span>
+<span class="go">→</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>These escape sequences are typically useful when you need to insert characters that aren’t readily generated from the keyboard or aren’t easily readable or printable.</p>
+
+</section>
+
+<section class="section3"><h3 id="raw-string-literals">Raw String Literals<a class="headerlink" href="#raw-string-literals" title="Permanent link"></a></h3>
+<p>A raw string is a string that doesn’t translate the escape sequences. Any backslash characters are left in the string.</p>
+
+<p>To create a raw string, you can precede the literal with an <code>r</code> or <code>R</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Before</span><span class="se">\t</span><span class="s2">After"</span><span class="p">)</span>  <span class="c1"># Regular string</span>
+<span class="go">Before    After</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Before\tAfter"</span><span class="p">)</span>  <span class="c1"># Raw string</span>
+<span class="go">Before\tAfter</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The raw string suppresses the meaning of the escape sequence and presents the characters as they are. This behavior comes in handy when you’re creating regular expressions because it allows you to use several different characters that may have special meanings without restrictions.</p>
+</section><section class="section3"><h3 id="f-string-literals">F-String Literals<a class="headerlink" href="#f-string-literals" title="Permanent link"></a></h3>
+<p>Python has another type of string literal called formatted strings or f-strings for short. F-strings allow you to interpolate values into your strings and format them as you need.</p>
+
+<p>To build f-string literals, you must prepend an <code>f</code> or <code>F</code> letter to the string literal. Because the idea behind f-strings is to interpolate values and format them into the final string, you need to use something called a <strong>replacement field</strong> in your string literal. You create these fields using curly brackets.</p>
+<p>Here’s a quick example of an f-string literal:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">name</span> <span class="o">=</span> <span class="s2">"Jane"</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">"Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!"</span>
+<span class="go">'Hello, Jane!'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this example, you interpolate the variable name into your string using an f-string literal and a replacement field.</p>
+<p>You can also use f-strings to format the interpolated values. To do that, you can use format specifiers that use the syntax defined in Python’s string format mini-language. For example, here’s how you can present numeric values using a currency format:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">income</span> <span class="o">=</span> <span class="mf">1234.1234</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">"Income: $</span><span class="si">{</span><span class="n">income</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span>
+<span class="go">'Income: $1234.12'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Inside the replacement field, you have the variable you want to interpolate and the format specifier, which is the string that starts with a colon (<code>:</code>). In this example, the format specifier defines a floating-point number with two decimal places.</p>
+</section><section class="section3"><h3 id="string-methods">String Methods<a class="headerlink" href="#string-methods" title="Permanent link"></a></h3>
+<p>Python’s <code>str</code> data type is probably the built-in type with the most available <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">methods</a>. In fact, you’ll find methods for most string processing operations. Here’s a summary of the methods that perform some string processing and return a transformed string object:</p>
+<div class="table-responsive">
+<table class="table table-hover">
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.capitalize"><code>.capitalize()</code></a></td>
+<td>Converts the first character to uppercase and the rest to lowercase</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.casefold"><code>.casefold()</code></a></td>
+<td>Converts the string into lowercase</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.center"><code>.center(width[, fillchar])</code></a></td>
+<td>Centers the string between <code>width</code> using <code>fillchar</code></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.encode"><code>.encode(encoding, errors)</code></a></td>
+<td>Encodes the string using the specified <code>encoding</code></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.expandtabs"><code>.expandtabs(tabsize)</code></a></td>
+<td>Replaces tab characters with spaces according to <code>tabsize</code></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.format"><code>.format(*args, **kwargs)</code></a></td>
+<td>Interpolates and formats the specified values</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.format_map"><code>.format_map(mapping)</code></a></td>
+<td>Interpolates and formats the specified values using a dictionary</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.join"><code>.join(iterable)</code></a></td>
+<td>Joins the items in an iterable with the string as a separator</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.ljust"><code>.ljust(width[, fillchar])</code></a></td>
+<td>Returns a left-justified version of the string</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.rjust"><code>.rjust(width[, fillchar])</code></a></td>
+<td>Returns a right-justified version of the string</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.lower"><code>.lower()</code></a></td>
+<td>Converts the string into lowercase</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.strip"><code>.strip([chars])</code></a></td>
+<td>Trims the string by removing <code>chars</code> from the beginning and end</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.lstrip"><code>.lstrip([chars])</code></a></td>
+<td>Trims the string by removing <code>chars</code> from the beginning</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.rstrip"><code>.rstrip([chars])</code></a></td>
+<td>Trims the string by removing <code>chars</code> from the end</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.removeprefix"><code>.removeprefix(prefix, /)</code></a></td>
+<td>Removes <code>prefix</code> from the beginning of the string</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.removesuffix"><code>.removesuffix(suffix, /)</code></a></td>
+<td>Removes <code>suffix</code> from the end of the string</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.replace"><code>.replace(old, new [, count])</code></a></td>
+<td>Returns a string where the <code>old</code> substring is replaced with <code>new</code></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.swapcase"><code>.swapcase()</code></a></td>
+<td>Converts lowercase letters to uppercase letters and vice versa</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.title"><code>.title()</code></a></td>
+<td>Converts the first character of each word to uppercase and the rest to lowercase</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.upper"><code>.upper()</code></a></td>
+<td>Converts a string into uppercase</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.zfill"><code>.zfill(width)</code></a></td>
+<td>Fills the string with a specified number of zeroes at the beginning</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>All the above methods allow you to perform a specific transformation on an existing string. In all cases, you get a new string as a result:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="s2">"beautiful is better than ugly"</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+<span class="go">'Beautiful is better than ugly'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">name</span> <span class="o">=</span> <span class="s2">"Jane"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"Hello, </span><span class="si">{0}</span><span class="s2">!"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="go">'Hello, Jane!'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">"Now"</span><span class="p">,</span> <span class="s2">"is"</span><span class="p">,</span> <span class="s2">"better"</span><span class="p">,</span> <span class="s2">"than"</span><span class="p">,</span> <span class="s2">"never"</span><span class="p">])</span>
+<span class="go">'Now is better than never'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"====Header===="</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"="</span><span class="p">)</span>
+<span class="go">'Header'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"---Tail---"</span><span class="o">.</span><span class="n">removeprefix</span><span class="p">(</span><span class="s2">"---"</span><span class="p">)</span>
+<span class="go">'Tail---'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"---Head---"</span><span class="o">.</span><span class="n">removesuffix</span><span class="p">(</span><span class="s2">"---"</span><span class="p">)</span>
+<span class="go">'---Head'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"Explicit is BETTER than implicit"</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+<span class="go">'Explicit Is Better Than Implicit'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"Simple is better than complex"</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="go">'SIMPLE IS BETTER THAN COMPLEX'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>As you can see, the methods in these examples perform a specific transformation on the original string and return a new string object.</p>
+<p>You’ll also find that the <code>str</code> class has several Boolean-valued methods or predicate methods:</p>
+<div class="table-responsive">
+<table class="table table-hover">
+<thead>
+<tr>
+<th>Method</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.endswith"><code>.endswith(suffix[, start[, end]])</code></a></td>
+<td><code>True</code> if the string ends with the specified suffix, <code>False</code> otherwise</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.startswith"><code>.startswith(prefix[, start[, end]])</code></a></td>
+<td><code>True</code> if the string starts with the specified prefix, <code>False</code> otherwise</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.isalnum"><code>.isalnum()</code></a></td>
+<td><code>True</code> if all characters in the string are alphanumeric, <code>False</code> otherwise</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.isalpha"><code>.isalpha()</code></a></td>
+<td><code>True</code> if all characters in the string are letters, <code>False</code> otherwise</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.isascii"><code>.isascii()</code></a></td>
+<td><code>True</code> if the string is empty or all characters in the string are ASCII, <code>False</code> otherwise</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.isdecimal"><code>.isdecimal()</code></a></td>
+<td><code>True</code> if all characters in the string are decimals, <code>False</code> otherwise</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.isdigit"><code>.isdigit()</code></a></td>
+<td><code>True</code> if all characters in the string are digits, <code>False</code> otherwise</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.isidentifier"><code>.isidentifier()</code></a></td>
+<td><code>True</code> if the string is a valid Python name, <code>False</code> otherwise</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.islower"><code>.islower()</code></a></td>
+<td><code>True</code> if all characters in the string are lowercase, <code>False</code> otherwise</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.isnumeric"><code>.isnumeric()</code></a></td>
+<td><code>True</code> if all characters in the string are numeric, <code>False</code> otherwise</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.isprintable"><code>.isprintable()</code></a></td>
+<td><code>True</code> if all characters in the string are printable, <code>False</code> otherwise</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.isspace"><code>.isspace()</code></a></td>
+<td><code>True</code> if all characters in the string are whitespaces, <code>False</code> otherwise</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.istitle"><code>.istitle()</code></a></td>
+<td><code>True</code> if the string follows title case, <code>False</code> otherwise</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.isupper"><code>.isupper()</code></a></td>
+<td><code>True</code> if all characters in the string are uppercase, <code>False</code> otherwise</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>All these methods allow you to check for various conditions in your strings. Here are a few demonstrative examples:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">filename</span> <span class="o">=</span> <span class="s2">"main.py"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".py"</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"It's a Python file"</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">It's a Python file</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"123abc"</span><span class="o">.</span><span class="n">isalnum</span><span class="p">()</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"123abc"</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span>
+<span class="go">False</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"123456"</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"abcdf"</span><span class="o">.</span><span class="n">islower</span><span class="p">()</span>
+<span class="go">True</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In these examples, the methods check for specific conditions in the target string and return a Boolean value as a result.</p>
+<p>Finally, you’ll find a few other methods that allow you to run several other operations on your strings:</p>
+<div class="table-responsive">
+<table class="table table-hover">
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.count"><code>.count(sub[, start[, end]])</code></a></td>
+<td>Returns the number of occurrences of a substring</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.find"><code>.find(sub[, start[, end]])</code></a></td>
+<td>Searches the string for a specified value and returns the position of where it was found</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.rfind"><code>.rfind(sub[, start[, end]])</code></a></td>
+<td>Searches the string for a specified value and returns the last position of where it was found</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.index"><code>.index(sub[, start[, end]])</code></a></td>
+<td>Searches the string for a specified value and returns the position of where it was found</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.rindex"><code>.rindex(sub[, start[, end]])</code></a></td>
+<td>Searches the string for a specified value and returns the last position of where it was found</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.split"><code>.split(sep=None, maxsplit=-1)</code></a></td>
+<td>Splits the string at the specified separator and returns a list</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.splitlines"><code>.splitlines([keepends])</code></a></td>
+<td>Splits the string at line breaks and returns a list</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.partition"><code>.partition(sep)</code></a></td>
+<td>Splits the string at the first occurance of <code>sep</code></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.partition"><code>.rpartition(sep)</code></a></td>
+<td>Splits the string at the last occurance of <code>sep</code></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.split"><code>.split(sep=None, maxsplit=-1)</code></a></td>
+<td>Splits the string at the specified separator and returns a list</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.maketrans"><code>.maketrans(x[, y[, z]])</code></a></td>
+<td>Returns a translation table to be used in translations</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.translate"><code>.translate(table)</code></a></td>
+<td>Returns a translated string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The first method counts the number of repetitions of a substring in an existing string. Then, you have four methods that help you find substrings in a string.</p>
+<p>The <code>.split()</code> method is especially useful when you need to split a string into a list of individual strings using a given character as a separator, which defaults to whitespaces. You can also use <code>.partition()</code> or <code>.rpartition()</code> if you need to divide the string in exactly two parts:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">sentence</span> <span class="o">=</span> <span class="s2">"Flat is better than nested"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">words</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">words</span>
+<span class="go">['Flat', 'is', 'better', 'than', 'nested']</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numbers</span> <span class="o">=</span> <span class="s2">"1-2-3-4-5"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">head</span><span class="p">,</span> <span class="n">sep</span><span class="p">,</span> <span class="n">tail</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">head</span>
+<span class="go">'1'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sep</span>
+<span class="go">'-'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tail</span>
+<span class="go">'2-3-4-5'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numbers</span><span class="o">.</span><span class="n">rpartition</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)</span>
+<span class="go">('1-2-3-4', '-', '5')</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In these toy examples, you’ve used the <code>.split()</code> method to build a list of words from a sentence. Note that by default, the method uses whitespace characters as separators. You also used <code>.partition()</code> and <code>.rpartition()</code> to separate out the first and last number from a string with numbers.</p>
+<p>The <code>.maketrans()</code> and <code>.translate()</code> are nice tools for playing with strings. For example, say that you want to implement the Cesar cipher algorithm. This algorithm allows for basic text encryption by shifting the alphabet by a number of letters. For example, if you shift the letter <code>a</code> by three, then you get the letter <code>d</code>, and so on.</p>
+<p>The following code implements <code>cipher()</code>, a function that takes a character and rotates it by three:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">cipher</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">alphabet</span> <span class="o">=</span> <span class="s2">"abcdefghijklmnopqrstuvwxyz"</span>
+<span class="gp">... </span>    <span class="n">shifted</span> <span class="o">=</span> <span class="s2">"defghijklmnopqrstuvwxyzabc"</span>
+<span class="gp">... </span>    <span class="n">table</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">alphabet</span><span class="p">,</span> <span class="n">shifted</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+<span class="gp">...</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cipher</span><span class="p">(</span><span class="s2">"python"</span><span class="p">)</span>
+<span class="go">'sbwkrq'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this example, you use <code>.maketrans()</code> to create a translation table that matches the lowercase alphabet to a shifted alphabet. Then, you apply the translation table to a string using the <code>.translate()</code> method.</p>
+
+</section>
+
+<section class="section3"><h3 id="common-sequence-operations-on-strings">Common Sequence Operations on Strings<a class="headerlink" href="#common-sequence-operations-on-strings" title="Permanent link"></a></h3>
+<p>Python’s strings are <strong>sequences</strong> of characters. As other built-in sequences like lists and tuples, strings support a set of operations that are known as <a href="https://docs.python.org/3/library/stdtypes.html#common-sequence-operations">common sequence operations</a>. The table below is a summary of all the operations that are common to most sequence types in Python:</p>
+<div class="table-responsive">
+<table class="table table-hover">
+<thead>
+<tr>
+<th>Operation</th>
+<th class="text-left">Example</th>
+<th class="text-left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Length</td>
+<td class="text-left"><code>len(s)</code></td>
+<td class="text-left">The length of <code>s</code></td>
+</tr>
+<tr>
+<td>Indexing</td>
+<td class="text-left"><code>s[index]</code></td>
+<td class="text-left">The item at index <code>i</code></td>
+</tr>
+<tr>
+<td>Slicing</td>
+<td class="text-left"><code>s[i:j]</code></td>
+<td class="text-left">A slice of <code>s</code> from index <code>i</code> to <code>j</code></td>
+</tr>
+<tr>
+<td>Slicing</td>
+<td class="text-left"><code>s[i:j:k]</code></td>
+<td class="text-left">A slice of <code>s</code> from index <code>i</code> to <code>j</code> with step <code>k</code></td>
+</tr>
+<tr>
+<td>Minimum</td>
+<td class="text-left"><code>min(s)</code></td>
+<td class="text-left">The smallest item of <code>s</code></td>
+</tr>
+<tr>
+<td>Maximum</td>
+<td class="text-left"><code>max(s)</code></td>
+<td class="text-left">The largest item of <code>s</code></td>
+</tr>
+<tr>
+<td>Membership</td>
+<td class="text-left"><code>x in s</code></td>
+<td class="text-left"><code>True</code> if an item of <code>s</code> is equal to <code>x</code>, else <code>False</code></td>
+</tr>
+<tr>
+<td>Membership</td>
+<td class="text-left"><code>x not in s</code></td>
+<td class="text-left"><code>False</code> if an item of <code>s</code> is equal to <code>x</code>, else <code>True</code></td>
+</tr>
+<tr>
+<td>Concatenation</td>
+<td class="text-left"><code>s + t</code></td>
+<td class="text-left">The concatenation of <code>s</code> and <code>t</code></td>
+</tr>
+<tr>
+<td>Repetition</td>
+<td class="text-left"><code>s * n</code> or <code>n * s</code></td>
+<td class="text-left">The repetition of <code>s</code> a number of times specified by <code>n</code></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.index">Index</a></td>
+<td class="text-left"><code>s.index(x[, i[, j]])</code></td>
+<td class="text-left">The index of the first occurrence of <code>x</code> in <code>s</code></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str.count">Count</a></td>
+<td class="text-left"><code>s.count(x)</code></td>
+<td class="text-left">The total number of occurrences of <code>x</code> in <code>s</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Sometimes, you need to determine the number of characters in a string. In this situation, you can use the built-in <code>len()</code> function:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">"Pythonista"</span><span class="p">)</span>
+<span class="go">10</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>When you call <code>len()</code> with a string as an argument, you get the number of characters in the string at hand.</p>
+<p>Another common operation you’d run on strings is retrieving a single character or a substring from an existing string. In these situations, you can use indexing and slicing, respectively:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="s2">"Pythonista"</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">'P'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"Pythonista"</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span>
+<span class="go">'a'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"Pythonista"</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="go">'o'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"Pythonista"</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span>
+<span class="go">'Python'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>To retrieve a character from an existing string, you use the indexing operator <code>[index]</code> with the index of the target character. Note that indices are zero-based, so the first character lives at index <code>0</code>.</p>
+<p>To retrieve a slice or substring from an existing string, you use the slicing operator with the appropriate indices. In the example above, you don’t provide the start index <code>i</code>, so Python assumes that you want to start from the beginning of the string. Then, you give the end index <code>j</code> to tell Python where to stop the slicing.</p>
+<p>You can take a leap and try the rest of the operations by yourself. It will be a great learning exercise!</p>
+</section><section class="section3"><h3 id="the-built-in-str-and-repr-functions">The Built-in <code>str()</code> and <code>repr()</code> Functions<a class="headerlink" href="#the-built-in-str-and-repr-functions" title="Permanent link"></a></h3>
+<p>When it comes to creating and working with strings, you have two functions that can help you out and make your life easier:</p>
+<ul>
+<li><code>str()</code></li>
+<li><code>repr()</code></li>
+</ul>
+<p>The built-in <code>str()</code> function allows you to create new strings and also convert other data types into strings:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">()</span>
+<span class="go">''</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="go">'42'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
+<span class="go">'3.14'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">'[1, 2, 3]'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">({</span><span class="s2">"one"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"two"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"three"</span><span class="p">:</span> <span class="mi">3</span><span class="p">})</span>
+<span class="go">"{'one': 1, 'two': 2, 'three': 3}"</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">({</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">})</span>
+<span class="go">"{'B', 'C', 'A'}"</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In these examples, you use the <code>str()</code> function to convert objects from different built-in types into strings. In the first example, you use the function to create an empty string. In the other examples, you get strings consisting of the object’s literals between quotes, which provide user-friendly representations of the objects.</p>
+<p>At first glance, these results may not seem useful. However, there are use cases where you need to use <code>str()</code>.</p>
+<p>For example, say that you have a list of numeric values and want to join them using the <code>str.join()</code> method. This method only accepts iterables of strings, so you need to convert the numbers:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="s2">"-"</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">    </span><span class="o">...</span>
+<span class="gr">TypeError</span>: <span class="n">sequence item 0: expected str instance, int found</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"-"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="go">'1-2-3-4-5'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>If you try to pass a list of numeric values to <code>.join()</code>, then you get a <code>TypeError</code> exception because the function only joins strings. To work around this issue, you use a generator expression to convert each number to its string representation.</p>
+<p>Behind the <code>str()</code> function, you’ll have the <code>.__str__()</code> special method. In other words, when you call <code>str()</code>, Python automatically calls the <code>.__str__()</code> special method on the underlying object. You can use this special method to support <code>str()</code> in your own classes.</p>
+<p>Consider the following <code>Person</code> class:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    <span class="mr-2" aria-label="Filename"><code style="color: inherit;">person.py</code></span>
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"I'm </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, and I'm </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old."</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this class, you have two instance attributes, <code>.name</code> and <code>.age</code>. Then, you have <code>.__str__()</code> special methods to provide user-friendly string representations for your class.</p>
+<p>Here’s how this class works:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">person</span> <span class="kn">import</span> <span class="n">Person</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">john</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s2">"John Doe"</span><span class="p">,</span> <span class="mi">35</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">john</span><span class="p">)</span>
+<span class="go">"I'm John Doe, and I'm 35 years old."</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this code snippet, you create an instance of <code>Person</code>. Then, you call <code>str()</code> using the object as an argument. As a result, you get a descriptive message back, which is the user-friendly string representation of your class.</p>
+
+<p>Similarly, when you pass an object to the built-in <code>repr()</code> function, you get a developer-friendly string representation of the object itself:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="go">'42'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
+<span class="go">'3.14'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">'[1, 2, 3]'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">({</span><span class="s2">"one"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"two"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"three"</span><span class="p">:</span> <span class="mi">3</span><span class="p">})</span>
+<span class="go">"{'one': 1, 'two': 2, 'three': 3}"</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">({</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">})</span>
+<span class="go">"{'B', 'C', 'A'}"</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In the case of built-in types, the string representation you get with <code>repr()</code> is the same as the one you get with the <code>str()</code> function. This is because the representations are the literals of each object, and you can directly use them to re-create the object at hand.</p>
+<p>Ideally, you should be able to re-create the current object using this representation. To illustrate, go ahead and update the <code>Person</code> class:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    <span class="mr-2" aria-label="Filename"><code style="color: inherit;">person.py</code></span>
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="c1"># ...</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(name='</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">', age=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2">)"</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The <code>.__repr__()</code> special method allows you to provide a developer-friendly string representation for your class:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">person</span> <span class="kn">import</span> <span class="n">Person</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jane</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s2">"Jane Doe"</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="n">jane</span><span class="p">)</span>
+<span class="go">"Person(name='Jane Doe', age=28)"</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>You should be able to copy and paste the resulting representation to re-create the object. That’s why this string representation is said to be developer-friendly.</p>
+
+
+</section></section>
+
+
+<section class="section2"><h2 id="booleans">Booleans<a class="headerlink" href="#booleans" title="Permanent link"></a></h2>
+<p><a href="https://en.wikipedia.org/wiki/Boolean_algebra">Boolean</a> logic relies on the <strong>truth value</strong> of expressions and objects. The truth value of an expression or object can take one of two possible values: <strong>true</strong> or <strong>false</strong>. In Python, these two values are represented by <code>True</code> and <code>False</code>, respectively:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&lt;class 'bool'&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&lt;class 'bool'&gt;</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Both <code>True</code> and <code>False</code> are instances of the <code>bool</code> data type, which is built into Python. In the following sections, you’ll learn the basics about Python’s <code>bool</code> data type.</p>
+<section class="section3"><h3 id="boolean-literals">Boolean Literals<a class="headerlink" href="#boolean-literals" title="Permanent link"></a></h3>
+<p>Python provides a built-in Boolean data type. Objects of this type may have one of two possible values: <code>True</code> or <code>False</code>. These values are defined as built-in constants with values of <code>1</code> and <code>0</code>, respectively. In practice, the <code>bool</code> type is a subclass of <code>int</code>. Therefore, <code>True</code> and <code>False</code> are also instances of <code>int</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">issubclass</span><span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="kc">True</span> <span class="o">+</span> <span class="kc">True</span>
+<span class="go">2</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In Python, the <code>bool</code> type is a subclass of the <code>int</code> type. It has only two possible values, <code>0</code> and <code>1</code>, which map to the constants <code>False</code> and <code>True</code>.</p>
+<p>These constant values are also the literals of the <code>bool</code> type:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kc">True</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="kc">False</span>
+<span class="go">False</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Boolean objects that are equal to <code>True</code> are truthy, and those equal to <code>False</code> are falsy. In Python, non-Boolean objects also have a truth value. In other words, Python objects are either truthy or falsy.</p>
+</section><section class="section3"><h3 id="the-built-in-bool-function">The Built-in <code>bool()</code> Function<a class="headerlink" href="#the-built-in-bool-function" title="Permanent link"></a></h3>
+<p>You can use the built-in <a href="https://docs.python.org/3/library/functions.html#bool"><code>bool()</code></a> function to convert any Python object to a Boolean value. Internally, Python uses the following rules to identify falsy objects:</p>
+<ul>
+<li>Constants that are defined to be false: <code>None</code> and <code>False</code></li>
+<li>The zero of any numeric type: <code>0</code>, <code>0.0</code>, <code>0j</code>, <code>Decimal(0)</code>, <code>Fraction(0, 1)</code></li>
+<li>Empty sequences and collections: <code>''</code>, <code>()</code>, <code>[]</code>, <code>{}</code>, <code>set()</code>, <code>range(0)</code></li>
+</ul>
+<p>The rest of the objects are considered truthy in Python. You can use the built-in <code>bool()</code> function to explicitly learn the truth value of any Python object:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="s2">"Hello"</span><span class="p">)</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">([])</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">True</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In these examples, you use <code>bool()</code> with arguments of different types. In each case, the function returns a Boolean value corresponding to the object’s truth value.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> You rarely need to call <code>bool()</code> yourself. Instead, you can rely on Python calling <code>bool()</code> under the hood when necessary. For example, you can say <code>if numbers:</code> instead of <code>if bool(numbers):</code> to check whether <code>numbers</code> is truthy.</p>
+</div>
+<p>You can also use the <code>bool()</code> function with custom classes:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+<span class="gp">...</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">point</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+<span class="go">True</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>By default, all instances of custom classes are true. If you want to modify this behavior, you can use the <code>.__bool__()</code> special method. Consider the following update of your <code>Point</code> class:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    <span class="mr-2" aria-label="Filename"><code style="color: inherit;">point.py</code></span>
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+<span class="hll">    <span class="k">def</span> <span class="fm">__bool__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="hll">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class="hll">            <span class="k">return</span> <span class="kc">False</span>
+</span><span class="hll">        <span class="k">return</span> <span class="kc">True</span>
+</span></code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The <code>.__bool__()</code> method returns <code>False</code> when both coordinates are equal to <code>0</code> and <code>True</code> otherwise. Here’s how your class works now:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">point</span> <span class="kn">import</span> <span class="n">Point</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">origin</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="n">origin</span><span class="p">)</span>
+<span class="go">False</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">point</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+<span class="go">True</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Now, when both coordinates are <code>0</code>, you get <code>False</code> from calling <code>bool()</code>. For the rest of the points, you get <code>True</code>.</p>
+</section></section>
+
+<section class="section2"><h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
+<p>You’ve learned about the basic built-in <strong>data types</strong> that Python provides. These types are the building blocks of most Python programs. With them, you can represent numeric, textual, byte, and Boolean data.</p>
+<p><strong>In this tutorial, you’ve learned about:</strong></p>
+<ul>
+<li>Python’s <strong>numeric</strong> types, such as <strong><code>int</code></strong>, <strong><code>float</code></strong>, and <strong><code>complex</code></strong></li>
+<li>The <strong><code>str</code></strong> data type, which represents <strong>textual</strong> data in Python</li>
+<li>The <strong><code>bytes</code></strong> and <strong><code>bytearray</code></strong> data types for storing <strong>bytes</strong></li>
+<li><strong>Boolean</strong> values with Python’s <strong><code>bool</code></strong> data type</li>
+</ul>
+<p>With this knowledge, you’re ready to start using all of the basic data types that are built into Python.</p>
+
+
+</section>
+
+    
+
+
+  
+
+</div>
+</body>
+</html>

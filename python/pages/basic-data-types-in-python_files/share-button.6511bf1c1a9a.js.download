@@ -1,0 +1,67 @@
+!function(){try{var e="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:{},t=(new Error).stack;t&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[t]="73c8b86a-9698-4647-9271-300afff6f98e",e._sentryDebugIdIdentifier="sentry-dbid-73c8b86a-9698-4647-9271-300afff6f98e")}catch(e){}}();var _global="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:{};_global.SENTRY_RELEASE={id:"90c569904e35f12c37efe24c6637a6a7f9bae505"},function(){"use strict";function e(e){return e.replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#39;")}function t(t,...o){const i=document.createElement("template"),l=Math.random().toString(36).slice(2),s=`slot-${l}`,a=`data-event-${l}`;let r=[],c=[],d=[];const u=(t,o)=>{r.push(t),o instanceof Node||o instanceof DocumentFragment||o instanceof HTMLTemplateElement?(r.push(`<${s}></${s}>`),c.push(o)):o instanceof n?r.push(String(o)):Array.isArray(o)?o.forEach((e=>u("",e))):"object"==typeof o&&null!==o&&"type"in o&&"event"===o.type?(r.push(` ${a}`),d.push(o)):null!=o&&r.push(e(String(o)))};return t.forEach(((e,t)=>u(e,o[t]))),i.innerHTML=r.join("").trim(),i.content.querySelectorAll(s).forEach((e=>{const t=c.shift();e.parentNode.replaceChild(t,e)})),i.content.querySelectorAll(`[${a}]`).forEach((e=>{const t=d.shift();e.removeAttribute(a),e.addEventListener(t.name,t.handler)})),1===i.content.childNodes.length?i.content.firstChild:i.content}class n{constructor(e){this.value=e}toString(){return this.value}}function o(e){return new n(e)}function i(e,n={}){const i=JSON.parse(document.getElementById("icons-data").textContent).iconsUrl,l=e.split("/").join("--"),s=n.scale;let a="";if(s){if(!["2x","3x","4x","5x"].includes(s))throw new Error(`Invalid icon scale factor: ${s}`);a=`scale${s}`}const r=["icon",void 0===n.baseline||n.baseline?"baseline":"",a,n.class||""].filter(Boolean).join(" "),c=n.title||"";return t`<span class="${r}" ${c?"":o(' aria-hidden="true"')}>
+    <svg ${o(c?'role="img"':'aria-hidden="true"')}>
+      <use href="${i}#${l}" />
+    </svg>
+    ${c?t`<span class="sr-only">${c}</span>`:""}
+  </span>`}class l extends HTMLElement{connectedCallback(){this.constructor.name,this.querySelector("button").addEventListener("click",this.#e)}disconnectedCallback(){this.constructor.name,this.querySelector("button").removeEventListener("click",this.#e)}#t(){const e=(e,n,o,l)=>t`
+        <a href="${l}" class="btn share-${o}" target="_blank" rel="nofollow" aria-label="Share on ${e}">
+          ${i(n,{class:"text-light mr-1"})}${e}
+        </a>
+      `,n=this.getAttribute("url"),o=decodeURIComponent(this.getAttribute("twitter-text")||""),l=decodeURIComponent(this.getAttribute("email-subject")||""),s=decodeURIComponent(this.getAttribute("email-body")||"");return t`
+      <div class="d-flex flex-wrap justify-content-center justify-content-md-between flex-column flex-md-row gap-1">
+        ${e("LinkedIn","brands/linkedin","linkedin",`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(n)}`)}
+        ${e("Twitter","brands/x-twitter","x-twitter",`https://twitter.com/intent/tweet/?${o?`text=${encodeURIComponent(o)}&`:""}url=${encodeURIComponent(n)}`)}
+        ${e("Facebook","brands/facebook","facebook",`https://facebook.com/sharer/sharer.php?u=${encodeURIComponent(n)}`)}
+        ${e("Email","solid/envelope","email",`mailto:?${l?`subject=${encodeURIComponent(l)}&`:""}body=${s?encodeURIComponent(s):""}%0A%0A${encodeURIComponent(n)}%0A`)}
+      </div>
+      <div class="mt-4">${((e,n,o)=>{let l=!1;const s=t`
+        <div>
+          ${n?t`<label for="copyable-text-${"share"}">${n}</label>`:""}
+          <div class="input-group">
+            <input
+              ${n?'id="copyable-text-${id}"':""}
+              type="text"
+              class="form-control text-truncate"
+              value="${o}"
+            />
+            <div class="input-group-append d-print-none">
+              <button
+                type="button"
+                class="btn btn-secondary btn-input-addon"
+                title="Copy to Clipboard"
+                ${"click",a=e=>{e.preventDefault();const n=s.querySelector("button");if(n.blur(),l)return;l=!0;const o=s.querySelector("input").value;navigator.clipboard&&navigator.clipboard.writeText(o),n.replaceChildren(t`${i("v4/check",{class:"mr-1 text-success"})}Copied!`),setTimeout((()=>{n.replaceChildren(t`${i("@copy",{class:"mr-1"})}Copy`),l=!1}),2e3)},{type:"event",name:"click",handler:a}}
+              >
+                ${i("@copy",{class:"mr-1"})}Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      `;var a;return s})(0,"Or copy the link:",n)}</div>
+      <div class="text-center mt-4 user-select-none">
+        <small> ${i("solid/heart",{class:"text-color-red"})} Happy Pythoning! </small>
+      </div>
+    `}#e=n=>{this.constructor.name,n.preventDefault(),function(n){const i=n.confirmButtonTitle||"Confirm",l=n.dismissButtonTitle||"Cancel",s=n.dangerous?"btn-danger":"btn-dark",a=n.confirmButtonTitle||n.dismissButtonTitle,r=a?t`<button class="col col-md-auto btn btn-secondary px-4 m-0 mb-2" data-dismiss="modal">
+        ${l}
+      </button>`:"",c=a?t`<button class="col col-md-auto px-4 m-0 ml-md-2 mb-2 btn ${s}">
+        ${n.icon?function(t,n={}){const i=JSON.parse(document.getElementById("icons-data").textContent).iconsUrl,l=t.split("/").join("--"),s=n.scale;let a="";if(s){if(!["2x","3x","4x","5x"].includes(s))throw new Error(`Invalid icon scale factor: ${s}`);a=`scale${s}`}const r=["icon",void 0===n.baseline||n.baseline?"baseline":"",a,n.class||""].filter(Boolean).join(" "),c=n.title||"";return o(`<span class="${r}"${c?"":' aria-hidden="true"'}><svg ${c?'role="img"':'aria-hidden="true"'}><use href="${i}#${l}" /></svg>${c?`<span class="sr-only">${e(c)}</span>`:""}</span>`)}(n.icon,{class:"mr-1"}):""}${i}
+      </button>`:"",d=t`
+    <div class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+        <div class="modal-content p-2">
+          ${n.headline?t`<div class="modal-header border-0 p-3">
+                <h5 class="modal-title user-select-none">${n.headline}</h5>
+                ${n.required?"":t`<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>`}
+              </div>`:t`<div class="pt-3"></div>`}
+
+          <div class="modal-body text-wrap-pretty p-3">${n.contents}</div>
+
+          ${n.confirmButtonTitle||n.dismissButtonTitle?t`<div class="modal-footer border-0 p-3 mb-n2 flex-column flex-md-row justify-content-md-end">
+                ${r} ${c}
+              </div>`:""}
+        </div>
+      </div>
+    </div>
+  `;document.body.appendChild(d);const u=n.required?{backdrop:"static",keyboard:!1}:{backdrop:!0,keyboard:!0};$(d).modal(u),new Promise((e=>{$(d).on("hidden.bs.modal",(function(){$(this).remove(),e({isConfirmed:!1})})),c&&c.addEventListener("click",(()=>{$(d).modal("hide"),e({isConfirmed:!0})}))}))}({headline:"Share with …",contents:this.#t(),icon:"@share",required:!1})}}customElements.define("share-button",l)}();
+

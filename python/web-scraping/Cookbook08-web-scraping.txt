@@ -1,0 +1,222 @@
+1. Prerequisites: installed python3
+
+2. Create virtual environment for our app and install "requests",
+   package for http requests:
+
+    > python -m venv .venv
+
+    > source ./.venv/Scripts/activate
+
+    > pip install requests && pip freeze > requirements.txt
+
+3. Requests.py (big R, otherwise we mingle with the requests package):
+
+import requests
+
+response = requests.get("https://www.google.com/")
+
+webpage = response.content
+
+print(webpage)
+
+4. Run it by 
+
+> python Requests.py
+
+Should show the HTML page with the tags
+
+5. Python "requests" package is intended for GET and POST methods,
+
+so we can add headers.
+
+Headers can be Python Dictionaries like,  { "Name of Header": "Value of the Header" }
+
+For example, authorization headers,
+
+Headers = { "Authorization" : "Bearer my_unique_secret_token",
+            'Content-Type'  : 'application/json' }
+
+response = request.post("https://my-site.com/get-my-account-detail", headers=Headers)
+
+Everything about http headers:
+
+https://http.dev/headers
+
+
+6. Our example of the headers in python "get" request:
+
+import requests
+
+url1 = "https://www.google.com/"
+url2 = 'https://www.lightinthebox.com/he/p/adults-women-s-cosplay-retro-medieval-dress-cosplay-costume-for-party-halloween-festival-polyster-halloween-carnival-masquerade-dress_p7596584.html?edmdiscountkey=a0010862f59c05f6deab75beeea76391&litb_from=newsletter&user_email=9dc700ce8c89a8fb5604f0b7544129ce9b658929db68d025&crm_features=&mname=he_nl_L20230128_1_M_US128_&p_id=0&c_id=0&send_date=2023012814&utm_source=crm&utm_content=newsletter&utm_medium=newsletter&utm_campaign=LITB20230128US128&content=Product&country_code=US&currency=USD'
+url3 = "https://www.amazon.com/PINECIL-%D7%9E%D7%9C%D7%97%D7%9D-%D7%9E%D7%99%D7%A0%D7%99-%D7%A0%D7%99%D7%99%D7%93-%D7%97%D7%9B%D7%9D/dp/B096X6SG13/ref=pd_rhf_d_ee_s_pd_crcd_sccl_1_2/147-7057278-1801918?pd_rd_w=nz0Rb&content-id=amzn1.sym.840d50bc-9f73-460b-8793-15925b0bb70e&pf_rd_p=840d50bc-9f73-460b-8793-15925b0bb70e&pf_rd_r=RHFR6185PRJTX2DHWJTZ&pd_rd_wg=BDbW2&pd_rd_r=0836b360-f62e-41fc-b564-9b03e83ee398&pd_rd_i=B096X6SG13&psc=1"
+
+headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"}
+
+response = requests.get(url3, headers=headers)
+
+webpage = response.content
+
+print(webpage)
+
+7. Let's check the response headers:
+
+print(response.headers)
+
+We see that "headers" is a dictionary, so we can go over it like this:
+
+for key, value in response.headers.items():
+    print(key, ':', value)
+
+8. To see user agent:
+print(response.request.headers)
+
+Now my user agent is 
+{'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'}
+
+9. Let's remove user-agent header and check status_codes.
+
+print(response.status_code)
+
+> py Requests.py 
+
+It's 200
+
+And for "url2" it's 200 too. But for some url of "amazon.com":
+
+url3 = "https://www.amazon.com/PINECIL-%D7%9E%D7%9C%D7%97%D7%9D-%D7%9E%D7%99%D7%A0%D7%99-%D7%A0%D7%99%D7%99%D7%93-%D7%97%D7%9B%D7%9D/dp/B096X6SG13/ref=pd_rhf_d_ee_s_pd_crcd_sccl_1_2/147-7057278-1801918?pd_rd_w=nz0Rb&content-id=amzn1.sym.840d50bc-9f73-460b-8793-15925b0bb70e&pf_rd_p=840d50bc-9f73-460b-8793-15925b0bb70e&pf_rd_r=RHFR6185PRJTX2DHWJTZ&pd_rd_wg=BDbW2&pd_rd_r=0836b360-f62e-41fc-b564-9b03e83ee398&pd_rd_i=B096X6SG13&psc=1"
+
+It's 503
+
+We did not get a response from the server.
+
+10. "requests" library has workaround for this: 
+abilty to change user agent in the request header.
+
+Go to your browser and google for "what is my user agent",
+we create simple dictionary "headers" from it, and add "headers" to the request:
+
+url1 = "https://www.google.com/"
+url2 = 'https://www.lightinthebox.com/he/p/adults-women-s-cosplay-retro-medieval-dress-cosplay-costume-for-party-halloween-festival-polyster-halloween-carnival-masquerade-dress_p7596584.html?edmdiscountkey=a0010862f59c05f6deab75beeea76391&litb_from=newsletter&user_email=9dc700ce8c89a8fb5604f0b7544129ce9b658929db68d025&crm_features=&mname=he_nl_L20230128_1_M_US128_&p_id=0&c_id=0&send_date=2023012814&utm_source=crm&utm_content=newsletter&utm_medium=newsletter&utm_campaign=LITB20230128US128&content=Product&country_code=US&currency=USD'
+url3 = "https://www.amazon.com/PINECIL-%D7%9E%D7%9C%D7%97%D7%9D-%D7%9E%D7%99%D7%A0%D7%99-%D7%A0%D7%99%D7%99%D7%93-%D7%97%D7%9B%D7%9D/dp/B096X6SG13/ref=pd_rhf_d_ee_s_pd_crcd_sccl_1_2/147-7057278-1801918?pd_rd_w=nz0Rb&content-id=amzn1.sym.840d50bc-9f73-460b-8793-15925b0bb70e&pf_rd_p=840d50bc-9f73-460b-8793-15925b0bb70e&pf_rd_r=RHFR6185PRJTX2DHWJTZ&pd_rd_wg=BDbW2&pd_rd_r=0836b360-f62e-41fc-b564-9b03e83ee398&pd_rd_i=B096X6SG13&psc=1"
+
+headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"}
+
+response = requests.get(url3, headers=headers)
+
+Now we've got status 200
+
+11. In the next site there are a lot of user agents to use:
+
+https://explore.whatismybrowser.com/useragents/explore/
+
+12. python -m pip install beautifulsoup4
+
+13. BeautifulSoup.py:
+
+import requests
+from bs4 import BeautifulSoup
+
+url1 = 'https://shubhamsayon.github.io/python/demo_html.html'
+
+headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"}
+
+response = requests.get(url1, headers=headers)
+
+webpage = response.content
+
+print(response.status_code)
+
+14. # create BeautifulSoup object (we could use different parsers)
+soup = BeautifulSoup(webpage,"html.parser")
+
+print(soup)
+
+Run it, it shows the HTML, but without the indentation
+
+15. So we use for this BeautifulSoup method:
+
+print(soup.prettify())
+
+16. We could see the properties of "soup" objects, using tag names, like here:
+
+#print(soup.body.prettify())
+#print(soup.head.prettify())
+print(soup.p.prettify())
+
+But using the tag name shows only the first occurence of the tag 
+
+17. # Shows all the children of <head> as a list, but with "new line" characters
+# between them. 
+# print(soup.head.contents)
+
+# To see only one child:
+#print(soup.head.contents[1])
+#print(soup.head.contents[3])
+
+#And to see child's name:
+#print(soup.head.contents[1].name)
+#print(soup.head.contents[3].name)
+
+# We can see also all the children of "soup" as this list - and they are only <html>:
+# print(soup.contents[1])
+
+18. # Using .children generator
+# for child in soup.body.children:
+#     if (child != '\n'):
+#         print(child)
+
+#or
+for child in soup.body.children:
+    if (child != '\n'):
+        print(child.name)
+
+19. # "descendants" mean not only the children, but also the children of the children
+children = [child for child in soup.head.children if child != '\n']
+descendants = [desc for desc in soup.head.descendants if desc != '\n']
+print(len(children))
+print(len(descendants))
+print(children)
+print(descendants)
+# In the case of <title> for example, it's text node is a child
+
+20. # Using .parent:
+# print(soup.title.parent)
+# print(soup.title.parent.name) # it's "document"
+
+# print(soup.html.parent) # yes, it's a whole document
+print(type(soup.html.parent)) #<class 'bs4.BeautifulSoup'>
+print(soup.parent) #None
+
+21. # Using .parents:
+for parent in soup.p.parents:
+    print(parent.name)
+# The result is : body
+#                 html
+#                 [document]
+
+22. # Using .next_sibling and .previous_sibling:
+# <p>This paragraph has a <b>bold</b> text. </p>
+# "This paragraph has a " - is a previous sibling of <b>
+# " text. " - is a next sibling of <b>
+
+# print(soup.b.next_sibling)
+# print(soup.b.previous_sibling)
+
+23. # Using .next_siblings and .previous_siblings
+
+""" for sibling in soup.img.previous_siblings:
+    print(sibling) """
+
+24. # Navigable strings. If we don't want tags to be displayed
+
+""" print(soup.title.string) # it works for one string only
+# if there is more than one string, it won't work and will got "None", like here:
+print(soup.body.string) """ # interpreter cannot decide which string is mentioned
+
+""" for string in soup.body.strings:
+    print(string) """
+    
+# there are too many white spaces between the strings, so we'll use .stripped_strings:
+for string in soup.body.stripped_strings:
+    print(string)

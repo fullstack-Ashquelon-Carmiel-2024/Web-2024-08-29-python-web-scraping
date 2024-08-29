@@ -1,0 +1,2776 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)https://realpython.com/python-dicts/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <link href="https://files.realpython.com/" rel="preconnect">
+
+    <title>Dictionaries in Python – Real Python</title>
+    <meta name="author" content="Real Python">
+    <meta name="description" content="In this Python dictionaries tutorial, you&#39;ll cover the basic characteristics and learn how to access and manage dictionary data. Once you have finished this tutorial, you should have a good sense of when a dictionary is the appropriate data type to use, and how to do so.">
+    <meta name="keywords" content="">
+
+    
+  
+
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+
+    
+      <link rel="stylesheet" href="./dictionaries-in-python_files/realpython.min.d94753535dde.css">
+      <link rel="stylesheet" href="./dictionaries-in-python_files/font.5ac42994de49.css">
+      <link rel="stylesheet" href="./dictionaries-in-python_files/glightbox.min.9b438b29cef1.css" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;"><noscript><link rel="stylesheet" href="/static/glightbox.min.9b438b29cef1.css"></noscript>
+      
+        <link rel="stylesheet" href="./dictionaries-in-python_files/animate.min.c0be8e53226a.css">
+      
+    
+
+    
+  
+  <link rel="preload" as="image" href="./dictionaries-in-python_files/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg" imagesrcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg 1920w" imagesizes="(min-width: 1200px) 690px, (min-width: 780px) calc(-5vw + 669px), (min-width: 580px) 510px, calc(100vw - 30px)">
+
+
+    
+    
+      <link rel="canonical" href="https://realpython.com/python-dicts/">
+
+      
+      
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg">
+        <meta property="og:image" content="https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg">
+      
+      <meta name="twitter:creator" content="@realpython">
+      <meta name="twitter:site" content="@realpython">
+      <meta property="og:title" content="Dictionaries in Python – Real Python">
+      <meta property="og:type" content="article">
+      <meta property="og:url" content="https://realpython.com/python-dicts/">
+      <meta property="og:description" content="In this Python dictionaries tutorial, you&#39;ll cover the basic characteristics and learn how to access and manage dictionary data. Once you have finished this tutorial, you should have a good sense of when a dictionary is the appropriate data type to use, and how to do so.">
+    
+
+    <link href="https://realpython.com/static/favicon.68cbf4197b0c.png" rel="icon">
+    <link href="https://realpython.com/atom.xml" rel="alternate" title="Real Python" type="application/atom+xml">
+    <link rel="manifest" href="https://realpython.com/manifest.json">
+
+    
+
+    
+    
+
+    
+    <script type="text/javascript" src="./dictionaries-in-python_files/vendor.5fe8f3bc.js.download"></script><script type="text/javascript" src="./dictionaries-in-python_files/main.fa8b6644.js.download"></script><script async="" src="./dictionaries-in-python_files/gist.min.js.download"></script><script async="" src="./dictionaries-in-python_files/in-app.js.download"></script><script type="text/javascript" async="" src="./dictionaries-in-python_files/saved_resource"></script><script type="text/javascript" async="" src="./dictionaries-in-python_files/js"></script><script src="./dictionaries-in-python_files/2220911568135371" async=""></script><script async="" src="./dictionaries-in-python_files/fbevents.js.download"></script><script async="" id="cio-tracker" data-site-id="7c2f77c7758d22126955" data-use-array-params="true" data-in-app-org-id="0ed756ae-4cd1-4bb7-912c-1b37e39b6595" data-use-in-app="true" src="./dictionaries-in-python_files/track.js.download"></script><script async="" src="./dictionaries-in-python_files/analytics.js.download"></script><script id="icons-data" type="application/json">{"iconsUrl": "/static/icons.1440a154cfa8.svg"}</script>
+    <script id="optins-data" type="application/json">{"turnstileSiteKey": "0x4AAAAAAAQQUCLRXBi8NnUh"}</script>
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  
+
+  ga('create', 'UA-35184939-1', 'auto', {'allowLinker': true});
+
+  
+
+  
+
+  
+  
+  ga('set', {
+    dimension1: true,
+    dimension2: false
+  });
+  
+
+  ga('send', 'pageview');
+  
+</script>
+
+
+<script async="" src="./dictionaries-in-python_files/js(1)"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L7L6L5F6Y6');
+
+  
+</script>
+
+  <script src="./dictionaries-in-python_files/OneSignalSDK.page.es6.js.download" defer=""></script><script src="./dictionaries-in-python_files/count-data.js.download"></script><link rel="stylesheet" href="./dictionaries-in-python_files/OneSignalSDK.page.styles.css"><style hs-beacon="active" data-styled-version="5.1.1"></style></head>
+  <body>
+    
+      
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark flex-column  user-select-none">
+  <div class="container flex-row">
+
+    <a class="navbar-brand" href="https://realpython.com/">
+      <img src="./dictionaries-in-python_files/real-python-logo.893c30edea53.svg" width="165" height="40" class="d-inline-block align-top" alt="Real Python">
+    </a>
+
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse navbar-nav-scroll" id="navbarSupportedContent" role="navigation" aria-label="Main Navigation">
+
+      <ul class="navbar-nav mr-2">
+
+        <li class="nav-item">
+          <a class="nav-link rounded" href="https://realpython.com/start-here/">Start&nbsp;Here</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link rounded dropdown-toggle" href="https://realpython.com/python-dicts/#" id="navbarDropdownLibrary" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--python"></use></svg></span> Learn Python
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownLibrary">
+            
+<a class="dropdown-item " href="https://realpython.com/search?kind=article&amp;kind=course&amp;order=newest" style="color: #ff7e73; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--graduation-cap"></use></svg></span>Python Tutorials&nbsp;→<br><small class="text-secondary">In-depth articles and video courses</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/learning-paths/" style="color: #ffc873; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@learning-path"></use></svg></span>Learning Paths&nbsp;→<br><small class="text-secondary">Guided study plans for accelerated learning</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/quizzes/" style="color: #abe0e5; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span>Quizzes&nbsp;→<br><small class="text-secondary">Check your learning progress</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/tutorials/all/" style="color: #ccc; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@category"></use></svg></span>Browse Topics&nbsp;→<br><small class="text-secondary">Focus on a specific area or skill level</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/community/" style="color: #e5c6ab; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--message-smile"></use></svg></span>Community Chat&nbsp;→<br><small class="text-secondary">Learn with other Pythonistas</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/office-hours/" style="color: #e5c6ab; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--users"></use></svg></span>Office Hours&nbsp;→<br><small class="text-secondary">Live Q&amp;A calls with Python experts</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/podcasts/rpp/" style="color: #b8abe5; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@podcast"></use></svg></span>Podcast&nbsp;→<br><small class="text-secondary">Hear what’s new in the world of Python</small></a>
+
+
+            
+<a class="dropdown-item " href="https://realpython.com/products/books/" style="color: #abe5b1; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--book-heart"></use></svg></span>Books&nbsp;→<br><small class="text-secondary">Round out your knowledge and learn offline</small></a>
+
+
+            
+
+            
+              
+              
+<a class="dropdown-item border-top" href="https://realpython.com/account/join/" style="color: #ffc107; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--star"></use></svg></span>Unlock All Content&nbsp;→</a>
+
+              
+            
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link rounded dropdown-toggle" href="https://realpython.com/python-dicts/#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            More
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+            <a class="dropdown-item" href="https://realpython.com/learner-stories/">Learner Stories</a>
+            <a class="dropdown-item" href="https://realpython.com/newsletter/">Python Newsletter</a>
+            <a class="dropdown-item" href="https://www.pythonjobshq.com/" target="_blank">Python Job Board</a>
+            <a class="dropdown-item" href="https://realpython.com/team/">Meet the Team</a>
+            <a class="dropdown-item" href="https://realpython.com/write-for-us/">Become a Tutorial Writer</a>
+            <a class="dropdown-item" href="https://realpython.com/become-an-instructor/">Become a Video Instructor</a>
+          </div>
+        </li>
+
+      </ul> 
+
+      
+      <div class="d-block d-lg-none"> 
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link rounded" href="https://realpython.com/search" title="Search"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--search"></use></svg></span> Search</a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="d-none d-lg-flex align-items-center mr-2 flex-fill">
+        <form class="form-inline w-100 position-relative" action="https://realpython.com/search" method="GET">
+          <a class="js-search-form-submit position-absolute" href="https://realpython.com/search" title="Search" aria-hidden="true" tabindex="-1"><span class="icon baseline text-muted pl-2" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--search"></use></svg></span></a>
+          <input class="search-autocomplete search-field form-control form-control-md mr-sm-1 mr-lg-2 w-100" style="padding-left: 2rem;" maxlength="50" type="search" placeholder="Search" aria-label="Search" aria-keyshortcuts="/ Control+J Meta+J" name="q" autocomplete="off">
+          <span class="search-hotkey-indicator position-absolute px-2 border border-input text-input rounded small user-select-none" style="right: 1em;" title="Press / (forward slash) or Ctrl+J to open search" aria-hidden="true">/</span>
+          <input type="hidden" name="_from" value="nav">
+        </form>
+      </div>
+      
+
+      <ul class="navbar-nav ml-auto">
+        
+          <li class="nav-item form-inline mr-2 my-2 ml-3 ml-lg-0">
+            <a class="btn btn-sm btn-primary px-5 px-lg-3" href="https://realpython.com/account/join/">Join</a>
+          </li>
+        
+
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link rounded dropdown-toggle  p-2 m-0" href="https://realpython.com/python-dicts/#" id="navbarDropdownMyAccount" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="rounded-circle ml-2 ml-lg-0" style="width: 45px; height: 45px;" width="500" height="500" src="./dictionaries-in-python_files/8c4bba554c92b873ce60db74986b5b34.png" loading="lazy" alt="User avatar">
+              <span class="notifications-indicator-container">
+                <span class="notifications-indicator notifications-indicator-visible"></span>
+              </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMyAccount">
+              
+
+
+
+  
+    <a class="dropdown-item" href="https://realpython.com/account/notifications/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--bell"></use></svg></span>Notifications <span class="badge badge-pill badge-danger">9+</span></a>
+  
+
+
+<a class="dropdown-item" href="https://realpython.com/account/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--sliders"></use></svg></span>Manage Account</a>
+
+
+  <a class="dropdown-item" href="https://realpython.com/account/join/"><span class="icon baseline text-warning mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--star"></use></svg></span>Get Full Access</a>
+
+
+<a class="dropdown-item" href="https://realpython.com/search?status=in-progress&amp;order=recent"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@continue-learning"></use></svg></span>Continue Learning</a>
+
+<a class="dropdown-item" href="https://realpython.com/account/bookmarks/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--bookmark"></use></svg></span>Bookmarks</a>
+
+<a class="dropdown-item" href="https://realpython.com/certificates/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@certificate"></use></svg></span>Certificates</a>
+
+<a class="dropdown-item" href="https://realpython.com/account/purchases/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--cart-shopping"></use></svg></span>Purchases</a>
+
+
+
+
+
+<a class="dropdown-item" href="https://realpython.com/account/logout/"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--right-from-bracket"></use></svg></span>Sign Out</a>
+
+            </div>
+          </li>
+        
+      </ul>
+
+    
+    </div>
+
+  </div>
+
+  
+
+</nav>
+
+    
+
+    <div class="container main-content">
+      
+
+      
+  <div class="row justify-content-center">
+
+    
+    <aside class="col-md-7 col-lg-4 order-2 d-none d-lg-block">
+      
+  
+
+
+
+
+<div class="card mb-3 bg-secondary">
+  <form class="card-body" action="https://realpython.com/optins/process/" method="post">
+    <div class="form-group">
+      <p class="h5 text-muted text-center">— FREE Email Series —</p>
+      <p class="h3 text-center">🐍 Python Tricks 💌</p>
+      <p><img loading="lazy" class="img-fluid rounded" src="./dictionaries-in-python_files/pytrick-dict-merge.webp" width="738" height="490" alt="Python Tricks Dictionary Merge"></p>
+    </div>
+    <div class="form-group">
+      <input type="hidden" name="csrfmiddlewaretoken" value="JTHDS2ru7Uhm0TKPYI5xc1c364srDjdi12Mb21OVgb2FG0MLS0fCv8yrfIsvW0vy">
+      <input type="hidden" name="slug" value="static-python-tricks-sidebar">
+      <input type="email" class="form-control form-control-md" name="email" placeholder="Email…" required="">
+    </div>
+    <button type="submit" name="submit" class="btn btn-primary btn-md btn-block">Get Python Tricks »</button>
+    <p class="mb-0 mt-2 text-muted text-center">🔒 No spam. Unsubscribe any time.</p>
+  </form>
+</div>
+
+
+  
+
+
+<div class="sidebar-module sidebar-module-inset border">
+  <a href="https://realpython.com/tutorials/all/" class="badge badge-light text-muted"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@category"></use></svg></span>Browse Topics</a>
+
+  <a href="https://realpython.com/learning-paths/" class="badge badge-light text-muted"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--map-location-dot"></use></svg></span>Guided Learning Paths</a>
+
+  <br>
+
+  <a href="https://realpython.com/search?level=basics" class="badge badge-light text-muted"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span> Basics</a>
+
+  <a href="https://realpython.com/search?level=intermediate" class="badge badge-light text-muted"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span><span class="icon baseline tight-left" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span> Intermediate</a>
+
+  <a href="https://realpython.com/search?level=advanced" class="badge badge-light text-muted"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span><span class="icon baseline tight-left" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span><span class="icon baseline tight-left" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@level"></use></svg></span> Advanced</a>
+
+  <hr class="my-2">
+
+  
+    
+  
+    
+  
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/api/" class="badge badge-light text-muted">api</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/best-practices/" class="badge badge-light text-muted">best-practices</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/career/" class="badge badge-light text-muted">career</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/community/" class="badge badge-light text-muted">community</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/databases/" class="badge badge-light text-muted">databases</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/data-science/" class="badge badge-light text-muted">data-science</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/data-structures/" class="badge badge-light text-muted">data-structures</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/data-viz/" class="badge badge-light text-muted">data-viz</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/devops/" class="badge badge-light text-muted">devops</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/django/" class="badge badge-light text-muted">django</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/docker/" class="badge badge-light text-muted">docker</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/editors/" class="badge badge-light text-muted">editors</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/flask/" class="badge badge-light text-muted">flask</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/front-end/" class="badge badge-light text-muted">front-end</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/gamedev/" class="badge badge-light text-muted">gamedev</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/gui/" class="badge badge-light text-muted">gui</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/machine-learning/" class="badge badge-light text-muted">machine-learning</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/numpy/" class="badge badge-light text-muted">numpy</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/projects/" class="badge badge-light text-muted">projects</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/python/" class="badge badge-light text-muted">python</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/testing/" class="badge badge-light text-muted">testing</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/tools/" class="badge badge-light text-muted">tools</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/web-dev/" class="badge badge-light text-muted">web-dev</a>
+
+    
+  
+    
+      
+<a href="https://realpython.com/tutorials/web-scraping/" class="badge badge-light text-muted">web-scraping</a>
+
+    
+  
+</div>
+
+
+
+  
+<div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+  
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:100%;"></div>
+  <div class="rpad" data-unit="1x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/48994424078/?c=41067926597&amp;p=58946116052&amp;r=87440" rel="nofollow" target="_blank"><img src="./dictionaries-in-python_files/a5ff22ab118c293a4dc784ccb831c29e" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+
+
+</div>
+
+
+
+  <div class="sidebar-sticky ">
+    
+      
+
+
+<table-of-contents>
+  <div class="bg-light sidebar-module sidebar-module-inset">
+    <p class="h4 text-muted"><a class="link-unstyled" href="https://realpython.com/python-dicts/#toc">Table of Contents</a></p>
+    <div class="toc">
+<ul>
+<li><a href="https://realpython.com/python-dicts/#defining-a-dictionary">Defining a Dictionary</a></li>
+<li><a href="https://realpython.com/python-dicts/#accessing-dictionary-values">Accessing Dictionary Values</a></li>
+<li><a href="https://realpython.com/python-dicts/#dictionary-keys-vs-list-indices">Dictionary Keys vs. List Indices</a></li>
+<li><a href="https://realpython.com/python-dicts/#building-a-dictionary-incrementally">Building a Dictionary Incrementally</a></li>
+<li><a href="https://realpython.com/python-dicts/#restrictions-on-dictionary-keys">Restrictions on Dictionary Keys</a></li>
+<li><a href="https://realpython.com/python-dicts/#restrictions-on-dictionary-values">Restrictions on Dictionary Values</a></li>
+<li><a href="https://realpython.com/python-dicts/#operators-and-built-in-functions">Operators and Built-in Functions</a></li>
+<li><a href="https://realpython.com/python-dicts/#built-in-dictionary-methods">Built-in Dictionary Methods</a><ul>
+<li><a href="https://realpython.com/python-dicts/#dclear">d.clear()</a></li>
+<li><a href="https://realpython.com/python-dicts/#dgetkey-default">d.get(&lt;key&gt;[, &lt;default&gt;])</a></li>
+<li><a href="https://realpython.com/python-dicts/#ditems">d.items()</a></li>
+<li><a href="https://realpython.com/python-dicts/#dkeys">d.keys()</a></li>
+<li><a href="https://realpython.com/python-dicts/#dvalues">d.values()</a></li>
+<li><a href="https://realpython.com/python-dicts/#dpopkey-default">d.pop(&lt;key&gt;[, &lt;default&gt;])</a></li>
+<li><a href="https://realpython.com/python-dicts/#dpopitem">d.popitem()</a></li>
+<li><a href="https://realpython.com/python-dicts/#dupdateobj">d.update(&lt;obj&gt;)</a></li>
+</ul>
+</li>
+<li><a href="https://realpython.com/python-dicts/#conclusion">Conclusion</a></li>
+</ul>
+</div>
+
+  </div>
+</table-of-contents>
+
+    
+
+    <div class="sidebar-module sidebar-module-inset d-flex justify-content-center flex-wrap row-gap-1 col-gap-2 my-3 py-0">
+      
+
+
+<completion-status class="btn-group mb-0" article-slug="python-dicts" data-api-article-bookmark-url="/api/v1/articles/python-dicts/bookmark/" data-api-article-completion-status-url="/api/v1/articles/python-dicts/completion_status/">
+  <button data-target-complete-button="" title="Click to mark as completed" class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">Mark as Completed</button>
+  <button data-target-bookmark-button="" title="Add bookmark" class="btn btn-secondary border-left"><span class="icon baseline" aria-hidden="true">
+    <svg aria-hidden="true">
+      <use href="/static/icons.1440a154cfa8.svg#light--bookmark"></use>
+    </svg>
+    
+  </span></button>
+</completion-status>
+
+      <div class="w-100"></div> 
+      
+<div class="btn-group mb-0">
+  <a class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" title="Liked it" role="button" aria-label="Thumbs up (liked it)" href="https://realpython.com/feedback/survey/article/python-dicts/liked/?from=article-sidebar" target="_blank"><span class="icon" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-up"></use></svg></span></a> 
+  <a class="btn btn-secondary border-left" role="button" aria-label="Thumbs down (disliked it)" title="Disliked it" href="https://realpython.com/feedback/survey/article/python-dicts/disliked/?from=article-sidebar" target="_blank"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-down"></use></svg></span></a>
+</div>
+
+      
+        
+
+
+
+
+
+
+
+
+
+<share-button url="https://realpython.com/python-dicts/" url-title="Dictionaries in Python" twitter-text="Interesting #Python article by @realpython:" email-subject="Python article for you" email-body="Check out this Python article:%0A%0ADictionaries in Python">
+  <button class="btn btn-secondary" type="button" title="Share" aria-label="Share"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@share-light"></use></svg></span>Share</button>
+</share-button>
+
+
+      
+    </div>
+
+    
+      <div class="sidebar-module sidebar-module-inset border card">
+        <p><span class="badge badge-pill badge-success"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--play-circle"></use></svg></span> Recommended Video Course</span><br><a class="stretched-link text-success" href="https://realpython.com/courses/dictionaries-python/">Dictionaries in Python</a></p>
+      </div>
+    
+
+    
+      <div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+        
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:25%;"></div>
+  <div class="rpad" data-unit="4x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/19491843653/?c=31941813441&amp;p=58946116052&amp;r=70445" rel="nofollow" target="_blank"><img src="./dictionaries-in-python_files/609393a03ca1e3437385150e8a1a022e" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+
+
+      </div>
+    
+
+    
+  </div>
+
+
+    </aside>
+
+    <div class="col-md-11 col-lg-8 article with-headerlinks">
+      
+
+  
+    <figure class="embed-responsive embed-responsive-16by9 rounded">
+      
+        <img class="card-img-top m-0 p-0 embed-responsive-item" style="object-fit: contain; background: #e5c5ac;" alt="Dictionaries in Python" width="1920" height="1080" src="./dictionaries-in-python_files/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg 1920w" sizes="(min-width: 1200px) 690px, (min-width: 780px) calc(-5vw + 669px), (min-width: 580px) 510px, calc(100vw - 30px)" fetchpriority="high">
+      
+    </figure>
+  
+
+  <h1>Dictionaries in Python</h1>
+  <div class="mb-0">
+    
+      <span class="text-muted">by <a class="text-muted" href="https://realpython.com/python-dicts/#author">John Sturtz</a>
+    
+    
+      <span class="icon baseline ml-2" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--clock-o"></use></svg></span> Aug 06, 2018
+    
+    
+      <span class="icon baseline ml-2 mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--comments"></use></svg></span><a class="text-muted" href="https://realpython.com/python-dicts/#reader-comments"><span class="disqus-comment-count" data-disqus-identifier="https://realpython.com/python-dicts/">33 Comments</span></a>
+    
+    
+
+    <span class="d-inline d-md-block"> 
+      <span class="icon baseline ml-2 ml-md-0" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@category"></use></svg></span>
+      
+        
+<a href="https://realpython.com/tutorials/basics/" class="badge badge-light text-muted">basics</a>
+
+      
+        
+<a href="https://realpython.com/tutorials/python/" class="badge badge-light text-muted">python</a>
+
+      
+    </span>
+
+    <div class="d-flex justify-content-between gap-2 my-3">
+      
+
+
+<completion-status class="btn-group mb-0" article-slug="python-dicts" data-api-article-bookmark-url="/api/v1/articles/python-dicts/bookmark/" data-api-article-completion-status-url="/api/v1/articles/python-dicts/completion_status/">
+  <button data-target-complete-button="" title="Click to mark as completed" class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">Mark as Completed</button>
+  <button data-target-bookmark-button="" title="Add bookmark" class="btn btn-secondary border-left"><span class="icon baseline" aria-hidden="true">
+    <svg aria-hidden="true">
+      <use href="/static/icons.1440a154cfa8.svg#light--bookmark"></use>
+    </svg>
+    
+  </span></button>
+</completion-status>
+
+      
+        
+
+
+
+
+
+
+
+
+
+<share-button url="https://realpython.com/python-dicts/" url-title="Dictionaries in Python" twitter-text="Interesting #Python article by @realpython:" email-subject="Python article for you" email-body="Check out this Python article:%0A%0ADictionaries in Python">
+  <button class="btn btn-secondary" type="button" title="Share" aria-label="Share"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@share-light"></use></svg></span>Share</button>
+</share-button>
+
+
+      
+    </div>
+  </span></div>
+
+  
+
+  <div class="article-body">
+    
+      <div class="bg-light sidebar-module sidebar-module-inset" id="toc">
+        <p class="h3 mb-2 text-muted">Table of Contents</p>
+        <div class="toc">
+<ul>
+<li><a href="https://realpython.com/python-dicts/#defining-a-dictionary">Defining a Dictionary</a></li>
+<li><a href="https://realpython.com/python-dicts/#accessing-dictionary-values">Accessing Dictionary Values</a></li>
+<li><a href="https://realpython.com/python-dicts/#dictionary-keys-vs-list-indices">Dictionary Keys vs. List Indices</a></li>
+<li><a href="https://realpython.com/python-dicts/#building-a-dictionary-incrementally">Building a Dictionary Incrementally</a></li>
+<li><a href="https://realpython.com/python-dicts/#restrictions-on-dictionary-keys">Restrictions on Dictionary Keys</a></li>
+<li><a href="https://realpython.com/python-dicts/#restrictions-on-dictionary-values">Restrictions on Dictionary Values</a></li>
+<li><a href="https://realpython.com/python-dicts/#operators-and-built-in-functions">Operators and Built-in Functions</a></li>
+<li><a href="https://realpython.com/python-dicts/#built-in-dictionary-methods">Built-in Dictionary Methods</a><ul>
+<li><a href="https://realpython.com/python-dicts/#dclear">d.clear()</a></li>
+<li><a href="https://realpython.com/python-dicts/#dgetkey-default">d.get(&lt;key&gt;[, &lt;default&gt;])</a></li>
+<li><a href="https://realpython.com/python-dicts/#ditems">d.items()</a></li>
+<li><a href="https://realpython.com/python-dicts/#dkeys">d.keys()</a></li>
+<li><a href="https://realpython.com/python-dicts/#dvalues">d.values()</a></li>
+<li><a href="https://realpython.com/python-dicts/#dpopkey-default">d.pop(&lt;key&gt;[, &lt;default&gt;])</a></li>
+<li><a href="https://realpython.com/python-dicts/#dpopitem">d.popitem()</a></li>
+<li><a href="https://realpython.com/python-dicts/#dupdateobj">d.update(&lt;obj&gt;)</a></li>
+</ul>
+</li>
+<li><a href="https://realpython.com/python-dicts/#conclusion">Conclusion</a></li>
+</ul>
+</div>
+
+      </div>
+    
+
+    
+    <div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+      
+
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:12.5%;"></div>
+  <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/57356986228/?c=41067926597&amp;p=58946116052&amp;r=34086" rel="nofollow" target="_blank"><img src="./dictionaries-in-python_files/6fe6464c8bf6ec2cbcf3f1f0e778156b" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+<a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a>
+
+
+    </div>
+    
+
+    
+      
+<div class="border rounded p-3 card mb-2 text-wrap-pretty">
+  <p class="mb-0"><span class="badge badge-pill badge-success"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--play-circle"></use></svg></span> Watch Now</span> This tutorial has a related video course created by the Real Python team. Watch it together with the written tutorial to deepen your understanding: <a class="stretched-link text-success" href="https://realpython.com/courses/dictionaries-python/"><strong>Dictionaries in Python</strong></a></p>
+</div>
+
+    
+
+    <p>Python provides another composite <a href="https://realpython.com/python-data-types/">data type</a> called a <strong>dictionary</strong>, which is similar to a list in that it is a collection of objects.</p>
+<p><strong>Here’s what you’ll learn in this tutorial:</strong> You’ll cover the basic characteristics of Python dictionaries and learn how to access and manage dictionary data.  Once you have finished this tutorial, you should have a good sense of when a dictionary is the appropriate data type to use, and how to do so.</p>
+<p>Dictionaries and lists share the following characteristics:</p>
+<ul>
+<li>Both are mutable.</li>
+<li>Both are dynamic.  They can grow and shrink as needed.</li>
+<li>Both can be nested. A list can contain another list. A dictionary can contain another dictionary.  A dictionary can also contain a list, and vice versa.</li>
+</ul>
+<p>Dictionaries differ from lists primarily in how elements are accessed:</p>
+<ul>
+<li>List elements are accessed by their position in the list, via indexing.</li>
+<li>Dictionary elements are accessed via keys.</li>
+</ul>
+<div class="container border rounded text-wrap-pretty my-3">
+
+  <p class="my-3"><mark class="marker-highlight"><strong><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span> Take the Quiz:</strong></mark> Test your knowledge with our interactive “Python Dictionaries” quiz. You’ll receive a score upon completion to help you track your learning progress:</p>
+
+  <hr>
+
+  <div class="row my-3">
+    <div class="col-xs-12 col-sm-4 col-md-3 align-self-center">
+
+      <a href="https://realpython.com/quizzes/python-dicts/" tabindex="-1">
+        <div class="embed-responsive embed-responsive-16by9">
+
+            <img class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #e5c5ac;" alt="Dictionaries in Python" src="./dictionaries-in-python_files/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg 1920w" sizes="(min-width: 1200px) 142px, (min-width: 1000px) 122px, (min-width: 780px) 112px, (min-width: 580px) 139px, calc(100vw - 62px)">
+
+
+          <div class="card-img-overlay d-flex align-items-center">
+            <div class="mx-auto">
+              <span class="text-light" style="opacity: 0.90;"><span class="icon baseline scale2x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span></span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+    <div class="col">
+      <div class="mt-3 d-md-none"></div> 
+      <p class="small text-muted mb-0"><strong>Interactive Quiz</strong></p>
+      <a href="https://realpython.com/quizzes/python-dicts/" class="stretched-link"><span class="my-0 h4">Python Dictionaries</span></a> 
+      <p class="text-muted mb-0 small">Test your understanding of Python dictionaries</p>
+    </div>
+  </div>
+
+</div>
+
+<section class="section2"><h2 id="defining-a-dictionary">Defining a Dictionary<a class="headerlink" href="https://realpython.com/python-dicts/#defining-a-dictionary" title="Permanent link"></a></h2>
+<p>Dictionaries are Python’s implementation of a data structure that is more generally known as an associative array.  A dictionary consists of a collection of key-value pairs. Each key-value pair maps the key to its associated value.  </p>
+<p>You can define a dictionary by enclosing a comma-separated list of key-value pairs in curly braces (<code>{}</code>).  A colon (<code>:</code>) separates each key from its associated value:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="o">.</span>
+      <span class="o">.</span>
+      <span class="o">.</span>
+    <span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="p">}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The following defines a dictionary that maps a location to the name of its corresponding Major League Baseball team:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s1">'Colorado'</span> <span class="p">:</span> <span class="s1">'Rockies'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Boston'</span>   <span class="p">:</span> <span class="s1">'Red Sox'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Minnesota'</span><span class="p">:</span> <span class="s1">'Twins'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Milwaukee'</span><span class="p">:</span> <span class="s1">'Brewers'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Seattle'</span>  <span class="p">:</span> <span class="s1">'Mariners'</span>
+<span class="gp">... </span><span class="p">}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<figure class="js-lightbox"><a href="./dictionaries-in-python_files/t.b3e3d8f2d100.png" target="_blank"><img loading="lazy" class="img-fluid mx-auto d-block w-50" src="./dictionaries-in-python_files/t.b3e3d8f2d100.png" width="726" height="954" srcset="/cdn-cgi/image/width=181,format=auto/https://files.realpython.com/media/t.b3e3d8f2d100.png 181w, /cdn-cgi/image/width=242,format=auto/https://files.realpython.com/media/t.b3e3d8f2d100.png 242w, /cdn-cgi/image/width=363,format=auto/https://files.realpython.com/media/t.b3e3d8f2d100.png 363w, /cdn-cgi/image/width=726,format=auto/https://files.realpython.com/media/t.b3e3d8f2d100.png 726w" sizes="(min-width: 1200px) 690px, (min-width: 780px) calc(-5vw + 669px), (min-width: 580px) 510px, calc(100vw - 30px)" alt="Python dictionary (illustration)" data-asset="438"></a><figcaption class="figure-caption text-center">Dictionary Mapping Location to MLB Team</figcaption></figure>
+
+<p>You can also construct a dictionary with the built-in <code>dict()</code> function.  The argument to <code>dict()</code> should be a sequence of key-value pairs.  A list of tuples works well for this:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="python">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([</span>
+    <span class="p">(</span><span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">),</span>
+    <span class="p">(</span><span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">value</span><span class="p">),</span>
+      <span class="o">.</span>
+      <span class="o">.</span>
+      <span class="o">.</span>
+    <span class="p">(</span><span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="p">])</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p><code>MLB_team</code> can then also be defined this way:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">'Colorado'</span><span class="p">,</span> <span class="s1">'Rockies'</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">'Boston'</span><span class="p">,</span> <span class="s1">'Red Sox'</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">'Minnesota'</span><span class="p">,</span> <span class="s1">'Twins'</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">'Milwaukee'</span><span class="p">,</span> <span class="s1">'Brewers'</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">'Seattle'</span><span class="p">,</span> <span class="s1">'Mariners'</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">])</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>If the key values are simple strings, they can be specified as keyword arguments.  So here is yet another way to define <code>MLB_team</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">Colorado</span><span class="o">=</span><span class="s1">'Rockies'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">Boston</span><span class="o">=</span><span class="s1">'Red Sox'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">Minnesota</span><span class="o">=</span><span class="s1">'Twins'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">Milwaukee</span><span class="o">=</span><span class="s1">'Brewers'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">Seattle</span><span class="o">=</span><span class="s1">'Mariners'</span>
+<span class="gp">... </span><span class="p">)</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Once you’ve defined a dictionary, you can display its contents, the same as you can do for a list.  All three of the definitions shown above appear as follows when displayed:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">MLB_team</span><span class="p">)</span>
+<span class="go">&lt;class 'dict'&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span>
+<span class="go">{'Colorado': 'Rockies', 'Boston': 'Red Sox', 'Minnesota': 'Twins',</span>
+<span class="go">'Milwaukee': 'Brewers', 'Seattle': 'Mariners'}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The entries in the dictionary display in the order they were defined.  But that is irrelevant when it comes to retrieving them.  Dictionary elements are not accessed by numerical index:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;pyshell#13&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">MLB_team</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gr">KeyError</span>: <span class="n">1</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Perhaps you’d still like to sort your dictionary. If that’s the case, then check out <a href="https://realpython.com/sort-python-dictionary/">Sorting a Python Dictionary: Values, Keys, and More</a>.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/27750251087/?c=11232171364&amp;p=58946116052&amp;r=95177" rel="nofollow" target="_blank"><img src="./dictionaries-in-python_files/bba83554c49ffce9838fddbf61a42999" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section><section class="section2"><h2 id="accessing-dictionary-values">Accessing Dictionary Values<a class="headerlink" href="https://realpython.com/python-dicts/#accessing-dictionary-values" title="Permanent link"></a></h2>
+<p>Of course, dictionary elements must be accessible somehow.  If you don’t get them by index, then how do you get them?</p>
+<p>A value is retrieved from a dictionary by specifying its corresponding key in square brackets (<code>[]</code>):</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span><span class="p">[</span><span class="s1">'Minnesota'</span><span class="p">]</span>
+<span class="go">'Twins'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span><span class="p">[</span><span class="s1">'Colorado'</span><span class="p">]</span>
+<span class="go">'Rockies'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>If you refer to a key that is not in the dictionary, Python raises an exception:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span><span class="p">[</span><span class="s1">'Toronto'</span><span class="p">]</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;pyshell#19&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">MLB_team</span><span class="p">[</span><span class="s1">'Toronto'</span><span class="p">]</span>
+<span class="gr">KeyError</span>: <span class="n">'Toronto'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Adding an entry to an existing dictionary is simply a matter of assigning a new key and value:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span><span class="p">[</span><span class="s1">'Kansas City'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Royals'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span>
+<span class="go">{'Colorado': 'Rockies', 'Boston': 'Red Sox', 'Minnesota': 'Twins',</span>
+<span class="go">'Milwaukee': 'Brewers', 'Seattle': 'Mariners', 'Kansas City': 'Royals'}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>If you want to update an entry, you can just assign a new value to an existing key:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span><span class="p">[</span><span class="s1">'Seattle'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Seahawks'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span>
+<span class="go">{'Colorado': 'Rockies', 'Boston': 'Red Sox', 'Minnesota': 'Twins',</span>
+<span class="go">'Milwaukee': 'Brewers', 'Seattle': 'Seahawks', 'Kansas City': 'Royals'}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>To delete an entry, use the <a href="https://realpython.com/python-del-statement/"><code>del</code> statement</a>, specifying the key to delete:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">MLB_team</span><span class="p">[</span><span class="s1">'Seattle'</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span>
+<span class="go">{'Colorado': 'Rockies', 'Boston': 'Red Sox', 'Minnesota': 'Twins',</span>
+<span class="go">'Milwaukee': 'Brewers', 'Kansas City': 'Royals'}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p><em>Begone, Seahawks! Thou art an NFL team.</em></p>
+</section><section class="section2"><h2 id="dictionary-keys-vs-list-indices">Dictionary Keys vs. List Indices<a class="headerlink" href="https://realpython.com/python-dicts/#dictionary-keys-vs-list-indices" title="Permanent link"></a></h2>
+<p>You may have noticed that the interpreter raises the same exception, <a href="https://realpython.com/python-keyerror/"><code>KeyError</code></a>, when a dictionary is accessed with either an undefined key or by a numeric index:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span><span class="p">[</span><span class="s1">'Toronto'</span><span class="p">]</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;pyshell#8&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">MLB_team</span><span class="p">[</span><span class="s1">'Toronto'</span><span class="p">]</span>
+<span class="gr">KeyError</span>: <span class="n">'Toronto'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;pyshell#9&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">MLB_team</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gr">KeyError</span>: <span class="n">1</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In fact, it’s the same error. In the latter case, <code>[1]</code> looks like a numerical index, but it isn’t.</p>
+<p>You will see later in this tutorial that an object of any <a href="https://realpython.com/courses/immutability-python/">immutable</a> type can be used as a dictionary key.  Accordingly, there is no reason you can’t use integers:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">'a'</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">'b'</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">'c'</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">'d'</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="hll"><span class="go">{0: 'a', 1: 'b', 2: 'c', 3: 'd'}</span>
+</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">'a'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">'c'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In the expressions <code>MLB_team[1]</code>, <code>d[0]</code>, and <code>d[2]</code>, the numbers in square brackets appear as though they might be indices.  But they have nothing to do with the order of the items in the dictionary.  Python is interpreting them as dictionary keys.  If you define this same dictionary in reverse order, you still get the same values using the same keys:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="s1">'d'</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">'c'</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">'b'</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s1">'a'</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="hll"><span class="go">{3: 'd', 2: 'c', 1: 'b', 0: 'a'}</span>
+</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">'a'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">'c'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>The syntax may look similar, but you can’t treat a dictionary like a list:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="go">&lt;class 'dict'&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;pyshell#30&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">d</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="gr">KeyError</span>: <span class="n">-1</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;pyshell#31&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="gr">TypeError</span>: <span class="n">unhashable type: 'slice'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'e'</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;pyshell#32&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'e'</span><span class="p">)</span>
+<span class="gr">AttributeError</span>: <span class="n">'dict' object has no attribute 'append'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> Although access to items in a dictionary does not depend on order, Python does guarantee that the order of items in a dictionary is preserved.  When displayed, items will appear in the order they were defined, and iteration through the keys will occur in that order as well.  Items added to a dictionary are added at the end.  If items are deleted, the order of the remaining items is retained.</p>
+<p>You can only count on this preservation of order very recently.  It was <a href="https://realpython.com/python37-new-features/#the-order-of-dictionaries-is-guaranteed">added as a part of the Python language specification in version 3.7</a>.  However, it was true as of version 3.6 as well—by happenstance as a result of the implementation but not guaranteed by the language specification.</p>
+</div>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/5748061207/?c=11232171364&amp;p=58946116052&amp;r=10655" rel="nofollow" target="_blank"><img src="./dictionaries-in-python_files/bba83554c49ffce9838fddbf61a42999" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section><section class="section2"><h2 id="building-a-dictionary-incrementally">Building a Dictionary Incrementally<a class="headerlink" href="https://realpython.com/python-dicts/#building-a-dictionary-incrementally" title="Permanent link"></a></h2>
+<p>Defining a dictionary using curly braces and a list of key-value pairs, as shown above, is fine if you know all the keys and values in advance.  But what if you want to build a dictionary on the fly?</p>
+<p>You can start by creating an empty dictionary, which is specified by empty curly braces.  Then you can add new keys and values one at a time:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">person</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+<span class="go">&lt;class 'dict'&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">person</span><span class="p">[</span><span class="s1">'fname'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Joe'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">person</span><span class="p">[</span><span class="s1">'lname'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Fonebone'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">person</span><span class="p">[</span><span class="s1">'age'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">51</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">person</span><span class="p">[</span><span class="s1">'spouse'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Edna'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">person</span><span class="p">[</span><span class="s1">'children'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Ralph'</span><span class="p">,</span> <span class="s1">'Betty'</span><span class="p">,</span> <span class="s1">'Joey'</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">person</span><span class="p">[</span><span class="s1">'pets'</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'dog'</span><span class="p">:</span> <span class="s1">'Fido'</span><span class="p">,</span> <span class="s1">'cat'</span><span class="p">:</span> <span class="s1">'Sox'</span><span class="p">}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Once the dictionary is created in this way, its values are accessed the same way as any other dictionary:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">person</span>
+<span class="go">{'fname': 'Joe', 'lname': 'Fonebone', 'age': 51, 'spouse': 'Edna',</span>
+<span class="go">'children': ['Ralph', 'Betty', 'Joey'], 'pets': {'dog': 'Fido', 'cat': 'Sox'}}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">person</span><span class="p">[</span><span class="s1">'fname'</span><span class="p">]</span>
+<span class="go">'Joe'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">person</span><span class="p">[</span><span class="s1">'age'</span><span class="p">]</span>
+<span class="go">51</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">person</span><span class="p">[</span><span class="s1">'children'</span><span class="p">]</span>
+<span class="go">['Ralph', 'Betty', 'Joey']</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Retrieving the values in the sublist or subdictionary requires an additional index or key:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">person</span><span class="p">[</span><span class="s1">'children'</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">'Joey'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">person</span><span class="p">[</span><span class="s1">'pets'</span><span class="p">][</span><span class="s1">'cat'</span><span class="p">]</span>
+<span class="go">'Sox'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>This example exhibits another feature of dictionaries:  the values contained in the dictionary don’t need to be the same type. In <code>person</code>, some of the values are strings, one is an integer, one is a list, and one is another dictionary.</p>
+<p>Just as the values in a dictionary don’t need to be of the same type, the keys don’t either:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span> <span class="o">=</span> <span class="p">{</span><span class="mi">42</span><span class="p">:</span> <span class="s1">'aaa'</span><span class="p">,</span> <span class="mf">2.78</span><span class="p">:</span> <span class="s1">'bbb'</span><span class="p">,</span> <span class="kc">True</span><span class="p">:</span> <span class="s1">'ccc'</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span>
+<span class="go">{42: 'aaa', 2.78: 'bbb', True: 'ccc'}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span><span class="p">[</span><span class="mi">42</span><span class="p">]</span>
+<span class="go">'aaa'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span><span class="p">[</span><span class="mf">2.78</span><span class="p">]</span>
+<span class="go">'bbb'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span><span class="p">[</span><span class="kc">True</span><span class="p">]</span>
+<span class="go">'ccc'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Here, one of the keys is an integer, one is a float, and one is a <a href="https://realpython.com/python-boolean/">Boolean</a>.  It’s not obvious how this would be useful, but you never know.</p>
+<p>Notice how versatile Python dictionaries are. In <code>MLB_team</code>, the same piece of information (the baseball team name) is kept for each of several different geographical locations. <code>person</code>, on the other hand, stores varying types of data for a single person.</p>
+<p>You can use dictionaries for a wide range of purposes because there are so few limitations on the keys and values that are allowed.  But there are some.  Read on!</p>
+</section><section class="section2"><h2 id="restrictions-on-dictionary-keys">Restrictions on Dictionary Keys<a class="headerlink" href="https://realpython.com/python-dicts/#restrictions-on-dictionary-keys" title="Permanent link"></a></h2>
+<p>Almost any type of value can be used as a dictionary key in Python. You just saw this example, where integer, float, and Boolean objects are used as keys:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span> <span class="o">=</span> <span class="p">{</span><span class="mi">42</span><span class="p">:</span> <span class="s1">'aaa'</span><span class="p">,</span> <span class="mf">2.78</span><span class="p">:</span> <span class="s1">'bbb'</span><span class="p">,</span> <span class="kc">True</span><span class="p">:</span> <span class="s1">'ccc'</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span>
+<span class="go">{42: 'aaa', 2.78: 'bbb', True: 'ccc'}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>You can even use built-in objects like types and functions:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="nb">int</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">float</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">bool</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{&lt;class 'int'&gt;: 1, &lt;class 'float'&gt;: 2, &lt;class 'bool'&gt;: 3}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
+<span class="go">2</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="nb">bin</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">hex</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">oct</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="nb">oct</span><span class="p">]</span>
+<span class="go">3</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>However, there are a couple restrictions that dictionary keys must abide by.</p>
+<p>First, a given key can appear in a dictionary only once. Duplicate keys are not allowed. A dictionary maps each key to a corresponding value, so it doesn’t make sense to map a particular key more than once.</p>
+<p>You saw above that when you assign a value to an already existing dictionary key, it does not add the key a second time, but replaces the existing value:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s1">'Colorado'</span> <span class="p">:</span> <span class="s1">'Rockies'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Boston'</span>   <span class="p">:</span> <span class="s1">'Red Sox'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Minnesota'</span><span class="p">:</span> <span class="s1">'Twins'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Milwaukee'</span><span class="p">:</span> <span class="s1">'Brewers'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Seattle'</span>  <span class="p">:</span> <span class="s1">'Mariners'</span>
+<span class="gp">... </span><span class="p">}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span><span class="p">[</span><span class="s1">'Minnesota'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Timberwolves'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span>
+<span class="go">{'Colorado': 'Rockies', 'Boston': 'Red Sox', 'Minnesota': 'Timberwolves',</span>
+<span class="go">'Milwaukee': 'Brewers', 'Seattle': 'Mariners'}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Similarly, if you specify a key a second time during the initial creation of a dictionary, the second occurrence will override the first:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s1">'Colorado'</span> <span class="p">:</span> <span class="s1">'Rockies'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Boston'</span>   <span class="p">:</span> <span class="s1">'Red Sox'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Minnesota'</span><span class="p">:</span> <span class="s1">'Timberwolves'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Milwaukee'</span><span class="p">:</span> <span class="s1">'Brewers'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Seattle'</span>  <span class="p">:</span> <span class="s1">'Mariners'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Minnesota'</span><span class="p">:</span> <span class="s1">'Twins'</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span>
+<span class="go">{'Colorado': 'Rockies', 'Boston': 'Red Sox', 'Minnesota': 'Twins',</span>
+<span class="go">'Milwaukee': 'Brewers', 'Seattle': 'Mariners'}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p><em>Begone, Timberwolves! Thou art an NBA team. Sort of.</em></p>
+<p>Secondly, a dictionary key must be of a type that is immutable.  You have already seen examples where several of the immutable types you are familiar with—integer, float, string, and Boolean—have served as dictionary keys.</p>
+<p>A tuple can also be a dictionary key, because tuples are immutable:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="s1">'a'</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="s1">'b'</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="s1">'c'</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="s1">'d'</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span>
+<span class="go">'a'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span>
+<span class="go">'c'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>(Recall from the discussion on <a href="https://realpython.com/python-tuple/">tuples</a> that one rationale for using a tuple instead of a list is that there are circumstances where an immutable type is required.  This is one of them.)</p>
+<p>However, neither a list nor another dictionary can serve as a dictionary key, because lists and dictionaries are <a href="https://realpython.com/python-mutable-vs-immutable-types/">mutable</a>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span> <span class="s1">'a'</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span> <span class="s1">'b'</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span> <span class="s1">'c'</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span> <span class="s1">'d'</span><span class="p">}</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;pyshell#20&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">d</span> <span class="o">=</span> <span class="p">{[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span> <span class="s1">'a'</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span> <span class="s1">'b'</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span> <span class="s1">'c'</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span> <span class="s1">'d'</span><span class="p">}</span>
+<span class="gr">TypeError</span>: <span class="n">unhashable type: 'list'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<div class="alert alert-primary" role="alert">
+<p><strong>Technical Note:</strong>  Why does the error message say “unhashable”?</p>
+<p>Technically, it is not quite correct to say an object must be immutable to be used as a dictionary key.  More precisely, an object must be <a href="https://docs.python.org/3/glossary.html#term-hashable">hashable</a>, which means it can be passed to a hash function.  A <a href="https://realpython.com/python-hash-table/#understand-the-hash-function">hash function</a> takes data of arbitrary size and maps it to a relatively simpler fixed-size value called a <strong>hash value</strong> (or simply hash), which is used for table lookup and comparison.</p>
+<p>Python’s built-in <code>hash()</code> function returns the hash value for an object which is hashable, and raises an exception for an object which isn’t:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">hash</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">)</span>
+<span class="go">11132615637596761</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">hash</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">unhashable type: 'list'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>All of the built-in immutable types you have learned about so far are hashable, and the mutable container types (lists and dictionaries) are not.  So for present purposes, you can think of hashable and immutable as more or less synonymous.</p>
+<p>In future tutorials, you will encounter mutable objects which are also hashable.</p>
+</div>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/47546671741/?c=58525073567&amp;p=58946116052&amp;r=28300" rel="nofollow" target="_blank"><img src="./dictionaries-in-python_files/026fb4432c518a9d24e5ba3f93da2599" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section><section class="section2"><h2 id="restrictions-on-dictionary-values">Restrictions on Dictionary Values<a class="headerlink" href="https://realpython.com/python-dicts/#restrictions-on-dictionary-values" title="Permanent link"></a></h2>
+<p>By contrast, there are no restrictions on dictionary values.  Literally none at all.  A dictionary value can be any type of object Python supports, including mutable types like lists and dictionaries, and user-defined objects, which you will learn about in upcoming tutorials.</p>
+<p>There is also no restriction against a particular value appearing in a dictionary multiple times:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">'a'</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">'a'</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">'a'</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">'a'</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{0: 'a', 1: 'a', 2: 'a', 3: 'a'}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">d</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">True</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+</section><section class="section2"><h2 id="operators-and-built-in-functions">Operators and Built-in Functions<a class="headerlink" href="https://realpython.com/python-dicts/#operators-and-built-in-functions" title="Permanent link"></a></h2>
+<p>You have already become familiar with many of the operators and built-in functions that can be used with <a href="https://realpython.com/python-strings">strings</a>, <a href="https://realpython.com/python-lists-tuples/#python-lists">lists</a>, and <a href="https://realpython.com/python-lists-tuples/#python-tuples">tuples</a>.  Some of these work with dictionaries as well.</p>
+<p>For example, the <code>in</code> and <code>not in</code> operators return <code>True</code> or <code>False</code> according to whether the specified operand occurs as a key in the dictionary:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s1">'Colorado'</span> <span class="p">:</span> <span class="s1">'Rockies'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Boston'</span>   <span class="p">:</span> <span class="s1">'Red Sox'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Minnesota'</span><span class="p">:</span> <span class="s1">'Twins'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Milwaukee'</span><span class="p">:</span> <span class="s1">'Brewers'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Seattle'</span>  <span class="p">:</span> <span class="s1">'Mariners'</span>
+<span class="gp">... </span><span class="p">}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">'Milwaukee'</span> <span class="ow">in</span> <span class="n">MLB_team</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">'Toronto'</span> <span class="ow">in</span> <span class="n">MLB_team</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">'Toronto'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">MLB_team</span>
+<span class="go">True</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>You can use the <code>in</code> operator together with short-circuit evaluation to avoid raising an error when trying to access a key that is not in the dictionary:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span><span class="p">[</span><span class="s1">'Toronto'</span><span class="p">]</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;pyshell#2&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">MLB_team</span><span class="p">[</span><span class="s1">'Toronto'</span><span class="p">]</span>
+<span class="gr">KeyError</span>: <span class="n">'Toronto'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">'Toronto'</span> <span class="ow">in</span> <span class="n">MLB_team</span> <span class="ow">and</span> <span class="n">MLB_team</span><span class="p">[</span><span class="s1">'Toronto'</span><span class="p">]</span>
+<span class="go">False</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In the second case, due to short-circuit evaluation, the expression <code>MLB_team['Toronto']</code> is not evaluated, so the <code>KeyError</code> exception does not occur.</p>
+<p>The <code>len()</code> function returns the number of key-value pairs in a dictionary:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">MLB_team</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s1">'Colorado'</span> <span class="p">:</span> <span class="s1">'Rockies'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Boston'</span>   <span class="p">:</span> <span class="s1">'Red Sox'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Minnesota'</span><span class="p">:</span> <span class="s1">'Twins'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Milwaukee'</span><span class="p">:</span> <span class="s1">'Brewers'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Seattle'</span>  <span class="p">:</span> <span class="s1">'Mariners'</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">MLB_team</span><span class="p">)</span>
+<span class="go">5</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+</section><section class="section2"><h2 id="built-in-dictionary-methods">Built-in Dictionary Methods<a class="headerlink" href="https://realpython.com/python-dicts/#built-in-dictionary-methods" title="Permanent link"></a></h2>
+<p>As with strings and lists, there are several built-in methods that can be invoked on dictionaries.  In fact, in some cases, the list and dictionary methods share the same name.  (In the discussion on object-oriented programming, you will see that it is perfectly acceptable for different types to have methods with the same name.)</p>
+<p>The following is an overview of methods that apply to dictionaries:</p>
+<section class="section3"><h3 id="dclear"><code>d.clear()</code><a class="headerlink" href="https://realpython.com/python-dicts/#dclear" title="Permanent link"></a></h3>
+<blockquote>
+<p>Clears a dictionary.</p>
+</blockquote>
+<p><code>d.clear()</code> empties dictionary <code>d</code> of all key-value pairs:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{'a': 10, 'b': 20, 'c': 30}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/58257184031/?c=31941813441&amp;p=58946116052&amp;r=34572" rel="nofollow" target="_blank"><img src="./dictionaries-in-python_files/16bf1efe41b538fae54711c58c701f0e" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section><section class="section3"><h3 id="dgetkey-default"><code>d.get(&lt;key&gt;[, &lt;default&gt;])</code><a class="headerlink" href="https://realpython.com/python-dicts/#dgetkey-default" title="Permanent link"></a></h3>
+<blockquote>
+<p>Returns the value for a key if it exists in the dictionary.</p>
+</blockquote>
+<p>The Python dictionary <code>.get()</code> method provides a convenient way of getting the value of a key from a dictionary without checking ahead of time whether the key exists, and without raising an error.</p>
+<p><code>d.get(&lt;key&gt;)</code> searches dictionary <code>d</code> for <code>&lt;key&gt;</code> and returns the associated value if it is found.  If <code>&lt;key&gt;</code> is not found, it returns <code>None</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'b'</span><span class="p">))</span>
+<span class="go">20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'z'</span><span class="p">))</span>
+<span class="go">None</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>If <code>&lt;key&gt;</code> is not found and the optional <code>&lt;default&gt;</code> argument is specified, that value is returned instead of <code>None</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'z'</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="go">-1</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+</section><section class="section3"><h3 id="ditems"><code>d.items()</code><a class="headerlink" href="https://realpython.com/python-dicts/#ditems" title="Permanent link"></a></h3>
+<blockquote>
+<p>Returns a list of key-value pairs in a dictionary.</p>
+</blockquote>
+<p><code>d.items()</code> returns a list of tuples containing the key-value pairs in <code>d</code>.  The first item in each tuple is the key, and the second item is the key’s value:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{'a': 10, 'b': 20, 'c': 30}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="go">[('a', 10), ('b', 20), ('c', 30)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">'b'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">20</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+</section><section class="section3"><h3 id="dkeys"><code>d.keys()</code><a class="headerlink" href="https://realpython.com/python-dicts/#dkeys" title="Permanent link"></a></h3>
+<blockquote>
+<p>Returns a list of keys in a dictionary.</p>
+</blockquote>
+<p><code>d.keys()</code> returns a list of all keys in <code>d</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{'a': 10, 'b': 20, 'c': 30}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="go">['a', 'b', 'c']</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+</section><section class="section3"><h3 id="dvalues"><code>d.values()</code><a class="headerlink" href="https://realpython.com/python-dicts/#dvalues" title="Permanent link"></a></h3>
+<blockquote>
+<p>Returns a list of values in a dictionary.</p>
+</blockquote>
+<p><code>d.values()</code> returns a list of all values in <code>d</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{'a': 10, 'b': 20, 'c': 30}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="go">[10, 20, 30]</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Any duplicate values in <code>d</code> will be returned as many times as they occur:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{'a': 10, 'b': 10, 'c': 10}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="go">[10, 10, 10]</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<div class="alert alert-primary" role="alert">
+<p><strong>Technical Note:</strong> The <code>.items()</code>, <code>.keys()</code>, and <code>.values()</code> methods actually return something called a <strong>view object</strong>.  A dictionary view object is more or less like a window on the keys and values.  For practical purposes, you can think of these methods as returning lists of the dictionary’s keys and values.</p>
+</div>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/6329231077/?c=67692636049&amp;p=58946116052&amp;r=34063" rel="nofollow" target="_blank"><img src="./dictionaries-in-python_files/a06935292d9e664600113998d124efa2" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section><section class="section3"><h3 id="dpopkey-default"><code>d.pop(&lt;key&gt;[, &lt;default&gt;])</code><a class="headerlink" href="https://realpython.com/python-dicts/#dpopkey-default" title="Permanent link"></a></h3>
+<blockquote>
+<p>Removes a key from a dictionary, if it is present, and returns its value.</p>
+</blockquote>
+<p>If <code>&lt;key&gt;</code> is present in <code>d</code>, <code>d.pop(&lt;key&gt;)</code> removes <code>&lt;key&gt;</code> and returns its associated value:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">'b'</span><span class="p">)</span>
+<span class="go">20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{'a': 10, 'c': 30}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p><code>d.pop(&lt;key&gt;)</code> raises a <code>KeyError</code> exception if <code>&lt;key&gt;</code> is not in <code>d</code>:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;pyshell#4&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
+<span class="gr">KeyError</span>: <span class="n">'z'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>If <code>&lt;key&gt;</code> is not in <code>d</code>, and the optional <code>&lt;default&gt;</code> argument is specified, then that value is returned, and no exception is raised:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">'z'</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">-1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{'a': 10, 'b': 20, 'c': 30}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+</section><section class="section3"><h3 id="dpopitem"><code>d.popitem()</code><a class="headerlink" href="https://realpython.com/python-dicts/#dpopitem" title="Permanent link"></a></h3>
+<blockquote>
+<p>Removes a key-value pair from a dictionary.</p>
+</blockquote>
+<p><code>d.popitem()</code> removes the last key-value pair added from <code>d</code> and returns it as a tuple:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">popitem</span><span class="p">()</span>
+<span class="go">('c', 30)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{'a': 10, 'b': 20}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">popitem</span><span class="p">()</span>
+<span class="go">('b', 20)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{'a': 10}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>If <code>d</code> is empty, <code>d.popitem()</code> raises a <code>KeyError</code> exception:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">popitem</span><span class="p">()</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;pyshell#11&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">d</span><span class="o">.</span><span class="n">popitem</span><span class="p">()</span>
+<span class="gr">KeyError</span>: <span class="n">'popitem(): dictionary is empty'</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> In Python versions less than 3.6, <code>popitem()</code> would return an arbitrary (random) key-value pair since <a href="https://realpython.com/iterate-through-dictionary-python/">Python dictionaries were unordered</a> before version 3.6.</p>
+</div>
+</section><section class="section3"><h3 id="dupdateobj"><code>d.update(&lt;obj&gt;)</code><a class="headerlink" href="https://realpython.com/python-dicts/#dupdateobj" title="Permanent link"></a></h3>
+<blockquote>
+<p>Merges a dictionary with another dictionary or with an iterable of key-value pairs.</p>
+</blockquote>
+<p>If <code>&lt;obj&gt;</code> is a dictionary, <code>d.update(&lt;obj&gt;)</code> merges the entries from <code>&lt;obj&gt;</code> into <code>d</code>.  For each key in <code>&lt;obj&gt;</code>:</p>
+<ul>
+<li>If the key is not present in <code>d</code>, the key-value pair from <code>&lt;obj&gt;</code> is added to <code>d</code>.</li>
+<li>If the key is already present in <code>d</code>, the corresponding value in <code>d</code> for that key is updated to the value from <code>&lt;obj&gt;</code>.</li>
+</ul>
+<p>Here is an example showing two dictionaries merged together:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'b'</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s1">'d'</span><span class="p">:</span> <span class="mi">400</span><span class="p">}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span>
+<span class="go">{'a': 10, 'b': 200, 'c': 30, 'd': 400}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>In this example, key <code>'b'</code> already exists in <code>d1</code>, so its value is updated to <code>200</code>, the value for that key from <code>d2</code>.  However, there is no key <code>'d'</code> in <code>d1</code>, so that key-value pair is added from <code>d2</code>.</p>
+<p><code>&lt;obj&gt;</code> may also be a sequence of key-value pairs, similar to when the <code>dict()</code> function is used to define a dictionary.  For example, <code>&lt;obj&gt;</code> can be specified as a list of tuples:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span><span class="o">.</span><span class="n">update</span><span class="p">([(</span><span class="s1">'b'</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="p">(</span><span class="s1">'d'</span><span class="p">,</span> <span class="mi">400</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span>
+<span class="go">{'a': 10, 'b': 200, 'c': 30, 'd': 400}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<p>Or the values to merge can be specified as a list of keyword arguments:</p>
+<div class="codeblock mb-3 w-100" aria-label="Code block" data-syntax-language="pycon" data-is-repl="true">
+  <div class="codeblock__header d-flex justify-content-between codeblock--blue">
+    <span class="mr-2 noselect" aria-label="Language">Python</span>
+    
+    <div class="noselect">
+      
+        <span class="codeblock__output-toggle" title="Toggle prompts and output" role="button"><span class="icon baseline js-codeblock-output-on codeblock__header--icon-lower" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#regular--rectangle-terminal"></use></svg></span></span>
+      
+    </div>
+  </div>
+  <div style="position: relative;">
+    <div class="highlight highlight--with-header"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span>
+<span class="go">{'a': 10, 'b': 200, 'c': 30, 'd': 400}</span>
+</code></pre></div>
+    
+    <button class="codeblock__copy btn btn-outline-secondary border m-1 px-1 d-hover-only" title="Copy to clipboard"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@copy"></use></svg></span></button>
+    <template class="codeblock__copied-template"></template>
+    
+  </div>
+</div>
+<div><div class="rounded border border-light" style="display:block;position:relative;"> <div style="display:block;width:100%;padding-top:12.5%;"></div> <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"> <a href="https://srv.realpython.net/click/30024566830/?c=67692636049&amp;p=58946116052&amp;r=45493" rel="nofollow" target="_blank"><img src="./dictionaries-in-python_files/ad2a5ca1094274284ec09ebe8b23316c" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div></div><a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"> <span aria-hidden="true" class="icon baseline mr-1"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a></div></section></section><section class="section2"><h2 id="conclusion">Conclusion<a class="headerlink" href="https://realpython.com/python-dicts/#conclusion" title="Permanent link"></a></h2>
+<p>In this tutorial, you covered the basic properties of the Python <strong>dictionary</strong> and learned how to access and manipulate dictionary data.</p>
+<p><strong>Lists</strong> and <strong>dictionaries</strong> are two of the most frequently used Python types.  As you have seen, they have several similarities, but differ in how their elements are accessed.  Lists elements are accessed by numerical index based on order, and dictionary elements are accessed by key</p>
+<p>Because of this difference, lists and dictionaries tend to be appropriate for different circumstances.  You should now have a good feel for which, if either, would be best for a given situation.</p>
+<p>Next you will learn about Python <strong>sets</strong>.  The set is another composite data type, but it is quite different from either a list or dictionary.</p>
+<div class="container border rounded text-wrap-pretty my-3">
+
+  <p class="my-3"><mark class="marker-highlight"><strong><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span> Take the Quiz:</strong></mark> Test your knowledge with our interactive “Python Dictionaries” quiz. You’ll receive a score upon completion to help you track your learning progress:</p>
+
+  <hr>
+
+  <div class="row my-3">
+    <div class="col-xs-12 col-sm-4 col-md-3 align-self-center">
+
+      <a href="https://realpython.com/quizzes/python-dicts/" tabindex="-1">
+        <div class="embed-responsive embed-responsive-16by9">
+
+            <img class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #e5c5ac;" alt="Dictionaries in Python" src="./dictionaries-in-python_files/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg 1920w" sizes="(min-width: 1200px) 142px, (min-width: 1000px) 122px, (min-width: 780px) 112px, (min-width: 580px) 139px, calc(100vw - 62px)">
+
+
+          <div class="card-img-overlay d-flex align-items-center">
+            <div class="mx-auto">
+              <span class="text-light" style="opacity: 0.90;"><span class="icon baseline scale2x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@quiz"></use></svg></span></span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+    <div class="col">
+      <div class="mt-3 d-md-none"></div> 
+      <p class="small text-muted mb-0"><strong>Interactive Quiz</strong></p>
+      <a href="https://realpython.com/quizzes/python-dicts/" class="stretched-link"><span class="my-0 h4">Python Dictionaries</span></a> 
+      <p class="text-muted mb-0 small">Test your understanding of Python dictionaries</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="container py-3 series-nav mb-3">
+  <div class="row justify-content-between">
+    <div class="col-12 col-md-3 text-left text-muted ml-1"><a href="https://realpython.com/python-lists-tuples/"> «&nbsp;Lists and Tuples in Python</a></div>
+    <div class="col-12 col-md-3 text-center text-muted"><a href="https://realpython.com/python-dicts/#">Dictionaries in Python</a></div>
+    <div class="col-12 col-md-3 text-right text-muted mr-1"><a href="https://realpython.com/python-sets/">Sets in Python&nbsp;»</a></div>
+  </div>
+</div>
+
+</section>
+
+    
+      
+      <div class="d-flex justify-content-center flex-wrap gap-2 my-3">
+        
+
+
+<completion-status class="btn-group mb-0" article-slug="python-dicts" data-api-article-bookmark-url="/api/v1/articles/python-dicts/bookmark/" data-api-article-completion-status-url="/api/v1/articles/python-dicts/completion_status/">
+  <button data-target-complete-button="" title="Click to mark as completed" class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">Mark as Completed</button>
+  <button data-target-bookmark-button="" title="Add bookmark" class="btn btn-secondary border-left"><span class="icon baseline" aria-hidden="true">
+    <svg aria-hidden="true">
+      <use href="/static/icons.1440a154cfa8.svg#light--bookmark"></use>
+    </svg>
+    
+  </span></button>
+</completion-status>
+
+        
+<div class="btn-group mb-0">
+  <a class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" title="Liked it" role="button" aria-label="Thumbs up (liked it)" href="https://realpython.com/feedback/survey/article/python-dicts/liked/?from=article-footer" target="_blank"><span class="icon" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-up"></use></svg></span></a> 
+  <a class="btn btn-secondary border-left" role="button" aria-label="Thumbs down (disliked it)" title="Disliked it" href="https://realpython.com/feedback/survey/article/python-dicts/disliked/?from=article-footer" target="_blank"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-down"></use></svg></span></a>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+<share-button url="https://realpython.com/python-dicts/" url-title="Dictionaries in Python" twitter-text="Interesting #Python article by @realpython:" email-subject="Python article for you" email-body="Check out this Python article:%0A%0ADictionaries in Python">
+  <button class="btn btn-secondary" type="button" title="Share" aria-label="Share"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@share-light"></use></svg></span>Share</button>
+</share-button>
+
+
+      </div>
+    
+
+    
+      
+<div class="border rounded p-3 card mb-2 text-wrap-pretty">
+  <p class="mb-0"><span class="badge badge-pill badge-success"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#v4--play-circle"></use></svg></span> Watch Now</span> This tutorial has a related video course created by the Real Python team. Watch it together with the written tutorial to deepen your understanding: <a class="stretched-link text-success" href="https://realpython.com/courses/dictionaries-python/"><strong>Dictionaries in Python</strong></a></p>
+</div>
+
+    
+  </div>
+
+  
+    
+
+<div class="card mt-4 mb-4 bg-secondary">
+  <p class="card-header h3 text-center bg-light">🐍 Python Tricks 💌</p>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-7">
+          <p>Get a short &amp; sweet <strong>Python Trick</strong> delivered to your inbox every couple of days. No spam ever. Unsubscribe any time. Curated by the Real Python team.</p>
+        </div>
+        <div class="col-xs-12 col-sm-5">
+          <img loading="lazy" class="img-fluid rounded mb-3" src="./dictionaries-in-python_files/pytrick-dict-merge.webp" width="738" height="490" alt="Python Tricks Dictionary Merge">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <form class="col-12" action="https://realpython.com/optins/process/" method="post">
+          <input type="hidden" name="csrfmiddlewaretoken" value="JTHDS2ru7Uhm0TKPYI5xc1c364srDjdi12Mb21OVgb2FG0MLS0fCv8yrfIsvW0vy">
+          <input type="hidden" name="slug" value="static-python-tricks-footer">
+          <div class="form-group">
+            <input name="email" type="email" class="form-control form-control-lg" placeholder="Email Address" required="">
+          </div>
+          <button name="submit" type="submit" class="btn btn-primary btn-lg btn-block">Send Me Python Tricks »</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  
+
+
+
+<div class="card mt-3" id="author">
+  <p class="card-header h3">About <strong>John Sturtz</strong></p>
+  <div class="card-body">
+    <div class="container p-0">
+      <div class="row">
+        <div class="col-12 col-md-3 align-self-center">
+          <a href="https://realpython.com/team/jsturtz/" aria-hidden="true" tabindex="-1">
+            <img loading="lazy" src="./dictionaries-in-python_files/img007.18d0e80683f7.jpg" srcset="/cdn-cgi/image/width=89,height=89,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 89w, /cdn-cgi/image/width=119,height=119,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 119w, /cdn-cgi/image/width=179,height=179,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 179w, /cdn-cgi/image/width=358,height=358,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 358w" sizes="(min-width: 580px) 154px, calc(33.08vw - 24px)" width="358" height="358" style="background: #5a270c;" class="d-block d-md-none rounded-circle img-fluid w-33 mb-0 mx-auto" alt="John Sturtz">
+            <img loading="lazy" src="./dictionaries-in-python_files/img007.18d0e80683f7.jpg" srcset="/cdn-cgi/image/width=89,height=89,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 89w, /cdn-cgi/image/width=119,height=119,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 119w, /cdn-cgi/image/width=179,height=179,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 179w, /cdn-cgi/image/width=358,height=358,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/img007.18d0e80683f7.jpg 358w" sizes="(min-width: 1200px) 140px, calc(-1.5vw + 137px)" width="358" height="358" style="background: #5a270c;" class="d-none d-md-block rounded-circle img-fluid w-100 mb-0" alt="John Sturtz">
+          </a>
+        </div>
+        <div class="col mt-3">
+          <p>John is an avid Pythonista and a member of the Real Python tutorial team.</p>
+          <a href="https://realpython.com/team/jsturtz/" class="card-link">» More about John</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <hr class="my-0">
+  <div class="card-body pb-0">
+    <div class="container">
+      <div class="row">
+        <p><em>Each tutorial at Real Python is created by a team of developers so that it meets our high quality standards. The team members who worked on this tutorial are:</em></p>
+      </div>
+
+      
+        
+          <div class="row align-items-center w-100 mx-auto">
+        
+
+        <div class="col-4 col-sm-2 align-self-center">
+          
+            <a href="https://realpython.com/team/asantos/" aria-hidden="true" tabindex="-1"><img loading="lazy" src="./dictionaries-in-python_files/PP.9b8b026f75b8.jpg" srcset="/cdn-cgi/image/width=239,height=239,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 239w, /cdn-cgi/image/width=319,height=319,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 319w, /cdn-cgi/image/width=479,height=479,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 479w, /cdn-cgi/image/width=959,height=959,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/PP.9b8b026f75b8.jpg 959w" sizes="(min-width: 1200px) 73px, (min-width: 780px) calc(-0.75vw + 69px), (min-width: 580px) 43px, calc(33.46vw - 64px)" width="959" height="959" style="background: #dadad8;" class="rounded-circle img-fluid w-100" alt="Aldren Santos"></a>
+          
+        </div>
+        <div class="col pl-0 d-none d-sm-block">
+          <a href="https://realpython.com/team/asantos/" class="card-link small"><p>Aldren</p></a>
+        </div>
+
+        
+
+        
+      
+        
+
+        <div class="col-4 col-sm-2 align-self-center">
+          
+            <a href="https://realpython.com/team/jjablonski/" aria-hidden="true" tabindex="-1"><img loading="lazy" src="./dictionaries-in-python_files/jjablonksi-avatar.e37c4f83308e.jpg" srcset="/cdn-cgi/image/width=200,height=200,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg 200w, /cdn-cgi/image/width=266,height=266,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg 266w, /cdn-cgi/image/width=400,height=400,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg 400w, /cdn-cgi/image/width=800,height=800,fit=crop,gravity=auto,format=auto/https://files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg 800w" sizes="(min-width: 1200px) 73px, (min-width: 780px) calc(-0.75vw + 69px), (min-width: 580px) 43px, calc(33.46vw - 64px)" width="800" height="800" style="background: #b8b9bb;" class="rounded-circle img-fluid w-100" alt="Joanna Jablonski"></a>
+          
+        </div>
+        <div class="col pl-0 d-none d-sm-block">
+          <a href="https://realpython.com/team/jjablonski/" class="card-link small"><p>Joanna</p></a>
+        </div>
+
+        
+          
+          
+            <div class="col-4 col-sm-2 align-self-center"></div>
+            <div class="col pl-0 d-none d-sm-block"></div>
+          
+        
+
+        
+          </div>
+        
+      
+    </div>
+  </div>
+  
+
+</div>
+
+
+
+
+
+  
+    
+
+<div class="bg-light rounded py-4 my-4 shadow shadow-sm mx-n2">
+  
+  <div class="col-12 text-center d-block d-md-none">
+    <p class="h2 mb-3">Master <u><span class="marker-highlight">Real-World Python Skills</span></u> With Unlimited Access to Real&nbsp;Python</p>
+    <p class="mb-1"><img loading="lazy" class="w-75" src="./dictionaries-in-python_files/lesson-locked.f5105cfd26db.svg" width="510" height="260" alt="Locked learning resources"></p>
+    <p class="mx-auto w-75 mb-3 small"><strong>Join us and get access to thousands of tutorials, hands-on video courses, and a community of expert&nbsp;Pythonistas:</strong></p>
+    <p class="mb-0"><a href="https://realpython.com/account/join/?utm_source=rp_article_footer&amp;utm_content=python-dicts" class="btn btn-primary btn-sm px-4 mb-0">Level Up Your Python Skills »</a>
+  </p></div>
+
+  
+  <div class="col-12 text-center d-none d-md-block">
+    <p class="h2 mb-2">Master <u><span class="marker-highlight">Real-World Python Skills</span></u><br>With Unlimited Access to Real&nbsp;Python</p>
+    <p class="mb-2"><img loading="lazy" class="w-50 mb-2" src="./dictionaries-in-python_files/lesson-locked.f5105cfd26db.svg" width="510" height="260" alt="Locked learning resources"></p>
+    <p class="mx-auto w-50 mb-3"><strong>Join us and get access to thousands of tutorials, hands-on video courses, and a community of expert Pythonistas:</strong></p>
+    <p><a href="https://realpython.com/account/join/?utm_source=rp_article_footer&amp;utm_content=python-dicts" class="btn btn-primary btn-lg px-4">Level Up Your Python Skills »</a>
+  </p></div>
+</div>
+
+  
+
+  
+  <div class="card mt-4" id="reader-comments">
+    <p class="card-header h3">What Do You Think?</p>
+    
+    <div class="text-center mt-3 mb-0 p-0">
+      <div class="mb-2">
+        <strong class="mr-2">Rate this article:</strong>
+        
+<div class="btn-group mb-0">
+  <a class="btn btn-secondary border-right" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" title="Liked it" role="button" aria-label="Thumbs up (liked it)" href="https://realpython.com/feedback/survey/article/python-dicts/liked/?from=article-comments" target="_blank"><span class="icon" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-up"></use></svg></span></a> 
+  <a class="btn btn-secondary border-left" role="button" aria-label="Thumbs down (disliked it)" title="Disliked it" href="https://realpython.com/feedback/survey/article/python-dicts/disliked/?from=article-comments" target="_blank"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#light--thumbs-down"></use></svg></span></a>
+</div>
+
+      </div>
+      
+
+
+
+<div class="d-flex justify-content-center flex-wrap gap-2 my-3">
+  
+  
+  <a target="_blank" rel="nofollow" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Frealpython.com%2Fpython-dicts%2F" class="btn btn-sm share-linkedin" aria-label="Share on LinkedIn"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--linkedin"></use></svg></span>LinkedIn</a>
+  
+  
+  <a target="_blank" rel="nofollow" href="https://twitter.com/intent/tweet/?text=Interesting%20Python%20article%20on%20%40realpython%3A%20Dictionaries%20in%20Python&amp;url=https%3A%2F%2Frealpython.com%2Fpython-dicts%2F" class="btn btn-sm share-x-twitter" aria-label="Share on X/Twitter"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--x-twitter"></use></svg></span>Twitter</a>
+  
+  
+  <a target="_blank" rel="nofollow" href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Frealpython.com%2Fpython-dicts%2F" class="btn btn-sm share-facebook" aria-label="Share on Facebook"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#brands--facebook"></use></svg></span>Facebook</a>
+  
+  
+  <a target="_blank" rel="nofollow" href="mailto:?subject=Python%20article%20for%20you&amp;body=Dictionaries%20in%20Python%20on%20Real%20Python%0A%0Ahttps%3A%2F%2Frealpython.com%2Fpython-dicts%2F%0A" class="btn btn-sm share-email" aria-label="Share via Email"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--envelope"></use></svg></span>Email</a>
+  
+  
+</div>
+
+    </div>
+    
+    <div class="card-body pt-0 text-wrap-pretty">
+      <p>What’s your #1 takeaway or favorite thing you learned? How are you going to put your newfound skills to use? Leave a comment below and let us know.</p>
+
+      <div class="alert alert-dark">
+        <p class="mb-0"><strong>Commenting Tips:</strong> The most useful comments are those written with the goal of learning from or helping out other students. <a href="https://realpython.com/python-beginner-tips/#tip-9-ask-good-questions" target="_blank">Get tips for asking good questions</a> and <a href="https://support.realpython.com/" target="_blank">get answers to common questions in our support portal</a>.</p><hr>Looking for a real-time conversation? Visit the <a href="https://realpython.com/community/" target="_blank">Real Python Community Chat</a> or join the next <a href="https://realpython.com/office-hours/" target="_blank">“Office&nbsp;Hours” Live Q&amp;A Session</a>. Happy Pythoning!<p></p>
+
+      </div>
+
+      <div class="mb-4" id="disqus_thread">
+      
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="card mt-4 mb-4">
+    <p class="card-header h3">Keep Learning</p>
+    <div class="card-body">
+      <p class="mb-0">Related Topics:
+      
+        
+<a href="https://realpython.com/tutorials/basics/" class="badge badge-light text-muted">basics</a>
+
+      
+        
+<a href="https://realpython.com/tutorials/python/" class="badge badge-light text-muted">python</a>
+
+      
+      </p>
+      
+        <p class="mt-3 mb-0">Recommended Video Course: <a class="text-success" href="https://realpython.com/courses/dictionaries-python/">Dictionaries in Python</a></p>
+      
+    </div>
+  </div>
+
+  
+    
+    
+      
+<div class="modal fade" tabindex="-1" role="dialog" id="rpvc">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header border-0">
+        <div class="col-12 col-lg-9 mx-auto modal-title text-center my-2">
+          <h2 class="my-0">Master <u>Real-World Python Skills</u> With Unlimited Access to Real Python</h2>
+        </div>
+      </div>
+
+      
+      <div class="modal-body bg-light">
+        <div class="col-12 text-center">
+
+          <div class="col-12 col-lg-8 mx-auto mb-2 mt-3">
+            <a href="https://realpython.com/account/join/?utm_source=rp&amp;utm_medium=web&amp;utm_campaign=pwn&amp;utm_content=v2&amp;next=%2Fpython-dicts%2F"><img loading="lazy" class="w-100" src="./dictionaries-in-python_files/lesson-locked.f5105cfd26db.svg" width="510" height="260" alt="Unlock all content"></a>
+
+            <p class="mb-3"><strong>Join us and get access to thousands of tutorials, hands-on video courses, and a community of expert Pythonistas:</strong></p>
+          </div>
+
+          <p><a href="https://realpython.com/account/join/?utm_source=rp&amp;utm_medium=web&amp;utm_campaign=pwn&amp;utm_content=v2" class="btn btn-primary btn-lg px-4"><span class="icon baseline mr-2" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#@unlock"></use></svg></span>Unlock All Content »</a></p>
+
+        </div>
+      </div>
+      
+
+      <div class="modal-footer border-0">
+        <button class="text-muted btn" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+      <script src="./dictionaries-in-python_files/pw.dc84fc526165.js.download" async=""></script>
+    
+  
+
+
+    </div>
+
+  </div>
+
+    </div>
+
+    
+    
+
+    
+    
+
+    
+      
+<footer class="footer">
+  <div class="container">
+    
+      <div class="mx-auto mt-4 mb-0" style="max-width: 768px;">
+        
+
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:12.5%;"></div>
+  <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a href="https://srv.realpython.net/click/12280765222/?c=10466391474&amp;p=58946116052&amp;r=55788" rel="nofollow" target="_blank"><img src="./dictionaries-in-python_files/28d978cf3e7797b78e9cba11b65bc2c6" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+<a class="small text-muted" href="https://realpython.com/account/join/" rel="nofollow"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--circle-info"></use></svg></span>Remove ads</a>
+
+
+      </div>
+    
+
+    <p class="text-center text-muted w-75 mx-auto">© 2012–2024 Real&nbsp;Python&nbsp;⋅ <a href="https://realpython.com/newsletter/">Newsletter</a>&nbsp;⋅ <a href="https://realpython.com/podcasts/rpp/">Podcast</a>&nbsp;⋅ <a href="https://www.youtube.com/realpython">YouTube</a>&nbsp;⋅ <a href="https://twitter.com/realpython">Twitter</a>&nbsp;⋅ <a href="https://facebook.com/LearnRealPython">Facebook</a>&nbsp;⋅ <a href="https://www.instagram.com/realpython/">Instagram</a>&nbsp;⋅ <a href="https://realpython.com/">Python&nbsp;Tutorials</a>&nbsp;⋅ <a href="https://realpython.com/search">Search</a>&nbsp;⋅ <a href="https://realpython.com/privacy-policy/">Privacy Policy</a>&nbsp;⋅ <a href="https://realpython.com/energy-policy/">Energy Policy</a>&nbsp;⋅ <a href="https://realpython.com/sponsorships/">Advertise</a>&nbsp;⋅ <a href="https://realpython.com/contact/">Contact</a><br><span class="icon baseline text-color-red" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.1440a154cfa8.svg#solid--heart"></use></svg></span> Happy Pythoning!</p>
+  </div>
+</footer>
+
+    
+
+    
+
+    
+    <script>
+      (function() {
+        var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
+        if (!isAndroid) {
+          return;
+        }
+
+        var styles = `
+        @font-face {
+          font-family: 'DejaVu Sans Mono';
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+          src: url('/static/mfonts/dejavu-sans-mono.33f00225f915.woff2') format('woff2'),
+               url('/static/mfonts/dejavu-sans-mono.0da77d3739f3.woff') format('woff'),
+               url('/static/mfonts/dejavu-sans-mono.c2356fc49835.ttf') format('truetype');
+        }
+        code, kbd, pre, samp {
+          font-family: 'DejaVu Sans Mono', monospace;
+        }
+        `
+
+        var styleSheet = document.createElement("style")
+        styleSheet.type = "text/css"
+        styleSheet.innerText = styles
+        document.head.appendChild(styleSheet)
+      })();
+    </script>
+
+    
+    
+    <script src="./dictionaries-in-python_files/jquery.min.2c872dbe60f4.js.download"></script>
+    <script src="./dictionaries-in-python_files/popper.min.aeebb49d0b64.js.download"></script>
+    <script src="./dictionaries-in-python_files/bootstrap.min.248284cdd069.js.download"></script>
+
+    
+    
+
+
+    <script>
+    (function() {
+      document.querySelectorAll(".js-search-form-submit").forEach(function(el) {
+        el.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.currentTarget.parentElement.submit();
+        })
+      });
+    })();
+    </script>
+    <script src="./dictionaries-in-python_files/codeblock.fd057f64871d.js.download" async=""></script>
+    <script src="./dictionaries-in-python_files/lightbox.5abaefa8b384.js.download" async=""></script>
+    <script src="./dictionaries-in-python_files/platforms-ui.a69aad1c6777.js.download" async=""></script>
+    
+    <script src="./dictionaries-in-python_files/session.a2647010a4be.js.download" async=""></script>
+    
+
+    <script src="./dictionaries-in-python_files/table-of-contents.1878a66e56ce.js.download" defer=""></script>
+<script src="./dictionaries-in-python_files/completion-status.c5660d84687e.js.download" defer=""></script>
+<script src="./dictionaries-in-python_files/share-button.6511bf1c1a9a.js.download" defer=""></script>
+
+
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+<script>window.rp_prop_id = '58946116052';</script>
+<script src="./dictionaries-in-python_files/tag.js.download" async=""></script>
+
+
+
+<script id="js-context" type="application/json">{"is_completed": false, "is_bookmarked": false, "api_article_bookmark_url": "/api/v1/articles/python-dicts/bookmark/", "api_article_completion_status_url": "/api/v1/articles/python-dicts/completion_status/", "api_article_progress_url": "/api/v1/articles/python-dicts/progress/"}</script>
+
+
+  <script src="./dictionaries-in-python_files/progress.d60fa4010861.js.download" async=""></script>
+
+
+
+
+
+  
+    <script id="dsq-count-scr" src="./dictionaries-in-python_files/count.js.download" async=""></script>
+    <script>
+      var disqus_config = function () {
+        this.page.url = 'https://realpython.com/python-dicts/';
+        this.page.identifier = 'https://realpython.com/python-dicts/';
+        this.callbacks.onReady = [function() {
+          if (window.onDisqusReady) {
+            window.onDisqusReady();
+          }
+        }];
+      };
+      var disqus_script_url = 'https://realpython.disqus.com/embed.js';
+    </script>
+    <script src="./dictionaries-in-python_files/lazy-disqus.91224536ec68.js.download" defer=""></script>
+  
+
+
+  
+  
+  <script src="./dictionaries-in-python_files/OneSignalSDK.page.js.download" defer=""></script>
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(function(OneSignal) {
+      OneSignal.init({
+        appId: "c0081e20-a523-42bb-b0ac-04c5a9e8bf40",
+        safari_web_id: "web.onesignal.auto.337e82fd-eeda-48f8-8fe5-d2f6dec774c2",
+        notifyButton: {
+          enable: true,
+          position: "bottom-left",
+          showCredit: false,
+          text: {
+            "tip.state.unsubscribed": "Receive a notification when we post a new tutorial",
+            "tip.state.subscribed": "You're subscribed to new tutorial notifications",
+            'tip.state.blocked': "You've blocked notifications",
+            'message.prenotify': 'Click to subscribe to notifications',
+            "message.action.subscribed": "Great, we'll let you know when the next tutorial comes out!",
+            'message.action.resubscribed': "You're subscribed to notifications",
+            'message.action.unsubscribed': "You won't receive notifications again",
+            'dialog.main.title': 'Manage Site Notifications',
+            'dialog.main.button.subscribe': 'SUBSCRIBE',
+            'dialog.main.button.unsubscribe': 'UNSUBSCRIBE',
+            'dialog.blocked.title': 'Unblock Notifications',
+            'dialog.blocked.message': "Follow these instructions to allow notifications:"
+          },
+          
+        },
+      });
+    });
+  </script>
+  
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Dictionaries in Python",
+    
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://files.realpython.com/media/Dictionaries-in-Python_Watermarked.3656a2293c00.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://realpython.com/python-dicts/"
+    },
+    "datePublished": "2018-08-06T14:00:00+00:00",
+    "dateModified": "2023-10-21T02:45:18.074153+00:00",
+     "publisher": {
+      "@type": "Organization",
+      "name": "Real Python",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "/static/real-python-logo-square-tiny.b2452b6d3823.png",
+        "width": 60,
+        "height": 60
+      }
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Real Python",
+      "url": "https://realpython.com",
+      "logo": "/static/real-python-logo-square.146e987bf77c.png"
+    },
+    "description": "In this Python dictionaries tutorial, you\u0027ll cover the basic characteristics and learn how to access and manage dictionary data. Once you have finished this tutorial, you should have a good sense of when a dictionary is the appropriate data type to use, and how to do so."
+  }
+  </script>
+  
+
+
+    <script src="./dictionaries-in-python_files/optins.41a0db820ee2.js.download" async=""></script>
+    <script src="./dictionaries-in-python_files/autocomplete.ecb9103353c8.js.download" async=""></script>
+
+    
+
+<script>
+  var _cio = _cio || [];
+  (function(){
+      var a,b,c;a=function(f){return function(){_cio.push([f].
+      concat(Array.prototype.slice.call(arguments,0)))}};b=["load","identify",
+      "sidentify","track","page","on","off"];for(c=0;c<b.length;c++){_cio[b[c]]=a(b[c])};
+      var t = document.createElement('script'),
+          s = document.getElementsByTagName('script')[0];
+      t.async = true;
+      t.id    = 'cio-tracker';
+      t.setAttribute('data-site-id', '7c2f77c7758d22126955');
+      t.setAttribute('data-use-array-params', 'true');
+      t.setAttribute('data-in-app-org-id', '0ed756ae-4cd1-4bb7-912c-1b37e39b6595');
+      t.setAttribute('data-use-in-app', 'true');
+      t.src = 'https://assets.customer.io/assets/track.js';
+      s.parentNode.insertBefore(t, s);
+  })();
+  (function(){
+    try {
+      var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    } catch (e) {
+      var tz = null;
+    }
+    var opts = {
+      
+      id: '58cfc528-9e15-4f9c-ba87-cd171794ed8c',
+      created_at: 1647928579,
+      last_seen_at: 1724556334,
+      has_active_subscription: false,
+      first_name: 'Natalia',
+    };
+    if (tz) {
+      opts.timezone = tz;
+    }
+    _cio.identify(opts);
+  })();
+</script>
+
+
+    
+
+    
+
+    
+
+    
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2220911568135371');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2220911568135371&ev=PageView&noscript=1"
+/></noscript>
+
+
+    
+
+    
+<script>!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});</script>
+
+<script>
+window.Beacon('init', 'f6ddfa28-ffa8-423f-b3b1-50e29e420c43')
+
+Beacon("identify", {
+  email: "natalia.shif@gmail.com",
+  name: "nataliashif",
+  has_active_subscription: "False",
+  username: "natalia.shif",
+  userid: "434279"
+});
+</script>
+
+
+  
+
+<div id="onesignal-bell-container" class="onesignal-bell-container onesignal-reset onesignal-bell-container-bottom-left"><div id="onesignal-bell-launcher" class="onesignal-bell-launcher onesignal-bell-launcher-md onesignal-bell-launcher-bottom-left onesignal-bell-launcher-theme-default onesignal-bell-launcher-active"><div class="onesignal-bell-launcher-button"><svg class="onesignal-bell-svg" xmlns="http://www.w3.org/2000/svg" width="99.7" height="99.7" viewBox="0 0 99.7 99.7" style="filter: drop-shadow(0 2px 4px rgba(34,36,38,0.35));; -webkit-filter: drop-shadow(0 2px 4px rgba(34,36,38,0.35));;"><circle class="background" cx="49.9" cy="49.9" r="49.9" style=""></circle><path class="foreground" d="M50.1 66.2H27.7s-2-.2-2-2.1c0-1.9 1.7-2 1.7-2s6.7-3.2 6.7-5.5S33 52.7 33 43.3s6-16.6 13.2-16.6c0 0 1-2.4 3.9-2.4 2.8 0 3.8 2.4 3.8 2.4 7.2 0 13.2 7.2 13.2 16.6s-1 11-1 13.3c0 2.3 6.7 5.5 6.7 5.5s1.7.1 1.7 2c0 1.8-2.1 2.1-2.1 2.1H50.1zm-7.2 2.3h14.5s-1 6.3-7.2 6.3-7.3-6.3-7.3-6.3z" style=""></path><ellipse class="stroke" cx="49.9" cy="49.9" rx="37.4" ry="36.9" style=""></ellipse></svg></div><div class="onesignal-bell-launcher-badge" style="filter: drop-shadow(0 2px 4px rgba(34,36,38,0));; -webkit-filter: drop-shadow(0 2px 4px rgba(34,36,38,0));;"></div><div class="onesignal-bell-launcher-message"><div class="onesignal-bell-launcher-message-body"></div></div><div class="onesignal-bell-launcher-dialog" style="filter: drop-shadow(0px 2px 2px rgba(34,36,38,.15));; -webkit-filter: drop-shadow(0px 2px 2px rgba(34,36,38,.15));;"><div class="onesignal-bell-launcher-dialog-body"></div></div></div></div><div id="beacon-container"><div class="hsds-beacon"><div class="Beacon"><div class="ContainerGradient-sc-62zoy-0 dkxqZi"></div><div class="ContainerFramecss__WrapperUI-sc-d7rzhh-0 itSWDc BeaconContainer is-configDisplayRight"></div><div class="FabButtonFramecss__FabButtonFrameUI-sc-y1b4md-0 bbHIsf BeaconFabButtonFrame" style="border-radius: 60px; height: 60px; position: fixed; transform: scale(1); width: 105px; z-index: 1049;"><span class="FabButtonFramecss__FabButtonPulseUI-sc-y1b4md-1 hzrFgd"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M60 30C60 51.25 51.25 60 30 60C8.75 60 1.99634e-09 51.25 1.99563e-09 30C1.99492e-09 8.75 8.75 0 30 0C51.25 0 60 8.75 60 30Z"></path>
+</svg>
+</span><span class="FabButtonFramecss__FabButtonPulseUI-sc-y1b4md-1 hzrFgd"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M60 30C60 51.25 51.25 60 30 60C8.75 60 1.99634e-09 51.25 1.99563e-09 30C1.99492e-09 8.75 8.75 0 30 0C51.25 0 60 8.75 60 30Z"></path>
+</svg>
+</span><iframe title="Help Scout Beacon - Open" id="" allowtransparency="true" data-cy="FrameComponent" src="./dictionaries-in-python_files/saved_resource.html"></iframe></div></div></div></div><div id="Gdc56d2f0" style="display: none; height: 0px;" class="gist-aaae0318-8107-4f3a-b5ba-287fb360087e">
+    <div id="gist-embed">
+        <style>
+            #x-gist-floating-top, #x-gist-floating-top-left, #x-gist-floating-top-right {
+                position: fixed;
+                top: 0px;
+                z-index: 1000000;
+            }
+            #x-gist-floating-bottom, #x-gist-floating-bottom-left, #x-gist-floating-bottom-right {
+                position: fixed;
+                bottom: 0px;
+                z-index: 1000000;
+            }
+            #x-gist-bottom, #x-gist-top, #x-gist-floating-top, #x-gist-floating-bottom {
+                left: 50%;
+                transform: translate(-50%, 0%);
+            }
+            #x-gist-floating-top-right, #x-gist-floating-bottom-right {
+                right: 0px;
+            }
+            #gist-embed {
+                position: relative;
+                height: 100%;
+                width: 100%;
+            }
+            #gist-embed-container {
+                position: relative;
+                height: 100%;
+                width: 100%;
+            }
+            #gist-embed-container .gist-frame {
+                height: 100%;
+                width: 100%;
+                border: none;
+            }
+            #x-gist-top.gist-aaae0318-8107-4f3a-b5ba-287fb360087e,
+            #x-gist-bottom.gist-aaae0318-8107-4f3a-b5ba-287fb360087e,
+            #x-gist-floating-top.gist-aaae0318-8107-4f3a-b5ba-287fb360087e,
+            #x-gist-floating-bottom.gist-aaae0318-8107-4f3a-b5ba-287fb360087e,
+            #x-gist-floating-top-left.gist-aaae0318-8107-4f3a-b5ba-287fb360087e,
+            #x-gist-floating-top-right.gist-aaae0318-8107-4f3a-b5ba-287fb360087e,
+            #x-gist-floating-bottom-left.gist-aaae0318-8107-4f3a-b5ba-287fb360087e,
+            #x-gist-floating-bottom-right.gist-aaae0318-8107-4f3a-b5ba-287fb360087e {
+                transition: height 0.1s ease-in-out;
+            }
+            @media (max-width: 800px) {
+                #x-gist-top.gist-aaae0318-8107-4f3a-b5ba-287fb360087e,
+                #x-gist-bottom.gist-aaae0318-8107-4f3a-b5ba-287fb360087e,
+                #x-gist-floating-top.gist-aaae0318-8107-4f3a-b5ba-287fb360087e,
+                #x-gist-floating-bottom.gist-aaae0318-8107-4f3a-b5ba-287fb360087e,
+                #x-gist-floating-top-left.gist-aaae0318-8107-4f3a-b5ba-287fb360087e,
+                #x-gist-floating-top-right.gist-aaae0318-8107-4f3a-b5ba-287fb360087e,
+                #x-gist-floating-bottom-left.gist-aaae0318-8107-4f3a-b5ba-287fb360087e,
+                #x-gist-floating-bottom-right.gist-aaae0318-8107-4f3a-b5ba-287fb360087e {
+                    width: 100% !important;
+                }
+            }
+        </style>
+        <div id="gist-embed-container">
+            <iframe id="gist-aaae0318-8107-4f3a-b5ba-287fb360087e" class="gist-frame" src="./dictionaries-in-python_files/index.html"></iframe>
+        </div>
+    </div></div></body></html>
